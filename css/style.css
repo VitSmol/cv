@@ -425,11 +425,11 @@ p.section__list__item:hover .section__list__item a:before {
     width: 255px;
     padding: 5px;
     outline: none;
+    box-sizing: border-box;
 }
 .check {
     margin-top: 5px;
     margin-bottom: 5px;
-    width: 254px;
     background: linear-gradient(225deg, #ff0000, #201818);
     color: antiquewhite;
     font-weight: bold;
@@ -439,7 +439,6 @@ p.section__list__item:hover .section__list__item a:before {
     background: linear-gradient(225deg, #201818, #ff0000);
 }
 .msg {
-    width: 255px;
     margin-top: 5px;
     color: antiquewhite;
 }
