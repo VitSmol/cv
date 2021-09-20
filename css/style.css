@@ -430,13 +430,13 @@ p.section__list__item:hover .section__list__item a:before {
 .check {
     margin-top: 5px;
     margin-bottom: 5px;
-    background: linear-gradient(225deg, #ff0000, #201818);
+    background: linear-gradient(225deg, #7d7d7d, #201818);
     color: antiquewhite;
     font-weight: bold;
 }
 
 .check:hover {
-    background: linear-gradient(225deg, #201818, #ff0000);
+    background: linear-gradient(225deg, #201818, #7d7d7d);
 }
 .msg {
     margin-top: 5px;
