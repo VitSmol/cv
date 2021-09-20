@@ -1,1 +1,1 @@
-# https://VitSmol.github.io
+# https://VitSmol.github.io/cv
