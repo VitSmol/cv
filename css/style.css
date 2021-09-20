@@ -422,7 +422,7 @@ p.section__list__item:hover .section__list__item a:before {
     align-items: center;
 }
 .comment__input, .check, .tel__input {
-    width: 40%;
+    width: 255px;
     padding: 5px;
     outline: none;
 }
@@ -439,6 +439,7 @@ p.section__list__item:hover .section__list__item a:before {
     background: linear-gradient(225deg, #201818, #ff0000);
 }
 .msg {
+    width: 255px;
     margin-top: 5px;
     color: antiquewhite;
 }
