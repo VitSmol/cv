@@ -1,1 +1,1 @@
-# cv
+# https://VitSmol.github.io
