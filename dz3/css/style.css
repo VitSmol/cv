@@ -1,11 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@357&display=swap");
 @font-face {
   font-family: 'Montserrat';
   src: url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;1,400&display=swap");
 }
 
-@font-face {
-  font-family: 'OpenSans';
-  src: url(https://fonts.googleapis.com/css?family=Open+Sans:300,regular,500,600,700,800,300italic,italic,500italic,600italic,700italic,800italic);
+.home__wrapper, .weDo__wrapper {
+  max-width: 1300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0 auto;
+}
+
+.home__greeting h2, .home__greeting h3, .weDo__wrapper .weDo__header h2, .weDo__benefits .benefit h4 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  color: #60606e;
+  line-height: 1.333;
+  text-align: center;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 5;
+}
+
+.weDo__wrapper .weDo__header h2:before {
+  content: '';
+  position: absolute;
+  width: 68px;
+  height: 22px;
+  z-index: -1;
+  bottom: 0;
+  background: #7beec7;
+}
+
+.weDo__wrapper .weDo__header p, .weDo__benefits .benefit p {
+  text-align: center;
+  color: #60606e;
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1.714;
+  font-size: 14px;
+  margin-top: 13px;
+  word-spacing: 1px;
 }
 
 * {
@@ -13,21 +52,239 @@
   padding: 0;
 }
 
-h2 {
-  font-size: 36px;
+.home {
+  width: 100%;
+  height: 500px;
+}
+
+.weDo {
+  width: 100%;
+}
+
+.home__wrapper {
+  height: 100%;
+  background: url("../assets/bg.png");
+}
+
+.home__wrapper header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 40px 80px 35px 80px;
+}
+
+.home__wrapper header .logo {
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
+  font-size: 18px;
   color: #60606e;
-  line-height: 1.333;
-  text-align: center;
   text-transform: uppercase;
 }
 
-.Erat_volutpat__Ut_wisi_enim_ad_minim_veniam__qu {
+.home__wrapper header .header__navigation {
+  width: 30px;
+  height: 15px;
+}
+
+.home__wrapper header .header__navigation ul {
+  display: none;
+}
+
+.home__wrapper header .header__navigation .navigation__menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.home__wrapper header .header__navigation span {
+  height: 1px;
+  background-color: #60606e;
+}
+
+.home__wrapper header .header__navigation span:nth-child(1) {
+  width: 31px;
+}
+
+.home__wrapper header .header__navigation span:nth-child(2) {
+  width: 15px;
+}
+
+.home__wrapper header .header__navigation span:nth-child(3) {
+  width: 23px;
+}
+
+.home__greeting {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: -webkit-fill-available;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.home__greeting h2 {
+  font-size: 36px;
+}
+
+.home__greeting h3 {
   font-size: 14px;
-  font-family: "OpenSans";
+  margin-top: 15px;
+}
+
+.weDo__wrapper {
+  padding-top: 143px;
+}
+
+.weDo__wrapper .weDo__header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.weDo__wrapper .weDo__header h2 {
+  font-size: 30px;
+  letter-spacing: 1px;
+}
+
+.weDo__wrapper .weDo__header p {
+  max-width: 725px;
+}
+
+.weDo__content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 95px 80px;
+  gap: 20px;
+}
+
+.content__description {
   color: #60606e;
+  font-family: 'Open Sans', sans-serif;
+  line-height: 2.222;
+  font-size: 14px;
+}
+
+.content__description p {
+  margin-top: -10px;
+}
+
+.content__image {
+  height: 364px;
+}
+
+.content__lists {
+  margin-top: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 20px;
+}
+
+.content__lists ul {
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
+  list-style-type: none;
+  padding-left: 20px;
+}
+
+.content__lists ul li {
+  position: relative;
+  line-height: 2.2;
+}
+
+.content__lists ul li ion-icon {
+  position: absolute;
+  top: calc(50% - 6px);
+  left: -25px;
+  fill: #7beec7;
+}
+
+.weDo__benefits {
+  padding: 60px 80px;
+  gap: 35px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.weDo__benefits .benefit {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.weDo__benefits .benefit .benefit__icon {
+  width: 53px;
+  height: 53px;
+  position: relative;
+}
+
+.weDo__benefits .benefit .benefit__icon ion-icon {
+  font-size: 54px;
+  font-weight: 100;
+}
+
+.weDo__benefits .benefit .benefit__icon::before {
+  position: absolute;
+  content: '';
+  width: 51px;
+  height: 21px;
+  background-color: #7beec7;
+  bottom: 0;
+  left: -10px;
+}
+
+.weDo__benefits .benefit h4 {
+  font-size: 18px;
+  margin-top: 25px;
+}
+
+.weDo__benefits .benefit p {
   line-height: 2.143;
-  text-align: left;
+  margin-top: 6px;
+}
+
+ion-icon {
+  color: #60606e;
 }
 /*# sourceMappingURL=style.css.map */
