@@ -1,0 +1,72 @@
+header, header .header__wrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+header {
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: black;
+  height: 80px;
+}
+
+header .header__wrapper {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 1600px;
+  background: #816b6b;
+  width: 1160px;
+}
+
+header .header__logo h1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 82px;
+  height: 52px;
+  margin: 0;
+  border: 1px solid white;
+  border-radius: 2px;
+  position: relative;
+  font-size: 19px;
+  text-align: center;
+  font-weight: 100;
+  line-height: 1.15;
+}
+
+header .header__nav ul {
+  list-style-type: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 16px;
+  gap: 50px;
+  margin-left: 122px;
+}
+
+header .header__nav ul a {
+  padding: 0 4px;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: Roboto, sans-serif;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+/*# sourceMappingURL=style.css.map */

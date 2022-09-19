@@ -1,0 +1,36 @@
+@import '../../assets/styles/_variables'
+header
+    width: $fullwidth
+    @extend %flex-container
+    justify-content: center
+    background: black
+    height: 80px
+    .header__wrapper
+        @extend %flex-container
+        align-items: center
+        width: $containerwidth
+        background: #816b6b
+        width: 1160px
+    .header__logo
+        h1
+            display: flex
+            justify-content: center
+            align-items: center
+            width: 82px
+            height: 52px
+            margin: 0
+            border: 1px solid white
+            border-radius: 2px
+            position: relative
+            font-size: 19px
+            text-align: center
+            font-weight: 100
+            line-height: 1.15
+    .header__nav ul
+        list-style-type: none
+        display: flex
+        font-size: 16px
+        gap: 50px
+        margin-left: 122px
+        a
+            padding: 0 4px
