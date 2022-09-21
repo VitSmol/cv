@@ -1,17 +1,16 @@
 @import '../../assets/styles/_variables'
 header
     width: $fullwidth
-    @extend %flex-container
+    display: flex
     justify-content: center
     background: black
     height: 80px
     .header__wrapper
         @extend %flex-container
         align-items: center
-        width: $containerwidth
-        background: #816b6b
-        width: 1160px
+        width: $contentwidth
     .header__logo
+        position: relative
         h1
             display: flex
             justify-content: center
@@ -25,12 +24,50 @@ header
             font-size: 19px
             text-align: center
             font-weight: 100
-            line-height: 1.15
-    .header__nav ul
-        list-style-type: none
-        display: flex
-        font-size: 16px
-        gap: 50px
-        margin-left: 122px
-        a
-            padding: 0 4px
+            line-height: 1.2111
+            transition: $transition-time border
+            z-index: 100          
+            a
+                transition: $transition-time color
+                position: relative
+            svg
+                position: absolute
+                bottom: 7px
+                left: 8px
+                .bamboo
+                    transition: $transition-time fill
+            &:hover 
+                border: 1px solid $orang
+                transition: $transition-time border
+                a
+                    transition: $transition-time color
+                    color: $orang
+                .bamboo
+                    transition: $transition-time fill
+                    fill: $orang
+
+
+    .header__nav 
+        margin-left: 60px
+        width: 100%
+        ul
+            list-style-type: none
+            display: flex
+            font-size: 16px
+            gap: 50px
+            padding-left: 0
+            position: relative
+            li
+                padding: 0 4px
+                a
+                    transition: $transition-time color
+                    &:hover
+                        transition: $transition-time color
+                        color: $orang
+                &:last-child
+                    position: absolute
+                    right: 0
+                    padding: 0
+
+.active
+    color: $orang

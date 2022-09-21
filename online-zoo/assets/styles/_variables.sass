@@ -1,6 +1,39 @@
 $fullwidth: 100%
-$containerwidth: 1600px
+$contentwidth: 1160px
+$orang: #f9804b
+$orang2: #fe9013
+$orangehover: #E47209
+$greenavtive: #4B9200
+$yellow: #ffee2e
+$linear-background: linear-gradient(to left, $orang2, $orang)
+$textcolor: #333b41
 
-%flex-container
+$transition-time: 0.5s
+%wrapper-container
     width: $fullwidth
     display: flex
+%flex-container
+    width: $contentwidth
+    display: flex
+%button
+    width: 298px
+    height: 54px
+    background: $linear-background
+    color: white
+    border-radius: 25px
+    border: none
+    outline: none
+    padding: 0
+    align-self: center
+    text-transform: uppercase
+    font-size: 16px
+    font-weight: 500
+    line-height: 22px
+    transition: 0.3s background
+    &:hover
+        transition: 0.3s background
+        background: $orangehover
+        cursor: pointer
+    &:active
+        transition: 0.3s background
+        background: $greenavtive
