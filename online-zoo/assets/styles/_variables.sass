@@ -3,12 +3,17 @@ $contentwidth: 1160px
 $orang: #f9804b
 $orang2: #fe9013
 $orangehover: #E47209
+
 $orangeborder1: #fa6f32
 $orangeborder2: #fe9013
 $greenavtive: #4B9200
 $yellow: #ffee2e
 $linear-background: linear-gradient(to left, $orang2, $orang)
 $textcolor: #333b41
+
+$bgc-property: background-image
+
+$indent: 79px
 
 $transition-time: 0.5s
 %wrapper-container
@@ -37,8 +42,28 @@ $transition-time: 0.5s
     transition: 0.3s background
     &:hover
         transition: 0.3s background
-        background: $orangehover
+        background: linear-gradient(to left, $orangehover)
         cursor: pointer
     &:active
         transition: 0.3s background
         background: $greenavtive
+
+%round-button
+    width: 62px
+    height: 62px
+    border-radius: 50%
+    background: $linear-background
+    color: white
+    outline: none
+    border: none
+    position: absolute
+    top: calc(50% - 31px)
+    transition: 0.3s background
+    &:hover
+        transition: 0.3s background
+        background: linear-gradient(to left, $orangehover)
+        cursor: pointer
+    &:active
+        transition: 0.3s background
+        background: $greenavtive
+

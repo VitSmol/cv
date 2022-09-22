@@ -19,7 +19,7 @@ header .header__wrapper, .watch__content, .backstage__container {
   display: grid;
 }
 
-.watch__header .watch__btn {
+.watch__header .watch__btn, .pets__wrapper .pets__btn {
   width: 298px;
   height: 54px;
   background: -webkit-gradient(linear, right top, left top, from(#fe9013), to(#f9804b));
@@ -40,14 +40,44 @@ header .header__wrapper, .watch__content, .backstage__container {
   transition: 0.3s background;
 }
 
-.watch__header .watch__btn:hover {
+.watch__header .watch__btn:hover, .pets__wrapper .pets__btn:hover {
   -webkit-transition: 0.3s background;
   transition: 0.3s background;
-  background: #E47209;
+  background: -webkit-gradient(linear, right top, left top, from(#E47209));
+  background: linear-gradient(to left, #E47209);
   cursor: pointer;
 }
 
-.watch__header .watch__btn:active {
+.watch__header .watch__btn:active, .pets__wrapper .pets__btn:active {
+  -webkit-transition: 0.3s background;
+  transition: 0.3s background;
+  background: #4B9200;
+}
+
+.btn-round {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: -webkit-gradient(linear, right top, left top, from(#fe9013), to(#f9804b));
+  background: linear-gradient(to left, #fe9013, #f9804b);
+  color: white;
+  outline: none;
+  border: none;
+  position: absolute;
+  top: calc(50% - 31px);
+  -webkit-transition: 0.3s background;
+  transition: 0.3s background;
+}
+
+.btn-round:hover {
+  -webkit-transition: 0.3s background;
+  transition: 0.3s background;
+  background: -webkit-gradient(linear, right top, left top, from(#E47209));
+  background: linear-gradient(to left, #E47209);
+  cursor: pointer;
+}
+
+.btn-round:active {
   -webkit-transition: 0.3s background;
   transition: 0.3s background;
   background: #4B9200;
@@ -197,7 +227,7 @@ header .header__wrapper, .watch__content, .backstage__container {
   display: grid;
 }
 
-.watch__header .watch__btn {
+.watch__header .watch__btn, .pets__wrapper .pets__btn {
   width: 298px;
   height: 54px;
   background: -webkit-gradient(linear, right top, left top, from(#fe9013), to(#f9804b));
@@ -218,14 +248,44 @@ header .header__wrapper, .watch__content, .backstage__container {
   transition: 0.3s background;
 }
 
-.watch__header .watch__btn:hover {
+.watch__header .watch__btn:hover, .pets__wrapper .pets__btn:hover {
   -webkit-transition: 0.3s background;
   transition: 0.3s background;
-  background: #E47209;
+  background: -webkit-gradient(linear, right top, left top, from(#E47209));
+  background: linear-gradient(to left, #E47209);
   cursor: pointer;
 }
 
-.watch__header .watch__btn:active {
+.watch__header .watch__btn:active, .pets__wrapper .pets__btn:active {
+  -webkit-transition: 0.3s background;
+  transition: 0.3s background;
+  background: #4B9200;
+}
+
+.btn-round {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: -webkit-gradient(linear, right top, left top, from(#fe9013), to(#f9804b));
+  background: linear-gradient(to left, #fe9013, #f9804b);
+  color: white;
+  outline: none;
+  border: none;
+  position: absolute;
+  top: calc(50% - 31px);
+  -webkit-transition: 0.3s background;
+  transition: 0.3s background;
+}
+
+.btn-round:hover {
+  -webkit-transition: 0.3s background;
+  transition: 0.3s background;
+  background: -webkit-gradient(linear, right top, left top, from(#E47209));
+  background: linear-gradient(to left, #E47209);
+  cursor: pointer;
+}
+
+.btn-round:active {
   -webkit-transition: 0.3s background;
   transition: 0.3s background;
   background: #4B9200;
@@ -318,7 +378,7 @@ header .header__wrapper, .watch__content, .backstage__container {
   display: grid;
 }
 
-.watch__header .watch__btn {
+.watch__header .watch__btn, .pets__wrapper .pets__btn {
   width: 298px;
   height: 54px;
   background: -webkit-gradient(linear, right top, left top, from(#fe9013), to(#f9804b));
@@ -339,14 +399,44 @@ header .header__wrapper, .watch__content, .backstage__container {
   transition: 0.3s background;
 }
 
-.watch__header .watch__btn:hover {
+.watch__header .watch__btn:hover, .pets__wrapper .pets__btn:hover {
   -webkit-transition: 0.3s background;
   transition: 0.3s background;
-  background: #E47209;
+  background: -webkit-gradient(linear, right top, left top, from(#E47209));
+  background: linear-gradient(to left, #E47209);
   cursor: pointer;
 }
 
-.watch__header .watch__btn:active {
+.watch__header .watch__btn:active, .pets__wrapper .pets__btn:active {
+  -webkit-transition: 0.3s background;
+  transition: 0.3s background;
+  background: #4B9200;
+}
+
+.btn-round {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: -webkit-gradient(linear, right top, left top, from(#fe9013), to(#f9804b));
+  background: linear-gradient(to left, #fe9013, #f9804b);
+  color: white;
+  outline: none;
+  border: none;
+  position: absolute;
+  top: calc(50% - 31px);
+  -webkit-transition: 0.3s background;
+  transition: 0.3s background;
+}
+
+.btn-round:hover {
+  -webkit-transition: 0.3s background;
+  transition: 0.3s background;
+  background: -webkit-gradient(linear, right top, left top, from(#E47209));
+  background: linear-gradient(to left, #E47209);
+  cursor: pointer;
+}
+
+.btn-round:active {
   -webkit-transition: 0.3s background;
   transition: 0.3s background;
   background: #4B9200;
@@ -425,7 +515,7 @@ header .header__wrapper, .watch__content, .backstage__container {
   display: grid;
 }
 
-.watch__header .watch__btn {
+.watch__header .watch__btn, .pets__wrapper .pets__btn {
   width: 298px;
   height: 54px;
   background: -webkit-gradient(linear, right top, left top, from(#fe9013), to(#f9804b));
@@ -446,24 +536,77 @@ header .header__wrapper, .watch__content, .backstage__container {
   transition: 0.3s background;
 }
 
-.watch__header .watch__btn:hover {
+.watch__header .watch__btn:hover, .pets__wrapper .pets__btn:hover {
   -webkit-transition: 0.3s background;
   transition: 0.3s background;
-  background: #E47209;
+  background: -webkit-gradient(linear, right top, left top, from(#E47209));
+  background: linear-gradient(to left, #E47209);
   cursor: pointer;
 }
 
-.watch__header .watch__btn:active {
+.watch__header .watch__btn:active, .pets__wrapper .pets__btn:active {
+  -webkit-transition: 0.3s background;
+  transition: 0.3s background;
+  background: #4B9200;
+}
+
+.btn-round {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: -webkit-gradient(linear, right top, left top, from(#fe9013), to(#f9804b));
+  background: linear-gradient(to left, #fe9013, #f9804b);
+  color: white;
+  outline: none;
+  border: none;
+  position: absolute;
+  top: calc(50% - 31px);
+  -webkit-transition: 0.3s background;
+  transition: 0.3s background;
+}
+
+.btn-round:hover {
+  -webkit-transition: 0.3s background;
+  transition: 0.3s background;
+  background: -webkit-gradient(linear, right top, left top, from(#E47209));
+  background: linear-gradient(to left, #E47209);
+  cursor: pointer;
+}
+
+.btn-round:active {
   -webkit-transition: 0.3s background;
   transition: 0.3s background;
   background: #4B9200;
 }
 
 .pets__wrapper {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   padding-top: 20px;
+  padding-bottom: 100px;
+  position: relative;
+}
+
+.pets__wrapper img.left-flower, .pets__wrapper img.right-flower {
+  position: absolute;
+  bottom: 0;
+}
+
+.pets__wrapper .left-flower {
+  left: -588px;
+}
+
+.pets__wrapper .right-flower {
+  right: 0;
+}
+
+.pets__wrapper .pets__btn {
+  margin-top: 78px;
 }
 
 .pets__container {
@@ -471,6 +614,7 @@ header .header__wrapper, .watch__content, .backstage__container {
   -ms-grid-columns: (1fr)[3];
       grid-template: repeat(2, 1fr)/repeat(3, 1fr);
   grid-gap: 20px 30px;
+  position: relative;
 }
 
 .pets__container .pet {
@@ -483,10 +627,49 @@ header .header__wrapper, .watch__content, .backstage__container {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  overflow: hidden;
 }
 
 .pets__container .pet img {
   width: 100%;
+  -webkit-filter: brightness(1);
+          filter: brightness(1);
+  -webkit-transition: 0.5s all;
+  transition: 0.5s all;
+}
+
+.pets__container .pet:hover {
+  cursor: pointer;
+}
+
+.pets__container .pet:hover img {
+  -webkit-filter: brightness(0.6);
+          filter: brightness(0.6);
+  -webkit-transition: 0.5s all;
+  transition: 0.5s all;
+  -webkit-transform: scale(1.37);
+          transform: scale(1.37);
+}
+
+.pets__container .pet:hover .pet__content {
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  -webkit-transition: 0.5s -webkit-transform;
+  transition: 0.5s -webkit-transform;
+  transition: 0.5s transform;
+  transition: 0.5s transform, 0.5s -webkit-transform;
+}
+
+.pets__container .pet:hover h5, .pets__container .pet:hover p {
+  -webkit-transition: 0.5s color;
+  transition: 0.5s color;
+  color: white !important;
+}
+
+.pets__container .pet:hover .img__icon {
+  opacity: 0;
+  -webkit-transition: 0.5s opacity;
+  transition: 0.5s opacity;
 }
 
 .pets__container h5 {
@@ -498,6 +681,8 @@ header .header__wrapper, .watch__content, .backstage__container {
   color: #000000;
   margin-top: 0;
   margin-bottom: 0;
+  -webkit-transition: 0.5s color;
+  transition: 0.5s color;
 }
 
 .pets__container p {
@@ -507,6 +692,8 @@ header .header__wrapper, .watch__content, .backstage__container {
   line-height: 18px;
   color: #000000;
   margin: 0;
+  -webkit-transition: 0.5s color;
+  transition: 0.5s color;
 }
 
 .pets__container .pet__content {
@@ -514,12 +701,19 @@ header .header__wrapper, .watch__content, .backstage__container {
   padding-top: 10px;
   padding-bottom: 13px;
   position: relative;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 }
 
 .pets__container .pet__content .img__icon {
   position: absolute;
   right: 11px;
   bottom: 13px;
+  opacity: 1;
+  -webkit-transition: 0.5s opacity;
+  transition: 0.5s opacity;
 }
 
 .pets__container .pet__content .icon__meet {
@@ -528,6 +722,18 @@ header .header__wrapper, .watch__content, .backstage__container {
 
 .pets__container .pet__content .icon__banana {
   width: 33px;
+}
+
+.arrow {
+  font-size: 20px;
+}
+
+.btn-left {
+  left: -79px;
+}
+
+.btn-right {
+  right: -79px;
 }
 
 .watch, .backstage__wrapper, .pets__wrapper, main {
@@ -550,7 +756,7 @@ header .header__wrapper, .watch__content, .backstage__container {
   display: grid;
 }
 
-.watch__header .watch__btn {
+.watch__header .watch__btn, .pets__wrapper .pets__btn {
   width: 298px;
   height: 54px;
   background: -webkit-gradient(linear, right top, left top, from(#fe9013), to(#f9804b));
@@ -571,14 +777,44 @@ header .header__wrapper, .watch__content, .backstage__container {
   transition: 0.3s background;
 }
 
-.watch__header .watch__btn:hover {
+.watch__header .watch__btn:hover, .pets__wrapper .pets__btn:hover {
   -webkit-transition: 0.3s background;
   transition: 0.3s background;
-  background: #E47209;
+  background: -webkit-gradient(linear, right top, left top, from(#E47209));
+  background: linear-gradient(to left, #E47209);
   cursor: pointer;
 }
 
-.watch__header .watch__btn:active {
+.watch__header .watch__btn:active, .pets__wrapper .pets__btn:active {
+  -webkit-transition: 0.3s background;
+  transition: 0.3s background;
+  background: #4B9200;
+}
+
+.btn-round {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: -webkit-gradient(linear, right top, left top, from(#fe9013), to(#f9804b));
+  background: linear-gradient(to left, #fe9013, #f9804b);
+  color: white;
+  outline: none;
+  border: none;
+  position: absolute;
+  top: calc(50% - 31px);
+  -webkit-transition: 0.3s background;
+  transition: 0.3s background;
+}
+
+.btn-round:hover {
+  -webkit-transition: 0.3s background;
+  transition: 0.3s background;
+  background: -webkit-gradient(linear, right top, left top, from(#E47209));
+  background: linear-gradient(to left, #E47209);
+  cursor: pointer;
+}
+
+.btn-round:active {
   -webkit-transition: 0.3s background;
   transition: 0.3s background;
   background: #4B9200;
