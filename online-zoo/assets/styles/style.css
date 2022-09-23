@@ -1,12 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
-.watch, .backstage__wrapper, .pets__wrapper, main {
+.watch, .backstage__wrapper, .pets__wrapper, .pick__wrapper, .testimonials__wrapper, main {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-header .header__wrapper, .watch__content, .backstage__container {
+header .header__wrapper, .watch__content, .backstage__container, .pick__container, .testimonials__wrapper .testimonials__container {
   width: 1160px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -19,7 +19,7 @@ header .header__wrapper, .watch__content, .backstage__container {
   display: grid;
 }
 
-.watch__header .watch__btn, .pets__wrapper .pets__btn {
+.watch__header .watch__btn, .pets__wrapper .pets__btn, .pick__btn, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn {
   width: 298px;
   height: 54px;
   background: -webkit-gradient(linear, right top, left top, from(#fe9013), to(#f9804b));
@@ -36,21 +36,21 @@ header .header__wrapper, .watch__content, .backstage__container {
   font-size: 16px;
   font-weight: 500;
   line-height: 22px;
-  -webkit-transition: 0.3s background;
-  transition: 0.3s background;
+  -webkit-transition: 0.5s background;
+  transition: 0.5s background;
 }
 
-.watch__header .watch__btn:hover, .pets__wrapper .pets__btn:hover {
-  -webkit-transition: 0.3s background;
-  transition: 0.3s background;
+.watch__header .watch__btn:hover, .pets__wrapper .pets__btn:hover, .pick__btn:hover, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:hover {
+  -webkit-transition: 0.5s background;
+  transition: 0.5s background;
   background: -webkit-gradient(linear, right top, left top, from(#E47209));
   background: linear-gradient(to left, #E47209);
   cursor: pointer;
 }
 
-.watch__header .watch__btn:active, .pets__wrapper .pets__btn:active {
-  -webkit-transition: 0.3s background;
-  transition: 0.3s background;
+.watch__header .watch__btn:active, .pets__wrapper .pets__btn:active, .pick__btn:active, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:active {
+  -webkit-transition: 0.5s background;
+  transition: 0.5s background;
   background: #4B9200;
 }
 
@@ -65,21 +65,21 @@ header .header__wrapper, .watch__content, .backstage__container {
   border: none;
   position: absolute;
   top: calc(50% - 31px);
-  -webkit-transition: 0.3s background;
-  transition: 0.3s background;
+  -webkit-transition: 0.5s background;
+  transition: 0.5s background;
 }
 
 .btn-round:hover {
-  -webkit-transition: 0.3s background;
-  transition: 0.3s background;
+  -webkit-transition: 0.5s background;
+  transition: 0.5s background;
   background: -webkit-gradient(linear, right top, left top, from(#E47209));
   background: linear-gradient(to left, #E47209);
   cursor: pointer;
 }
 
 .btn-round:active {
-  -webkit-transition: 0.3s background;
-  transition: 0.3s background;
+  -webkit-transition: 0.5s background;
+  transition: 0.5s background;
   background: #4B9200;
 }
 
@@ -207,14 +207,14 @@ header .header__nav ul li:last-child {
   color: #f9804b;
 }
 
-.watch, .backstage__wrapper, .pets__wrapper, main {
+.watch, .backstage__wrapper, .pets__wrapper, .pick__wrapper, .testimonials__wrapper, main {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-header .header__wrapper, .watch__content, .backstage__container {
+header .header__wrapper, .watch__content, .backstage__container, .pick__container, .testimonials__wrapper .testimonials__container {
   width: 1160px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -227,7 +227,7 @@ header .header__wrapper, .watch__content, .backstage__container {
   display: grid;
 }
 
-.watch__header .watch__btn, .pets__wrapper .pets__btn {
+.watch__header .watch__btn, .pets__wrapper .pets__btn, .pick__btn, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn {
   width: 298px;
   height: 54px;
   background: -webkit-gradient(linear, right top, left top, from(#fe9013), to(#f9804b));
@@ -244,21 +244,21 @@ header .header__wrapper, .watch__content, .backstage__container {
   font-size: 16px;
   font-weight: 500;
   line-height: 22px;
-  -webkit-transition: 0.3s background;
-  transition: 0.3s background;
+  -webkit-transition: 0.5s background;
+  transition: 0.5s background;
 }
 
-.watch__header .watch__btn:hover, .pets__wrapper .pets__btn:hover {
-  -webkit-transition: 0.3s background;
-  transition: 0.3s background;
+.watch__header .watch__btn:hover, .pets__wrapper .pets__btn:hover, .pick__btn:hover, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:hover {
+  -webkit-transition: 0.5s background;
+  transition: 0.5s background;
   background: -webkit-gradient(linear, right top, left top, from(#E47209));
   background: linear-gradient(to left, #E47209);
   cursor: pointer;
 }
 
-.watch__header .watch__btn:active, .pets__wrapper .pets__btn:active {
-  -webkit-transition: 0.3s background;
-  transition: 0.3s background;
+.watch__header .watch__btn:active, .pets__wrapper .pets__btn:active, .pick__btn:active, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:active {
+  -webkit-transition: 0.5s background;
+  transition: 0.5s background;
   background: #4B9200;
 }
 
@@ -273,21 +273,21 @@ header .header__wrapper, .watch__content, .backstage__container {
   border: none;
   position: absolute;
   top: calc(50% - 31px);
-  -webkit-transition: 0.3s background;
-  transition: 0.3s background;
+  -webkit-transition: 0.5s background;
+  transition: 0.5s background;
 }
 
 .btn-round:hover {
-  -webkit-transition: 0.3s background;
-  transition: 0.3s background;
+  -webkit-transition: 0.5s background;
+  transition: 0.5s background;
   background: -webkit-gradient(linear, right top, left top, from(#E47209));
   background: linear-gradient(to left, #E47209);
   cursor: pointer;
 }
 
 .btn-round:active {
-  -webkit-transition: 0.3s background;
-  transition: 0.3s background;
+  -webkit-transition: 0.5s background;
+  transition: 0.5s background;
   background: #4B9200;
 }
 
@@ -358,14 +358,14 @@ header .header__wrapper, .watch__content, .backstage__container {
   margin-left: 5px;
 }
 
-.watch, .backstage__wrapper, .pets__wrapper, main {
+.watch, .backstage__wrapper, .pets__wrapper, .pick__wrapper, .testimonials__wrapper, main {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-header .header__wrapper, .watch__content, .backstage__container {
+header .header__wrapper, .watch__content, .backstage__container, .pick__container, .testimonials__wrapper .testimonials__container {
   width: 1160px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -378,7 +378,7 @@ header .header__wrapper, .watch__content, .backstage__container {
   display: grid;
 }
 
-.watch__header .watch__btn, .pets__wrapper .pets__btn {
+.watch__header .watch__btn, .pets__wrapper .pets__btn, .pick__btn, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn {
   width: 298px;
   height: 54px;
   background: -webkit-gradient(linear, right top, left top, from(#fe9013), to(#f9804b));
@@ -395,21 +395,21 @@ header .header__wrapper, .watch__content, .backstage__container {
   font-size: 16px;
   font-weight: 500;
   line-height: 22px;
-  -webkit-transition: 0.3s background;
-  transition: 0.3s background;
+  -webkit-transition: 0.5s background;
+  transition: 0.5s background;
 }
 
-.watch__header .watch__btn:hover, .pets__wrapper .pets__btn:hover {
-  -webkit-transition: 0.3s background;
-  transition: 0.3s background;
+.watch__header .watch__btn:hover, .pets__wrapper .pets__btn:hover, .pick__btn:hover, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:hover {
+  -webkit-transition: 0.5s background;
+  transition: 0.5s background;
   background: -webkit-gradient(linear, right top, left top, from(#E47209));
   background: linear-gradient(to left, #E47209);
   cursor: pointer;
 }
 
-.watch__header .watch__btn:active, .pets__wrapper .pets__btn:active {
-  -webkit-transition: 0.3s background;
-  transition: 0.3s background;
+.watch__header .watch__btn:active, .pets__wrapper .pets__btn:active, .pick__btn:active, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:active {
+  -webkit-transition: 0.5s background;
+  transition: 0.5s background;
   background: #4B9200;
 }
 
@@ -424,21 +424,21 @@ header .header__wrapper, .watch__content, .backstage__container {
   border: none;
   position: absolute;
   top: calc(50% - 31px);
-  -webkit-transition: 0.3s background;
-  transition: 0.3s background;
+  -webkit-transition: 0.5s background;
+  transition: 0.5s background;
 }
 
 .btn-round:hover {
-  -webkit-transition: 0.3s background;
-  transition: 0.3s background;
+  -webkit-transition: 0.5s background;
+  transition: 0.5s background;
   background: -webkit-gradient(linear, right top, left top, from(#E47209));
   background: linear-gradient(to left, #E47209);
   cursor: pointer;
 }
 
 .btn-round:active {
-  -webkit-transition: 0.3s background;
-  transition: 0.3s background;
+  -webkit-transition: 0.5s background;
+  transition: 0.5s background;
   background: #4B9200;
 }
 
@@ -495,14 +495,14 @@ header .header__wrapper, .watch__content, .backstage__container {
   color: #333b41;
 }
 
-.watch, .backstage__wrapper, .pets__wrapper, main {
+.watch, .backstage__wrapper, .pets__wrapper, .pick__wrapper, .testimonials__wrapper, main {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-header .header__wrapper, .watch__content, .backstage__container {
+header .header__wrapper, .watch__content, .backstage__container, .pick__container, .testimonials__wrapper .testimonials__container {
   width: 1160px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -515,7 +515,7 @@ header .header__wrapper, .watch__content, .backstage__container {
   display: grid;
 }
 
-.watch__header .watch__btn, .pets__wrapper .pets__btn {
+.watch__header .watch__btn, .pets__wrapper .pets__btn, .pick__btn, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn {
   width: 298px;
   height: 54px;
   background: -webkit-gradient(linear, right top, left top, from(#fe9013), to(#f9804b));
@@ -532,21 +532,21 @@ header .header__wrapper, .watch__content, .backstage__container {
   font-size: 16px;
   font-weight: 500;
   line-height: 22px;
-  -webkit-transition: 0.3s background;
-  transition: 0.3s background;
+  -webkit-transition: 0.5s background;
+  transition: 0.5s background;
 }
 
-.watch__header .watch__btn:hover, .pets__wrapper .pets__btn:hover {
-  -webkit-transition: 0.3s background;
-  transition: 0.3s background;
+.watch__header .watch__btn:hover, .pets__wrapper .pets__btn:hover, .pick__btn:hover, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:hover {
+  -webkit-transition: 0.5s background;
+  transition: 0.5s background;
   background: -webkit-gradient(linear, right top, left top, from(#E47209));
   background: linear-gradient(to left, #E47209);
   cursor: pointer;
 }
 
-.watch__header .watch__btn:active, .pets__wrapper .pets__btn:active {
-  -webkit-transition: 0.3s background;
-  transition: 0.3s background;
+.watch__header .watch__btn:active, .pets__wrapper .pets__btn:active, .pick__btn:active, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:active {
+  -webkit-transition: 0.5s background;
+  transition: 0.5s background;
   background: #4B9200;
 }
 
@@ -561,21 +561,21 @@ header .header__wrapper, .watch__content, .backstage__container {
   border: none;
   position: absolute;
   top: calc(50% - 31px);
-  -webkit-transition: 0.3s background;
-  transition: 0.3s background;
+  -webkit-transition: 0.5s background;
+  transition: 0.5s background;
 }
 
 .btn-round:hover {
-  -webkit-transition: 0.3s background;
-  transition: 0.3s background;
+  -webkit-transition: 0.5s background;
+  transition: 0.5s background;
   background: -webkit-gradient(linear, right top, left top, from(#E47209));
   background: linear-gradient(to left, #E47209);
   cursor: pointer;
 }
 
 .btn-round:active {
-  -webkit-transition: 0.3s background;
-  transition: 0.3s background;
+  -webkit-transition: 0.5s background;
+  transition: 0.5s background;
   background: #4B9200;
 }
 
@@ -736,14 +736,14 @@ header .header__wrapper, .watch__content, .backstage__container {
   right: -79px;
 }
 
-.watch, .backstage__wrapper, .pets__wrapper, main {
+.watch, .backstage__wrapper, .pets__wrapper, .pick__wrapper, .testimonials__wrapper, main {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-header .header__wrapper, .watch__content, .backstage__container {
+header .header__wrapper, .watch__content, .backstage__container, .pick__container, .testimonials__wrapper .testimonials__container {
   width: 1160px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -756,7 +756,7 @@ header .header__wrapper, .watch__content, .backstage__container {
   display: grid;
 }
 
-.watch__header .watch__btn, .pets__wrapper .pets__btn {
+.watch__header .watch__btn, .pets__wrapper .pets__btn, .pick__btn, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn {
   width: 298px;
   height: 54px;
   background: -webkit-gradient(linear, right top, left top, from(#fe9013), to(#f9804b));
@@ -773,21 +773,21 @@ header .header__wrapper, .watch__content, .backstage__container {
   font-size: 16px;
   font-weight: 500;
   line-height: 22px;
-  -webkit-transition: 0.3s background;
-  transition: 0.3s background;
+  -webkit-transition: 0.5s background;
+  transition: 0.5s background;
 }
 
-.watch__header .watch__btn:hover, .pets__wrapper .pets__btn:hover {
-  -webkit-transition: 0.3s background;
-  transition: 0.3s background;
+.watch__header .watch__btn:hover, .pets__wrapper .pets__btn:hover, .pick__btn:hover, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:hover {
+  -webkit-transition: 0.5s background;
+  transition: 0.5s background;
   background: -webkit-gradient(linear, right top, left top, from(#E47209));
   background: linear-gradient(to left, #E47209);
   cursor: pointer;
 }
 
-.watch__header .watch__btn:active, .pets__wrapper .pets__btn:active {
-  -webkit-transition: 0.3s background;
-  transition: 0.3s background;
+.watch__header .watch__btn:active, .pets__wrapper .pets__btn:active, .pick__btn:active, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:active {
+  -webkit-transition: 0.5s background;
+  transition: 0.5s background;
   background: #4B9200;
 }
 
@@ -802,21 +802,498 @@ header .header__wrapper, .watch__content, .backstage__container {
   border: none;
   position: absolute;
   top: calc(50% - 31px);
-  -webkit-transition: 0.3s background;
-  transition: 0.3s background;
+  -webkit-transition: 0.5s background;
+  transition: 0.5s background;
 }
 
 .btn-round:hover {
-  -webkit-transition: 0.3s background;
-  transition: 0.3s background;
+  -webkit-transition: 0.5s background;
+  transition: 0.5s background;
   background: -webkit-gradient(linear, right top, left top, from(#E47209));
   background: linear-gradient(to left, #E47209);
   cursor: pointer;
 }
 
 .btn-round:active {
-  -webkit-transition: 0.3s background;
-  transition: 0.3s background;
+  -webkit-transition: 0.5s background;
+  transition: 0.5s background;
+  background: #4B9200;
+}
+
+.pick__wrapper {
+  background: linear-gradient(315.75deg, rgba(254, 210, 144, 0.7) 30.06%, #FEBDAB 100.95%, rgba(254, 210, 144, 0.7) 106.36%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-top: 69px;
+  padding-bottom: 100px;
+  opacity: 0.9;
+}
+
+.pick__container {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: rgba(253, 253, 255, 0.52);
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+  border-radius: 20px;
+  padding-bottom: 59px;
+}
+
+.pick__container .pick__text {
+  padding-left: 40px;
+}
+
+.pick__container .pick__text p:first-of-type {
+  font-weight: 500;
+}
+
+.pick__container .pick__text p:last-of-type {
+  padding-right: 30px;
+  line-height: 21px;
+  margin-top: -5px;
+}
+
+.pick__container h2 {
+  color: #fe9013;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 58px;
+  text-align: center;
+  margin-bottom: 34px;
+}
+
+.pick__container h4 {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 27px;
+  color: #333B41;
+  margin-top: 0;
+  margin-bottom: 41px;
+}
+
+.pick__how {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.pick__how h3.how__header {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 47px;
+  color: #333B41;
+  margin-top: 44px;
+  margin-bottom: 40px;
+}
+
+.how__payment {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  padding: 0 69px;
+  width: 1160px;
+}
+
+.how__payment .card__image__container {
+  width: 168px;
+  height: 168px;
+  background: white;
+  border: 1px solid #fe9013;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+.how__payment .how__card {
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+}
+
+.how__payment .how__card p {
+  margin-top: 30px;
+  line-height: 1.4;
+}
+
+.how__payment .how__card:not(:last-child) .card__image__container::after {
+  position: absolute;
+  content: url("../../assets/images/Vector.png");
+  right: -100px;
+}
+
+.pick__btn {
+  margin-top: 45px;
+}
+
+.watch, .backstage__wrapper, .pets__wrapper, .pick__wrapper, .testimonials__wrapper, main {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+header .header__wrapper, .watch__content, .backstage__container, .pick__container, .testimonials__wrapper .testimonials__container {
+  width: 1160px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.pets__container {
+  width: 1160px;
+  display: -ms-grid;
+  display: grid;
+}
+
+.watch__header .watch__btn, .pets__wrapper .pets__btn, .pick__btn, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn {
+  width: 298px;
+  height: 54px;
+  background: -webkit-gradient(linear, right top, left top, from(#fe9013), to(#f9804b));
+  background: linear-gradient(to left, #fe9013, #f9804b);
+  color: white;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  padding: 0;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22px;
+  -webkit-transition: 0.5s background;
+  transition: 0.5s background;
+}
+
+.watch__header .watch__btn:hover, .pets__wrapper .pets__btn:hover, .pick__btn:hover, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:hover {
+  -webkit-transition: 0.5s background;
+  transition: 0.5s background;
+  background: -webkit-gradient(linear, right top, left top, from(#E47209));
+  background: linear-gradient(to left, #E47209);
+  cursor: pointer;
+}
+
+.watch__header .watch__btn:active, .pets__wrapper .pets__btn:active, .pick__btn:active, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:active {
+  -webkit-transition: 0.5s background;
+  transition: 0.5s background;
+  background: #4B9200;
+}
+
+.btn-round {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: -webkit-gradient(linear, right top, left top, from(#fe9013), to(#f9804b));
+  background: linear-gradient(to left, #fe9013, #f9804b);
+  color: white;
+  outline: none;
+  border: none;
+  position: absolute;
+  top: calc(50% - 31px);
+  -webkit-transition: 0.5s background;
+  transition: 0.5s background;
+}
+
+.btn-round:hover {
+  -webkit-transition: 0.5s background;
+  transition: 0.5s background;
+  background: -webkit-gradient(linear, right top, left top, from(#E47209));
+  background: linear-gradient(to left, #E47209);
+  cursor: pointer;
+}
+
+.btn-round:active {
+  -webkit-transition: 0.5s background;
+  transition: 0.5s background;
+  background: #4B9200;
+}
+
+.testimonials__wrapper {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-top: 100px;
+  padding-bottom: 180px;
+}
+
+.testimonials__wrapper .testimonials__container {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.testimonials__wrapper .testimonials__container h3 {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 47px;
+  text-align: center;
+  color: #333B41;
+  margin-top: 40px;
+  margin-bottom: 48px;
+}
+
+.testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn {
+  border-radius: 5px !important;
+  margin-top: 30px;
+  -ms-flex-item-align: start !important;
+      align-self: flex-start !important;
+}
+
+.testinonials__cards {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 30px;
+}
+
+.card {
+  padding: 15px 18px 19px 15px;
+  width: 268px;
+  height: 391px;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: #f1f3f2;
+  position: relative;
+  border-radius: 20px;
+}
+
+.card:before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  border: 2px solid transparent;
+  background: linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%) border-box;
+  -webkit-mask: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fff)) padding-box, -webkit-gradient(linear, left top, left bottom, color-stop(0, #fff));
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.card h5 {
+  margin: 0;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: #000000;
+}
+
+.card .text {
+  overflow: hidden;
+}
+
+.card .user__info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+}
+
+.card .user__info .avatar {
+  width: 37px;
+  height: 37px;
+}
+
+.card .user__info .local {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0;
+}
+
+.card .user__info .name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.card .user__info span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 18px;
+  color: #BDBDBD;
+}
+
+.card .user__info span:last-child::before {
+  content: '';
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #bdbdbd;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin-left: 6px;
+  margin-right: 5px;
+}
+
+.card .text p {
+  margin-top: 10px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 18px;
+  color: #767474;
+}
+
+.testimonials__paggination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 20px;
+  width: 600px;
+  height: 8px;
+  background: #f1f3f2;
+  border-radius: 5px;
+  border: 0.5px solid rgba(254, 189, 171, 0.74);
+  position: relative;
+}
+
+.testimonials__paggination .paggination-item {
+  width: 115px;
+}
+
+.testimonials__paggination .active-item {
+  background-color: #fe9013;
+  border-radius: 5px;
+}
+
+.watch, .backstage__wrapper, .pets__wrapper, .pick__wrapper, .testimonials__wrapper, main {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+header .header__wrapper, .watch__content, .backstage__container, .pick__container, .testimonials__wrapper .testimonials__container {
+  width: 1160px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.pets__container {
+  width: 1160px;
+  display: -ms-grid;
+  display: grid;
+}
+
+.watch__header .watch__btn, .pets__wrapper .pets__btn, .pick__btn, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn {
+  width: 298px;
+  height: 54px;
+  background: -webkit-gradient(linear, right top, left top, from(#fe9013), to(#f9804b));
+  background: linear-gradient(to left, #fe9013, #f9804b);
+  color: white;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  padding: 0;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22px;
+  -webkit-transition: 0.5s background;
+  transition: 0.5s background;
+}
+
+.watch__header .watch__btn:hover, .pets__wrapper .pets__btn:hover, .pick__btn:hover, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:hover {
+  -webkit-transition: 0.5s background;
+  transition: 0.5s background;
+  background: -webkit-gradient(linear, right top, left top, from(#E47209));
+  background: linear-gradient(to left, #E47209);
+  cursor: pointer;
+}
+
+.watch__header .watch__btn:active, .pets__wrapper .pets__btn:active, .pick__btn:active, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:active {
+  -webkit-transition: 0.5s background;
+  transition: 0.5s background;
+  background: #4B9200;
+}
+
+.btn-round {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: -webkit-gradient(linear, right top, left top, from(#fe9013), to(#f9804b));
+  background: linear-gradient(to left, #fe9013, #f9804b);
+  color: white;
+  outline: none;
+  border: none;
+  position: absolute;
+  top: calc(50% - 31px);
+  -webkit-transition: 0.5s background;
+  transition: 0.5s background;
+}
+
+.btn-round:hover {
+  -webkit-transition: 0.5s background;
+  transition: 0.5s background;
+  background: -webkit-gradient(linear, right top, left top, from(#E47209));
+  background: linear-gradient(to left, #E47209);
+  cursor: pointer;
+}
+
+.btn-round:active {
+  -webkit-transition: 0.5s background;
+  transition: 0.5s background;
   background: #4B9200;
 }
 

@@ -10,12 +10,17 @@ $greenavtive: #4B9200
 $yellow: #ffee2e
 $linear-background: linear-gradient(to left, $orang2, $orang)
 $textcolor: #333b41
-
 $bgc-property: background-image
-
 $indent: 79px
-
 $transition-time: 0.5s
+$gradient1: rgba(254, 189, 171, 0.74)
+$gradient2: rgba(243, 169, 248, 0.66)
+$gradient3: #E0D8F0
+$gradient4: #EAF7FE
+$gradient5: #EAF7FE
+$gradientBackground: linear-gradient(315.75deg, $gradient1 30.06%, $gradient2 50.74%, $gradient3 80.49%, $gradient4 127.9%, $gradient5 149.54%)
+
+
 %wrapper-container
     width: $fullwidth
     display: flex
@@ -39,13 +44,13 @@ $transition-time: 0.5s
     font-size: 16px
     font-weight: 500
     line-height: 22px
-    transition: 0.3s background
+    transition: $transition-time background
     &:hover
-        transition: 0.3s background
+        transition: $transition-time background
         background: linear-gradient(to left, $orangehover)
         cursor: pointer
     &:active
-        transition: 0.3s background
+        transition: $transition-time background
         background: $greenavtive
 
 %round-button
@@ -58,12 +63,12 @@ $transition-time: 0.5s
     border: none
     position: absolute
     top: calc(50% - 31px)
-    transition: 0.3s background
+    transition: $transition-time background
     &:hover
-        transition: 0.3s background
+        transition: $transition-time background
         background: linear-gradient(to left, $orangehover)
         cursor: pointer
     &:active
-        transition: 0.3s background
+        transition: $transition-time background
         background: $greenavtive
 
