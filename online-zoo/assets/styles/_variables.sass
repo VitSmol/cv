@@ -30,6 +30,63 @@ $gradientBackground: linear-gradient(315.75deg, $gradient1 30.06%, $gradient2 50
 %grid-container
     width: $contentwidth
     display: grid
+%logo
+    position: relative
+    h1
+        display: flex
+        justify-content: center
+        align-items: center
+        width: 82px
+        height: 52px
+        margin: 0
+        border: 1px solid white
+        border-radius: 2px
+        position: relative
+        font-size: 19px
+        text-align: center
+        font-weight: 100
+        line-height: 1.2111
+        transition: $transition-time border
+        z-index: 100          
+        a
+            transition: $transition-time color
+            position: relative
+        svg
+            position: absolute
+            bottom: 7px
+            left: 8px
+            .bamboo
+                transition: $transition-time fill
+        &:hover 
+            border: 1px solid $orang
+            transition: $transition-time border
+            a
+                transition: $transition-time color
+                color: $orang
+            .bamboo
+                transition: $transition-time fill
+                fill: $orang   
+%nav
+    margin-left: 60px
+    width: 100%
+    ul
+        list-style-type: none
+        display: flex
+        font-size: 16px
+        gap: 50px
+        padding-left: 0
+        position: relative
+        li
+            padding: 0 4px
+            a
+                transition: $transition-time color
+                &:hover
+                    transition: $transition-time color
+                    color: $orang
+            &:last-child
+                position: absolute
+                right: 0
+                padding: 0 
 %button
     width: 298px
     height: 54px
@@ -42,7 +99,7 @@ $gradientBackground: linear-gradient(315.75deg, $gradient1 30.06%, $gradient2 50
     align-self: center
     text-transform: uppercase
     font-size: 16px
-    font-weight: 500
+    font-weight: 400
     line-height: 22px
     transition: $transition-time background
     &:hover
@@ -52,7 +109,6 @@ $gradientBackground: linear-gradient(315.75deg, $gradient1 30.06%, $gradient2 50
     &:active
         transition: $transition-time background
         background: $greenavtive
-
 %round-button
     width: 62px
     height: 62px
@@ -72,3 +128,27 @@ $gradientBackground: linear-gradient(315.75deg, $gradient1 30.06%, $gradient2 50
         transition: $transition-time background
         background: $greenavtive
 
+%submit-button
+    width: 129px
+    height: 42px
+    font-family: 'Roboto'
+    font-style: normal
+    font-weight: 400
+    font-size: 16px
+    line-height: 22px
+    background-color: #f1f3f2
+    border-radius: 5px
+    border: 1px solid
+    display: inline-block
+    margin-left: 5px
+%mistake-button
+    color: #D31414
+    border-color: #d31414
+%default-button
+    color: black
+    border-color:rgba(51, 59, 65, 1)
+        cursor: pointer
+%active-button
+    color: $greenavtive
+    border-block-color: $greenavtive
+    cursor: pointer
