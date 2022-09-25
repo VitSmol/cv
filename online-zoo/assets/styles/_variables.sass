@@ -32,7 +32,7 @@ $gradientBackground: linear-gradient(315.75deg, $gradient1 30.06%, $gradient2 50
     display: grid
 %logo
     position: relative
-    h1
+    h1, h2
         display: flex
         justify-content: center
         align-items: center
@@ -102,13 +102,25 @@ $gradientBackground: linear-gradient(315.75deg, $gradient1 30.06%, $gradient2 50
     font-weight: 400
     line-height: 22px
     transition: $transition-time background
+    position: relative
     &:hover
         transition: $transition-time background
-        background: linear-gradient(to left, $orangehover)
         cursor: pointer
+        background: linear-gradient(to left, $orangehover)
     &:active
         transition: $transition-time background
         background: $greenavtive
+    &:before
+        position: absolute
+        content: ''
+        top: 0
+        right: 0
+        left: 0
+        bottom: 0
+        background: $orangehover
+        z-index: -1
+        transition: opacity $transition-time linear
+        opacity: 0
 %round-button
     width: 62px
     height: 62px
@@ -138,7 +150,7 @@ $gradientBackground: linear-gradient(315.75deg, $gradient1 30.06%, $gradient2 50
     line-height: 22px
     background-color: #f1f3f2
     border-radius: 5px
-    border: 1px solid
+    border: 2px solid
     display: inline-block
     margin-left: 5px
 %mistake-button
@@ -147,7 +159,7 @@ $gradientBackground: linear-gradient(315.75deg, $gradient1 30.06%, $gradient2 50
 %default-button
     color: black
     border-color:rgba(51, 59, 65, 1)
-        cursor: pointer
+    cursor: pointer
 %active-button
     color: $greenavtive
     border-block-color: $greenavtive
