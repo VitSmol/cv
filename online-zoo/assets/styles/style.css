@@ -120,7 +120,7 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   padding: 0;
 }
 
-.watch__header .watch__btn, .pets__wrapper .pets__btn, .pick__btn, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn, .footer__content .footer__button #footer-btn {
+.watch__header .watch__btn, .pets__wrapper .pets__btn, .pick__btn, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn, .footer__content .footer__button #footer-btn, .feed {
   width: 298px;
   height: 54px;
   background: -webkit-gradient(linear, right top, left top, from(#fe9013), to(#f9804b));
@@ -142,7 +142,7 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   position: relative;
 }
 
-.watch__header .watch__btn:hover, .pets__wrapper .pets__btn:hover, .pick__btn:hover, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:hover, .footer__content .footer__button #footer-btn:hover {
+.watch__header .watch__btn:hover, .pets__wrapper .pets__btn:hover, .pick__btn:hover, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:hover, .footer__content .footer__button #footer-btn:hover, .feed:hover {
   -webkit-transition: 0.5s background;
   transition: 0.5s background;
   cursor: pointer;
@@ -150,13 +150,13 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   background: linear-gradient(to left, #E47209);
 }
 
-.watch__header .watch__btn:active, .pets__wrapper .pets__btn:active, .pick__btn:active, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:active, .footer__content .footer__button #footer-btn:active {
+.watch__header .watch__btn:active, .pets__wrapper .pets__btn:active, .pick__btn:active, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:active, .footer__content .footer__button #footer-btn:active, .feed:active {
   -webkit-transition: 0.5s background;
   transition: 0.5s background;
   background: #4B9200;
 }
 
-.watch__header .watch__btn:before, .pets__wrapper .pets__btn:before, .pick__btn:before, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:before, .footer__content .footer__button #footer-btn:before {
+.watch__header .watch__btn:before, .pets__wrapper .pets__btn:before, .pick__btn:before, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:before, .footer__content .footer__button #footer-btn:before, .feed:before {
   position: absolute;
   content: '';
   top: 0;
@@ -374,7 +374,7 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   padding: 0;
 }
 
-.watch__header .watch__btn, .pets__wrapper .pets__btn, .pick__btn, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn, .footer__content .footer__button #footer-btn {
+.watch__header .watch__btn, .pets__wrapper .pets__btn, .pick__btn, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn, .footer__content .footer__button #footer-btn, .feed {
   width: 298px;
   height: 54px;
   background: -webkit-gradient(linear, right top, left top, from(#fe9013), to(#f9804b));
@@ -396,7 +396,7 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   position: relative;
 }
 
-.watch__header .watch__btn:hover, .pets__wrapper .pets__btn:hover, .pick__btn:hover, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:hover, .footer__content .footer__button #footer-btn:hover {
+.watch__header .watch__btn:hover, .pets__wrapper .pets__btn:hover, .pick__btn:hover, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:hover, .footer__content .footer__button #footer-btn:hover, .feed:hover {
   -webkit-transition: 0.5s background;
   transition: 0.5s background;
   cursor: pointer;
@@ -404,13 +404,13 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   background: linear-gradient(to left, #E47209);
 }
 
-.watch__header .watch__btn:active, .pets__wrapper .pets__btn:active, .pick__btn:active, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:active, .footer__content .footer__button #footer-btn:active {
+.watch__header .watch__btn:active, .pets__wrapper .pets__btn:active, .pick__btn:active, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:active, .footer__content .footer__button #footer-btn:active, .feed:active {
   -webkit-transition: 0.5s background;
   transition: 0.5s background;
   background: #4B9200;
 }
 
-.watch__header .watch__btn:before, .pets__wrapper .pets__btn:before, .pick__btn:before, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:before, .footer__content .footer__button #footer-btn:before {
+.watch__header .watch__btn:before, .pets__wrapper .pets__btn:before, .pick__btn:before, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:before, .footer__content .footer__button #footer-btn:before, .feed:before {
   position: absolute;
   content: '';
   top: 0;
@@ -672,7 +672,7 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   padding: 0;
 }
 
-.watch__header .watch__btn, .pets__wrapper .pets__btn, .pick__btn, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn, .footer__content .footer__button #footer-btn {
+.watch__header .watch__btn, .pets__wrapper .pets__btn, .pick__btn, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn, .footer__content .footer__button #footer-btn, .feed {
   width: 298px;
   height: 54px;
   background: -webkit-gradient(linear, right top, left top, from(#fe9013), to(#f9804b));
@@ -694,7 +694,7 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   position: relative;
 }
 
-.watch__header .watch__btn:hover, .pets__wrapper .pets__btn:hover, .pick__btn:hover, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:hover, .footer__content .footer__button #footer-btn:hover {
+.watch__header .watch__btn:hover, .pets__wrapper .pets__btn:hover, .pick__btn:hover, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:hover, .footer__content .footer__button #footer-btn:hover, .feed:hover {
   -webkit-transition: 0.5s background;
   transition: 0.5s background;
   cursor: pointer;
@@ -702,13 +702,13 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   background: linear-gradient(to left, #E47209);
 }
 
-.watch__header .watch__btn:active, .pets__wrapper .pets__btn:active, .pick__btn:active, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:active, .footer__content .footer__button #footer-btn:active {
+.watch__header .watch__btn:active, .pets__wrapper .pets__btn:active, .pick__btn:active, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:active, .footer__content .footer__button #footer-btn:active, .feed:active {
   -webkit-transition: 0.5s background;
   transition: 0.5s background;
   background: #4B9200;
 }
 
-.watch__header .watch__btn:before, .pets__wrapper .pets__btn:before, .pick__btn:before, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:before, .footer__content .footer__button #footer-btn:before {
+.watch__header .watch__btn:before, .pets__wrapper .pets__btn:before, .pick__btn:before, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:before, .footer__content .footer__button #footer-btn:before, .feed:before {
   position: absolute;
   content: '';
   top: 0;
@@ -956,7 +956,7 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   padding: 0;
 }
 
-.watch__header .watch__btn, .pets__wrapper .pets__btn, .pick__btn, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn, .footer__content .footer__button #footer-btn {
+.watch__header .watch__btn, .pets__wrapper .pets__btn, .pick__btn, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn, .footer__content .footer__button #footer-btn, .feed {
   width: 298px;
   height: 54px;
   background: -webkit-gradient(linear, right top, left top, from(#fe9013), to(#f9804b));
@@ -978,7 +978,7 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   position: relative;
 }
 
-.watch__header .watch__btn:hover, .pets__wrapper .pets__btn:hover, .pick__btn:hover, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:hover, .footer__content .footer__button #footer-btn:hover {
+.watch__header .watch__btn:hover, .pets__wrapper .pets__btn:hover, .pick__btn:hover, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:hover, .footer__content .footer__button #footer-btn:hover, .feed:hover {
   -webkit-transition: 0.5s background;
   transition: 0.5s background;
   cursor: pointer;
@@ -986,13 +986,13 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   background: linear-gradient(to left, #E47209);
 }
 
-.watch__header .watch__btn:active, .pets__wrapper .pets__btn:active, .pick__btn:active, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:active, .footer__content .footer__button #footer-btn:active {
+.watch__header .watch__btn:active, .pets__wrapper .pets__btn:active, .pick__btn:active, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:active, .footer__content .footer__button #footer-btn:active, .feed:active {
   -webkit-transition: 0.5s background;
   transition: 0.5s background;
   background: #4B9200;
 }
 
-.watch__header .watch__btn:before, .pets__wrapper .pets__btn:before, .pick__btn:before, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:before, .footer__content .footer__button #footer-btn:before {
+.watch__header .watch__btn:before, .pets__wrapper .pets__btn:before, .pick__btn:before, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:before, .footer__content .footer__button #footer-btn:before, .feed:before {
   position: absolute;
   content: '';
   top: 0;
@@ -1344,7 +1344,7 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   padding: 0;
 }
 
-.watch__header .watch__btn, .pets__wrapper .pets__btn, .pick__btn, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn, .footer__content .footer__button #footer-btn {
+.watch__header .watch__btn, .pets__wrapper .pets__btn, .pick__btn, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn, .footer__content .footer__button #footer-btn, .feed {
   width: 298px;
   height: 54px;
   background: -webkit-gradient(linear, right top, left top, from(#fe9013), to(#f9804b));
@@ -1366,7 +1366,7 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   position: relative;
 }
 
-.watch__header .watch__btn:hover, .pets__wrapper .pets__btn:hover, .pick__btn:hover, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:hover, .footer__content .footer__button #footer-btn:hover {
+.watch__header .watch__btn:hover, .pets__wrapper .pets__btn:hover, .pick__btn:hover, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:hover, .footer__content .footer__button #footer-btn:hover, .feed:hover {
   -webkit-transition: 0.5s background;
   transition: 0.5s background;
   cursor: pointer;
@@ -1374,13 +1374,13 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   background: linear-gradient(to left, #E47209);
 }
 
-.watch__header .watch__btn:active, .pets__wrapper .pets__btn:active, .pick__btn:active, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:active, .footer__content .footer__button #footer-btn:active {
+.watch__header .watch__btn:active, .pets__wrapper .pets__btn:active, .pick__btn:active, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:active, .footer__content .footer__button #footer-btn:active, .feed:active {
   -webkit-transition: 0.5s background;
   transition: 0.5s background;
   background: #4B9200;
 }
 
-.watch__header .watch__btn:before, .pets__wrapper .pets__btn:before, .pick__btn:before, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:before, .footer__content .footer__button #footer-btn:before {
+.watch__header .watch__btn:before, .pets__wrapper .pets__btn:before, .pick__btn:before, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:before, .footer__content .footer__button #footer-btn:before, .feed:before {
   position: absolute;
   content: '';
   top: 0;
@@ -1717,7 +1717,7 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   padding: 0;
 }
 
-.watch__header .watch__btn, .pets__wrapper .pets__btn, .pick__btn, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn, .footer__content .footer__button #footer-btn {
+.watch__header .watch__btn, .pets__wrapper .pets__btn, .pick__btn, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn, .footer__content .footer__button #footer-btn, .feed {
   width: 298px;
   height: 54px;
   background: -webkit-gradient(linear, right top, left top, from(#fe9013), to(#f9804b));
@@ -1739,7 +1739,7 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   position: relative;
 }
 
-.watch__header .watch__btn:hover, .pets__wrapper .pets__btn:hover, .pick__btn:hover, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:hover, .footer__content .footer__button #footer-btn:hover {
+.watch__header .watch__btn:hover, .pets__wrapper .pets__btn:hover, .pick__btn:hover, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:hover, .footer__content .footer__button #footer-btn:hover, .feed:hover {
   -webkit-transition: 0.5s background;
   transition: 0.5s background;
   cursor: pointer;
@@ -1747,13 +1747,13 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   background: linear-gradient(to left, #E47209);
 }
 
-.watch__header .watch__btn:active, .pets__wrapper .pets__btn:active, .pick__btn:active, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:active, .footer__content .footer__button #footer-btn:active {
+.watch__header .watch__btn:active, .pets__wrapper .pets__btn:active, .pick__btn:active, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:active, .footer__content .footer__button #footer-btn:active, .feed:active {
   -webkit-transition: 0.5s background;
   transition: 0.5s background;
   background: #4B9200;
 }
 
-.watch__header .watch__btn:before, .pets__wrapper .pets__btn:before, .pick__btn:before, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:before, .footer__content .footer__button #footer-btn:before {
+.watch__header .watch__btn:before, .pets__wrapper .pets__btn:before, .pick__btn:before, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:before, .footer__content .footer__button #footer-btn:before, .feed:before {
   position: absolute;
   content: '';
   top: 0;
@@ -2148,7 +2148,7 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   padding: 0;
 }
 
-.watch__header .watch__btn, .pets__wrapper .pets__btn, .pick__btn, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn, .footer__content .footer__button #footer-btn {
+.watch__header .watch__btn, .pets__wrapper .pets__btn, .pick__btn, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn, .footer__content .footer__button #footer-btn, .feed {
   width: 298px;
   height: 54px;
   background: -webkit-gradient(linear, right top, left top, from(#fe9013), to(#f9804b));
@@ -2170,7 +2170,7 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   position: relative;
 }
 
-.watch__header .watch__btn:hover, .pets__wrapper .pets__btn:hover, .pick__btn:hover, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:hover, .footer__content .footer__button #footer-btn:hover {
+.watch__header .watch__btn:hover, .pets__wrapper .pets__btn:hover, .pick__btn:hover, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:hover, .footer__content .footer__button #footer-btn:hover, .feed:hover {
   -webkit-transition: 0.5s background;
   transition: 0.5s background;
   cursor: pointer;
@@ -2178,13 +2178,13 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   background: linear-gradient(to left, #E47209);
 }
 
-.watch__header .watch__btn:active, .pets__wrapper .pets__btn:active, .pick__btn:active, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:active, .footer__content .footer__button #footer-btn:active {
+.watch__header .watch__btn:active, .pets__wrapper .pets__btn:active, .pick__btn:active, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:active, .footer__content .footer__button #footer-btn:active, .feed:active {
   -webkit-transition: 0.5s background;
   transition: 0.5s background;
   background: #4B9200;
 }
 
-.watch__header .watch__btn:before, .pets__wrapper .pets__btn:before, .pick__btn:before, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:before, .footer__content .footer__button #footer-btn:before {
+.watch__header .watch__btn:before, .pets__wrapper .pets__btn:before, .pick__btn:before, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:before, .footer__content .footer__button #footer-btn:before, .feed:before {
   position: absolute;
   content: '';
   top: 0;
@@ -2593,7 +2593,7 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   padding: 0;
 }
 
-.watch__header .watch__btn, .pets__wrapper .pets__btn, .pick__btn, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn, .footer__content .footer__button #footer-btn {
+.watch__header .watch__btn, .pets__wrapper .pets__btn, .pick__btn, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn, .footer__content .footer__button #footer-btn, .feed {
   width: 298px;
   height: 54px;
   background: -webkit-gradient(linear, right top, left top, from(#fe9013), to(#f9804b));
@@ -2615,7 +2615,7 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   position: relative;
 }
 
-.watch__header .watch__btn:hover, .pets__wrapper .pets__btn:hover, .pick__btn:hover, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:hover, .footer__content .footer__button #footer-btn:hover {
+.watch__header .watch__btn:hover, .pets__wrapper .pets__btn:hover, .pick__btn:hover, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:hover, .footer__content .footer__button #footer-btn:hover, .feed:hover {
   -webkit-transition: 0.5s background;
   transition: 0.5s background;
   cursor: pointer;
@@ -2623,13 +2623,13 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   background: linear-gradient(to left, #E47209);
 }
 
-.watch__header .watch__btn:active, .pets__wrapper .pets__btn:active, .pick__btn:active, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:active, .footer__content .footer__button #footer-btn:active {
+.watch__header .watch__btn:active, .pets__wrapper .pets__btn:active, .pick__btn:active, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:active, .footer__content .footer__button #footer-btn:active, .feed:active {
   -webkit-transition: 0.5s background;
   transition: 0.5s background;
   background: #4B9200;
 }
 
-.watch__header .watch__btn:before, .pets__wrapper .pets__btn:before, .pick__btn:before, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:before, .footer__content .footer__button #footer-btn:before {
+.watch__header .watch__btn:before, .pets__wrapper .pets__btn:before, .pick__btn:before, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:before, .footer__content .footer__button #footer-btn:before, .feed:before {
   position: absolute;
   content: '';
   top: 0;
@@ -2831,7 +2831,7 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   padding: 0;
 }
 
-.watch__header .watch__btn, .pets__wrapper .pets__btn, .pick__btn, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn, .footer__content .footer__button #footer-btn {
+.watch__header .watch__btn, .pets__wrapper .pets__btn, .pick__btn, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn, .footer__content .footer__button #footer-btn, .feed {
   width: 298px;
   height: 54px;
   background: -webkit-gradient(linear, right top, left top, from(#fe9013), to(#f9804b));
@@ -2853,7 +2853,7 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   position: relative;
 }
 
-.watch__header .watch__btn:hover, .pets__wrapper .pets__btn:hover, .pick__btn:hover, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:hover, .footer__content .footer__button #footer-btn:hover {
+.watch__header .watch__btn:hover, .pets__wrapper .pets__btn:hover, .pick__btn:hover, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:hover, .footer__content .footer__button #footer-btn:hover, .feed:hover {
   -webkit-transition: 0.5s background;
   transition: 0.5s background;
   cursor: pointer;
@@ -2861,13 +2861,13 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   background: linear-gradient(to left, #E47209);
 }
 
-.watch__header .watch__btn:active, .pets__wrapper .pets__btn:active, .pick__btn:active, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:active, .footer__content .footer__button #footer-btn:active {
+.watch__header .watch__btn:active, .pets__wrapper .pets__btn:active, .pick__btn:active, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:active, .footer__content .footer__button #footer-btn:active, .feed:active {
   -webkit-transition: 0.5s background;
   transition: 0.5s background;
   background: #4B9200;
 }
 
-.watch__header .watch__btn:before, .pets__wrapper .pets__btn:before, .pick__btn:before, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:before, .footer__content .footer__button #footer-btn:before {
+.watch__header .watch__btn:before, .pets__wrapper .pets__btn:before, .pick__btn:before, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:before, .footer__content .footer__button #footer-btn:before, .feed:before {
   position: absolute;
   content: '';
   top: 0;
@@ -3085,7 +3085,7 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   padding: 0;
 }
 
-.watch__header .watch__btn, .pets__wrapper .pets__btn, .pick__btn, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn, .footer__content .footer__button #footer-btn {
+.watch__header .watch__btn, .pets__wrapper .pets__btn, .pick__btn, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn, .footer__content .footer__button #footer-btn, .feed {
   width: 298px;
   height: 54px;
   background: -webkit-gradient(linear, right top, left top, from(#fe9013), to(#f9804b));
@@ -3107,7 +3107,7 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   position: relative;
 }
 
-.watch__header .watch__btn:hover, .pets__wrapper .pets__btn:hover, .pick__btn:hover, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:hover, .footer__content .footer__button #footer-btn:hover {
+.watch__header .watch__btn:hover, .pets__wrapper .pets__btn:hover, .pick__btn:hover, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:hover, .footer__content .footer__button #footer-btn:hover, .feed:hover {
   -webkit-transition: 0.5s background;
   transition: 0.5s background;
   cursor: pointer;
@@ -3115,13 +3115,13 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   background: linear-gradient(to left, #E47209);
 }
 
-.watch__header .watch__btn:active, .pets__wrapper .pets__btn:active, .pick__btn:active, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:active, .footer__content .footer__button #footer-btn:active {
+.watch__header .watch__btn:active, .pets__wrapper .pets__btn:active, .pick__btn:active, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:active, .footer__content .footer__button #footer-btn:active, .feed:active {
   -webkit-transition: 0.5s background;
   transition: 0.5s background;
   background: #4B9200;
 }
 
-.watch__header .watch__btn:before, .pets__wrapper .pets__btn:before, .pick__btn:before, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:before, .footer__content .footer__button #footer-btn:before {
+.watch__header .watch__btn:before, .pets__wrapper .pets__btn:before, .pick__btn:before, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:before, .footer__content .footer__button #footer-btn:before, .feed:before {
   position: absolute;
   content: '';
   top: 0;
@@ -3530,7 +3530,7 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   padding: 0;
 }
 
-.watch__header .watch__btn, .pets__wrapper .pets__btn, .pick__btn, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn, .footer__content .footer__button #footer-btn {
+.watch__header .watch__btn, .pets__wrapper .pets__btn, .pick__btn, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn, .footer__content .footer__button #footer-btn, .feed {
   width: 298px;
   height: 54px;
   background: -webkit-gradient(linear, right top, left top, from(#fe9013), to(#f9804b));
@@ -3552,7 +3552,7 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   position: relative;
 }
 
-.watch__header .watch__btn:hover, .pets__wrapper .pets__btn:hover, .pick__btn:hover, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:hover, .footer__content .footer__button #footer-btn:hover {
+.watch__header .watch__btn:hover, .pets__wrapper .pets__btn:hover, .pick__btn:hover, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:hover, .footer__content .footer__button #footer-btn:hover, .feed:hover {
   -webkit-transition: 0.5s background;
   transition: 0.5s background;
   cursor: pointer;
@@ -3560,13 +3560,13 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   background: linear-gradient(to left, #E47209);
 }
 
-.watch__header .watch__btn:active, .pets__wrapper .pets__btn:active, .pick__btn:active, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:active, .footer__content .footer__button #footer-btn:active {
+.watch__header .watch__btn:active, .pets__wrapper .pets__btn:active, .pick__btn:active, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:active, .footer__content .footer__button #footer-btn:active, .feed:active {
   -webkit-transition: 0.5s background;
   transition: 0.5s background;
   background: #4B9200;
 }
 
-.watch__header .watch__btn:before, .pets__wrapper .pets__btn:before, .pick__btn:before, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:before, .footer__content .footer__button #footer-btn:before {
+.watch__header .watch__btn:before, .pets__wrapper .pets__btn:before, .pick__btn:before, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:before, .footer__content .footer__button #footer-btn:before, .feed:before {
   position: absolute;
   content: '';
   top: 0;
@@ -3769,7 +3769,7 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   padding: 0;
 }
 
-.watch__header .watch__btn, .pets__wrapper .pets__btn, .pick__btn, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn, .footer__content .footer__button #footer-btn {
+.watch__header .watch__btn, .pets__wrapper .pets__btn, .pick__btn, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn, .footer__content .footer__button #footer-btn, .feed {
   width: 298px;
   height: 54px;
   background: -webkit-gradient(linear, right top, left top, from(#fe9013), to(#f9804b));
@@ -3791,7 +3791,7 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   position: relative;
 }
 
-.watch__header .watch__btn:hover, .pets__wrapper .pets__btn:hover, .pick__btn:hover, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:hover, .footer__content .footer__button #footer-btn:hover {
+.watch__header .watch__btn:hover, .pets__wrapper .pets__btn:hover, .pick__btn:hover, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:hover, .footer__content .footer__button #footer-btn:hover, .feed:hover {
   -webkit-transition: 0.5s background;
   transition: 0.5s background;
   cursor: pointer;
@@ -3799,13 +3799,13 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   background: linear-gradient(to left, #E47209);
 }
 
-.watch__header .watch__btn:active, .pets__wrapper .pets__btn:active, .pick__btn:active, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:active, .footer__content .footer__button #footer-btn:active {
+.watch__header .watch__btn:active, .pets__wrapper .pets__btn:active, .pick__btn:active, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:active, .footer__content .footer__button #footer-btn:active, .feed:active {
   -webkit-transition: 0.5s background;
   transition: 0.5s background;
   background: #4B9200;
 }
 
-.watch__header .watch__btn:before, .pets__wrapper .pets__btn:before, .pick__btn:before, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:before, .footer__content .footer__button #footer-btn:before {
+.watch__header .watch__btn:before, .pets__wrapper .pets__btn:before, .pick__btn:before, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:before, .footer__content .footer__button #footer-btn:before, .feed:before {
   position: absolute;
   content: '';
   top: 0;
@@ -3886,6 +3886,7 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   background: linear-gradient(315.75deg, rgba(254, 210, 144, 0.7) 30.06%, #FEBDAB 100.95%, rgba(254, 210, 144, 0.7) 106.36%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%);
   color: white;
   padding-top: 10px;
+  padding-bottom: 180px;
 }
 
 .paf__container {
@@ -4006,7 +4007,7 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   color: #333b41;
 }
 
-.paf__form fieldset {
+.paf__form fieldset.choose__amount {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4017,17 +4018,18 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
       -ms-flex-align: center;
           align-items: center;
   position: relative;
-  padding: 3px 28px 3px 23px;
+  padding: 0px 29px 0px 25px;
   background: #404950;
   border-radius: 2px;
   height: 27px;
   border: none;
   border-radius: 2px;
+  margin: 0 0 99px;
 }
 
-.paf__form fieldset:after {
+.paf__form fieldset.choose__amount:after {
   content: '';
-  width: calc(100% - 51px);
+  width: calc(100% - 58px);
   height: 2px;
   background-color: #72828E;
   position: absolute;
@@ -4035,17 +4037,18 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   z-index: 0;
 }
 
-.paf__form fieldset legend {
+.paf__form fieldset.choose__amount legend {
   position: absolute;
-  bottom: 30px;
+  bottom: 44px;
+  left: 5px;
 }
 
-.paf__form fieldset label {
+.paf__form fieldset.choose__amount label {
   position: relative;
   cursor: pointer;
 }
 
-.paf__form fieldset label span {
+.paf__form fieldset.choose__amount label span.amount_value {
   position: absolute;
   -webkit-transform: translateX(-29px);
           transform: translateX(-29px);
@@ -4054,9 +4057,11 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   font-size: 26px;
   line-height: 36px;
   text-transform: uppercase;
+  -webkit-transition: 0.5s color;
+  transition: 0.5s color;
 }
 
-.paf__form fieldset label .point {
+.paf__form fieldset.choose__amount label .point {
   position: relative;
   width: 10px;
   height: 10px;
@@ -4066,7 +4071,7 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   cursor: pointer;
 }
 
-.paf__form fieldset label .point::before {
+.paf__form fieldset.choose__amount label .point::before {
   content: '';
   position: absolute;
   width: 37px;
@@ -4076,9 +4081,11 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   top: -15px;
   left: -15px;
   opacity: 0;
+  -webkit-transition: 0.5s opacity;
+  transition: 0.5s opacity;
 }
 
-.paf__form fieldset label .point::after {
+.paf__form fieldset.choose__amount label .point::after {
   content: '';
   position: absolute;
   width: 19px;
@@ -4088,18 +4095,147 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   top: -6px;
   left: -6px;
   opacity: 0;
+  -webkit-transition: 0.5s opacity;
+  transition: 0.5s opacity;
 }
 
-.paf__form fieldset label input[type=radio] {
+.paf__form fieldset.choose__amount input[type="radio"] {
   display: none;
 }
 
-.paf__form fieldset label input[type=radio]::checked + .point::before {
+.paf__form fieldset.choose__amount input[type="radio"]:checked + div.point span.amount_value {
+  color: #fe9013;
+  -webkit-transition: 0.5s color;
+  transition: 0.5s color;
+}
+
+.paf__form fieldset.choose__amount input[type="radio"]:checked + div.point::before {
+  -webkit-transition: 0.5s opacity;
+  transition: 0.5s opacity;
   opacity: 1;
 }
 
-input[type=radio]::checked + .point {
-  background: red;
+.paf__form fieldset.choose__amount input[type="radio"]:checked + div.point::after {
+  -webkit-transition: 0.5s opacity;
+  transition: 0.5s opacity;
+  opacity: 1;
+}
+
+.paf__form label#number {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  margin: 0 auto;
+}
+
+.paf__form label#number svg {
+  position: absolute;
+  right: 10px;
+}
+
+.paf__form label#number input[type="number"] {
+  outline: none;
+  width: 268px;
+  height: 54px;
+  padding: 16px 9px;
+  border: 1px solid #929699;
+  color: #929699;
+  background: transparent;
+}
+
+.paf__form label#number input[type="number"]::-webkit-outer-spin-button, .paf__form label#number input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.paf__form label#number input[type="number"]:focus {
+  outline: none;
+  border-color: #4B9200;
+  color: #4B9200;
+}
+
+.paf__form label#number input[type="number"]:focus + svg path {
+  fill: #4B9200;
+}
+
+.paf__form label#number input[type="number"]:invalid {
+  outline: none;
+  border-width: 2px;
+  border-color: #d31414;
+  color: #d31414;
+}
+
+.paf__form label#number input[type="number"]:invalid + svg path {
+  fill: #d31414;
+}
+
+.paf__form fieldset.choose__monthly {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  border: none;
+  gap: 50px;
+  padding: 0 0 0 60px;
+  width: 268px;
+  margin: 27px auto 32px;
+}
+
+.paf__form fieldset.choose__monthly label {
+  position: relative;
+  display: inline-block;
+  width: 84px;
+  cursor: pointer;
+}
+
+.paf__form fieldset.choose__monthly label div.choise {
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1px solid #fe9013;
+  left: -26px;
+  top: 0;
+  cursor: pointer;
+  -webkit-transition: 0.5s all;
+  transition: 0.5s all;
+}
+
+.paf__form fieldset.choose__monthly label input[type="radio"] {
+  display: none;
+}
+
+.paf__form fieldset.choose__monthly label input[type="radio"]:checked + div.choise {
+  -webkit-transition: 0.5s all;
+  transition: 0.5s all;
+  background: #4B9200;
+  border: none;
+}
+
+.feed {
+  margin-left: calc(50% - 147px);
+  padding-left: 6px;
+}
+
+.share {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-left: 6px;
+  margin-top: 32px;
 }
 
 .watch, .backstage__wrapper, .pets__wrapper, .pick__wrapper, .testimonials__wrapper, footer, main, .paf__wrapper {
@@ -4223,7 +4359,7 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   padding: 0;
 }
 
-.watch__header .watch__btn, .pets__wrapper .pets__btn, .pick__btn, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn, .footer__content .footer__button #footer-btn {
+.watch__header .watch__btn, .pets__wrapper .pets__btn, .pick__btn, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn, .footer__content .footer__button #footer-btn, .feed {
   width: 298px;
   height: 54px;
   background: -webkit-gradient(linear, right top, left top, from(#fe9013), to(#f9804b));
@@ -4245,7 +4381,7 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   position: relative;
 }
 
-.watch__header .watch__btn:hover, .pets__wrapper .pets__btn:hover, .pick__btn:hover, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:hover, .footer__content .footer__button #footer-btn:hover {
+.watch__header .watch__btn:hover, .pets__wrapper .pets__btn:hover, .pick__btn:hover, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:hover, .footer__content .footer__button #footer-btn:hover, .feed:hover {
   -webkit-transition: 0.5s background;
   transition: 0.5s background;
   cursor: pointer;
@@ -4253,13 +4389,13 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   background: linear-gradient(to left, #E47209);
 }
 
-.watch__header .watch__btn:active, .pets__wrapper .pets__btn:active, .pick__btn:active, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:active, .footer__content .footer__button #footer-btn:active {
+.watch__header .watch__btn:active, .pets__wrapper .pets__btn:active, .pick__btn:active, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:active, .footer__content .footer__button #footer-btn:active, .feed:active {
   -webkit-transition: 0.5s background;
   transition: 0.5s background;
   background: #4B9200;
 }
 
-.watch__header .watch__btn:before, .pets__wrapper .pets__btn:before, .pick__btn:before, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:before, .footer__content .footer__button #footer-btn:before {
+.watch__header .watch__btn:before, .pets__wrapper .pets__btn:before, .pick__btn:before, .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn:before, .footer__content .footer__button #footer-btn:before, .feed:before {
   position: absolute;
   content: '';
   top: 0;
