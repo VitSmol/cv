@@ -1,0 +1,19 @@
+@import '../../assets/styles/_variables'
+.logo
+    @extend %logo
+header
+    width: $fullwidth
+    display: flex
+    justify-content: center
+    background: black
+    height: 80px
+    .header__wrapper
+        @extend %flex-container
+        align-items: center
+        width: $contentwidth
+    .header__nav 
+        @extend %nav
+       
+.active
+    color: $orang
+    cursor: default
