@@ -57,7 +57,7 @@ header .header__wrapper, .watch__content, .backstage__container, .pick__containe
 .logo h1 svg, .logo h2 svg {
   position: absolute;
   bottom: 7px;
-  left: 8px;
+  left: 10px;
 }
 
 .logo h1 svg .bamboo, .logo h2 svg .bamboo {
@@ -251,6 +251,7 @@ header .header__wrapper {
 
 .active {
   color: #f9804b;
+  cursor: default;
 }
 
 .watch, .backstage__wrapper, .pets__wrapper, .pick__wrapper, .testimonials__wrapper, footer, main, .paf__wrapper {
@@ -311,7 +312,7 @@ header .header__wrapper, .watch__content, .backstage__container, .pick__containe
 .logo h1 svg, .logo h2 svg {
   position: absolute;
   bottom: 7px;
-  left: 8px;
+  left: 10px;
 }
 
 .logo h1 svg .bamboo, .logo h2 svg .bamboo {
@@ -609,7 +610,7 @@ header .header__wrapper, .watch__content, .backstage__container, .pick__containe
 .logo h1 svg, .logo h2 svg {
   position: absolute;
   bottom: 7px;
-  left: 8px;
+  left: 10px;
 }
 
 .logo h1 svg .bamboo, .logo h2 svg .bamboo {
@@ -893,7 +894,7 @@ header .header__wrapper, .watch__content, .backstage__container, .pick__containe
 .logo h1 svg, .logo h2 svg {
   position: absolute;
   bottom: 7px;
-  left: 8px;
+  left: 10px;
 }
 
 .logo h1 svg .bamboo, .logo h2 svg .bamboo {
@@ -1281,7 +1282,7 @@ header .header__wrapper, .watch__content, .backstage__container, .pick__containe
 .logo h1 svg, .logo h2 svg {
   position: absolute;
   bottom: 7px;
-  left: 8px;
+  left: 10px;
 }
 
 .logo h1 svg .bamboo, .logo h2 svg .bamboo {
@@ -1592,6 +1593,14 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   right: -100px;
 }
 
+.how__payment .how__card:first-child .card__image__container::after {
+  top: 59px;
+}
+
+.how__payment .how__card:nth-child(2) .card__image__container::after {
+  top: 55px;
+}
+
 .pick__btn {
   margin-top: 45px;
 }
@@ -1654,7 +1663,7 @@ header .header__wrapper, .watch__content, .backstage__container, .pick__containe
 .logo h1 svg, .logo h2 svg {
   position: absolute;
   bottom: 7px;
-  left: 8px;
+  left: 10px;
 }
 
 .logo h1 svg .bamboo, .logo h2 svg .bamboo {
@@ -1856,12 +1865,12 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   text-align: center;
   color: #333B41;
   margin-top: 40px;
-  margin-bottom: 48px;
+  margin-bottom: 47px;
 }
 
 .testimonials__wrapper .testimonials__container #testimon-btn.testimonials__btn {
   border-radius: 5px !important;
-  margin-top: 30px;
+  margin-top: 32px;
   -ms-flex-item-align: start !important;
       align-self: flex-start !important;
 }
@@ -2085,7 +2094,7 @@ header .header__wrapper, .watch__content, .backstage__container, .pick__containe
 .logo h1 svg, .logo h2 svg {
   position: absolute;
   bottom: 7px;
-  left: 8px;
+  left: 10px;
 }
 
 .logo h1 svg .bamboo, .logo h2 svg .bamboo {
@@ -2282,6 +2291,13 @@ footer {
   grid-area: logo;
 }
 
+.footer__content .footer__logo .logo h2 {
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  font-weight: 300;
+}
+
 .footer__content .footer__form {
   -ms-grid-row: 1;
   -ms-grid-column: 3;
@@ -2347,7 +2363,7 @@ footer {
 
 .footer__content .footer__button #footer-btn {
   border-radius: 5px !important;
-  margin-top: 37px;
+  margin-top: 35px;
   -ms-flex-item-align: start !important;
       align-self: flex-start !important;
 }
@@ -2361,16 +2377,13 @@ footer {
 .footer__content .footer__social ul {
   list-style-type: none;
   padding-left: 0;
-  margin-top: 46px;
+  margin-top: 45px;
 }
 
 .footer__content .footer__social ul li {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   margin-bottom: 10px;
 }
 
@@ -2378,9 +2391,9 @@ footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
   -webkit-transition: 0.5s color;
   transition: 0.5s color;
 }
@@ -2404,7 +2417,7 @@ footer {
   height: 26px;
   background: rgba(196, 196, 196, 0.5);
   border-radius: 50%;
-  margin-right: 10px;
+  margin-right: 12px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2439,7 +2452,7 @@ footer {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
-  padding-bottom: 15px;
+  padding-bottom: 12px;
 }
 
 .footer__content .footer__contacts p {
@@ -2461,15 +2474,16 @@ footer {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
-  margin-left: 10px !important;
+  margin-left: 9px !important;
 }
 
 .footer__content .footer__nav #footer__list {
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .footer__content .footer__nav #footer__list li:last-child {
   position: static !important;
+  justify-self: flex-end;
 }
 
 .watch, .backstage__wrapper, .pets__wrapper, .pick__wrapper, .testimonials__wrapper, footer, main, .paf__wrapper {
@@ -2530,7 +2544,7 @@ header .header__wrapper, .watch__content, .backstage__container, .pick__containe
 .logo h1 svg, .logo h2 svg {
   position: absolute;
   bottom: 7px;
-  left: 8px;
+  left: 10px;
 }
 
 .logo h1 svg .bamboo, .logo h2 svg .bamboo {
@@ -2768,7 +2782,7 @@ header .header__wrapper, .watch__content, .backstage__container, .pick__containe
 .logo h1 svg, .logo h2 svg {
   position: absolute;
   bottom: 7px;
-  left: 8px;
+  left: 10px;
 }
 
 .logo h1 svg .bamboo, .logo h2 svg .bamboo {
@@ -2962,6 +2976,7 @@ header .header__wrapper {
 
 .active {
   color: #f9804b;
+  cursor: default;
 }
 
 .watch, .backstage__wrapper, .pets__wrapper, .pick__wrapper, .testimonials__wrapper, footer, main, .paf__wrapper {
@@ -3022,7 +3037,7 @@ header .header__wrapper, .watch__content, .backstage__container, .pick__containe
 .logo h1 svg, .logo h2 svg {
   position: absolute;
   bottom: 7px;
-  left: 8px;
+  left: 10px;
 }
 
 .logo h1 svg .bamboo, .logo h2 svg .bamboo {
@@ -3219,6 +3234,13 @@ footer {
   grid-area: logo;
 }
 
+.footer__content .footer__logo .logo h2 {
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  font-weight: 300;
+}
+
 .footer__content .footer__form {
   -ms-grid-row: 1;
   -ms-grid-column: 3;
@@ -3284,7 +3306,7 @@ footer {
 
 .footer__content .footer__button #footer-btn {
   border-radius: 5px !important;
-  margin-top: 37px;
+  margin-top: 35px;
   -ms-flex-item-align: start !important;
       align-self: flex-start !important;
 }
@@ -3298,16 +3320,13 @@ footer {
 .footer__content .footer__social ul {
   list-style-type: none;
   padding-left: 0;
-  margin-top: 46px;
+  margin-top: 45px;
 }
 
 .footer__content .footer__social ul li {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   margin-bottom: 10px;
 }
 
@@ -3315,9 +3334,9 @@ footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
   -webkit-transition: 0.5s color;
   transition: 0.5s color;
 }
@@ -3341,7 +3360,7 @@ footer {
   height: 26px;
   background: rgba(196, 196, 196, 0.5);
   border-radius: 50%;
-  margin-right: 10px;
+  margin-right: 12px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3376,7 +3395,7 @@ footer {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
-  padding-bottom: 15px;
+  padding-bottom: 12px;
 }
 
 .footer__content .footer__contacts p {
@@ -3398,15 +3417,16 @@ footer {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
-  margin-left: 10px !important;
+  margin-left: 9px !important;
 }
 
 .footer__content .footer__nav #footer__list {
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .footer__content .footer__nav #footer__list li:last-child {
   position: static !important;
+  justify-self: flex-end;
 }
 
 .watch, .backstage__wrapper, .pets__wrapper, .pick__wrapper, .testimonials__wrapper, footer, main, .paf__wrapper {
@@ -3467,7 +3487,7 @@ header .header__wrapper, .watch__content, .backstage__container, .pick__containe
 .logo h1 svg, .logo h2 svg {
   position: absolute;
   bottom: 7px;
-  left: 8px;
+  left: 10px;
 }
 
 .logo h1 svg .bamboo, .logo h2 svg .bamboo {
@@ -3706,7 +3726,7 @@ header .header__wrapper, .watch__content, .backstage__container, .pick__containe
 .logo h1 svg, .logo h2 svg {
   position: absolute;
   bottom: 7px;
-  left: 8px;
+  left: 10px;
 }
 
 .logo h1 svg .bamboo, .logo h2 svg .bamboo {
@@ -3957,6 +3977,7 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
           justify-content: center;
   gap: 90px;
   margin-top: 80px;
+  position: relative;
 }
 
 .paf__form__image_container .count__container {
@@ -3977,6 +3998,9 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   font-style: normal;
   text-align: center;
   color: #000000;
+  position: relative;
+  gap: 10px;
+  padding-top: 16px;
 }
 
 .paf__form__image_container .count__container .count {
@@ -3985,8 +4009,12 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   line-height: 58px;
   text-transform: uppercase;
   display: inline-block;
-  margin-bottom: 12px;
-  margin-top: 10px;
+}
+
+.paf__form__image_container .count__container > img {
+  position: absolute;
+  top: 45%;
+  right: -26px;
 }
 
 .paf__form__image_container .image__container {
@@ -4061,7 +4089,13 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   transition: 0.5s color;
 }
 
-.paf__form fieldset.choose__amount label .point {
+.paf__form fieldset.choose__amount label span.amount_value::first-letter {
+  font-size: 23px;
+  font-weight: bold;
+}
+
+.paf__form fieldset.choose__amount label span.point {
+  display: block;
   position: relative;
   width: 10px;
   height: 10px;
@@ -4071,7 +4105,7 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   cursor: pointer;
 }
 
-.paf__form fieldset.choose__amount label .point::before {
+.paf__form fieldset.choose__amount label span.point::before {
   content: '';
   position: absolute;
   width: 37px;
@@ -4085,7 +4119,7 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   transition: 0.5s opacity;
 }
 
-.paf__form fieldset.choose__amount label .point::after {
+.paf__form fieldset.choose__amount label span.point::after {
   content: '';
   position: absolute;
   width: 19px;
@@ -4099,23 +4133,31 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   transition: 0.5s opacity;
 }
 
+.paf__form fieldset.choose__amount label span.point:hover:before, .paf__form fieldset.choose__amount label span.point:hover::after {
+  opacity: 0.3;
+}
+
+.paf__form fieldset.choose__amount label span.point:hover span.amount_value {
+  color: #fe901384;
+}
+
 .paf__form fieldset.choose__amount input[type="radio"] {
   display: none;
 }
 
-.paf__form fieldset.choose__amount input[type="radio"]:checked + div.point span.amount_value {
+.paf__form fieldset.choose__amount input[type="radio"]:checked + span.point span.amount_value {
   color: #fe9013;
   -webkit-transition: 0.5s color;
   transition: 0.5s color;
 }
 
-.paf__form fieldset.choose__amount input[type="radio"]:checked + div.point::before {
+.paf__form fieldset.choose__amount input[type="radio"]:checked + span.point::before {
   -webkit-transition: 0.5s opacity;
   transition: 0.5s opacity;
   opacity: 1;
 }
 
-.paf__form fieldset.choose__amount input[type="radio"]:checked + div.point::after {
+.paf__form fieldset.choose__amount input[type="radio"]:checked + span.point::after {
   -webkit-transition: 0.5s opacity;
   transition: 0.5s opacity;
   opacity: 1;
@@ -4197,8 +4239,8 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   cursor: pointer;
 }
 
-.paf__form fieldset.choose__monthly label div.choise {
-  content: '';
+.paf__form fieldset.choose__monthly label span.choise {
+  display: block;
   position: absolute;
   width: 15px;
   height: 15px;
@@ -4215,7 +4257,7 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   display: none;
 }
 
-.paf__form fieldset.choose__monthly label input[type="radio"]:checked + div.choise {
+.paf__form fieldset.choose__monthly label input[type="radio"]:checked + span.choise {
   -webkit-transition: 0.5s all;
   transition: 0.5s all;
   background: #4B9200;
@@ -4224,7 +4266,7 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
 
 .feed {
   margin-left: calc(50% - 147px);
-  padding-left: 6px;
+  padding-left: 6px !important;
 }
 
 .share {
@@ -4296,7 +4338,7 @@ header .header__wrapper, .watch__content, .backstage__container, .pick__containe
 .logo h1 svg, .logo h2 svg {
   position: absolute;
   bottom: 7px;
-  left: 8px;
+  left: 10px;
 }
 
 .logo h1 svg .bamboo, .logo h2 svg .bamboo {
