@@ -1,0 +1,94 @@
+@import '../../assets/styles/_variables'
+
+.pets__wrapper
+    @extend %wrapper-container
+    align-items: center
+    flex-direction: column
+    padding-top: 20px
+    padding-bottom: 100px
+    position: relative
+    img.left-flower, img.right-flower
+        position: absolute
+        bottom: 0
+    .left-flower
+        left: -588px
+    .right-flower
+        right: 0
+    .pets__btn
+        @extend %button
+        margin-top: 78px
+
+
+.pets__container
+    @extend %grid-container
+    grid-template: repeat(2, 1fr) / repeat(3, 1fr)
+    grid-gap: 20px 30px
+    position: relative
+    .pet
+        border: 1px solid $orangeborder1
+        border-radius: 5px
+        display: flex
+        flex-direction: column
+        overflow: hidden
+        img
+            width: 100%
+            filter: brightness(1)
+            transition: 0.5s all
+        &:hover
+            cursor: pointer
+            img
+                filter: brightness(0.6)
+                transition: 0.5s all
+                transform: scale(1.37)
+            .pet__content
+                transform: translateY(-50%)
+                transition: 0.5s transform
+            h5, p
+                transition: 0.5s color
+                color: white !important
+            .img__icon
+                opacity: 0
+                transition: 0.5s opacity
+    h5
+        font-family: Roboto
+        font-weight: 500
+        font-size: 16px
+        line-height: 20px
+        text-transform: uppercase
+        color: #000000
+        margin-top: 0
+        margin-bottom: 0
+        transition: 0.5s color
+    p
+        font-family: Roboto
+        font-weight: 300
+        font-size: 15px
+        line-height: 18px
+        color: #000000
+        margin: 0
+        transition: 0.5s color
+    .pet__content
+        padding-left: 16px
+        padding-top: 10px
+        padding-bottom: 13px
+        position: relative
+        transform: translateY(0)
+        transition: all 0.5s
+        .img__icon
+            position: absolute
+            right: 11px
+            bottom: 13px
+            opacity: 1
+            transition: 0.5s opacity
+        .icon__meet
+            width: 48px
+        .icon__banana
+            width: 33px
+.btn-round
+    @extend %round-button
+.arrow
+    font-size: 20px
+.btn-left
+    left: -$indent
+.btn-right
+    right: -$indent

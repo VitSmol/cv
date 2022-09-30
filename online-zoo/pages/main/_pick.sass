@@ -1,0 +1,102 @@
+@import '../../assets/styles/_variables'
+
+.pick__wrapper
+    @extend %wrapper-container
+    background: linear-gradient(315.75deg, rgba(254, 210, 144, 0.7) 30.06%, #FEBDAB 100.95%, rgba(254, 210, 144, 0.7) 106.36%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%)
+    justify-content: center
+    padding-top: 69px
+    padding-bottom: 100px
+    opacity: 0.9
+
+.pick__container
+    @extend %flex-container
+    flex-direction: column
+    align-items: center
+    background: rgba(253, 253, 255, 0.52)
+    backdrop-filter: blur(2px)
+    border-radius: 20px
+    padding-bottom: 59px
+    .pick__text
+        padding-left: 40px
+        p:first-of-type
+            font-weight: 500
+        p:last-of-type
+            padding-right: 30px
+            line-height: 21px
+            margin-top: -5px
+            a 
+                color: black
+                font-weight: 400
+                display: inline-block !important
+                border-bottom: 1px solid $orang2
+
+    h2
+        color: $orang2
+        font-family: 'Roboto'
+        font-style: normal
+        font-weight: 400
+        font-size: 48px
+        line-height: 58px
+        text-align: center
+        margin-bottom: 34px
+    h4
+        font-family: 'Roboto'
+        font-style: normal
+        font-weight: 400
+        font-size: 24px
+        line-height: 27px
+        color: #333B41
+        margin-top: 0
+        margin-bottom: 41px
+
+.pick__how
+    display: flex
+    flex-direction: column
+    align-items: center
+    h3.how__header
+        font-family: 'Roboto'
+        font-style: normal
+        font-weight: 400
+        font-size: 36px
+        line-height: 47px
+        color: #333B41
+        margin-top: 44px
+        margin-bottom: 40px
+
+.how__payment
+    display: flex
+    justify-content: space-evenly
+    padding: 0 69px
+    width: $contentwidth
+
+    .card__image__container
+        width: 168px
+        height: 168px
+        background: white
+        border: 1px solid $orang2
+        border-radius: 5px
+        display: flex
+        justify-content: center
+        align-items: center
+        position: relative
+
+    .how__card
+        width: min-content
+        p
+            margin-top: 30px
+            line-height: 1.4
+        &:not(:last-child)
+            .card__image__container::after
+                position: absolute
+                content: url('../../assets/images/Vector.png')
+                right: -100px
+        &:first-child 
+            .card__image__container::after
+                top: 59px
+        &:nth-child(2)
+            .card__image__container::after
+                top: 55px
+
+.pick__btn 
+    @extend %button
+    margin-top: 45px

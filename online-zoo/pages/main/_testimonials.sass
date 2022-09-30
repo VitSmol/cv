@@ -1,0 +1,130 @@
+@import '../../assets/styles/_variables'
+
+.testimonials__wrapper
+    @extend %wrapper-container
+    justify-content: center
+    padding-top: 100px
+    padding-bottom: 180px
+    position: relative
+    overflow: hidden
+
+    .testimonials__container
+        @extend %flex-container
+        flex-direction: column
+        align-items: center
+        h3
+            font-family: 'Roboto'
+            font-style: normal
+            font-weight: 400
+            font-size: 36px
+            line-height: 47px
+            text-align: center
+            color: #333B41
+            margin-top: 40px
+            margin-bottom: 47px
+        #testimon-btn.testimonials__btn
+            @extend  %button
+            border-radius: 5px !important
+            margin-top: 32px
+            align-self: flex-start !important
+.testinonials__cards
+    display: flex
+    gap: 30px
+.card
+    padding: 15px 18px 19px 15px
+    width: 268px
+    height: 391px
+    overflow: hidden
+    display: flex
+    flex-direction: column
+    background: #f1f3f2
+    position: relative
+    border-radius: 20px
+    &:before
+        content: ''
+        position: absolute
+        inset: 0
+        border-radius: 20px
+        border: 2px solid transparent
+        background: $gradientBackground border-box
+        -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)
+        -webkit-mask-composite: xor
+        mask-composite: exclude
+    h5
+        margin: 0
+        font-family: 'Roboto'
+        font-style: normal
+        font-weight: 500
+        font-size: 16px
+        line-height: 19px
+        color: #000000
+    .text
+        overflow: hidden
+
+    .user__info
+        display: flex
+        gap: 10px
+        // height: 40px
+        .avatar
+            width: 37px
+            height: 37px
+        .local
+            display: flex
+            margin: 0
+        .name
+            display: flex
+            flex-direction: column
+        span
+            display: flex
+            font-family: 'Roboto'
+            font-style: normal
+            font-weight: 300
+            font-size: 15px
+            line-height: 18px
+            color: #BDBDBD
+            &:last-child
+                &::before
+                    content: ''
+                    width: 3px
+                    height: 3px
+                    border-radius: 50%
+                    background: #bdbdbd
+                    align-self: center
+                    margin-left: 6px
+                    margin-right: 5px
+    .text p
+        margin-top: 10px
+        font-family: 'Roboto'
+        font-style: normal
+        font-weight: 300
+        font-size: 15px
+        line-height: 18px
+        color: #767474
+.testimonials__paggination
+    display: flex
+    margin-top: 20px
+    width: 600px
+    height: 8px
+    background: #f1f3f2
+    border-radius: 5px
+    border: 0.5px solid $gradient1
+    position: relative
+    transition: all $transition-time
+    .paggination-item
+        width: 115px
+    .active-item
+        transition: all $transition-time
+        background-color: $orang2
+        border-radius: 5px
+    &:hover
+        transition: all $transition-time
+        cursor: pointer
+        background: #e0e2e1
+        .active-item
+            transition: all $transition-time
+            border-width: 1px
+            background-color: $orang
+.leaf 
+    position: absolute
+    bottom: -134px
+    right: -163px

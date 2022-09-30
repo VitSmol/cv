@@ -7,13 +7,96 @@ header
     justify-content: center
     background: black
     height: 80px
+    position: relative
+    @media screen and ( max-width: 750px )
+        height: 34px
+    .header__nav 
+        @extend %nav
+        .burger__menu
+            display: none
     .header__wrapper
         @extend %flex-container
         align-items: center
-        width: $contentwidth
-    .header__nav 
-        @extend %nav
+        @media screen and ( max-width: 1200px )
+            width: $small-contentwidth !important
+        // width: $contentwidth
+        li.logo__li
+            display: none
+        @media screen and ( min-width: 641px ) and ( max-width: 1000px )
+            width: calc( 100% - 60px ) !important
+        @media screen and ( min-width: 321px ) and ( max-width: 640px )
+            width: calc( 100% - 40px ) !important
+        @media screen and ( min-width: 100px ) and ( max-width: 320px )
+            width: calc( 100% - 20px ) !important
+        @media screen and ( max-width: 750px )
+            justify-content: space-between !important
+            .logo:first-child
+                h1
+                    height: 100%
+                    font-weight: 400
+                    font-size: 12.2899px
+                    line-height: 15px
+                    border: none
+                    margin-left: -17px
+                    svg
+                        bottom: 2px
+                        left: 20px
+                        width: 7px
+            .header__nav
+                position: absolute
+                margin-left: 0
+                left: 0
+                right: 0
+                top: 0
+                z-index: 1000
+                a 
+                    color: #333B41
+            ul
+                display: none !important
+                flex-direction: column
+                background: #fff
+                gap: 15px !important
+                padding-left: 10px !important
+                padding-top: 10px
+                padding-bottom: 40px
+                margin: 0
+                li
+                    padding: 0 !important
+                    a
+                        transition: $transition-time color
+                        &:hover
+                            transition: $transition-time color
+                            color: $orang
+                    &:last-child
+                        position: static !important
+                    &.logo__li
+                        display: block
+                        h2
+                            border: 1px solid $orang
+                            font-size: 15px
+                            line-height: 18px
+                            font-weight: 400
+                        a
+                            color: $orang 
+                        .bamboo
+                            transition: $transition-time fill
+                            fill: $orang  
+            .burger__menu
+                display: flex
+                width: 18px
+                height: 10px
+                flex-direction: column
+                justify-content: space-between
+                span
+                    width: 18px
+                    height: 2px
+                    border-radius: 2px
+                    background-color: #fff
+    
        
 .active
     color: $orang
     cursor: default
+
+
+

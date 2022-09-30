@@ -1,0 +1,257 @@
+@import '../../assets/styles/_variables'
+
+.paf__wrapper
+    @extend %wrapper-container
+    justify-content: center
+    background: linear-gradient(315.75deg, rgba(254, 210, 144, 0.7) 30.06%, #FEBDAB 100.95%, rgba(254, 210, 144, 0.7) 106.36%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%)
+    color: white
+    padding-top: 10px
+    padding-bottom: 180px
+.paf__container
+    @extend %flex-container
+    flex-direction: column
+    h2
+        font-family: 'Roboto'
+        font-style: normal
+        font-weight: 400
+        font-size: 36px
+        line-height: 47px
+        margin-bottom: 0
+    .paf__info>p
+        margin-top: 10px
+        font-weight: 500
+        font-size: 16px
+        line-height: 22px
+    .paf__info>h3
+            font-weight: 400;
+            font-size: 36px;
+            line-height: 47px
+            color: $orang2
+            margin-top: 45px
+            margin-bottom: 60px
+.paf__form__container
+    background: rgba(253, 253, 255, 0.52)
+    border-radius: 20px
+    padding: 40px 92px 62px 92px 
+    h2
+        font-weight: 400
+        font-size: 48px
+        line-height: 58px
+        text-align: center
+        color: $orang2
+        margin-top: 0
+    p
+        font-weight: 400
+        font-size: 24px
+        line-height: 29px
+        color: #333B41
+        margin-top: 20px
+    .paf__description
+        padding-right: 15px
+.paf__form__image_container
+    display: flex
+    justify-content: center
+    gap: 90px
+    margin-top: 80px
+    position: relative
+    .count__container
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: center
+        font-family: 'Roboto'
+        font-style: normal
+        text-align: center
+        color: #000000
+        position: relative
+        gap: 10px
+        padding-top: 16px
+        .count
+            font-weight: 500
+            font-size: 72px
+            line-height: 58px
+            text-transform: uppercase
+            display: inline-block
+        & > img
+            position: absolute
+            top: 45%
+            right: -26px 
+        
+    .image__container
+        display: flex
+        width: 284px
+        height: 246px
+        img
+            width: 95%
+            margin-top: 5px
+.paf__form
+    margin-top: 67px
+    color: #333b41
+
+    fieldset.choose__amount
+        display: flex
+        justify-content: space-between
+        align-items: center
+        position: relative
+        padding: 0px 29px 0px 25px
+        background: #404950
+        border-radius: 2px
+        height: 27px
+        border: none
+        border-radius: 2px
+        margin: 0 0 99px
+        &:after
+            content: ''
+            width: calc(100% - 58px)
+            height: 2px
+            background-color: #72828E
+            position: absolute
+            top: calc(50% - 1px)
+            z-index: 0
+        legend
+            position: absolute
+            bottom: 44px
+            left: 5px
+        label
+            position: relative
+            cursor: pointer
+            span.amount_value
+                position: absolute
+                transform: translateX(-29px)
+                top: 33px
+                font-weight: 500
+                font-size: 26px
+                line-height: 36px
+                text-transform: uppercase
+                transition: $transition-time color
+                &::first-letter
+                    font-size: 23px
+                    font-weight: bold
+
+            span.point
+                display: block
+                position: relative
+                width: 10px
+                height: 10px
+                background-color: #ffee2e
+                border-radius: 50%
+                z-index: 1000
+                cursor: pointer
+                &::before
+                    content: ''
+                    position: absolute
+                    width: 37px
+                    height: 37px
+                    border: 2px solid $orang2
+                    border-radius: 50%
+                    top: -15px
+                    left: -15px
+                    opacity: 0
+                    transition: $transition-time opacity
+                &::after
+                    content: ''
+                    position: absolute
+                    width: 19px
+                    height: 19px
+                    border: 2px solid $orang2
+                    border-radius: 50%
+                    top: -6px
+                    left: -6px
+                    opacity: 0
+                    transition: $transition-time opacity
+                &:hover
+                    &:before, &::after
+                        opacity: 0.3
+                    span.amount_value
+                        color: #fe901384
+                    
+        input[type="radio"]
+            display: none
+            &:checked + span.point
+                span.amount_value
+                    color: $orang2
+                    transition: $transition-time color
+                &::before
+                    transition: $transition-time opacity
+                    opacity: 1
+                &::after
+                    transition: $transition-time opacity
+                    opacity: 1
+    label#number
+        width: max-content
+        display: flex
+        align-items: center
+        position: relative
+        margin: 0 auto
+        svg
+            position: absolute
+            right: 10px
+        input[type="number"]
+            outline: none
+            width: 268px
+            height: 54px
+            padding: 16px 9px
+            border: 1px solid rgba(146, 150, 153, 1)
+            color: rgba(146, 150, 153, 1)
+            background: transparent
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button
+                -webkit-appearance: none
+                margin: 0
+            &:focus
+                outline: none
+                border-color: $greenavtive
+                color: $greenavtive
+                & + svg path
+                    fill: $greenavtive
+
+            &:invalid
+                outline: none
+                border-width: 2px
+                border-color: rgba(211, 20, 20, 1)
+                color: rgba(211, 20, 20, 1)
+                & + svg path
+                    fill: rgba(211, 20, 20, 1)
+    fieldset.choose__monthly
+        display: flex
+        justify-content: space-evenly
+        border: none
+        gap: 50px
+        padding: 0 0 0 60px
+        width: 268px
+        margin: 27px auto 32px
+
+        label
+            position: relative
+            display: inline-block
+            width: 84px
+            cursor: pointer
+            span.choise
+                // content: ''
+                display: block
+                position: absolute
+                width: 15px
+                height: 15px
+                border-radius: 50%
+                border: 1px solid $orang2
+                left: -26px
+                top: 0
+                cursor: pointer
+                transition: $transition-time all
+                // &::before
+                    
+            input[type="radio"]
+                display: none
+                &:checked + span.choise
+                    transition: $transition-time all
+                    background: $greenavtive
+                    border: none
+.feed
+    @extend %button
+    margin-left: calc(50% - 147px)
+    padding-left: 6px !important
+.share
+    display: flex
+    justify-content: center
+    padding-left: 6px 
+    margin-top: 32px

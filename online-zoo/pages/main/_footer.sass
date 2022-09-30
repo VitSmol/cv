@@ -1,0 +1,139 @@
+@import '../../assets/styles/_variables'
+
+footer
+    @extend %wrapper-container
+    justify-content: center
+    background-color: #111115
+    color: white
+    font-family: 'Roboto'
+    padding-top: 40px
+    padding-bottom: 40px
+
+.footer__content
+    @extend %grid-container
+    grid-template-areas: "logo logo form " "button button button" "social menu contacts"
+    grid-template-columns: repeat(3, 1fr)
+    .footer__logo
+        grid-area: logo
+        .logo h2 
+            align-items: baseline
+            font-weight: 300
+    .footer__form
+        grid-area: form
+        padding-left: 18px
+        h3
+            margin-top: 0
+            margin-bottom: 14px
+            font-family: 'Roboto'
+            font-style: normal
+            font-weight: 400
+            font-size: 24px
+            line-height: 29px
+            color: #FFFFFF
+        input
+            padding-left: 10px
+            width: 228px
+            height: 42px
+            border: 0.7px solid $orang2
+            border-radius: 2px
+            background-color: inherit
+            padding-left: 10px
+            transition: $transition-time all
+            color: white
+            &:focus
+                transition: $transition-time all
+                box-shadow: 0px 0px 5px $greenavtive
+                outline: none
+                padding-left: 10px
+                width: 228px
+                height: 42px
+                border: 0.7px solid $greenavtive
+                border-radius: 2px
+                background-color: inherit
+                padding-left: 10px
+                color: white
+                &:invalid
+                    border-color: #d31414
+                    color: #d31414
+            &:valid + .form__button
+                @extend %default-button
+                &:hover
+                    @extend %active-button
+            &:invalid + .form__button
+                @extend %mistake-button
+                &:hover
+                    cursor: not-allowed
+                
+    .form__button
+        @extend %submit-button
+        &:active, &:hover
+            @extend %active-button
+    .footer__button
+        grid-area: button
+        #footer-btn
+            @extend  %button
+            border-radius: 5px !important
+            margin-top: 35px
+            align-self: flex-start !important
+    .footer__social
+        grid-area: social
+        ul
+            list-style-type: none
+            padding-left: 0
+            margin-top: 45px
+            li
+                display: flex
+                align-items: 
+                margin-bottom: 10px
+                a
+                    display: flex
+                    align-items: baseline
+                    transition: $transition-time color
+                    &:hover
+                        transition: $transition-time color
+                        color: $greenavtive
+                        .svg-img
+                            transition: $transition-time background
+                            background: $greenavtive
+
+        .svg-img
+            transition: $transition-time background
+            width: 26px
+            height: 26px
+            background: rgba(196, 196, 196, 0.5)
+            border-radius: 50%
+            margin-right: 12px
+            display: flex
+            align-items: center
+            justify-content: center
+    .footer__menu
+        grid-area: menu
+        
+    .footer__contacts
+        grid-area: contacts
+        display: flex
+        flex-direction: column
+        justify-content: flex-end
+        align-items: flex-end
+        padding-bottom: 12px
+        p
+            margin: 0
+            font-family: 'Roboto'
+            font-style: normal
+            font-weight: 100
+            font-size: 16px
+            line-height: 30px
+            color: #FFFFFF
+            text-align: left
+    .footer__nav
+        @extend %nav
+        height: 100%
+        display: flex
+        align-items: flex-end
+        margin-left: 9px !important
+
+        #footer__list
+            margin-bottom: 18px
+            li:last-child
+                position: static !important     
+                justify-self: flex-end    
