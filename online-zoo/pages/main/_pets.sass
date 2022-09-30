@@ -66,12 +66,14 @@
         padding-left: 0
     @media screen and ( max-width: 639px )
         width: 100% !important
+        justify-content: center
         grid-template: repeat(4, 332px) / repeat(1, 285px)
         height: 1388px
         padding-left: 10px
         padding-right: 10px
         grid-gap: 20px 20px
-
+    @media screen and ( max-width: 320px )
+        justify-content: start
     .pet
         border: 1px solid $orangeborder1
         border-radius: 5px
@@ -159,11 +161,15 @@
         left: calc(50% - 148px)
     @media screen and ( max-width: 830px )
         left: calc(50% - 78px);
-        top: calc(50% - 34px) !important;
+        top: calc(50% - 34px) !important
+    @media screen and ( max-width: 639px )
+        display: none
 .btn-right
     right: -$indent
     @media screen and ( max-width: 1350px )
         right: calc(50% - 148px)
     @media screen and ( max-width: 830px )
         right: calc(50% - 78px);
-        top: calc(50% - 34px) !important;
+        top: calc(50% - 34px) !important
+    @media screen and ( max-width: 639px )
+        display: none

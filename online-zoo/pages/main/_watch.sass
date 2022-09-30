@@ -9,6 +9,8 @@
     background-position-y: bottom
     padding-bottom: 100px
     // background: fixed
+    @media screen and ( max-width: 750px )
+        padding-top: 34px
     @media screen and ( min-width: 641px ) and ( max-width: 1000px )
         padding-bottom: 48px
         padding-left: 30px
@@ -36,7 +38,7 @@
     display: flex
     flex-direction: column
     position: relative
-    z-index: 10000
+    z-index: 1000
     @media screen and ( min-width: 641px ) and ( max-width: 1000px )
         overflow-y: clip
     @media screen and ( min-width: 321px ) and ( max-width: 640px )
