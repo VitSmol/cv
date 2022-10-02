@@ -8,19 +8,51 @@ footer
     font-family: 'Roboto'
     padding-top: 40px
     padding-bottom: 40px
+    @media screen and ( max-width: 990px )
+        padding-top: 12px
+    @media screen and ( max-width: 639px )
+        padding-top: 20px
 
 .footer__content
     @extend %grid-container
     grid-template-areas: "logo logo form " "button button button" "social menu contacts"
     grid-template-columns: repeat(3, 1fr)
+    @media screen and ( max-width: 1210px )
+        width: auto
+        max-width: 940px
+        padding-left: 14px
+        grid-template-areas: "logo form form form" "button button button button" "social menu menu contacts"
+    @media screen and ( max-width: 990px )
+        max-width: 600px
+        padding-left: 0
+        grid-template-areas: "logo logo logo social" "button button button social" "menu menu contacts contacts"
+    @media screen and ( max-width: 639px )
+        max-width: 300px
+        grid-template-areas: "logo" "social" "button" "contacts" "menu"
+        justify-items: center
+        row-gap: 30px
+
     .footer__logo
         grid-area: logo
         .logo h2 
             align-items: baseline
             font-weight: 300
+            @media screen and ( max-width: 639px )
+                width: auto
+                height: auto
+                border: none
+                svg
+                    bottom: 4px
+                    right: 42px
+                    left: auto
     .footer__form
         grid-area: form
         padding-left: 18px
+        @media screen and ( max-width: 1210px )
+            justify-self: end
+            padding-right: 20px
+        @media screen and ( max-width: 990px )
+            display: none
         h3
             margin-top: 0
             margin-bottom: 14px
@@ -75,16 +107,35 @@ footer
             border-radius: 5px !important
             margin-top: 35px
             align-self: flex-start !important
+            @media screen and ( max-width: 990px )
+                margin-top: -10px
+            @media screen and ( max-width: 639px )
+                margin-top: 0
     .footer__social
         grid-area: social
+        @media screen and ( max-width: 639px )
+            width: 100%
         ul
             list-style-type: none
             padding-left: 0
             margin-top: 45px
+            @media screen and ( max-width: 990px )
+                margin: 0
+                padding-left: 0
+            @media screen and ( max-width: 639px )
+                flex-direction: row
+                display: flex
+            @media screen and ( max-width: 639px )
+                justify-content: space-around;
+                padding: 0 35px
             li
                 display: flex
                 align-items: 
                 margin-bottom: 10px
+                @media screen and ( max-width: 990px )
+                    margin-bottom: 20px
+                @media screen and ( max-width: 639px )
+                    margin-bottom: 0
                 a
                     display: flex
                     align-items: baseline
@@ -95,7 +146,9 @@ footer
                         .svg-img
                             transition: $transition-time background
                             background: $greenavtive
-
+                    @media screen and ( max-width: 990px )
+                        span
+                            display: none
         .svg-img
             transition: $transition-time background
             width: 26px
@@ -106,8 +159,16 @@ footer
             display: flex
             align-items: center
             justify-content: center
+            @media screen and ( max-width: 990px )
+                margin-right: 0
     .footer__menu
         grid-area: menu
+        @media screen and ( max-width: 1210px )
+            padding-left: 40px
+        @media screen and ( max-width: 990px )
+            padding-left: 0
+        @media screen and ( max-width: 639px )
+            margin-top: -7px
         
     .footer__contacts
         grid-area: contacts
@@ -125,15 +186,41 @@ footer
             line-height: 30px
             color: #FFFFFF
             text-align: left
+        @media screen and ( max-width: 1210px )
+            margin-right: -10px
+        @media screen and ( max-width: 990px )
+            margin-left: -1px
+            position: relative
+            left: -10px
+            padding-bottom: 0
+        @media screen and ( max-width: 639px )
+            margin-left: 0
+            position: static
+            justify-self: end
     .footer__nav
         @extend %nav
         height: 100%
         display: flex
         align-items: flex-end
         margin-left: 9px !important
+        @media screen and ( max-width: 990px )
+            margin-left: 0 !important
+            padding-top: 55px
+            ul
+                margin: 0 !important
+                @media screen and ( max-width: 639px )
+                    gap: 30px
+        @media screen and ( max-width: 639px )
+            padding-top: 0
 
         #footer__list
             margin-bottom: 18px
             li:last-child
                 position: static !important     
                 justify-self: flex-end    
+            @media screen and ( max-width: 990px )
+                gap: 37px
+                li
+                    padding: 0
+            @media screen and ( max-width: 639px )
+                gap: 30px
