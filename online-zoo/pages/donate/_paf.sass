@@ -14,6 +14,11 @@
     @media screen and ( max-width: 740px )
         padding-left: 20px
         padding-right: 20px
+        padding-bottom: 47px
+    @media screen and ( max-width: 520px )
+        padding-left: 10px
+        padding-right: 10px
+        padding-bottom: 20px
 .paf__container
     @extend %flex-container
     flex-direction: column
@@ -55,6 +60,10 @@
             @media screen and ( max-width: 740px )
                 margin-top: 30px
                 margin-bottom: 30px
+            @media screen and ( max-width: 520px )
+                font-size: 24px
+                margin-top: 22px
+                margin-bottom: 21px
 .paf__form__container
     background: rgba(253, 253, 255, 0.52)
     border-radius: 20px
@@ -68,8 +77,20 @@
     @media screen and ( max-width: 740px )
         padding-left: 0
         padding-right: 0
+        padding-bottom: 30px
         .paf__form__info>h2
             padding-right: 0
+    @media screen and ( max-width: 520px )
+        padding-top: 6px
+        padding-bottom: 22px
+        .paf__form__info>h2
+            margin-top: 4px
+            line-height: 49px
+            font-size: 24px
+        .paf__form__info>p
+            font-size: 16px
+            line-height: 22px
+            margin-top: 0
     h2
         font-weight: 400
         font-size: 48px
@@ -103,6 +124,9 @@
         padding-right: 15px
     @media screen and ( max-width: 740px )
         margin-top: 68px
+    @media screen and ( max-width: 520px )
+        margin-top: 20px
+        gap: 35px
     .count__container
         display: flex
         flex-direction: column
@@ -115,16 +139,29 @@
         position: relative
         gap: 10px
         padding-top: 16px
+        @media screen and ( max-width: 520px )
+            width: 90px
+            padding-top: 0
+            justify-content: center
+            gap: 0
+            .text
+                font-size: 9px
         .count
             font-weight: 500
             font-size: 72px
             line-height: 58px
             text-transform: uppercase
             display: inline-block
+            @media screen and ( max-width: 520px )
+                font-size: 40px
         & > img
             position: absolute
             top: 45%
-            right: -26px 
+            right: -26px
+            @media screen and ( max-width: 520px )
+                top: 46%
+                right: -13px
+                width: 8px
         
     .image__container
         display: flex
@@ -133,6 +170,12 @@
         img
             width: 95%
             margin-top: 5px
+        @media screen and ( max-width: 520px )
+            width: 160px
+            height: 138px
+            justify-content: flex-end
+            img
+                margin-right: -7px
 .paf__form
     margin-top: 67px
     color: #333b41
@@ -143,6 +186,8 @@
         margin-top: 52px
         padding-left: 0
         padding-right: 0
+    @media screen and ( max-width: 520px )
+        margin-top: 25px
 
     fieldset.choose__amount
         display: flex
@@ -162,6 +207,11 @@
         @media screen and ( max-width: 740px )
             padding-left: 35px
             padding-right: 35px
+        @media screen and ( max-width: 520px )
+            height: 14px
+            padding-left: 18px
+            padding-right: 18px
+            margin-bottom: 49px
         &:after
             content: ''
             width: calc(100% - 58px)
@@ -172,6 +222,11 @@
             z-index: 0
             @media screen and ( max-width: 1210px )
                 width: calc(100% - 25px)
+            @media screen and ( max-width: 740px )
+                width: calc(100% - 75px)
+            @media screen and ( max-width: 520px )
+                width: calc(100% - 36px)
+
 
         legend
             position: absolute
@@ -182,6 +237,9 @@
             @media screen and ( max-width: 740px )
                 left: 10px
                 top: -27px
+            @media screen and ( max-width: 520px )
+                left: 0
+
         label
             position: relative
             cursor: pointer
@@ -203,6 +261,11 @@
                 @media screen and ( max-width: 740px )
                     font-size: 26px
                     transform: translate(-18px)
+                @media screen and ( max-width: 520px )
+                    font-size: 13px
+                    transform: translate(-10px, -26px)
+                    &::first-letter
+                        font-size: 12px
             span.point
                 display: block
                 position: relative
@@ -212,6 +275,9 @@
                 border-radius: 50%
                 z-index: 1000
                 cursor: pointer
+                @media screen and ( max-width: 520px )
+                    width: 6px
+                    height: 6px
                 &::before
                     content: ''
                     position: absolute
@@ -223,6 +289,12 @@
                     left: -15px
                     opacity: 0
                     transition: $transition-time opacity
+                    @media screen and ( max-width: 520px )
+                        width: 20px
+                        height: 20px
+                        border-width: 1px
+                        top: -8px
+                        left: -8px
                 &::after
                     content: ''
                     position: absolute
@@ -234,6 +306,12 @@
                     left: -6px
                     opacity: 0
                     transition: $transition-time opacity
+                    @media screen and ( max-width: 520px )
+                        width: 11.5px
+                        height: 11.5px
+                        border-width: 1px
+                        top: -4px
+                        left: -4px
                 &:hover
                     &:before, &::after
                         opacity: 0.3
@@ -279,7 +357,9 @@
                 color: $greenavtive
                 & + svg path
                     fill: $greenavtive
-
+            @media screen and ( max-width: 740px )
+                width: 180px
+                height: 42px
             &:invalid
                 outline: none
                 border-width: 2px
@@ -295,6 +375,11 @@
         padding: 0 0 0 60px
         width: 268px
         margin: 27px auto 32px
+        @media screen and ( max-width: 740px )
+            padding: 5px 5px 0px 60px
+        @media screen and ( max-width: 520px )
+            margin: 18px auto 27px
+            padding: 10px 9px 0px 60px
         label
             position: relative
             display: inline-block
@@ -324,11 +409,17 @@
     @extend %button
     margin-left: calc(50% - 147px)
     padding-left: 6px !important
+    @media screen and ( max-width: 520px )
+        margin-left: calc(50% - 150px)
 .share
     display: flex
     justify-content: center
     padding-left: 6px 
     margin-top: 32px
+    @media screen and ( max-width: 520px )
+        padding-left: 0
+        span
+            letter-spacing: -0.1px
 
 @media screen and ( max-width: 1210px )
     fieldset.choose__amount > label:nth-child(2)
@@ -340,3 +431,15 @@
 @media screen and ( max-width: 740px )
     fieldset.choose__amount > label:nth-child(3), fieldset.choose__amount > label:nth-child(4)
         display: none
+    footer
+        padding-right: 0
+    .footer__content .footer__nav
+        margin-left: 0px !important
+@media screen and ( max-width: 520px )
+    footer.donate__footer > section > div.grid_section.footer__contacts
+        padding-right: 9px
+    footer.donate__footer > section > div.grid_section.footer__contacts > p
+        font-size: 15px
+        margin-top: -5px
+    footer.donate__footer #footer__list
+        padding-top: 5px
