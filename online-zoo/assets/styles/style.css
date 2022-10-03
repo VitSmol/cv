@@ -2878,13 +2878,14 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
 @media screen and (max-width: 980px) {
   .testimonials__wrapper {
     padding-top: 60px;
-    padding-bottom: 60px;
+    padding-bottom: 80px;
   }
 }
 
 @media screen and (max-width: 639px) {
   .testimonials__wrapper {
     padding-top: 20px;
+    padding-bottom: 60px;
   }
 }
 
@@ -3907,6 +3908,12 @@ footer {
 @media screen and (max-width: 639px) {
   .footer__content .footer__nav #footer__list {
     gap: 30px;
+  }
+}
+
+@media screen and (max-width: 1210px) {
+  footer.main__footer {
+    padding-right: 0;
   }
 }
 
@@ -5224,6 +5231,12 @@ footer {
 @media screen and (max-width: 639px) {
   .footer__content .footer__nav #footer__list {
     gap: 30px;
+  }
+}
+
+@media screen and (max-width: 1210px) {
+  footer.main__footer {
+    padding-right: 0;
   }
 }
 
