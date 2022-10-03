@@ -1,0 +1,204 @@
+@import '../../assets/styles/_variables'
+
+.testimonials__wrapper
+    @extend %wrapper-container
+    justify-content: center
+    padding-top: 100px
+    padding-bottom: 180px
+    position: relative
+    overflow: hidden
+    @media screen and ( max-width: 1210px )
+        padding-bottom: 140px
+    @media screen and ( max-width: 980px )
+        padding-top: 60px
+        padding-bottom: 60px
+    @media screen and ( max-width: 639px )
+        padding-top: 20px
+        
+
+    .testimonials__container
+        @extend %flex-container
+        flex-direction: column
+        align-items: center
+        @media screen and ( max-width: 1210px )
+            width: 940px !important
+            overflow-x: hidden
+        @media screen and ( max-width: 980px )
+            width: 100%
+        @media screen and ( max-width: 639px )
+            padding-left: 10px
+            padding-right: 10px
+
+        h3
+            font-family: 'Roboto'
+            font-style: normal
+            font-weight: 400
+            font-size: 36px
+            line-height: 47px
+            text-align: center
+            color: #333B41
+            margin-top: 40px
+            margin-bottom: 47px
+            @media screen and ( max-width: 1210px )
+                margin-top: 1px
+                margin-bottom: 30px
+            @media screen and ( max-width: 639px )
+                font-size: 24px
+                margin-bottom: 10px
+        #testimon-btn.testimonials__btn
+            @extend  %button
+            border-radius: 5px !important
+            margin-top: 32px
+            align-self: flex-start !important
+            @media screen and ( max-width: 1210px )
+                margin-top: 52px
+            @media screen and ( max-width: 980px )
+                align-self: center !important
+                width: 240px !important
+                margin-top: 39px
+            @media screen and ( max-width: 637px )
+                margin-top: 30px
+.testinonials__cards
+    display: flex
+    gap: 30px
+    @media screen and ( max-width: 1210px )
+        align-self: flex-start  
+    @media screen and ( max-width: 980px )
+        flex-direction: column
+        align-items: center
+        align-self: center
+        gap: 15px
+.card
+    padding: 15px 18px 19px 15px
+    width: 268px
+    height: 391px
+    overflow: hidden
+    display: flex
+    flex-direction: column
+    background: #f1f3f2
+    position: relative
+    border-radius: 20px
+    @media screen and ( max-width: 1210px )
+        width: 293px
+        padding-bottom: 40px
+    @media screen and ( max-width: 980px )
+        &:not(:nth-child(-n+3))
+            display: none
+        width: 600px
+        height: 109px
+        padding-bottom: 10px
+        padding-left: 13px
+    @media screen and ( max-width: 639px )
+        width: 100%
+        padding: 10px 12px 10px 14px
+    &:before
+        content: ''
+        position: absolute
+        inset: 0
+        border-radius: 20px
+        border: 2px solid transparent
+        background: $gradientBackground border-box
+        -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)
+        -webkit-mask-composite: xor
+        mask-composite: exclude
+    h5
+        margin: 0
+        font-family: 'Roboto'
+        font-style: normal
+        font-weight: 500
+        font-size: 16px
+        line-height: 19px
+        color: #000000
+    .text
+        overflow: hidden
+        @media screen and ( max-width: 639px )
+            padding-left: 5px
+            padding-top: 2px
+
+    .user__info
+        display: flex
+        gap: 10px
+        @media screen and ( max-width: 639px )
+            gap: 5px
+        .avatar
+            width: 37px
+            height: 37px
+        .local
+            display: flex
+            margin: 0
+        .name
+            display: flex
+            flex-direction: column
+        span
+            display: flex
+            font-family: 'Roboto'
+            font-style: normal
+            font-weight: 300
+            font-size: 15px
+            line-height: 18px
+            color: #BDBDBD
+            &:last-child
+                &::before
+                    content: ''
+                    width: 3px
+                    height: 3px
+                    border-radius: 50%
+                    background: #bdbdbd
+                    align-self: center
+                    margin-left: 6px
+                    margin-right: 5px
+    .text p
+        margin-top: 10px
+        font-family: 'Roboto'
+        font-style: normal
+        font-weight: 300
+        font-size: 15px
+        line-height: 18px
+        color: #767474
+.testimonials__paggination
+    display: flex
+    margin-top: 20px
+    width: 600px
+    height: 8px
+    background: #f1f3f2
+    border-radius: 5px
+    border: 0.5px solid $gradient1
+    position: relative
+    transition: all $transition-time
+    @media screen and ( max-width: 1210px )
+        width: 390px
+    @media screen and ( max-width: 980px )
+        display: none
+    .paggination-item
+        width: 115px
+        @media screen and ( max-width: 1210px )
+            width: 75px
+    .active-item
+        transition: all $transition-time
+        background-color: $orang2
+        border-radius: 5px
+    &:hover
+        transition: all $transition-time
+        cursor: pointer
+        background: #e0e2e1
+        .active-item
+            transition: all $transition-time
+            border-width: 1px
+            background-color: $orang
+.leaf 
+    position: absolute
+    bottom: -134px
+    right: -163px
+    @media screen and ( max-width: 1210px )
+        width: 330px
+        bottom: -89px
+        right: -131px
+    @media screen and ( max-width: 980px )
+        width: 200px
+        bottom: -65px
+        right: -85px
+    @media screen and ( max-width: 639px )
+        width: 100px
+        bottom: -32px
+        right: -47px
+        transform: rotate(-18deg)

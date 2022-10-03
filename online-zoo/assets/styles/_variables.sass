@@ -20,6 +20,7 @@ $gradient4: #EAF7FE
 $gradient5: #EAF7FE
 $gradientBackground: linear-gradient(315.75deg, $gradient1 30.06%, $gradient2 50.74%, $gradient3 80.49%, $gradient4 127.9%, $gradient5 149.54%)
 
+$small-contentwidth: 940px
 
 %wrapper-container
     width: $fullwidth
@@ -27,6 +28,7 @@ $gradientBackground: linear-gradient(315.75deg, $gradient1 30.06%, $gradient2 50
 %flex-container
     width: $contentwidth
     display: flex
+
 %grid-container
     width: $contentwidth
     display: grid
@@ -69,6 +71,7 @@ $gradientBackground: linear-gradient(315.75deg, $gradient1 30.06%, $gradient2 50
 %nav
     margin-left: 60px
     width: 100%
+    position: relative
     ul
         list-style-type: none
         display: flex
@@ -76,6 +79,8 @@ $gradientBackground: linear-gradient(315.75deg, $gradient1 30.06%, $gradient2 50
         gap: 50px
         padding-left: 0
         position: relative
+        @media screen and ( max-width: 1200px ) 
+            gap: 40px
         li
             padding: 0 4px
             a
@@ -87,6 +92,8 @@ $gradientBackground: linear-gradient(315.75deg, $gradient1 30.06%, $gradient2 50
                 position: absolute
                 right: 0
                 padding: 0 
+
+                
 %button
     width: 298px
     height: 54px
