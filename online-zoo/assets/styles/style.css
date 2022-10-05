@@ -331,6 +331,7 @@ header .header__wrapper li.logo__li {
     color: #333B41;
   }
   header .header__wrapper .modal__active {
+    display: none;
     position: fixed;
     top: 0;
     right: 0;
@@ -4520,6 +4521,7 @@ header .header__wrapper li.logo__li {
     color: #333B41;
   }
   header .header__wrapper .modal__active {
+    display: none;
     position: fixed;
     top: 0;
     right: 0;
