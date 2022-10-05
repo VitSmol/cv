@@ -19,12 +19,12 @@ header
         @extend %nav
         .burger__menu
             display: none
+            cursor: pointer
     .header__wrapper
         @extend %flex-container
         align-items: center
         @media screen and ( max-width: 1200px )
             width: $small-contentwidth !important
-        // width: $contentwidth
         li.logo__li
             display: none
         @media screen and ( min-width: 641px ) and ( max-width: 1000px )
@@ -56,19 +56,31 @@ header
                 z-index: 1000
                 a 
                     color: #333B41
+            .modal__active
+                position: fixed
+                top: 0
+                right: 0
+                bottom: 0
+                left: 0
+                // opacity: 0
+                background: rgba(0,0,0,0.6);
+                z-index: 1050
             ul
-                display: none !important
+                display: flex !important
                 flex-direction: column
                 background: #fff
-                gap: 15px !important
+                gap: 19px !important
                 padding-left: 10px !important
                 padding-top: 10px
                 padding-bottom: 40px
                 margin: 0
                 li
                     padding: 0 !important
+                    &:first-child
+                        margin-bottom: 13px
                     a
                         transition: $transition-time color
+                        color: #333B41
                         &:hover
                             transition: $transition-time color
                             color: $orang
@@ -81,6 +93,12 @@ header
                             font-size: 15px
                             line-height: 18px
                             font-weight: 400
+                            width: 65px
+                            height: 41px
+                            svg
+                                left: 8px
+                                bottom: 4px
+                                width: 6px
                         a
                             color: $orang 
                         .bamboo
@@ -105,3 +123,4 @@ header
 
 
 
+// TODO строка 68 ul - меняем display / строка 65 opacity

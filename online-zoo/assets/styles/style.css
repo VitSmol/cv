@@ -263,6 +263,7 @@ header {
 
 header .header__nav .burger__menu {
   display: none;
+  cursor: pointer;
 }
 
 header .header__wrapper {
@@ -329,14 +330,25 @@ header .header__wrapper li.logo__li {
   header .header__wrapper .header__nav a {
     color: #333B41;
   }
+  header .header__wrapper .modal__active {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1050;
+  }
   header .header__wrapper ul {
-    display: none !important;
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
     background: #fff;
-    gap: 15px !important;
+    gap: 19px !important;
     padding-left: 10px !important;
     padding-top: 10px;
     padding-bottom: 40px;
@@ -345,9 +357,13 @@ header .header__wrapper li.logo__li {
   header .header__wrapper ul li {
     padding: 0 !important;
   }
+  header .header__wrapper ul li:first-child {
+    margin-bottom: 13px;
+  }
   header .header__wrapper ul li a {
     -webkit-transition: 0.5s color;
     transition: 0.5s color;
+    color: #333B41;
   }
   header .header__wrapper ul li a:hover {
     -webkit-transition: 0.5s color;
@@ -365,6 +381,13 @@ header .header__wrapper li.logo__li {
     font-size: 15px;
     line-height: 18px;
     font-weight: 400;
+    width: 65px;
+    height: 41px;
+  }
+  header .header__wrapper ul li.logo__li h2 svg {
+    left: 8px;
+    bottom: 4px;
+    width: 6px;
   }
   header .header__wrapper ul li.logo__li a {
     color: #f9804b;
@@ -3915,6 +3938,9 @@ footer {
   footer.main__footer {
     padding-right: 0;
   }
+  footer.main__footer .footer__content .footer__nav {
+    margin-left: 11px !important;
+  }
 }
 
 .watch, .backstage__wrapper, .pets__wrapper, .pick__wrapper, .testimonials__wrapper, footer, main, .paf__wrapper {
@@ -4426,6 +4452,7 @@ header {
 
 header .header__nav .burger__menu {
   display: none;
+  cursor: pointer;
 }
 
 header .header__wrapper {
@@ -4492,14 +4519,25 @@ header .header__wrapper li.logo__li {
   header .header__wrapper .header__nav a {
     color: #333B41;
   }
+  header .header__wrapper .modal__active {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1050;
+  }
   header .header__wrapper ul {
-    display: none !important;
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
     background: #fff;
-    gap: 15px !important;
+    gap: 19px !important;
     padding-left: 10px !important;
     padding-top: 10px;
     padding-bottom: 40px;
@@ -4508,9 +4546,13 @@ header .header__wrapper li.logo__li {
   header .header__wrapper ul li {
     padding: 0 !important;
   }
+  header .header__wrapper ul li:first-child {
+    margin-bottom: 13px;
+  }
   header .header__wrapper ul li a {
     -webkit-transition: 0.5s color;
     transition: 0.5s color;
+    color: #333B41;
   }
   header .header__wrapper ul li a:hover {
     -webkit-transition: 0.5s color;
@@ -4528,6 +4570,13 @@ header .header__wrapper li.logo__li {
     font-size: 15px;
     line-height: 18px;
     font-weight: 400;
+    width: 65px;
+    height: 41px;
+  }
+  header .header__wrapper ul li.logo__li h2 svg {
+    left: 8px;
+    bottom: 4px;
+    width: 6px;
   }
   header .header__wrapper ul li.logo__li a {
     color: #f9804b;
@@ -5237,6 +5286,9 @@ footer {
 @media screen and (max-width: 1210px) {
   footer.main__footer {
     padding-right: 0;
+  }
+  footer.main__footer .footer__content .footer__nav {
+    margin-left: 11px !important;
   }
 }
 
