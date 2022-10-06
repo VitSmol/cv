@@ -341,9 +341,7 @@ header .header__wrapper li.logo__li {
     z-index: 1050;
   }
   header .header__wrapper ul {
-    display: -webkit-box !important;
-    display: -ms-flexbox !important;
-    display: flex !important;
+    display: none !important;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -4531,9 +4529,7 @@ header .header__wrapper li.logo__li {
     z-index: 1050;
   }
   header .header__wrapper ul {
-    display: -webkit-box !important;
-    display: -ms-flexbox !important;
-    display: flex !important;
+    display: none !important;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
