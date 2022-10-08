@@ -57,17 +57,25 @@ header
                 a 
                     color: #333B41
             .modal__active
-                display: none
+                // display: none
                 position: fixed
+                pointer-events: none
                 top: 0
                 right: 0
                 bottom: 0
                 left: 0
-                // opacity: 0
+                opacity: 0
                 background: rgba(0,0,0,0.6);
                 z-index: 1050
+                transition: $transition-time all   
+                &.show
+                    transition: $transition-time opacity
+                    display: block
+                    opacity: 1
+                    pointer-events: auto
             ul
-                display: none !important
+                display: flex 
+                position: relative
                 flex-direction: column
                 background: #fff
                 gap: 19px !important
@@ -75,6 +83,24 @@ header
                 padding-top: 10px
                 padding-bottom: 40px
                 margin: 0
+                transform: translateY(-400px)
+                transition: $transition-time transform
+                &.show
+                    transition: $transition-time all
+                    transform: translateY(0px)
+                #close
+                    width: 30px
+                    position: absolute
+                    right: 20px
+                    z-index: 10000
+                    &:hover
+                        cursor: pointer
+                        
+                //     display: block
+                //     position: absolute
+                //     right: 10px
+
+
                 li
                     padding: 0 !important
                     &:first-child
@@ -116,6 +142,8 @@ header
                     height: 2px
                     border-radius: 2px
                     background-color: #fff
+                &:hover
+                    cursor: pointer
     
        
 .active
