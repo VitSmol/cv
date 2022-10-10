@@ -171,6 +171,7 @@ const firstInitImages = (obj, countOfContainers, countOfImages,) => {
         width = petsContainer.clientWidth
         console.dir(petsContainer);
     }
+    sliderContainer.style.left = -width + `px`
 }
 let low = false
 
