@@ -331,17 +331,30 @@ header .header__wrapper li.logo__li {
     color: #333B41;
   }
   header .header__wrapper .modal__active {
-    display: none;
     position: fixed;
+    pointer-events: none;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
+    opacity: 0;
     background: rgba(0, 0, 0, 0.6);
     z-index: 1050;
+    -webkit-transition: 0.5s all;
+    transition: 0.5s all;
+  }
+  header .header__wrapper .modal__active.show {
+    -webkit-transition: 0.5s opacity;
+    transition: 0.5s opacity;
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
   }
   header .header__wrapper ul {
-    display: none !important;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -352,6 +365,27 @@ header .header__wrapper li.logo__li {
     padding-top: 10px;
     padding-bottom: 40px;
     margin: 0;
+    -webkit-transform: translateY(-400px);
+            transform: translateY(-400px);
+    -webkit-transition: 0.5s -webkit-transform;
+    transition: 0.5s -webkit-transform;
+    transition: 0.5s transform;
+    transition: 0.5s transform, 0.5s -webkit-transform;
+  }
+  header .header__wrapper ul.show {
+    -webkit-transition: 0.5s all;
+    transition: 0.5s all;
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  header .header__wrapper ul #close {
+    width: 30px;
+    position: absolute;
+    right: 20px;
+    z-index: 10000;
+  }
+  header .header__wrapper ul #close:hover {
+    cursor: pointer;
   }
   header .header__wrapper ul li {
     padding: 0 !important;
@@ -415,6 +449,9 @@ header .header__wrapper li.logo__li {
     height: 2px;
     border-radius: 2px;
     background-color: #fff;
+  }
+  header .header__wrapper .burger__menu:hover {
+    cursor: pointer;
   }
 }
 
@@ -1749,6 +1786,7 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
 }
 
 .pets__container {
+  min-width: 1160px;
   -ms-grid-rows: (1fr)[2];
   -ms-grid-columns: (1fr)[3];
       grid-template: repeat(2, 1fr)/repeat(3, 1fr);
@@ -1759,6 +1797,9 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
 @media screen and (max-width: 1350px) {
   .pets__container {
     width: 100% !important;
+    min-width: -webkit-fit-content;
+    min-width: -moz-fit-content;
+    min-width: fit-content;
     padding-left: 30px;
     padding-right: 30px;
     grid-gap: 92px 30px;
@@ -1770,8 +1811,8 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
     max-width: 600px;
     overflow: hidden;
     -ms-grid-rows: (332px)[2];
-    -ms-grid-columns: (285px)[3];
-        grid-template: repeat(2, 332px)/repeat(3, 285px);
+    -ms-grid-columns: (285px)[2];
+        grid-template: repeat(2, 332px)/repeat(2, 285px);
     padding-left: 0;
   }
 }
@@ -1946,6 +1987,33 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   }
 }
 
+.slider__wrapper {
+  position: relative;
+  max-width: 1160px;
+}
+
+@media screen and (max-width: 830px) {
+  .slider__wrapper {
+    max-width: 630px;
+  }
+}
+
+.slider {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  max-width: 1160px;
+  -webkit-transition: 0.5s -webkit-transform;
+  transition: 0.5s -webkit-transform;
+  transition: 0.5s transform;
+  transition: 0.5s transform, 0.5s -webkit-transform;
+}
+
+.outer__container {
+  overflow: hidden;
+}
+
 .arrow {
   font-size: 20px;
 }
@@ -1994,6 +2062,11 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   .btn-right {
     display: none;
   }
+}
+
+.shifting {
+  -webkit-transition: left 0.5s ease-out;
+  transition: left 0.5s ease-out;
 }
 
 .watch, .backstage__wrapper, .pets__wrapper, .pick__wrapper, .testimonials__wrapper, footer, main, .paf__wrapper {
@@ -4519,17 +4592,30 @@ header .header__wrapper li.logo__li {
     color: #333B41;
   }
   header .header__wrapper .modal__active {
-    display: none;
     position: fixed;
+    pointer-events: none;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
+    opacity: 0;
     background: rgba(0, 0, 0, 0.6);
     z-index: 1050;
+    -webkit-transition: 0.5s all;
+    transition: 0.5s all;
+  }
+  header .header__wrapper .modal__active.show {
+    -webkit-transition: 0.5s opacity;
+    transition: 0.5s opacity;
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
   }
   header .header__wrapper ul {
-    display: none !important;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -4540,6 +4626,27 @@ header .header__wrapper li.logo__li {
     padding-top: 10px;
     padding-bottom: 40px;
     margin: 0;
+    -webkit-transform: translateY(-400px);
+            transform: translateY(-400px);
+    -webkit-transition: 0.5s -webkit-transform;
+    transition: 0.5s -webkit-transform;
+    transition: 0.5s transform;
+    transition: 0.5s transform, 0.5s -webkit-transform;
+  }
+  header .header__wrapper ul.show {
+    -webkit-transition: 0.5s all;
+    transition: 0.5s all;
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  header .header__wrapper ul #close {
+    width: 30px;
+    position: absolute;
+    right: 20px;
+    z-index: 10000;
+  }
+  header .header__wrapper ul #close:hover {
+    cursor: pointer;
   }
   header .header__wrapper ul li {
     padding: 0 !important;
@@ -4603,6 +4710,9 @@ header .header__wrapper li.logo__li {
     height: 2px;
     border-radius: 2px;
     background-color: #fff;
+  }
+  header .header__wrapper .burger__menu:hover {
+    cursor: pointer;
   }
 }
 
@@ -7077,6 +7187,10 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   font-family: Roboto, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 a {

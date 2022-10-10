@@ -51,18 +51,20 @@
 
 .pets__container
     @extend %grid-container
+    min-width: 1160px
     grid-template: repeat(2, 1fr) / repeat(3, 1fr)
     grid-gap: 20px 30px
     position: relative
     @media screen and ( max-width: 1350px )
         width: 100% !important
+        min-width: fit-content
         padding-left: 30px
         padding-right: 30px
         grid-gap: 92px 30px
     @media screen and ( max-width: 830px )
         max-width: 600px
         overflow: hidden
-        grid-template: repeat(2, 332px) / repeat(3, 285px)
+        grid-template: repeat(2, 332px) / repeat(2, 285px)
         padding-left: 0
     @media screen and ( max-width: 639px )
         width: 100% !important
@@ -149,7 +151,21 @@
             width: 33px
             @media screen and ( max-width: 830px )
                 width: 25px
-            
+
+.slider__wrapper
+    position: relative  
+    max-width: 1160px
+    @media screen and ( max-width: 830px )
+        max-width: 630px
+.slider
+    display: flex
+    position: relative
+    left: 0
+    max-width: 1160px
+    transition: $transition-time transform
+.outer__container
+    overflow: hidden
+    
 .btn-round
     @extend %round-button
         
@@ -173,3 +189,5 @@
         top: calc(50% - 34px) !important
     @media screen and ( max-width: 639px )
         display: none
+.shifting
+    transition: left $transition-time ease-out
