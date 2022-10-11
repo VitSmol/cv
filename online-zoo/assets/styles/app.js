@@ -1,6 +1,6 @@
-alert(` Уважаемый проверяющий, к сожалению я не успел выполнить этот таск в полном объёме!
-Если тебя не затруднит - не проверяй мою работу до среды (вечера), либо не прячь свой ник, чтобы я смог связаться с тобой в Discord, когда доделаю!
-Заранее спасибо и успехов в учебе! `)
+// alert(` Уважаемый проверяющий, к сожалению я не успел выполнить этот таск в полном объёме!
+// Если тебя не затруднит - не проверяй мою работу до среды (вечера), либо не прячь свой ник, чтобы я смог связаться с тобой в Discord, когда доделаю!
+// Заранее спасибо и успехов в учебе! `)
 
 // const radio1000 = document.getElementById('three')
 // const radio100 = document.getElementById('six')
@@ -440,14 +440,14 @@ const rangeInput = document.querySelector('.input-range')
 const card = document.querySelector('.card')
 
 if (window.innerWidth < 1350) {
-  testimonialsContainer.style.left = '110px'
+  // testimonialsContainer.style.left = '110px'
   rangeInput.max = 8
 }
 
 rangeInput.addEventListener('input', () => {
   // if (window.innerWidth > 1350) {
-    testimonialsContainer.style.left = `-${rangeInput.value * (card.offsetWidth + 30)}px`
     testimonialsContainer.classList.add('shifting')
+    testimonialsContainer.style.left = `-${rangeInput.value * (card.offsetWidth + 30)}px`
   // } else {
 
   // }
