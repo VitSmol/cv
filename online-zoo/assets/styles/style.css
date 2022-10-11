@@ -1796,10 +1796,8 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
 
 @media screen and (max-width: 1350px) {
   .pets__container {
-    width: 100% !important;
-    min-width: -webkit-fit-content;
-    min-width: -moz-fit-content;
-    min-width: fit-content;
+    width: 840px !important;
+    min-width: 1000px;
     padding-left: 30px;
     padding-right: 30px;
     grid-gap: 92px 30px;
@@ -1813,7 +1811,8 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
     -ms-grid-rows: (332px)[2];
     -ms-grid-columns: (285px)[2];
         grid-template: repeat(2, 332px)/repeat(2, 285px);
-    padding-left: 0;
+    padding-left: 15px;
+    padding-right: 15px;
   }
 }
 
@@ -1987,33 +1986,6 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   }
 }
 
-.slider__wrapper {
-  position: relative;
-  max-width: 1160px;
-}
-
-@media screen and (max-width: 830px) {
-  .slider__wrapper {
-    max-width: 630px;
-  }
-}
-
-.slider {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  position: relative;
-  max-width: 1160px;
-  -webkit-transition: 0.5s -webkit-transform;
-  transition: 0.5s -webkit-transform;
-  transition: 0.5s transform;
-  transition: 0.5s transform, 0.5s -webkit-transform;
-}
-
-.outer__container {
-  overflow: hidden;
-}
-
 .arrow {
   font-size: 20px;
 }
@@ -2062,6 +2034,46 @@ header .header__nav ul li:last-child, .footer__content .footer__nav ul li:last-c
   .btn-right {
     display: none;
   }
+}
+
+.slider__wrapper {
+  position: relative;
+  max-width: 1160px;
+}
+
+@media screen and (max-width: 1350px) {
+  .slider__wrapper {
+    max-width: 1000px;
+  }
+}
+
+@media screen and (max-width: 830px) {
+  .slider__wrapper {
+    max-width: 630px;
+  }
+}
+
+.slider {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  left: 0;
+  max-width: 1160px;
+  -webkit-transition: 0.5s -webkit-transform;
+  transition: 0.5s -webkit-transform;
+  transition: 0.5s transform;
+  transition: 0.5s transform, 0.5s -webkit-transform;
+}
+
+@media screen and (max-width: 1350px) {
+  .slider {
+    max-width: 1000px;
+  }
+}
+
+.outer__container {
+  overflow: hidden;
 }
 
 .shifting {
