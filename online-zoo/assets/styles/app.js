@@ -1,6 +1,7 @@
 alert(` Уважаемый проверяющий, к сожалению я не успел выполнить этот таск в полном объёме!
 Если тебя не затруднит - не проверяй мою работу до среды (вечера), либо не прячь свой ник, чтобы я смог связаться с тобой в Discord, когда доделаю!
 Заранее спасибо и успехов в учебе! `)
+
 // const radio1000 = document.getElementById('three')
 // const radio100 = document.getElementById('six')
 
@@ -53,7 +54,7 @@ links.forEach(el => {
     el.addEventListener(`click`, showMenu)
 })
 
-//! Pets container logic
+
 const roundButtonLeft = document.querySelector('.btn-left')
 const roundButtonRight = document.querySelector('.btn-right')
 const sliderContainer = document.querySelector('.slider')
@@ -132,86 +133,55 @@ const shuffle = (arr) => {
 }
 
 const firstInitImages = (obj, countOfContainers, countOfImages,) => {
-    let width
-    // create 3 pets container blocks
-    for (let i = 0; i < countOfContainers; i++) {
-        const petsContainer = document.createElement('div');
-        petsContainer.classList.add('pets__container')
-        const tempObj = [...obj]
-        if (i !== 1 ) {
-            shuffle(tempObj)
+    let result
+        // create 3 pets container blocks
+        for (let i = 0; i < countOfContainers; i++) {
+            const petsContainer = document.createElement('div');
+            petsContainer.classList.add('pets__container')
+            const tempObj = [...obj]
+            if (i !== 1 ) {
+                shuffle(tempObj)
+            }
+            tempObj.splice(countOfImages)
+            tempObj.forEach(el => {
+                const pet = document.createElement('div')
+                pet.classList.add('pet');
+                const img = document.createElement('img');
+                img.setAttribute('src', `${path}${el.bigImage}`)
+                img.setAttribute('alt', `${el.alt}`)
+                const petContent = document.createElement('div')
+                petContent.classList.add('pet__content')
+                const petContentHeader = document.createElement('h5')
+                const petContentParagraph = document.createElement('p')
+                const petContentImage = document.createElement('img')
+                petContentHeader.innerText = el.name
+                petContentParagraph.innerText = el.location
+                petContentImage.setAttribute('src', `${path}${el.smallImage}`)
+                petContentImage.setAttribute('alt', `${el.altSmall}`)
+                petContentImage.classList.add('img__icon')
+                petContentImage.classList.add(`icon__${el.altSmall}`)
+                petContent.append(petContentHeader)
+                petContent.append(petContentParagraph)
+                petContent.append(petContentImage)
+                pet.append(img)
+                pet.append(petContent)
+                petsContainer.append(pet)
+            })
+            sliderContainer.append(petsContainer)
         }
-        tempObj.splice(countOfImages)
-        console.log(tempObj);
-        tempObj.forEach(el => {
-            const pet = document.createElement('div')
-            pet.classList.add('pet');
-            const img = document.createElement('img');
-            img.setAttribute('src', `${path}${el.bigImage}`)
-            img.setAttribute('alt', `${el.alt}`)
-            const petContent = document.createElement('div')
-            petContent.classList.add('pet__content')
-            const petContentHeader = document.createElement('h5')
-            const petContentParagraph = document.createElement('p')
-            const petContentImage = document.createElement('img')
-            petContentHeader.innerText = el.name
-            petContentParagraph.innerText = el.location
-            petContentImage.setAttribute('src', `${path}${el.smallImage}`)
-            petContentImage.setAttribute('alt', `${el.altSmall}`)
-            petContentImage.classList.add('img__icon')
-            petContentImage.classList.add(`icon__${el.altSmall}`)
-            petContent.append(petContentHeader)
-            petContent.append(petContentParagraph)
-            petContent.append(petContentImage)
-            pet.append(img)
-            pet.append(petContent)
-            petsContainer.append(pet)
-        })
-        sliderContainer.append(petsContainer)
-        width = petsContainer.clientWidth
-        console.dir(petsContainer);
+        sliderContainer.style.left = `-${document.querySelector('.pets__container').offsetWidth + 'px'}`
     }
-    sliderContainer.style.left = -width + `px`
-}
-let low = false
+// firstInitImages(petsArray, 3, 6)
 
 const resolutionSelection = () => {
-    if (window.innerWidth > 830) {
-        firstInitImages(petsArray, 3, 6)
-        low = false
-    } else {
-        firstInitImages(petsArray, 3, 4)
-        low = true
+        if (window.innerWidth > 830) {
+            firstInitImages(petsArray, 10, 6)
+        } else {
+            firstInitImages(petsArray, 10, 4)
+        }
     }
-}
-
+    
 resolutionSelection()
-window.onresize = () => {
-    const petsContainers = document.querySelectorAll('.pet')
-    const petContainerWidth = document.querySelector('.pets__container').clientWidth
-
-    if (window.innerWidth <= 830 && petsContainers.length == 18 && !low) {
-        console.log(petsContainers);
-        while (sliderContainer.firstChild) {
-            sliderContainer.removeChild(sliderContainer.firstChild)
-        }
-        firstInitImages(petsArray, 3, 4)
-        low = true
-
-    } else if (window.innerWidth > 830 && petsContainers.length == 12 && low) {
-        while (sliderContainer.firstChild) {
-            sliderContainer.removeChild(sliderContainer.firstChild)
-        }
-        firstInitImages(petsArray, 3, 6)
-        low = false
-    } else if (window.innerWidth < 640) {
-        while (sliderContainer.firstChild) {
-            sliderContainer.removeChild(sliderContainer.firstChild)
-        }
-        firstInitImages(petsArray, 1, 4)
-    }
-}
-
 
 function slideWrapp(wrapper, items, prev, next) {
     let posX1 = 0,
@@ -243,8 +213,12 @@ function slideWrapp(wrapper, items, prev, next) {
         items.addEventListener('touchmove', dragAction);
         
         //! Click events
-        prev.addEventListener('click', function () { shiftSlide(-1) });
-        next.addEventListener('click', function () { shiftSlide(1) });
+        prev.addEventListener('click', function () { 
+          shiftSlide(-1) 
+        });
+        next.addEventListener('click', function () { 
+          shiftSlide(1) 
+        });
         
         // Transition events
         items.addEventListener('transitionend', checkIndex);
@@ -290,15 +264,15 @@ function slideWrapp(wrapper, items, prev, next) {
         }
         
         function shiftSlide(dir, action) {
-            console.log(`something`);
           items.classList.add('shifting');
-          
+
           if (allowShift) {
             if (!action) { posInitial = items.offsetLeft; }
-      
+            
             if (dir == 1) {
               items.style.left = (posInitial - slideSize) + "px";
-              index++;      
+              index++;
+
             } else if (dir == -1) {
               items.style.left = (posInitial + slideSize) + "px";
               index--;      
@@ -310,7 +284,7 @@ function slideWrapp(wrapper, items, prev, next) {
           
         function checkIndex (){
           items.classList.remove('shifting');
-      
+          
           if (index == -1) {
             items.style.left = -(slidesLength * slideSize) + "px";
             index = slidesLength - 1;

@@ -56,16 +56,18 @@
     grid-gap: 20px 30px
     position: relative
     @media screen and ( max-width: 1350px )
-        width: 100% !important
-        min-width: fit-content
+        width: 840px !important
+        min-width: 1000px
         padding-left: 30px
         padding-right: 30px
         grid-gap: 92px 30px
     @media screen and ( max-width: 830px )
         max-width: 600px
         overflow: hidden
+        // grid-template: repeat(2, 332px) / repeat(3, 285px)
         grid-template: repeat(2, 332px) / repeat(2, 285px)
-        padding-left: 0
+        padding-left: 15px
+        padding-right: 15px
     @media screen and ( max-width: 639px )
         width: 100% !important
         justify-content: center
@@ -151,21 +153,7 @@
             width: 33px
             @media screen and ( max-width: 830px )
                 width: 25px
-
-.slider__wrapper
-    position: relative  
-    max-width: 1160px
-    @media screen and ( max-width: 830px )
-        max-width: 630px
-.slider
-    display: flex
-    position: relative
-    left: 0
-    max-width: 1160px
-    transition: $transition-time transform
-.outer__container
-    overflow: hidden
-    
+            
 .btn-round
     @extend %round-button
         
@@ -189,5 +177,24 @@
         top: calc(50% - 34px) !important
     @media screen and ( max-width: 639px )
         display: none
+
+
+.slider__wrapper
+    position: relative  
+    max-width: 1160px
+    @media screen and ( max-width: 1350px )
+        max-width: 1000px
+    @media screen and ( max-width: 830px )
+        max-width: 630px
+.slider
+    display: flex
+    position: relative
+    left: 0
+    max-width: 1160px
+    transition: $transition-time transform
+    @media screen and ( max-width: 1350px )
+        max-width: 1000px
+.outer__container
+    overflow: hidden
 .shifting
     transition: left $transition-time ease-out
