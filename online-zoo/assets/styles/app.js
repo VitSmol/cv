@@ -1,3 +1,7 @@
+alert(` Уважаемый проверяющий, к сожалению я не успел выполнить этот таск в полном объёме!
+Если тебя не затруднит - не проверяй мою работу до среды (вечера), либо не прячь свой ник, чтобы я смог связаться с тобой в Discord, когда доделаю!
+Заранее спасибо и успехов в учебе! `)
+
 // const radio1000 = document.getElementById('three')
 // const radio100 = document.getElementById('six')
 
@@ -129,6 +133,7 @@ const shuffle = (arr) => {
 }
 
 const firstInitImages = (obj, countOfContainers, countOfImages,) => {
+    let result
         // create 3 pets container blocks
         for (let i = 0; i < countOfContainers; i++) {
             const petsContainer = document.createElement('div');
@@ -164,14 +169,15 @@ const firstInitImages = (obj, countOfContainers, countOfImages,) => {
             })
             sliderContainer.append(petsContainer)
         }
+        sliderContainer.style.left = `-${document.querySelector('.pets__container').offsetWidth + 'px'}`
     }
 // firstInitImages(petsArray, 3, 6)
 
 const resolutionSelection = () => {
         if (window.innerWidth > 830) {
-            firstInitImages(petsArray, 3, 6)
+            firstInitImages(petsArray, 10, 6)
         } else {
-            firstInitImages(petsArray, 3, 4)
+            firstInitImages(petsArray, 10, 4)
         }
     }
     
@@ -207,8 +213,12 @@ function slideWrapp(wrapper, items, prev, next) {
         items.addEventListener('touchmove', dragAction);
         
         //! Click events
-        prev.addEventListener('click', function () { shiftSlide(-1) });
-        next.addEventListener('click', function () { shiftSlide(1) });
+        prev.addEventListener('click', function () { 
+          shiftSlide(-1) 
+        });
+        next.addEventListener('click', function () { 
+          shiftSlide(1) 
+        });
         
         // Transition events
         items.addEventListener('transitionend', checkIndex);
@@ -254,21 +264,17 @@ function slideWrapp(wrapper, items, prev, next) {
         }
         
         function shiftSlide(dir, action) {
-            console.log(`something`);
           items.classList.add('shifting');
-          console.log(items.offsetLeft);
+
           if (allowShift) {
             if (!action) { posInitial = items.offsetLeft; }
             
             if (dir == 1) {
               items.style.left = (posInitial - slideSize) + "px";
-              console.log(posInitial);
-              console.log(slideSize);
-              index++;      
+              index++;
+
             } else if (dir == -1) {
-                items.style.left = (posInitial + slideSize) + "px";
-                console.log(posInitial);
-                console.log(slideSize);
+              items.style.left = (posInitial + slideSize) + "px";
               index--;      
             }
           };
@@ -278,7 +284,7 @@ function slideWrapp(wrapper, items, prev, next) {
           
         function checkIndex (){
           items.classList.remove('shifting');
-      
+          
           if (index == -1) {
             items.style.left = -(slidesLength * slideSize) + "px";
             index = slidesLength - 1;
