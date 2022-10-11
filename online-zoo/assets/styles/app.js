@@ -1,6 +1,6 @@
-alert(` Уважаемый проверяющий, к сожалению я не успел выполнить этот таск в полном объёме!
-Если тебя не затруднит - не проверяй мою работу до среды (вечера), либо не прячь свой ник, чтобы я смог связаться с тобой в Discord, когда доделаю!
-Заранее спасибо и успехов в учебе! `)
+// alert(` Уважаемый проверяющий, к сожалению я не успел выполнить этот таск в полном объёме!
+// Если тебя не затруднит - не проверяй мою работу до среды (вечера), либо не прячь свой ник, чтобы я смог связаться с тобой в Discord, когда доделаю!
+// Заранее спасибо и успехов в учебе! `)
 
 // const radio1000 = document.getElementById('three')
 // const radio100 = document.getElementById('six')
@@ -133,7 +133,6 @@ const shuffle = (arr) => {
 }
 
 const firstInitImages = (obj, countOfContainers, countOfImages,) => {
-    let result
         // create 3 pets container blocks
         for (let i = 0; i < countOfContainers; i++) {
             const petsContainer = document.createElement('div');
@@ -171,8 +170,6 @@ const firstInitImages = (obj, countOfContainers, countOfImages,) => {
         }
         sliderContainer.style.left = `-${document.querySelector('.pets__container').offsetWidth + 'px'}`
     }
-// firstInitImages(petsArray, 3, 6)
-
 const resolutionSelection = () => {
         if (window.innerWidth > 830) {
             firstInitImages(petsArray, 10, 6)
@@ -180,9 +177,7 @@ const resolutionSelection = () => {
             firstInitImages(petsArray, 10, 4)
         }
     }
-    
 resolutionSelection()
-
 function slideWrapp(wrapper, items, prev, next) {
     let posX1 = 0,
         posX2 = 0,
@@ -299,4 +294,183 @@ function slideWrapp(wrapper, items, prev, next) {
         }
       }
 
-      slideWrapp(outContainer, sliderContainer, roundButtonLeft, roundButtonRight);
+slideWrapp(outContainer, sliderContainer, roundButtonLeft, roundButtonRight);
+
+const testimonialsArray = [
+  {
+    name: 'Michael John',
+    local: 'Austria',
+    was: 'Yesterday',
+    text: `The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals. <br>
+    The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.  The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.`,
+    avatar: 'anon.png'
+  },
+  {
+    name: 'Oskar Samborsky',
+    local: 'France',
+    was: 'Yesterday',
+    text: `The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals. <br>
+    The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.  The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.`,
+    avatar: 'oskar.png'
+  },
+  {
+    name: 'Fredericka Michelin',
+    local: 'Austria',
+    was: 'Last week',
+    text: `The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals. <br>
+    The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.  The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.`,
+    avatar: 'frederica.png'
+  },
+  {
+    name: 'Mila Riksha',
+    local: 'Spain',
+    was: 'Last week',
+    text: `The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals. <br>
+    The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.  The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.`,
+    avatar: 'mila.png'
+  },
+  {
+    name: 'Jon Snow',
+    local: 'Westeros',
+    was: 'Last month',
+    text: `The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals. <br>
+    The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.  The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.`,
+    avatar: 'anon.png'
+  },
+  {
+    name: 'Ramsey Snow',
+    local: 'Westeros',
+    was: 'Yesterday',
+    text: `The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals. <br>
+    The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.  The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.`,
+    avatar: 'anon.png'
+  },
+  {
+    name: 'Tywin Lannister',
+    local: 'Westeros',
+    was: 'Today',
+    text: `The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals. <br>
+    The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.  The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.`,
+    avatar: 'anon.png'
+  },
+  {
+    name: 'Tyrion Lannister',
+    local: 'Westeros',
+    was: 'Today',
+    text: `The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals. <br>
+    The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.  The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.`,
+    avatar: 'anon.png'
+  },
+  {
+    name: 'Sansa Stark',
+    local: 'Westeros',
+    was: 'Today',
+    text: `The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals. <br>
+    The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.  The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.`,
+    avatar: 'anon.png'
+  },
+  {
+    name: 'Ariya Stark',
+    local: 'Westeros',
+    was: 'Today',
+    text: `The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals. <br>
+    The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.  The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.`,
+    avatar: 'anon.png'
+  },
+  {
+    name: 'Ned Stark',
+    local: 'Westeros',
+    was: 'Last year',
+    text: `The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals. <br>
+    The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.  The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.`,
+    avatar: 'anon.png'
+  },
+]
+
+const testimonialsContainer = document.querySelector('.testinonials__cards')
+
+const createTestimonials = () => {
+  testimonialsArray.forEach(el => {
+    const cardDiv = document.createElement('div')
+    cardDiv.classList.add(`card`)
+    
+    const userInfoDiv = document.createElement('div')
+    userInfoDiv.classList.add(`user__info`)
+
+    const userAvatar = document.createElement('img')
+    userAvatar.setAttribute('src', `${path}${el.avatar}`)
+    userAvatar.setAttribute('alt', `avatar`)
+
+    const nameDiv = document.createElement('div')
+    nameDiv.classList.add(`name`)
+
+    const name = document.createElement('h5')
+    name.innerText = `${el.name}`
+
+    const localContainer = document.createElement('p')
+    localContainer.classList.add(`local`)
+
+    const local = document.createElement('span')
+    local.innerText = `Local ${el.local}`
+
+    const was = document.createElement('span')
+    was.innerText = `${el.was}`
+
+    localContainer.append(local, was)
+    nameDiv.append(name, localContainer)
+
+    userInfoDiv.append(userAvatar, nameDiv)
+
+    const textContainer = document.createElement('div')
+    textContainer.classList.add('text')
+
+    const text = document.createElement('p')
+    text.innerText = `${el.text}`
+
+    textContainer.append(text)
+
+    cardDiv.append(userInfoDiv, textContainer)
+    testimonialsContainer.append(cardDiv)
+  })
+  
+}
+createTestimonials()
+
+const rangeInput = document.querySelector('.input-range')
+const card = document.querySelector('.card')
+
+if (window.innerWidth < 1350) {
+  // testimonialsContainer.style.left = '110px'
+  rangeInput.max = 8
+}
+
+rangeInput.addEventListener('input', () => {
+  // if (window.innerWidth > 1350) {
+    testimonialsContainer.classList.add('shifting')
+    testimonialsContainer.style.left = `-${rangeInput.value * (card.offsetWidth + 30)}px`
+  // } else {
+
+  // }
+}
+)
+
+const allCards = document.querySelectorAll('.card')
+console.log(allCards);
+
+allCards.forEach(el => {
+  el.addEventListener('click', (e) => {
+    let modalTest = document.querySelector('.testimon__modal')
+    let clone = e.target.cloneNode(true)
+    modalTest.appendChild(clone)
+    modalTest.classList.toggle('show')
+    window.onclick = function(e) {
+      if (e.target == modalTest || e.target == document.getElementById('close_modal')) {
+          modalTest.classList.toggle('show')
+          modalTest.removeChild(modalTest.lastChild)
+        } 
+  }
+  })
+})
+
+// .shifting
+    // transition: left $transition-time ease-out
