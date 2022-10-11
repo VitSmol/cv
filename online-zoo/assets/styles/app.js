@@ -1,26 +1,3 @@
-// alert(` Уважаемый проверяющий, к сожалению я не успел выполнить этот таск в полном объёме!
-// Если тебя не затруднит - не проверяй мою работу до среды (вечера), либо не прячь свой ник, чтобы я смог связаться с тобой в Discord, когда доделаю!
-// Заранее спасибо и успехов в учебе! `)
-
-// const radio1000 = document.getElementById('three')
-// const radio100 = document.getElementById('six')
-
-// const checkResolution = () => {
-//     if (window.outerWidth <= 740) {
-//         radio100.setAttribute('checked', 'true')
-//         radio1000.removeAttribute('checked')
-//     } else {
-//         const radio1000 = document.getElementById('three')
-//         radio100.removeAttribute('checked')
-//         radio1000.setAttribute('checked', 'true')
-//     }
-// }
-
-// checkResolution()
-// window.onresize = () => {
-//     checkResolution()
-// }
-
 const burger = document.querySelector('.burger__menu')
 const modal = document.querySelector('.modal__active')
 const menu = document.getElementById('menu')
@@ -37,12 +14,6 @@ burger.addEventListener('click', ()=> {
 })
 close.addEventListener('click', ()=> {
     showMenu()
-})
-
-burger.addEventListener(`click`, ()=> {
-    console.log(`burger`);
-    console.log(modal);
-    console.log(menu);
 })
 
 window.onclick = function(e) {
@@ -445,17 +416,12 @@ if (window.innerWidth < 1350) {
 }
 
 rangeInput.addEventListener('input', () => {
-  // if (window.innerWidth > 1350) {
     testimonialsContainer.classList.add('shifting')
     testimonialsContainer.style.left = `-${rangeInput.value * (card.offsetWidth + 30)}px`
-  // } else {
-
-  // }
 }
 )
 
 const allCards = document.querySelectorAll('.card')
-console.log(allCards);
 
 allCards.forEach(el => {
   el.addEventListener('click', (e) => {

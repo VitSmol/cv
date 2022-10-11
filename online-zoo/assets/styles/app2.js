@@ -23,18 +23,12 @@ function findNum(e) {
             el.checked = false
         } 
         if (num.value == el.value) {
-            // allRadio.forEach(el => el.removeAttribute('checked'))
             el.checked = true
         }
-        console.log(el.value);
     })
 }
 
-let tempArr = [...allRadio]
-console.log(tempArr);
-
 findNum = debounce(findNum, 500)
-
 
 num.addEventListener('input', findNum)
 
