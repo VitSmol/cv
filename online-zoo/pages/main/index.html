@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="../../assets/styles/normalize.css">
     <link rel="stylesheet" href="../../assets/styles/style.css">
     <link rel="stylesheet" href="../../assets/styles/media.css">
+    <link rel="stylesheet" href="../../assets/styles/carousel.css">
     <script src="../../assets/styles/app.js" defer></script>
+    <script src="../../assets/styles/slider.js" defer></script>
     <title>Petstory</title>
 </head>
 <body>
@@ -87,7 +89,7 @@
             </div>
             <img src="../../assets/images/flower_foto1.png" alt="flower_foto">
         </section>
-        <section class="pets__wrapper">
+        <!-- <section class="pets__wrapper">
             <div class="slider__wrapper">
                 <div class="outer__container">
                     <div class="slider">
@@ -105,62 +107,107 @@
                     </span>
             </button>
             </div>
-            <!-- <div class="pets__container">
-                <div class="pet">
-                    <img src="../../assets/images/pandas.png" alt="pandas">
-                    <div class="pet__content">
-                        <h5>giant Pandas</h5>
-                        <p>Native to Southwest China</p>
-                        <img src="../../assets/images/banana.png" alt="banana" class="img__icon icon__banana">
-                    </div>
-                </div>
-                <div class="pet">
-                    <img src="../../assets/images/eagles.png" alt="eagles">
-                    <div class="pet__content">
-                        <h5>Eagles</h5>
-                        <p>Native to South America</p>
-                        <img src="../../assets/images/meet-fish_icon.png" alt="meet" class="img__icon icon__meet">
-                    </div>
-                </div>
-                <div class="pet">
-                    <img src="../../assets/images/gorillas.png" alt="gorillas">
-                    <div class="pet__content">
-                        <h5>Gorillas</h5>
-                        <p>Native to Congo</p>
-                        <img src="../../assets/images/banana.png" alt="banana" class="img__icon icon__banana">    
-                    </div>
-                </div>
-                <div class="pet">
-                    <img src="../../assets/images/sloth.png" alt="sloth">
-                    <div class="pet__content">
-                        <h5>Two-toed Sloth</h5>
-                        <p>Mesoamerica, South America</p>
-                        <img src="../../assets/images/banana.png" alt="banana" class="img__icon icon__banana">
-                    </div>
-                </div>
-                <div class="pet">
-                    <img src="../../assets/images/cheetahs.png" alt="cheetahs">
-                    <div class="pet__content">
-                        <h5>cheetahs</h5>
-                        <p>Native to Africa</p>
-                        <img src="../../assets/images/meet-fish_icon.png" alt="meet" class="img__icon icon__meet">
-                    </div>
-                </div>
-                <div class="pet">
-                    <img src="../../assets/images/penguins.png" alt="penguins">
-                    <div class="pet__content">
-                        <h5>Penguins</h5>
-                        <p>Native to Antarctica</p>
-                        <img src="../../assets/images/meet-fish_icon.png" alt="banana" class="img__icon icon__meet">   
-                    </div>
-                </div>
-                
-            </div> -->
+            
             
             <img src="../../assets/images/left-flower.png" alt="left image" class="left-flower">
             <img src="../../assets/images/right-flower.png" alt="right image" class="right-flower">
             <button type="button" class="pets__btn btn-primary">choose your favorite</button>
+        </section> -->
+
+        <section class="pets__wrapper">
+        <section class="pets-section">
+            <div class="pets-section__container wrapper">
+              <button class="arrow-left__btn">
+                <img src="../../assets/icons/arrow-left.svg" alt="">
+              </button>
+              <div class="pets-carousel">
+                <div class="carousel__container">
+                  <div class="pet-card__container active-card">
+                    <div class="pet__container">
+                      <div class="pet-block">
+                        <img src="../../assets/imgs/pets_imgs/panda.jpg" alt="Pandas playing" class="pet-img">
+                        <div class="pet-description__container">
+                          <div class="pet-text__container">
+                            <h5>giant pandas</h6>
+                            <p class="pet-p">Native to Southwest China</p>
+                          </div>
+                          <img src="../../assets/icons/banana_icon.svg" alt="Banana food" class="pet-food__icon">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="pet__container">
+                      <div class="pet-block">
+                        <img src="../../assets/imgs/pets_imgs/eagle.jpg" alt="Pandas playing" class="pet-img">
+                        <div class="pet-description__container">
+                          <div class="pet-text__container">
+                            <h5>Eagles</h6>
+                            <p class="pet-p">Native to South America</p>
+                          </div>
+                          <img src="../../assets/icons/meet-fish_icon.svg" alt="Banana food" class="pet-food__icon pet-food__icon__meet">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="pet__container">
+                      <div class="pet-block">
+                        <img src="../../assets/imgs/pets_imgs/gorilla.jpg" alt="Pandas playing" class="pet-img">
+                        <div class="pet-description__container">
+                          <div class="pet-text__container">
+                            <h5>Gorillas</h6>
+                            <p class="pet-p">Native to Congo</p>
+                          </div>
+                          <img src="../../assets/icons/banana_icon.svg" alt="Banana food" class="pet-food__icon">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="pet__container">
+                      <div class="pet-block">
+                        <img src="../../assets/imgs/pets_imgs/two-toed-sloth.jpg" alt="Pandas playing" class="pet-img">
+                        <div class="pet-description__container">
+                          <div class="pet-text__container">
+                            <h5>Two-toed Sloth</h6>
+                            <p class="pet-p">Mesoamerica, South America</p>
+                          </div>
+                          <img src="../../assets/icons/banana_icon.svg" alt="Banana food" class="pet-food__icon">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="pet__container">
+                      <div class="pet-block">
+                        <img src="../../assets/imgs/pets_imgs/cheetahs.jpg" alt="Pandas playing" class="pet-img">
+                        <div class="pet-description__container">
+                          <div class="pet-text__container">
+                            <h5>cheetahs</h6>
+                            <p class="pet-p">Native to Africa</p>
+                          </div>
+                          <img src="../../assets/icons/meet-fish_icon.svg" alt="Banana food" class="pet-food__icon pet-food__icon__meet">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="pet__container">
+                      <div class="pet-block">
+                        <img src="../../assets/imgs/pets_imgs/penguin.jpg" alt="Pandas playing" class="pet-img">
+                        <div class="pet-description__container">
+                          <div class="pet-text__container">
+                            <h5>Penguins</h6>
+                            <p class="pet-p">Native to Antarctica</p>
+                          </div>
+                          <img src="../../assets/icons/meet-fish_icon.svg" alt="Banana food" class="pet-food__icon pet-food__icon__meet">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button class="arrow-right__btn">
+                  <img src="../../assets/icons/arrow-right.svg" alt="">
+              </button>
+            </div>
+            <button class="btn pets__btn">choose your favorite</button>
+          </section>
         </section>
+
+
+
         <section class="pick__wrapper">
             <div class="pick__container">
                 <h2>Pick and feed a friend</h2>
