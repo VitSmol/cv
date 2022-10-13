@@ -4,6 +4,34 @@ const allRadio = document.getElementsByName('amount')
 const num = document.getElementById('num')
 console.dir(allRadio);
 
+const burger = document.querySelector('.burger__menu')
+const modal = document.querySelector('.modal__active')
+const menu = document.getElementById('menu')
+const close = document.getElementById('close')
+const links = document.querySelectorAll('.header__nav__item')
+
+function showMenu() {
+    modal.classList.toggle('show')
+    menu.classList.toggle('show')
+}
+
+burger.addEventListener('click', ()=> {
+    showMenu()
+})
+close.addEventListener('click', ()=> {
+    showMenu()
+})
+
+
+window.onclick = function(e) {
+    if (e.target == modal) {
+        showMenu()
+    } 
+}
+links.forEach(el => {
+    el.addEventListener(`click`, showMenu)
+})
+
 const debounce = (fn, ms) => {
     let timeout;
     return function() {
