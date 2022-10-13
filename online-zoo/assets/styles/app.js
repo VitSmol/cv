@@ -466,5 +466,7 @@ allCards.forEach(el => {
   })
 })
 
+
+
 // .shifting
     // transition: left $transition-time ease-out
