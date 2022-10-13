@@ -23,6 +23,9 @@
         height: 391px
         @media screen and ( max-width: 1210px )
             width: 940px
+        @media screen and ( max-width: 980px )
+            width: 640px
+            padding-left: 20px
 
     .testimonials__container
         @extend %flex-container
@@ -232,7 +235,8 @@
     overflow: hidden
     &:hover
         cursor: pointer
-
+    @media screen and ( max-width: 980px )
+        display: none
 
 .input-range::-webkit-slider-runnable-track 
     width: 599px
