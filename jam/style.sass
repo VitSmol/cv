@@ -1,0 +1,50 @@
+*
+    box-sizing: border-box
+    font-family: cursive
+    padding: 0
+    margin: 0
+
+.page
+    display: flex
+    flex-direction: column
+    align-self: center
+    margin: 0 auto
+    max-width: 700px
+    align-items: center
+    border: 2px solid rgb(255 0 0)
+    user-select: none
+    padding: 2rem
+
+.buttons__container
+    display: flex
+    width: 80%
+    justify-content: space-around
+    button
+        cursor: pointer
+
+.fifteen
+    width: 100%
+    padding-bottom: 100%
+    position: relative
+    background-color: #e5d6f6
+    margin-bottom: 1.5rem
+    .item
+        position: absolute
+        left: 0
+        top: 0
+        width: 25%
+        height: 25%
+        border: none
+        background-color: #000
+        color: white
+        font-size: 2rem
+        cursor: pointer
+        &-val
+            display: flex
+            justify-content: center
+            align-items: center
+            width: 84%
+            height: 84%
+            margin: 8%
+            box-shadow: inset 0 0 0 2px #922ec5
+
