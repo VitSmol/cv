@@ -1,4 +1,9 @@
-export const arr = new Array(16).fill(0).map((el, ind) => el = ind + 1)
+export let k = 4
+const createArray = (k) => {
+    return new Array(k*k).fill(0).map((el, ind) => el = ind + 1)
+}
+export const arr = createArray(k)
+// export const arr = new Array(16).fill(0).map((el, ind) => el = ind + 1)
 export const buttonsName = [`Shuffle and start`, `Stop`, `Save`, `Results`]
 // Shuffle Array
 export const shuffle = (array) => {
@@ -85,7 +90,7 @@ export const createMarkup = (arr) => {
 }
 
 //! создаем игровое поле
-export const createField = (arr) => {
+export const createField = (arr, k) => {
     const fifteen = document.createElement(`div`);
     const insert = document.querySelector(`.page`)
     fifteen.classList.add(`fifteen`)
@@ -96,11 +101,16 @@ export const createField = (arr) => {
         btn.setAttribute(`data-matrix-id`, `${el}`);
         span.classList.add(`item-val`)
         btn.classList.add(`item`);
+        btn.style.width = `${100 / k}%`
+        btn.style.height = `${100 / k}%`
         span.innerText = el
         btn.append(span)
         fifteen.append(btn)
     });
     insert.lastElementChild.before(fifteen)
 }
-
-
+export const destroyField = (field) => {
+    while (field.firstChild) {
+        field.removeChild(field.firstChild)
+    }
+}
