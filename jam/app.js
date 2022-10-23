@@ -1,5 +1,5 @@
 export let k = 4
-const createArray = (k) => {
+export const createArray = (k) => {
     return new Array(k*k).fill(0).map((el, ind) => el = ind + 1)
 }
 export const arr = createArray(k)
@@ -66,10 +66,16 @@ export const createFrameContainer = (appendTo) => {
     selectSizeParagraph.innerText = `Other sizes: `
     
     let availableSize = document.createElement(`div`);
+    availableSize.classList.add(`links__container`)
     for (let i = 0; i < 6; i++) {
         let link = document.createElement(`a`);
         link.setAttribute(`href`, `#`)
         link.innerText = ` ${ i + 3 }x${ i + 3 } `;
+        link.setAttribute(`data-matrix-id`, i + 3)
+        link.classList.add(`size__link`)
+        if (i + 3 === 4) {
+            link.classList.add(`active`)
+        }
         availableSize.append(link)
     }
     selectSizeParagraph.append(availableSize)
@@ -110,7 +116,5 @@ export const createField = (arr, k) => {
     insert.lastElementChild.before(fifteen)
 }
 export const destroyField = (field) => {
-    while (field.firstChild) {
-        field.removeChild(field.firstChild)
-    }
+    field.remove()
 }
