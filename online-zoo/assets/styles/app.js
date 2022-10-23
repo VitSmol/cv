@@ -465,7 +465,6 @@ allCards.forEach(el => {
   }
   })
 })
-let array
 
 
 
