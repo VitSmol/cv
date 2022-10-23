@@ -14,20 +14,54 @@ app.createField(array, currentSize)
 let containerNode = document.querySelector(`.fifteen`);
 //находим все кнопки и делаем из них массив
 let itemNodes = Array.from(containerNode.querySelectorAll(`.item`))
+let startTime = false
+let minute = document.querySelector(`.min`)
+let seconds = document.querySelector(`.sec`)
+let minVal = 0
+let secVal = 0
 
 
-// TODO эксперимент с функцией
-// TODO при переходе на другой размер - работает сдвиг по клику, но не по кнопкам.
-// TODO попробовать запихнуть весь код кроме линков в функцию 
-// todo и вызывать её при клике на каждую кнопку
+let interval;
+
+
 
 function createAll(containerNode, itemNodes) {
 
+    function startTimer() {
+        secVal++
+        if (secVal < 9) {
+            seconds.innerText = `0${secVal}`
+        }
+        if (secVal > 9) {
+            seconds.innerText = secVal
+        }
+        if (secVal > 59) {
+            minVal++;
+            minute.innerText = `0${minVal}`
+            secVal = 0
+            seconds.innerText = `0${secVal}`
+        }
+        console.log(minVal);
+        console.log(secVal);
+    }
+    function start() {
+        clearInterval(interval);
+        interval = (setInterval(startTimer, 1000))
+    }
+// создаем счетчик
+let countSpan = document.querySelector(`.moves`);
+
+let count = 0;
+countSpan.innerHTML = `Moves: ${count}`
+
 function startShuffle() {
+    count = 0;
+    countSpan.innerHTML = `Moves: ${count}`
     const flatMatrix = matrix.flat();
     const shuffledArr = shuffle(flatMatrix)
     matrix = getMatrix(shuffledArr, currentSize);
     setPositionItems(matrix, itemNodes)
+    resetValues()
 }
 //! 1. Position
 itemNodes[numberOfElements - 1].style.display = `none`;
@@ -99,6 +133,10 @@ function changePosition(e) {
 }
 
 containerNode.addEventListener(`click`, (e) => {
+    if (!startTime) {
+        start()
+        startTime = true
+    }
     const buttonNode = e.target.closest('button');
     if (!buttonNode) {
         return
@@ -111,8 +149,11 @@ containerNode.addEventListener(`click`, (e) => {
     // Проверка валидности для перемещения
     const isValid = isValidForSwap(buttonCoords, blankCoords);
     if (isValid) {
+        sound()
         swap(blankCoords, buttonCoords, matrix);
         setPositionItems(matrix, itemNodes)
+        count++
+        countSpan.innerHTML = `Moves: ${count}`
     }
     // console.log(isValid);
 })
@@ -147,6 +188,10 @@ function swap(coords1, coords2, matrix) {
 
 //! 4. change position by keyUP
 window.addEventListener(`keydown`, (e) => {
+    if (!startTime) {
+        start()
+        startTime = true
+    }
     if (!e.key.includes(`Arrow`)) {
         return
     }
@@ -172,14 +217,17 @@ window.addEventListener(`keydown`, (e) => {
         case `right`:
             buttonCoords.x -=1
             break;
-    
     }
 
     if (buttonCoords.y >= maxIndexMatrix || buttonCoords.y < 0 || buttonCoords.x >= maxIndexMatrix || buttonCoords.x < 0) {
         return
     }
+
     swap(blankCoords, buttonCoords, matrix);
     setPositionItems(matrix, itemNodes)
+    count++
+    countSpan.innerHTML = `Moves: ${count}`
+    sound()
     // console.log(direction);
 })
 
@@ -201,11 +249,30 @@ function isWon(matrix, array) {
 const wonClass = `fifteen`
 function addWonClass() {
     setTimeout(() => {
+        let result = 'Movies:' + count + '; Time:' + minVal + ' minute ' + secVal + ' seconds'  
+        console.log(result);
+        resetValues()
+        
         alert(`won`)
     }, 200);
 }
-//* Helpers:
+    function resetValues() {
+        clearInterval(interval);
+        count = 0
+        minVal = 0
+        secVal = 0;
+        countSpan.innerHTML = `Moves: ${count}`
+        minute.innerHTML = `00`
+        seconds.innerHTML = `00`
+        startTime = false
+    }
 
+    function sound() {
+        let audio = new Audio();
+        audio.src = `sound.mp3`;
+        audio.autoplay = true
+    }
+    // sound()
 }
 
 createAll(containerNode, itemNodes)
@@ -231,58 +298,12 @@ links.forEach(el => {
         app.destroyField(container)
         // создаем новый массив с новым размером
         array = app.createArray(currentSize)
-        // // на его основе снова создаем поле
+        // на его основе снова создаем поле
         app.createField(array, currentSize)
-        // // находим поле и кнопки заново
         let containerNode = document.querySelector(`.fifteen`);
-        // console.log(containerNode);
         let itemNodes = Array.from(containerNode.querySelectorAll(`.item`))
-        // console.log(itemNodes);
-        // itemNodes[numberOfElements - 1].style.display = `none`;
-
-
+        
         createAll(containerNode, itemNodes)
-        console.log();
-        // let matrix = getMatrix(
-        //     itemNodes.map(el => Number(el.dataset.matrixId)), 
-        //     currentSize
-        //     );
-        // // startShuffle()
-        // setPositionItems(matrix, itemNodes)
-        // startShuffle()
-        // function startShuffle() {
-        //     const flatMatrix = matrix.flat();
-        //     const shuffledArr = shuffle(flatMatrix)
-        //     matrix = getMatrix(shuffledArr, currentSize);
-        //     setPositionItems(matrix, itemNodes)
-        // }
-        // const blankNumber = numberOfElements
-
-        // containerNode.addEventListener(`click`, (e) => {
-        //     const buttonNode = e.target.closest('button');
-        //     if (!buttonNode) {
-        //         return
-        //     }
-        //     const buttonNumber = Number(buttonNode.dataset.matrixId)
-        //     // находим координаты кнопки, по которой совершается клик
-        //     const buttonCoords = findCoordsByNumber(buttonNumber, matrix)
-        //     // находим координаты пустого элемента
-        //     const blankCoords = findCoordsByNumber(blankNumber, matrix)
-        //     // Проверка валидности для перемещения
-        //     const isValid = isValidForSwap(buttonCoords, blankCoords);
-        //     if (isValid) {
-        //         swap(blankCoords, buttonCoords, matrix);
-        //         setPositionItems(matrix, itemNodes)
-        //     }
-        //     // console.log(isValid);
-        // })
-
-    })
+      })
 })
 
-
-
-
-// createMatrix(5)
-// const newArr = new Array(3).fill([])
-// console.log(newArr);

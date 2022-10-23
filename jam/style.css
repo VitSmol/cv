@@ -61,7 +61,7 @@
   position: relative;
   background: linear-gradient(282deg, rgb(207, 199, 199), rgb(187, 187, 187) 90.71%), linear-gradient(338deg, rgba(128, 131, 128, 0), rgb(191, 191, 191) 70.71%);
   margin-bottom: 1.5rem;
-  border-radius: 10%;
+  border-radius: 10px;
 }
 .fifteen .item {
   position: absolute;

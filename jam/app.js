@@ -40,8 +40,15 @@ export const createGameInfo = (appendTo) => {
     moves.innerText = `Moves: 0`
 
     let time = document.createElement(`span`);
-    moves.classList.add(`time`)
-    time.innerText = `Time: 00:00`
+    let min = document.createElement(`span`);
+    let sec = document.createElement(`span`);
+    min.innerText = `00`
+    min.classList.add(`min`)
+    sec.innerText = `00`
+    sec.classList.add(`sec`)
+    time.classList.add(`time`)
+    // time.innerHTML = `Time: ${min.innerText}:${sec.innerText}`
+    time.append(`Game time: `, min, `:`, sec)
     gameInfo.append(moves, time)
     appendTo.append(gameInfo)
 }
