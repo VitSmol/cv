@@ -28,6 +28,25 @@ export const createButtonContainer = (arr, appendTo) => {
         btn.innerText = val
         buttonContainer.append(btn)
     }
+
+    let checkboxContainer = document.createElement(`div`);
+    checkboxContainer.classList.add(`checkbox-container`)
+
+    let checkboxGroup = document.createElement(`div`);
+    checkboxGroup.classList.add(`checkbox-group`)
+
+    let input = document.createElement(`input`);
+    input.setAttribute(`type`, `checkbox`)
+    input.setAttribute(`id`, `checkbox`)
+    input.classList.add(`checkbox`)
+    
+    let label = document.createElement(`label`);
+    label.setAttribute(`for`, `checkbox`)
+    label.classList.add(`checkbox-label`)
+    checkboxGroup.append(input, label)
+    checkboxContainer.append(checkboxGroup)
+    buttonContainer.append(checkboxContainer)
+
     appendTo.append(buttonContainer)
 }
 // Создаем блок информации об игре
@@ -95,6 +114,12 @@ export const createFrameContainer = (appendTo) => {
 export const createMarkup = (arr) => {
     const page = document.createElement(`div`)
     page.classList.add(`page`)
+    const modal = document.createElement(`div`);
+    modal.classList.add(`modal`)
+    const modalContent = document.createElement(`div`);
+    modalContent.classList.add(`modal__content`)
+    modal.append(modalContent)
+    page.append(modal)
     createHeader(page) //
     createButtonContainer(buttonsName, page)
     createGameInfo(page)

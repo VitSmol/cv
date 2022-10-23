@@ -26,6 +26,21 @@ let interval;
 
 
 function createAll(containerNode, itemNodes) {
+let resultBtn = document.querySelector("body > div > div.buttons__container > button:nth-child(4)")
+let stopBtn = document.querySelector("body > div > div.buttons__container > button:nth-child(2)");
+
+stopBtn.addEventListener(`click`, ()=> {
+    resetValues()
+    startShuffle()
+})
+
+let soundOn = false
+const inputElement = document.getElementById(`checkbox`)
+
+inputElement.addEventListener(`click`, function() {
+    this.checked ? soundOn = true : soundOn = false
+    console.log(soundOn);
+})
 
     function startTimer() {
         secVal++
@@ -41,8 +56,6 @@ function createAll(containerNode, itemNodes) {
             secVal = 0
             seconds.innerText = `0${secVal}`
         }
-        console.log(minVal);
-        console.log(secVal);
     }
     function start() {
         clearInterval(interval);
@@ -149,7 +162,9 @@ containerNode.addEventListener(`click`, (e) => {
     // Проверка валидности для перемещения
     const isValid = isValidForSwap(buttonCoords, blankCoords);
     if (isValid) {
-        sound()
+        if (soundOn) {
+            sound()
+        }
         swap(blankCoords, buttonCoords, matrix);
         setPositionItems(matrix, itemNodes)
         count++
@@ -188,7 +203,7 @@ function swap(coords1, coords2, matrix) {
 
 //! 4. change position by keyUP
 window.addEventListener(`keydown`, (e) => {
-    if (!startTime) {
+    if (!startTime && e.key !== `Escape`) {
         start()
         startTime = true
     }
@@ -201,7 +216,7 @@ window.addEventListener(`keydown`, (e) => {
         y: blankCoords.y
 
     }
-    const direction = event.key.split(`Arrow`)[1].toLowerCase();
+    const direction = e.key.split(`Arrow`)[1].toLowerCase();
     const maxIndexMatrix = matrix.length;
 
     switch (direction) {
@@ -227,7 +242,9 @@ window.addEventListener(`keydown`, (e) => {
     setPositionItems(matrix, itemNodes)
     count++
     countSpan.innerHTML = `Moves: ${count}`
-    sound()
+    if (soundOn) {
+        sound()
+    }
     // console.log(direction);
 })
 
@@ -245,15 +262,15 @@ function isWon(matrix, array) {
     console.log(`won`);
     return true
 }    
-
-const wonClass = `fifteen`
 function addWonClass() {
     setTimeout(() => {
         let result = 'Movies:' + count + '; Time:' + minVal + ' minute ' + secVal + ' seconds'  
-        console.log(result);
+        // console.log(result);
         resetValues()
-        
+        addWonModal(result)
         alert(`won`)
+        startShuffle()
+        clearInterval(interval);
     }, 200);
 }
     function resetValues() {
@@ -273,6 +290,23 @@ function addWonClass() {
         audio.autoplay = true
     }
     // sound()
+    function addWonModal(result) {
+        const modal = document.querySelector(`.modal`)
+        modal.classList.add(`modal__active`)
+        const modalContent = document.querySelector(`.modal__content`)
+        modalContent.classList.add(`active`)
+        window.addEventListener(`keydown`, (e)=> {
+            if (e.key === `Escape`) {
+                modal.classList.remove(`modal__active`)
+                modalContent.classList.remove(`active`)
+            }
+        })
+        modalContent.innerHTML = result
+    }
+
+    resultBtn.addEventListener(`click`, ()=> {
+        addWonModal()
+    })
 }
 
 createAll(containerNode, itemNodes)

@@ -18,7 +18,7 @@
       -ms-user-select: none;
           user-select: none;
   padding: 2rem;
-  padding-top: 0;
+  padding-top: 20px;
 }
 .page h1 {
   margin: 1.5vw 0;
@@ -106,4 +106,137 @@
 
 .size__link.active {
   color: red;
+}
+
+.checkbox-container {
+  position: absolute;
+  left: calc(50% - 43px);
+  top: 10px;
+}
+.checkbox-container::before {
+  content: "Sound off";
+  position: absolute;
+  left: -120px;
+  z-index: 200;
+  top: 5px;
+  color: #201f1b;
+}
+.checkbox-container::after {
+  content: "Sound On";
+  position: absolute;
+  right: -200px;
+  z-index: 200;
+  top: 5px;
+  color: #201f1b;
+}
+
+.checkbox {
+  visibility: hidden;
+}
+
+.checkbox-group {
+  position: absolute;
+  z-index: 50;
+  width: 86px;
+  height: 30px;
+  background-color: #333;
+  border-radius: 50px;
+  box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
+}
+.checkbox-group::after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  left: 14px;
+  height: 2px;
+  width: 58px;
+  background-color: #111;
+  border-radius: 50px;
+  box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
+}
+
+.checkbox-label {
+  cursor: pointer;
+  transition: all 0.4s ease;
+  position: absolute;
+  display: block;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #fff;
+  top: 4px;
+  left: 4px;
+  z-index: 1;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(to bottom, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+}
+.checkbox-label::after {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #333;
+  box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
+}
+
+.checkbox:checked + .checkbox-label {
+  left: 54px;
+}
+
+.checkbox:checked + .checkbox-label:after {
+  background: #27ae60;
+}
+
+.checkbox:checked main {
+  color: black;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1050;
+  opacity: 0;
+  transition: opacity 400ms ease-i;
+  pointer-events: none;
+  margin: 0;
+  padding: 0;
+}
+
+.modal__active {
+  opacity: 1;
+  pointer-events: auto;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 400ms ease-i;
+}
+
+.modal__content {
+  transform: translateX(-150%);
+  width: 500px;
+  height: 500px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  transition-delay: 0.6s;
+  background-color: #fff;
+  transition: all 0.6s;
+  margin-top: 10%;
+}
+
+.modal__content.active {
+  transition-delay: 0.5s;
+  transform: translateX(0%);
+  transition: all 0.6s;
 }/*# sourceMappingURL=style.css.map */
