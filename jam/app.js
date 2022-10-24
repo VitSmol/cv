@@ -4,7 +4,7 @@ export const createArray = (k) => {
 }
 export const arr = createArray(k)
 // export const arr = new Array(16).fill(0).map((el, ind) => el = ind + 1)
-export const buttonsName = [`Shuffle and start`, `Stop`, `Save`, `Results`]
+export const buttonsName = [`Shuffle`, `Stop`, `Results`]
 // Shuffle Array
 export const shuffle = (array) => {
     let arr = [...array]
@@ -66,7 +66,6 @@ export const createGameInfo = (appendTo) => {
     sec.innerText = `00`
     sec.classList.add(`sec`)
     time.classList.add(`time`)
-    // time.innerHTML = `Time: ${min.innerText}:${sec.innerText}`
     time.append(`Game time: `, min, `:`, sec)
     gameInfo.append(moves, time)
     appendTo.append(gameInfo)
@@ -118,6 +117,18 @@ export const createMarkup = (arr) => {
     modal.classList.add(`modal`)
     const modalContent = document.createElement(`div`);
     modalContent.classList.add(`modal__content`)
+
+    let closeBtn = document.createElement(`button`);
+    closeBtn.classList.add(`m-menu`);
+    let span1 = document.createElement(`span`)
+    // let span2 = document.createElement(`span`)
+    let span3 = document.createElement(`span`)
+    span1.classList.add(`line`, `first__line`)
+    // span2.classList.add(`line`, `second__line`)
+    span3.classList.add(`line`, `last__line`)
+
+    closeBtn.append(span1, span3)
+    modalContent.append(closeBtn)
     modal.append(modalContent)
     page.append(modal)
     createHeader(page) //
@@ -137,6 +148,7 @@ export const createField = (arr, k) => {
         const span = document.createElement(`span`)
         btn.setAttribute(`type`, `button`);
         btn.setAttribute(`data-matrix-id`, `${el}`);
+        btn.draggable = true
         span.classList.add(`item-val`)
         btn.classList.add(`item`);
         btn.style.width = `${100 / k}%`
