@@ -2,7 +2,7 @@ alert(`
 Привет!
 Расскажу кратко про работу приложения:
 
-1. Пятнахи можно двигать по клику, при помощи стрелок на клавиатуре (не NumPad) так и перетаскиванием.
+1. Пятнахи можно двигать по клику, при помощи стрелок на клавиатуре (не NumPad) и перетаскиванием (коряво, но всё же работает).
 2. Чтобы игра началась - необходимо кликнуть по полю или нажать любую клавишу или перетащить эл-нт.
 тогда пойдет счёт времени.
 3. При выйгрыше появляется модалка, в которой предлагается ввести Твое имя и сохранить результат.
@@ -14,6 +14,7 @@ alert(`
 7. при нажатии на stop - сбрасываются счётчики времени/ходов но массив не перемешивается (не знаю зачем я так сделал, но в ТЗ про эту кнопку ничего не написано)
 8. с кнопками звука думаю всё и так понятно.
 
+Из не реализованного: сохранение игры. Я работаю над этим, поэтому если не сложно, пожалуйста не выставляй оценку до вечера среды. К этому времени постараюсь закончить.
 Спасибо! И успехов в обучении! 
 `)
 
@@ -41,7 +42,8 @@ let interval;
 function createAll(containerNode, itemNodes) {
     const modalContent = document.querySelector(`.modal__content`)
     const modal = document.querySelector(`.modal`)
-    const closeBtn = document.querySelector(`.m-menu`)
+    const closeBtn = document.querySelector(`.m-menu`);
+    const saveBtn = document.querySelector("body > div > div.buttons__container > button:nth-child(4)")
     let resultBtn = document.querySelector("body > div > div.buttons__container > button:nth-child(3)")
     let stopBtn = document.querySelector("body > div > div.buttons__container > button:nth-child(2)");
     let soundOn = false
@@ -145,6 +147,9 @@ let shuffleBtn = document.querySelector("body > div > div.buttons__container > b
 shuffleBtn.addEventListener(`click`, startShuffle)
 
 function shuffle(arr) {
+    // if (localStorage.getItem(`saveGame`)) {
+    //     return JSON.parse(localStorage.getItem(`saveGame`)).flat()
+    // } 
     return arr
     .map(value => ({value, sort : Math.random() }))
     .sort((a,b) => a.sort - b.sort)
@@ -442,6 +447,10 @@ function addWonClass() {
         modal.classList.remove(`modal__active`)
         modalContent.classList.remove(`active`)
     })
+    // saveBtn.addEventListener(`click`, ()=> {
+    //     alert(`You game is saved`)
+    //     localStorage.setItem(`saveGame`, JSON.stringify(matrix))
+    // })
 
 }
 
