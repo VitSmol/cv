@@ -1,22 +1,21 @@
-// alert(`
-// Привет!
-// Расскажу кратко про работу приложения:
-// Реализован весь функционал (кроме drag and drop)
-// 1. Шашки можно двигать как и по клику так и при помощи стрелок на клавиатуре.
-// 2. При выйгрыше появляется модалка, в которой предлагается ввести Твое имя и сохранить результат.
-// 3. Если нажать escape или кнопку закрытия модалки - результат не сохраняется.
-// 4. реализованы размеры поля от 3х3 до 8х8
-// 5. Дизайн отзывчивый, но со стилями я не заморачивался, в ТЗ это не описано.
-// 6. Чтобы игра началась - необходимо кликнуть по полю или нажать любую клавишу
-// тогда пойдет счёт времени.
-// 6. При нажатии на кнопку shuffle происходит перемешивание элементов и сброс счётчиков
-// т.е. игра начинается заново.
-// 7. при нажатии на stop - сбрасываются счётчики времени/ходов но массив не перемешивается. 
-// 8. с кнопками звука думаю всё и так понятно.
+alert(`
+Привет!
+Расскажу кратко про работу приложения:
 
-// PS Я очень старался, поэтому большая просьба не снижать оценку за отсутствие drag и за остальные мелочи!
-// Спасибо! И успехов в обучении! 
-// `)
+1. Пятнахи можно двигать по клику, при помощи стрелок на клавиатуре (не NumPad) так и перетаскиванием.
+2. Чтобы игра началась - необходимо кликнуть по полю или нажать любую клавишу или перетащить эл-нт.
+тогда пойдет счёт времени.
+3. При выйгрыше появляется модалка, в которой предлагается ввести Твое имя и сохранить результат.
+4. Если нажать escape или кнопку закрытия модалки - результат не сохраняется, окно просто закрывается
+5. реализованы размеры поля от 3х3 до 8х8
+5. Дизайн отзывчивый, но со стилями я не заморачивался, в ТЗ это не описано.
+6. При нажатии на кнопку shuffle происходит перемешивание элементов и сброс счётчиков
+т.е. игра начинается заново.
+7. при нажатии на stop - сбрасываются счётчики времени/ходов но массив не перемешивается (не знаю зачем я так сделал, но в ТЗ про эту кнопку ничего не написано)
+8. с кнопками звука думаю всё и так понятно.
+
+Спасибо! И успехов в обучении! 
+`)
 
 import * as app from "./app.js"
 
@@ -165,6 +164,10 @@ function drag(e) {
         e.target.classList.add(`selected`)
         dragX = e.clientX;
         dragY = e.clientY;
+        if (!startTime) {
+            start()
+            startTime = true
+        }
     } else if (e.type == `dragover`) {
         
     } else if (e.type == `dragend`) {
@@ -173,13 +176,14 @@ function drag(e) {
         buttonCoords = findCoordsByNumber(buttonNumber, matrix)
         blankCoords = findCoordsByNumber(blankNumber, matrix)
         isValid = isValidForSwap(buttonCoords, blankCoords);
-        console.log(blankCoords);
+        if (!isValid) {
+            e.target.classList.remove(`selected`)
+            return
+        }
         
         
         e.target.classList.remove(`selected`)
-        // e.target.style.left = `${+e.target.style.left.split(`px`)[0] + e.clientX - dragX}px`
-        // e.target.style.top = `${+e.target.style.top.split(`px`)[0] + e.clientY - dragY}px`
-        // console.log(blankCoords);
+
         swap(blankCoords, buttonCoords, matrix);
         setPositionItems(matrix, itemNodes)
         count++
@@ -238,7 +242,6 @@ function isValidForSwap(coords1, coords2) {
 }
 
 function swap(coords1, coords2, matrix) {
-    // console.log(coords1);
     const coords1Number = matrix[coords1.y][coords1.x]
     matrix[coords1.y][coords1.x] = matrix[coords2.y][coords2.x];
     matrix[coords2.y][coords2.x] = coords1Number;
@@ -246,7 +249,6 @@ function swap(coords1, coords2, matrix) {
     if (result) {
         addWonClass()
     } else {
-        // console.log(false);
     }
 }
 
@@ -410,21 +412,13 @@ function addWonClass() {
 
         if (!localStorage.getItem(`resultArray`)) {
             localStorage.setItem(`resultArray`, JSON.stringify(resultArray))
-            console.log(localStorage);
         } else {
             let tempRes = localStorage.getItem(`resultArray`);
             tempRes = JSON.parse(tempRes)
             tempRes.push(result)
             localStorage.setItem(`resultArray`, JSON.stringify(tempRes))
-            console.log(tempRes);
-            console.log(localStorage);
         }
         let show = JSON.parse(localStorage.getItem(`resultArray`));
-
-        show.forEach(el => {
-            console.log(el);
-        } )
-        // console.log(result);
     }
 
 
@@ -456,7 +450,6 @@ if (!localStorage.getItem(`clearStorage`)) {
     localStorage.clear()
     localStorage.setItem(`clearStorage`, `true`)
 }
-console.log(localStorage);
 
 //! Функционал выбора размера
 let links = document.querySelectorAll(`.size__link`)
