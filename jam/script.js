@@ -1,4 +1,23 @@
-// import { createAll } from "./app.js";
+alert(`
+Привет!
+Расскажу кратко про работу приложения:
+Реализован весь функционал (кроме drag and drop)
+1. Шашки можно двигать как и по клику так и при помощи стрелок на клавиатуре.
+2. При выйгрыше появляется модалка, в которой предлагается ввести Твое имя и сохранить результат.
+3. Если нажать escape или кнопку закрытия модалки - результат не сохраняется.
+4. реализованы размеры поля от 3х3 до 8х8
+5. Дизайн отзывчивый, но со стилями я не заморачивался, в ТЗ это не описано.
+6. Чтобы игра началась - необходимо кликнуть по полю или нажать любую клавишу
+тогда пойдет счёт времени.
+6. При нажатии на кнопку shuffle происходит перемешивание элементов и сброс счётчиков
+т.е. игра начинается заново.
+7. при нажатии на stop - сбрасываются счётчики времени/ходов но массив не перемешивается. 
+8. с кнопками звука думаю всё и так понятно.
+
+PS Я очень старался, поэтому большая просьба не снижать оценку за отсутствие drag и за остальные мелочи!
+Спасибо! И успехов в обучении! 
+`)
+
 import * as app from "./app.js"
 
 let currentSize = app.k;
@@ -26,12 +45,11 @@ let interval;
 
 
 function createAll(containerNode, itemNodes) {
-let resultBtn = document.querySelector("body > div > div.buttons__container > button:nth-child(4)")
+let resultBtn = document.querySelector("body > div > div.buttons__container > button:nth-child(3)")
 let stopBtn = document.querySelector("body > div > div.buttons__container > button:nth-child(2)");
 
 stopBtn.addEventListener(`click`, ()=> {
     resetValues()
-    startShuffle()
 })
 
 let soundOn = false
@@ -40,6 +58,7 @@ const inputElement = document.getElementById(`checkbox`)
 inputElement.addEventListener(`click`, function() {
     this.checked ? soundOn = true : soundOn = false
     console.log(soundOn);
+    
 })
 
     function startTimer() {
@@ -141,9 +160,6 @@ function shuffle(arr) {
 
 //! 3. Изменение позиции по клику
 const blankNumber = numberOfElements
-function changePosition(e) {
-    
-}
 
 containerNode.addEventListener(`click`, (e) => {
     if (!startTime) {
@@ -170,8 +186,8 @@ containerNode.addEventListener(`click`, (e) => {
         count++
         countSpan.innerHTML = `Moves: ${count}`
     }
-    // console.log(isValid);
 })
+
 function findCoordsByNumber(number, matrix) {
     for (let y = 0; y < matrix.length; y++) {
         for (let x = 0; x < matrix[y].length; x++) {
@@ -182,6 +198,7 @@ function findCoordsByNumber(number, matrix) {
     }
     return null
 }
+
 function isValidForSwap(coords1, coords2) {
     const diffX = Math.abs(coords1.x - coords2.x)
     const diffY = Math.abs(coords1.y - coords2.y)
@@ -192,7 +209,6 @@ function swap(coords1, coords2, matrix) {
     const coords1Number = matrix[coords1.y][coords1.x]
     matrix[coords1.y][coords1.x] = matrix[coords2.y][coords2.x];
     matrix[coords2.y][coords2.x] = coords1Number;
-
     let result = isWon(matrix, array) 
     if (result) {
         addWonClass()
@@ -248,27 +264,53 @@ window.addEventListener(`keydown`, (e) => {
     // console.log(direction);
 })
 
-
 //! 5. Show won
 // функция isWon включена в функцию swap 
 function isWon(matrix, array) {
     const flatMatrix = matrix.flat()
     for (let i = 0; i < array.length; i++) {
         if (array[i] !== flatMatrix[i]) {
-            console.log(`not won`);
             return false
         } 
     }
-    console.log(`won`);
     return true
 }    
 function addWonClass() {
     setTimeout(() => {
-        let result = 'Movies:' + count + '; Time:' + minVal + ' minute ' + secVal + ' seconds'  
-        // console.log(result);
-        resetValues()
+        let result = `
+        Hooraa! You are win! 
+        Your result is: ${count} moves!
+        Your time is: ${minVal} minutes and ${secVal} seconds!
+        `
+        let gameInfo = {
+            count,
+            minVal,
+            secVal
+        }
+        
+        const modalContent = document.querySelector(`.modal__content`)
+        const div = document.createElement(`div`)
+        const saveBtn = document.createElement(`button`);
+        const inputName = document.createElement(`input`)
+        
+        saveBtn.setAttribute(`type`, `button`);
+        saveBtn.classList.add(`save`)
+        saveBtn.innerText = `Save`
+        inputName.setAttribute(`type`, `text`)
+        inputName.setAttribute(`placeholder`, `Enter Your name:`)
+        div.classList.add(`form`)
+        div.append(inputName, saveBtn)
+        modalContent.append(div)
+
+        saveBtn.addEventListener(`click`, ()=> {
+            if (inputName.value === ``) {
+                return 
+            }
+            saveResult(gameInfo, inputName.value)
+        })
+
         addWonModal(result)
-        alert(`won`)
+        resetValues()
         startShuffle()
         clearInterval(interval);
     }, 200);
@@ -289,29 +331,112 @@ function addWonClass() {
         audio.src = `sound.mp3`;
         audio.autoplay = true
     }
-    // sound()
+
     function addWonModal(result) {
         const modal = document.querySelector(`.modal`)
         modal.classList.add(`modal__active`)
         const modalContent = document.querySelector(`.modal__content`)
         modalContent.classList.add(`active`)
+        const closeBtn = document.querySelector(`.m-menu`)
+        let form = document.querySelector(`.form`)
+        let paragraph = document.createElement(`p`);
+        paragraph.innerText = result
+        form.append(paragraph)
+    
         window.addEventListener(`keydown`, (e)=> {
             if (e.key === `Escape`) {
                 modal.classList.remove(`modal__active`)
                 modalContent.classList.remove(`active`)
+                modalContent.removeChild(form)
             }
         })
-        modalContent.innerHTML = result
+
+        closeBtn.addEventListener(`click`, (e)=> {
+            modal.classList.remove(`modal__active`)
+            modalContent.classList.remove(`active`)
+            modalContent.removeChild(form)
+        })
     }
 
     resultBtn.addEventListener(`click`, ()=> {
-        addWonModal()
+        let result = JSON.parse(localStorage.getItem(`resultArray`));
+        const modal = document.querySelector(`.modal`)
+        modal.classList.add(`modal__active`)
+        const modalContent = document.querySelector(`.modal__content`)
+        modalContent.classList.add(`active`)
+        const closeBtn = document.querySelector(`.m-menu`);
+
+        let div = document.createElement(`div`);
+        div.classList.add(`results`)
+        let header = document.createElement(`h2`);
+
+        header.innerText = `Last 10 results`
+        div.append(header)
+        result.forEach((el, ind) => {
+            let paragraph = document.createElement(`p`);
+            paragraph.innerText = `${ind+1}. Name: ${el.name}; Moves: ${el.count}; Time: ${el.minVal}:${el.secVal}  `
+            div.append(paragraph)
+        } )
+        modalContent.append(div)
+
+        window.addEventListener(`keydown`, (e)=> {
+            if (e.key === `Escape`) {
+                div.innerHTML = ``
+                modalContent.removeChild(document.querySelector(`.results`))
+                // modal.classList.remove(`modal__active`)
+                modalContent.classList.remove(`active`)
+                modalContent.removeChild(modalContent.lastChild)
+            }
+        })
+        
+        closeBtn.addEventListener(`click`, (e)=> {
+            div.innerHTML = ``
+            modalContent.removeChild(document.querySelector(`.results`))
+            // modalContent.removeChild(modalContent.lastChild)
+            modal.classList.remove(`modal__active`)
+            modalContent.classList.remove(`active`)
+        })
+
     })
+    // функция записи в local storage
+    function saveResult(obj, name) {
+        let result = {
+            count: obj.count,
+            minVal: obj.minVal,
+            secVal: obj.secVal,
+            name: name
+        }
+        let resultArray = []
+        resultArray.push(result)
+
+        if (!localStorage.getItem(`resultArray`)) {
+            localStorage.setItem(`resultArray`, JSON.stringify(resultArray))
+            console.log(localStorage);
+        } else {
+            let tempRes = localStorage.getItem(`resultArray`);
+            tempRes = JSON.parse(tempRes)
+            tempRes.push(result)
+            localStorage.setItem(`resultArray`, JSON.stringify(tempRes))
+            console.log(tempRes);
+            console.log(localStorage);
+        }
+        let show = JSON.parse(localStorage.getItem(`resultArray`));
+
+        show.forEach(el => {
+            console.log(el);
+        } )
+        // console.log(result);
+    }
 }
 
 createAll(containerNode, itemNodes)
-//! Функционал выбора размера
+if (!localStorage.getItem(`clearStorage`)) {
+    localStorage.clear()
+    localStorage.setItem(`clearStorage`, `true`)
+}
+console.log(localStorage);
 
+//! Функционал выбора размера
 let links = document.querySelectorAll(`.size__link`)
 let currentSizeView = document.querySelector("body > div > div.frame__container > div.current__size > p > span")
 
@@ -322,13 +447,12 @@ links.forEach(el => {
             link.classList.remove(`active`)
         }
         el.classList.add(`active`)
-
+        currentSizeView.innerText = el.innerText
         currentSize = el.dataset.matrixId 
         numberOfElements = currentSize ** 2
 
         let container = document.querySelector(`.fifteen`);
-        // console.log(currentSize);
-        // стираем игровое поле
+
         app.destroyField(container)
         // создаем новый массив с новым размером
         array = app.createArray(currentSize)
