@@ -24,7 +24,6 @@ let currentSize = app.k;
 let numberOfElements = app.k ** 2
 // перемешиваем исходный массив
 let array = app.arr
-// app.shuffle(app.arr)
 // создаем базовую разметку, без игрового поля
 app.createMarkup()
 // создаем игровое поле, где app.k - размер матрицы kxk
@@ -38,28 +37,27 @@ let minute = document.querySelector(`.min`)
 let seconds = document.querySelector(`.sec`)
 let minVal = 0
 let secVal = 0
-
-
 let interval;
 
-
-
 function createAll(containerNode, itemNodes) {
-let resultBtn = document.querySelector("body > div > div.buttons__container > button:nth-child(3)")
-let stopBtn = document.querySelector("body > div > div.buttons__container > button:nth-child(2)");
+    const modalContent = document.querySelector(`.modal__content`)
+    const modal = document.querySelector(`.modal`)
+    const closeBtn = document.querySelector(`.m-menu`)
+    let resultBtn = document.querySelector("body > div > div.buttons__container > button:nth-child(3)")
+    let stopBtn = document.querySelector("body > div > div.buttons__container > button:nth-child(2)");
+    let soundOn = false
+    const inputElement = document.getElementById(`checkbox`)
+    // создаем счетчик
+    let countSpan = document.querySelector(`.moves`);
 
-stopBtn.addEventListener(`click`, ()=> {
-    resetValues()
-})
 
-let soundOn = false
-const inputElement = document.getElementById(`checkbox`)
+    stopBtn.addEventListener(`click`, ()=> {
+        resetValues()
+    })
 
-inputElement.addEventListener(`click`, function() {
-    this.checked ? soundOn = true : soundOn = false
-    console.log(soundOn);
-    
-})
+    inputElement.addEventListener(`click`, function() {
+        this.checked ? soundOn = true : soundOn = false
+    })
 
     function startTimer() {
         secVal++
@@ -80,8 +78,6 @@ inputElement.addEventListener(`click`, function() {
         clearInterval(interval);
         interval = (setInterval(startTimer, 1000))
     }
-// создаем счетчик
-let countSpan = document.querySelector(`.moves`);
 
 let count = 0;
 countSpan.innerHTML = `Moves: ${count}`
@@ -261,7 +257,6 @@ window.addEventListener(`keydown`, (e) => {
     if (soundOn) {
         sound()
     }
-    // console.log(direction);
 })
 
 //! 5. Show won
@@ -288,7 +283,6 @@ function addWonClass() {
             secVal
         }
         
-        const modalContent = document.querySelector(`.modal__content`)
         const div = document.createElement(`div`)
         const saveBtn = document.createElement(`button`);
         const inputName = document.createElement(`input`)
@@ -333,38 +327,23 @@ function addWonClass() {
     }
 
     function addWonModal(result) {
-        const modal = document.querySelector(`.modal`)
         modal.classList.add(`modal__active`)
-        const modalContent = document.querySelector(`.modal__content`)
         modalContent.classList.add(`active`)
-        const closeBtn = document.querySelector(`.m-menu`)
+
         let form = document.querySelector(`.form`)
         let paragraph = document.createElement(`p`);
         paragraph.innerText = result
         form.append(paragraph)
-    
-        window.addEventListener(`keydown`, (e)=> {
-            if (e.key === `Escape`) {
-                modal.classList.remove(`modal__active`)
-                modalContent.classList.remove(`active`)
-                modalContent.removeChild(form)
-            }
-        })
-
-        closeBtn.addEventListener(`click`, (e)=> {
-            modal.classList.remove(`modal__active`)
-            modalContent.classList.remove(`active`)
-            modalContent.removeChild(form)
-        })
     }
 
     resultBtn.addEventListener(`click`, ()=> {
+        if (document.querySelector(`.results`)) {
+                modalContent.removeChild(document.querySelector(`.results`))
+        }
+        
         let result = JSON.parse(localStorage.getItem(`resultArray`));
-        const modal = document.querySelector(`.modal`)
         modal.classList.add(`modal__active`)
-        const modalContent = document.querySelector(`.modal__content`)
         modalContent.classList.add(`active`)
-        const closeBtn = document.querySelector(`.m-menu`);
 
         let div = document.createElement(`div`);
         div.classList.add(`results`)
@@ -372,30 +351,13 @@ function addWonClass() {
 
         header.innerText = `Last 10 results`
         div.append(header)
+
         result.forEach((el, ind) => {
             let paragraph = document.createElement(`p`);
             paragraph.innerText = `${ind+1}. Name: ${el.name}; Moves: ${el.count}; Time: ${el.minVal}:${el.secVal}  `
             div.append(paragraph)
         } )
         modalContent.append(div)
-
-        window.addEventListener(`keydown`, (e)=> {
-            if (e.key === `Escape`) {
-                div.innerHTML = ``
-                modalContent.removeChild(document.querySelector(`.results`))
-                // modal.classList.remove(`modal__active`)
-                modalContent.classList.remove(`active`)
-                modalContent.removeChild(modalContent.lastChild)
-            }
-        })
-        
-        closeBtn.addEventListener(`click`, (e)=> {
-            div.innerHTML = ``
-            modalContent.removeChild(document.querySelector(`.results`))
-            // modalContent.removeChild(modalContent.lastChild)
-            modal.classList.remove(`modal__active`)
-            modalContent.classList.remove(`active`)
-        })
 
     })
     // функция записи в local storage
@@ -427,6 +389,29 @@ function addWonClass() {
         } )
         // console.log(result);
     }
+
+
+    window.addEventListener(`keydown`, (e)=> {
+        if (e.key === `Escape`) {
+            if (document.querySelector(`.results`)) {
+                modalContent.removeChild(document.querySelector(`.results`))
+            }
+            modal.classList.remove(`modal__active`)
+            modalContent.classList.remove(`active`)
+        }
+    })
+    
+    closeBtn.addEventListener(`click`, (e)=> {
+        if (document.querySelector(`.results`)) {
+            modalContent.removeChild(document.querySelector(`.results`))
+        }
+        if (document.querySelector(`.form`)) {
+            modalContent.removeChild(document.querySelector(`.form`))
+        }
+        modal.classList.remove(`modal__active`)
+        modalContent.classList.remove(`active`)
+    })
+
 }
 
 createAll(containerNode, itemNodes)
@@ -460,7 +445,6 @@ links.forEach(el => {
         app.createField(array, currentSize)
         let containerNode = document.querySelector(`.fifteen`);
         let itemNodes = Array.from(containerNode.querySelectorAll(`.item`))
-        
         createAll(containerNode, itemNodes)
       })
 })
