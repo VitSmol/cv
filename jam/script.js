@@ -1,22 +1,22 @@
-alert(`
-Привет!
-Расскажу кратко про работу приложения:
-Реализован весь функционал (кроме drag and drop)
-1. Шашки можно двигать как и по клику так и при помощи стрелок на клавиатуре.
-2. При выйгрыше появляется модалка, в которой предлагается ввести Твое имя и сохранить результат.
-3. Если нажать escape или кнопку закрытия модалки - результат не сохраняется.
-4. реализованы размеры поля от 3х3 до 8х8
-5. Дизайн отзывчивый, но со стилями я не заморачивался, в ТЗ это не описано.
-6. Чтобы игра началась - необходимо кликнуть по полю или нажать любую клавишу
-тогда пойдет счёт времени.
-6. При нажатии на кнопку shuffle происходит перемешивание элементов и сброс счётчиков
-т.е. игра начинается заново.
-7. при нажатии на stop - сбрасываются счётчики времени/ходов но массив не перемешивается. 
-8. с кнопками звука думаю всё и так понятно.
+// alert(`
+// Привет!
+// Расскажу кратко про работу приложения:
+// Реализован весь функционал (кроме drag and drop)
+// 1. Шашки можно двигать как и по клику так и при помощи стрелок на клавиатуре.
+// 2. При выйгрыше появляется модалка, в которой предлагается ввести Твое имя и сохранить результат.
+// 3. Если нажать escape или кнопку закрытия модалки - результат не сохраняется.
+// 4. реализованы размеры поля от 3х3 до 8х8
+// 5. Дизайн отзывчивый, но со стилями я не заморачивался, в ТЗ это не описано.
+// 6. Чтобы игра началась - необходимо кликнуть по полю или нажать любую клавишу
+// тогда пойдет счёт времени.
+// 6. При нажатии на кнопку shuffle происходит перемешивание элементов и сброс счётчиков
+// т.е. игра начинается заново.
+// 7. при нажатии на stop - сбрасываются счётчики времени/ходов но массив не перемешивается. 
+// 8. с кнопками звука думаю всё и так понятно.
 
-PS Я очень старался, поэтому большая просьба не снижать оценку за отсутствие drag и за остальные мелочи!
-Спасибо! И успехов в обучении! 
-`)
+// PS Я очень старался, поэтому большая просьба не снижать оценку за отсутствие drag и за остальные мелочи!
+// Спасибо! И успехов в обучении! 
+// `)
 
 import * as app from "./app.js"
 
@@ -49,7 +49,6 @@ function createAll(containerNode, itemNodes) {
     const inputElement = document.getElementById(`checkbox`)
     // создаем счетчик
     let countSpan = document.querySelector(`.moves`);
-
 
     stopBtn.addEventListener(`click`, ()=> {
         resetValues()
@@ -98,7 +97,6 @@ let matrix = getMatrix(
     itemNodes.map(el => Number(el.dataset.matrixId)), 
     currentSize
     );
-
 startShuffle()
 
 function getMatrix(arr, k) {
@@ -154,9 +152,47 @@ function shuffle(arr) {
     .map(({value}) => value)
 }
 
-//! 3. Изменение позиции по клику
 const blankNumber = numberOfElements
+let dragX
+let dragY
+function drag(e) {
+    let isValid
+    let buttonNode
+    let buttonNumber
+    let buttonCoords
+    let blankCoords
+    if (e.type === `dragstart`){
+        e.target.classList.add(`selected`)
+        dragX = e.clientX;
+        dragY = e.clientY;
+    } else if (e.type == `dragover`) {
+        
+    } else if (e.type == `dragend`) {
+        buttonNode = e.target.closest('button');
+        buttonNumber = Number(buttonNode.dataset.matrixId)
+        buttonCoords = findCoordsByNumber(buttonNumber, matrix)
+        blankCoords = findCoordsByNumber(blankNumber, matrix)
+        isValid = isValidForSwap(buttonCoords, blankCoords);
+        console.log(blankCoords);
+        
+        
+        e.target.classList.remove(`selected`)
+        // e.target.style.left = `${+e.target.style.left.split(`px`)[0] + e.clientX - dragX}px`
+        // e.target.style.top = `${+e.target.style.top.split(`px`)[0] + e.clientY - dragY}px`
+        // console.log(blankCoords);
+        swap(blankCoords, buttonCoords, matrix);
+        setPositionItems(matrix, itemNodes)
+        count++
+        countSpan.innerHTML = `Moves: ${count}`
+    }
+}
 
+
+containerNode.addEventListener(`dragstart`, drag)
+containerNode.addEventListener(`dragend`, drag)
+containerNode.addEventListener(`dragover`, drag)
+
+//! 3. Изменение позиции по клику
 containerNode.addEventListener(`click`, (e) => {
     if (!startTime) {
         start()
@@ -202,6 +238,7 @@ function isValidForSwap(coords1, coords2) {
 }
 
 function swap(coords1, coords2, matrix) {
+    // console.log(coords1);
     const coords1Number = matrix[coords1.y][coords1.x]
     matrix[coords1.y][coords1.x] = matrix[coords2.y][coords2.x];
     matrix[coords2.y][coords2.x] = coords1Number;

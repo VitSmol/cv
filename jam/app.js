@@ -66,7 +66,6 @@ export const createGameInfo = (appendTo) => {
     sec.innerText = `00`
     sec.classList.add(`sec`)
     time.classList.add(`time`)
-    // time.innerHTML = `Time: ${min.innerText}:${sec.innerText}`
     time.append(`Game time: `, min, `:`, sec)
     gameInfo.append(moves, time)
     appendTo.append(gameInfo)
@@ -149,6 +148,7 @@ export const createField = (arr, k) => {
         const span = document.createElement(`span`)
         btn.setAttribute(`type`, `button`);
         btn.setAttribute(`data-matrix-id`, `${el}`);
+        btn.draggable = true
         span.classList.add(`item-val`)
         btn.classList.add(`item`);
         btn.style.width = `${100 / k}%`
