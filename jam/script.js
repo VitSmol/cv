@@ -242,7 +242,6 @@ function isValidForSwap(coords1, coords2) {
 }
 
 function swap(coords1, coords2, matrix) {
-    // console.log(coords1);
     const coords1Number = matrix[coords1.y][coords1.x]
     matrix[coords1.y][coords1.x] = matrix[coords2.y][coords2.x];
     matrix[coords2.y][coords2.x] = coords1Number;
@@ -250,7 +249,6 @@ function swap(coords1, coords2, matrix) {
     if (result) {
         addWonClass()
     } else {
-        // console.log(false);
     }
 }
 
@@ -414,21 +412,13 @@ function addWonClass() {
 
         if (!localStorage.getItem(`resultArray`)) {
             localStorage.setItem(`resultArray`, JSON.stringify(resultArray))
-            console.log(localStorage);
         } else {
             let tempRes = localStorage.getItem(`resultArray`);
             tempRes = JSON.parse(tempRes)
             tempRes.push(result)
             localStorage.setItem(`resultArray`, JSON.stringify(tempRes))
-            console.log(tempRes);
-            console.log(localStorage);
         }
         let show = JSON.parse(localStorage.getItem(`resultArray`));
-
-        show.forEach(el => {
-            console.log(el);
-        } )
-        // console.log(result);
     }
 
 
@@ -460,7 +450,6 @@ if (!localStorage.getItem(`clearStorage`)) {
     localStorage.clear()
     localStorage.setItem(`clearStorage`, `true`)
 }
-console.log(localStorage);
 
 //! Функционал выбора размера
 let links = document.querySelectorAll(`.size__link`)
