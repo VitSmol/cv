@@ -191,16 +191,10 @@ function drag(e) {
         if (e.target == containerNode) {
            e.preventDefault()
            containerNode.ondrop = function (e) {
-            // console.log(e.target);
-            // console.log(buttonNode);
             buttonNumber = Number(buttonNode.dataset.matrixId)
-            // console.log(buttonNumber);
             buttonCoords = findCoordsByNumber(buttonNumber, matrix)
-            // console.log(buttonCoords);
             blankCoords = findCoordsByNumber(blankNumber, matrix)
-            console.log(blankCoords);
             isValid = isValidForSwap(buttonCoords, blankCoords);
-            console.log(isValid);
             if (!isValid) {
                 currentTarget.classList.remove(`selected`)
                 return
@@ -212,10 +206,8 @@ function drag(e) {
             countSpan.innerHTML = `Moves: ${count}`
            }
         }
-
-    // } else if (e.type == `dragend`) {
-    // }
 }
+currentTarget.classList.remove(`selected`)
 }
 containerNode.addEventListener(`dragstart`, drag)
 containerNode.addEventListener(`dragend`, drag)
