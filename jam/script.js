@@ -10,8 +10,8 @@ alert(`Привет!
 т.е. игра начинается заново.
 7. при нажатии на stop - сбрасываются счётчики времени/ходов но массив не перемешивается (не знаю зачем я так сделал, но в ТЗ про эту кнопку ничего не написано)
 8. с кнопками звука думаю всё и так понятно.
-Из не реализованного: сохранение игры. Я работаю над этим, поэтому если не сложно, 
-пожалуйста не выставляй оценку до вечера среды. К этому времени постараюсь закончить.
+Из не реализованного: сохранение игры на размерах, отличных от 4х4 (на 4х4 сохранение игры работает корректно) 
+Я работаю над этим, поэтому если не сложно, пожалуйста не выставляй оценку до вечера среды. К этому времени постараюсь закончить.
 Спасибо! И успехов в обучении! 
 `)
 
@@ -21,19 +21,15 @@ let currentSize = app.k;
 
 if (localStorage.getItem(`saveCurrentSise`)) {
     currentSize = localStorage.getItem(`saveCurrentSise`)
-    console.log("Сохраненный размер:", currentSize);
 }
-// console.log(currentSize);
 
+// находим созданное игровое поле
 let numberOfElements = app.k ** 2
 let array = app.arr
 
 app.createMarkup()
-app.createField(array, currentSize)
-// находим созданное игровое поле
-let containerNode = document.querySelector(`.fifteen`);
 //находим все кнопки и делаем из них массив
-// console.log(itemNodes);
+app.createField(array, currentSize)
 let startTime = false
 let minute = document.querySelector(`.min`)
 let seconds = document.querySelector(`.sec`)
@@ -41,7 +37,8 @@ let minVal = 0
 let secVal = 0
 let interval;
 
-function createAll(containerNode) {
+function createAll() {
+    let containerNode = document.querySelector(`.fifteen`);
     let itemNodes = Array.from(containerNode.querySelectorAll(`.item`))
     const modalContent = document.querySelector(`.modal__content`)
     const modal = document.querySelector(`.modal`)
@@ -86,20 +83,21 @@ let count = 0;
 countSpan.innerHTML = `Moves: ${count}`
 
 function startShuffle() {
-    count = 0;
-    countSpan.innerHTML = `Moves: ${count}`
-    if (localStorage.getItem(`saveGame`)) {
-        console.log(localStorage.getItem(`saveGame`));
+    let itemNodes = Array.from(containerNode.querySelectorAll(`.item`))
+    // setTimeout(() => {
+        count = 0;
+        countSpan.innerHTML = `Moves: ${count}`
+        if (localStorage.getItem(`saveGame`)) {
         matrix = JSON.parse(localStorage.getItem(`saveGame`))
-        console.log(matrix);
     } else {
         const flatMatrix = matrix.flat();
         const shuffledArr = shuffle(flatMatrix)
         matrix = getMatrix(shuffledArr, currentSize);
-
+        
     }
     setPositionItems(matrix, itemNodes)
     resetValues()
+// }, 0);
 }
 //! 1. Position
 itemNodes[numberOfElements - 1].style.display = `none`;
@@ -162,11 +160,6 @@ shuffleBtn.addEventListener(`click`, () => {
 })
 
 function shuffle(arr) {
-    // if (localStorage.getItem(`saveGame`) && localStorage.getItem(`saveCurrentSise`) == 4) {
-    //     console.log(currentSize);
-    //     console.log(localStorage.getItem(`saveCurrentSise`));
-    //     return JSON.parse(localStorage.getItem(`saveGame`)).flat()
-    // } 
     return arr
     .map(value => ({value, sort : Math.random() }))
     .sort((a,b) => a.sort - b.sort)
@@ -469,16 +462,14 @@ function addWonClass() {
         localStorage.setItem(`saveGame`, JSON.stringify(matrix))
         localStorage.setItem(`saveNumberOfElements`, JSON.stringify(numberOfElements))
         localStorage.setItem(`saveCurrentSise`, currentSize)
-        console.log(localStorage);
     })
 
     function save() {
 
     }
-    console.log(localStorage);
 }
 
-createAll(containerNode)
+createAll()
 if (!localStorage.getItem(`clearStorage`)) {
     localStorage.clear()
     localStorage.setItem(`clearStorage`, `true`)
@@ -497,10 +488,14 @@ links.forEach(el => {
         el.classList.add(`active`)
         currentSizeView.innerText = el.innerText
         if (localStorage.getItem(`saveCurrentSise`) != el.dataset.matrixId) {
-            console.log(`not equal`);
             localStorage.removeItem(`saveGame`);
             localStorage.removeItem(`saveCurrentSise`);
             localStorage.removeItem(`saveNumberOfElements`);
+        }
+        if (el.dataset.matrixId != 4) {
+            document.querySelector("body > div > div.buttons__container > button:nth-child(4)").setAttribute(`disabled`, `true`)
+        } else if (el.dataset.matrixId == 4) {
+            document.querySelector("body > div > div.buttons__container > button:nth-child(4)").removeAttribute(`disabled`)
         }
         currentSize = el.dataset.matrixId 
         numberOfElements = currentSize ** 2
@@ -514,7 +509,7 @@ links.forEach(el => {
         app.createField(array, currentSize)
         let containerNode = document.querySelector(`.fifteen`);
         let itemNodes = Array.from(containerNode.querySelectorAll(`.item`))
-        createAll(containerNode, itemNodes)
+        createAll()
       })
 })
 
