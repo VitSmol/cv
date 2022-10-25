@@ -1,10 +1,7 @@
-alert(`
-Привет!
+alert(`Привет!
 Расскажу кратко про работу приложения:
-
 1. Пятнахи можно двигать по клику, при помощи стрелок на клавиатуре (не NumPad) и перетаскиванием (коряво, но всё же работает).
-2. Чтобы игра началась - необходимо кликнуть по полю или нажать любую клавишу или перетащить эл-нт.
-тогда пойдет счёт времени.
+2. Чтобы игра началась - необходимо кликнуть по полю или нажать любую клавишу или перетащить эл-нт.Тогда пойдет счёт времени.
 3. При выйгрыше появляется модалка, в которой предлагается ввести Твое имя и сохранить результат.
 4. Если нажать escape или кнопку закрытия модалки - результат не сохраняется, окно просто закрывается
 5. реализованы размеры поля от 3х3 до 8х8
@@ -13,25 +10,30 @@ alert(`
 т.е. игра начинается заново.
 7. при нажатии на stop - сбрасываются счётчики времени/ходов но массив не перемешивается (не знаю зачем я так сделал, но в ТЗ про эту кнопку ничего не написано)
 8. с кнопками звука думаю всё и так понятно.
-
-Из не реализованного: сохранение игры. Я работаю над этим, поэтому если не сложно, пожалуйста не выставляй оценку до вечера среды. К этому времени постараюсь закончить.
+Из не реализованного: сохранение игры. Я работаю над этим, поэтому если не сложно, 
+пожалуйста не выставляй оценку до вечера среды. К этому времени постараюсь закончить.
 Спасибо! И успехов в обучении! 
 `)
 
 import * as app from "./app.js"
 
 let currentSize = app.k;
+
+if (localStorage.getItem(`saveCurrentSise`)) {
+    currentSize = localStorage.getItem(`saveCurrentSise`)
+    console.log("Сохраненный размер:", currentSize);
+}
+// console.log(currentSize);
+
 let numberOfElements = app.k ** 2
-// перемешиваем исходный массив
 let array = app.arr
-// создаем базовую разметку, без игрового поля
+
 app.createMarkup()
-// создаем игровое поле, где app.k - размер матрицы kxk
 app.createField(array, currentSize)
 // находим созданное игровое поле
 let containerNode = document.querySelector(`.fifteen`);
 //находим все кнопки и делаем из них массив
-let itemNodes = Array.from(containerNode.querySelectorAll(`.item`))
+// console.log(itemNodes);
 let startTime = false
 let minute = document.querySelector(`.min`)
 let seconds = document.querySelector(`.sec`)
@@ -39,7 +41,8 @@ let minVal = 0
 let secVal = 0
 let interval;
 
-function createAll(containerNode, itemNodes) {
+function createAll(containerNode) {
+    let itemNodes = Array.from(containerNode.querySelectorAll(`.item`))
     const modalContent = document.querySelector(`.modal__content`)
     const modal = document.querySelector(`.modal`)
     const closeBtn = document.querySelector(`.m-menu`);
@@ -85,9 +88,16 @@ countSpan.innerHTML = `Moves: ${count}`
 function startShuffle() {
     count = 0;
     countSpan.innerHTML = `Moves: ${count}`
-    const flatMatrix = matrix.flat();
-    const shuffledArr = shuffle(flatMatrix)
-    matrix = getMatrix(shuffledArr, currentSize);
+    if (localStorage.getItem(`saveGame`)) {
+        console.log(localStorage.getItem(`saveGame`));
+        matrix = JSON.parse(localStorage.getItem(`saveGame`))
+        console.log(matrix);
+    } else {
+        const flatMatrix = matrix.flat();
+        const shuffledArr = shuffle(flatMatrix)
+        matrix = getMatrix(shuffledArr, currentSize);
+
+    }
     setPositionItems(matrix, itemNodes)
     resetValues()
 }
@@ -144,10 +154,17 @@ function setNodeStyles(node, x , y) {
 //! 2. Shuffle
 let shuffleBtn = document.querySelector("body > div > div.buttons__container > button:nth-child(1)")
 
-shuffleBtn.addEventListener(`click`, startShuffle)
+shuffleBtn.addEventListener(`click`, () => {
+    localStorage.removeItem(`saveGame`);
+    localStorage.removeItem(`saveCurrentSise`);
+    localStorage.removeItem(`saveNumberOfElements`);
+    startShuffle()
+})
 
 function shuffle(arr) {
-    // if (localStorage.getItem(`saveGame`)) {
+    // if (localStorage.getItem(`saveGame`) && localStorage.getItem(`saveCurrentSise`) == 4) {
+    //     console.log(currentSize);
+    //     console.log(localStorage.getItem(`saveCurrentSise`));
     //     return JSON.parse(localStorage.getItem(`saveGame`)).flat()
     // } 
     return arr
@@ -447,14 +464,21 @@ function addWonClass() {
         modal.classList.remove(`modal__active`)
         modalContent.classList.remove(`active`)
     })
-    // saveBtn.addEventListener(`click`, ()=> {
-    //     alert(`You game is saved`)
-    //     localStorage.setItem(`saveGame`, JSON.stringify(matrix))
-    // })
+    saveBtn.addEventListener(`click`, ()=> {
+        alert(`You game is saved`)
+        localStorage.setItem(`saveGame`, JSON.stringify(matrix))
+        localStorage.setItem(`saveNumberOfElements`, JSON.stringify(numberOfElements))
+        localStorage.setItem(`saveCurrentSise`, currentSize)
+        console.log(localStorage);
+    })
 
+    function save() {
+
+    }
+    console.log(localStorage);
 }
 
-createAll(containerNode, itemNodes)
+createAll(containerNode)
 if (!localStorage.getItem(`clearStorage`)) {
     localStorage.clear()
     localStorage.setItem(`clearStorage`, `true`)
@@ -472,6 +496,12 @@ links.forEach(el => {
         }
         el.classList.add(`active`)
         currentSizeView.innerText = el.innerText
+        if (localStorage.getItem(`saveCurrentSise`) != el.dataset.matrixId) {
+            console.log(`not equal`);
+            localStorage.removeItem(`saveGame`);
+            localStorage.removeItem(`saveCurrentSise`);
+            localStorage.removeItem(`saveNumberOfElements`);
+        }
         currentSize = el.dataset.matrixId 
         numberOfElements = currentSize ** 2
 
