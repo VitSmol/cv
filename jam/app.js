@@ -56,7 +56,7 @@ export const createGameInfo = (appendTo) => {
     
     let moves = document.createElement(`span`);
     moves.classList.add(`moves`)
-    moves.innerText = `Moves: 0`
+    // moves.innerText = `Moves: 0`
 
     let time = document.createElement(`span`);
     let min = document.createElement(`span`);
@@ -121,10 +121,8 @@ export const createMarkup = (arr) => {
     let closeBtn = document.createElement(`button`);
     closeBtn.classList.add(`m-menu`);
     let span1 = document.createElement(`span`)
-    // let span2 = document.createElement(`span`)
     let span3 = document.createElement(`span`)
     span1.classList.add(`line`, `first__line`)
-    // span2.classList.add(`line`, `second__line`)
     span3.classList.add(`line`, `last__line`)
 
     closeBtn.append(span1, span3)
