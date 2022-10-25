@@ -1,6 +1,6 @@
 alert(`Привет!
 Расскажу кратко про работу приложения:
-1. Пятнахи можно двигать по клику, при помощи стрелок на клавиатуре (не NumPad) и перетаскиванием (коряво, но всё же работает).
+1. Пятнахи можно двигать по клику, при помощи стрелок на клавиатуре (не NumPad) и перетаскиванием/
 2. Чтобы игра началась - необходимо кликнуть по полю или нажать любую клавишу или перетащить эл-нт.Тогда пойдет счёт времени.
 3. При выйгрыше появляется модалка, в которой предлагается ввести Твое имя и сохранить результат.
 4. Если нажать escape или кнопку закрытия модалки - результат не сохраняется, окно просто закрывается
@@ -10,7 +10,7 @@ alert(`Привет!
 т.е. игра начинается заново.
 7. при нажатии на stop - сбрасываются счётчики времени/ходов но массив не перемешивается (не знаю зачем я так сделал, но в ТЗ про эту кнопку ничего не написано)
 8. с кнопками звука думаю всё и так понятно.
-Из не реализованного: сохранение игры на размерах, отличных от 4х4 (на 4х4 сохранение игры работает корректно) 
+9. При нажатии на save - фиксируется расположение элементов и при перезагрузке страницы они расположены в том же порядке 
 Я работаю над этим, поэтому если не сложно, пожалуйста не выставляй оценку до вечера среды. К этому времени постараюсь закончить.
 Спасибо! И успехов в обучении! 
 `)
@@ -36,7 +36,7 @@ let seconds = document.querySelector(`.sec`)
 let minVal = 0
 let secVal = 0
 let interval;
-
+const MAX_SHUFFLE = 100;
 function createAll() {
     let containerNode = document.querySelector(`.fifteen`);
     let itemNodes = Array.from(containerNode.querySelectorAll(`.item`))
@@ -81,23 +81,62 @@ function createAll() {
 
 let count = 0;
 countSpan.innerHTML = `Moves: ${count}`
+const blankNumber = numberOfElements
 
-function startShuffle() {
-    let itemNodes = Array.from(containerNode.querySelectorAll(`.item`))
-    // setTimeout(() => {
-        count = 0;
-        countSpan.innerHTML = `Moves: ${count}`
-        if (localStorage.getItem(`saveGame`)) {
-        matrix = JSON.parse(localStorage.getItem(`saveGame`))
-    } else {
-        const flatMatrix = matrix.flat();
-        const shuffledArr = shuffle(flatMatrix)
-        matrix = getMatrix(shuffledArr, currentSize);
-        
+
+let blockedCoords = null
+function randomSwap(matrix) {
+    const blankCoords = findCoordsByNumber(blankNumber, matrix);
+    const validCoords = findValidCoords({
+        blankCoords,
+        matrix,
+        blockedCoords
+    })
+    const swapCoords = validCoords[
+        Math.floor(Math.random() * validCoords.length)
+    ]
+    swap(blankCoords, swapCoords, matrix);
+    blockedCoords = blankCoords
+}
+
+function findValidCoords({blankCoords, matrix, blockedCoords}) {
+    const validCoords = [];
+    for (let y = 0; y < matrix.length; y++) {
+        for (let x = 0; x < matrix[y].length; x++) {
+            if (isValidForSwap({x,y}, blankCoords)) {
+                if (!blockedCoords || !(
+                    blockedCoords.x == x && blockedCoords.y == y
+                )) {
+                    validCoords.push({x,y})
+                }
+            }
+        }
     }
-    setPositionItems(matrix, itemNodes)
+    return validCoords
+}
+function startShuffle() {
+    let timer;
+    let shuffleCount = 0;
+    clearInterval(timer)
+    
+    if (localStorage.getItem(`saveGame`)) {
+        matrix = JSON.parse(localStorage.getItem(`saveGame`))
+        setPositionItems(matrix, itemNodes)
+    } else {
+        if (shuffleCount === 0) {
+            timer = setInterval(()=> {
+                randomSwap(matrix)
+                setPositionItems(matrix, itemNodes)
+                shuffleCount++
+                if (shuffleCount >= MAX_SHUFFLE) {
+                    shuffleCount = 0;
+                    clearInterval(timer)
+                }
+            }, 70)
+        }
+  
+    }
     resetValues()
-// }, 0);
 }
 //! 1. Position
 itemNodes[numberOfElements - 1].style.display = `none`;
@@ -166,7 +205,8 @@ function shuffle(arr) {
     .map(({value}) => value)
 }
 
-const blankNumber = numberOfElements
+
+
 let dragX
 let dragY
 let currentTarget
