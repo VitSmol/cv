@@ -169,44 +169,46 @@ function shuffle(arr) {
 const blankNumber = numberOfElements
 let dragX
 let dragY
+let currentTarget
+let buttonNode
 function drag(e) {
     let isValid
-    let buttonNode
     let buttonNumber
     let buttonCoords
     let blankCoords
     if (e.type === `dragstart`){
         e.target.classList.add(`selected`)
+        currentTarget = e.target
+        // console.dir(currentTarget);
         dragX = e.clientX;
         dragY = e.clientY;
         if (!startTime) {
             start()
             startTime = true
         }
-    } else if (e.type == `dragover`) {
-        
-    } else if (e.type == `dragend`) {
         buttonNode = e.target.closest('button');
-        buttonNumber = Number(buttonNode.dataset.matrixId)
-        buttonCoords = findCoordsByNumber(buttonNumber, matrix)
-        blankCoords = findCoordsByNumber(blankNumber, matrix)
-        isValid = isValidForSwap(buttonCoords, blankCoords);
-        if (!isValid) {
-            e.target.classList.remove(`selected`)
-            return
+    } else if (e.type == `dragover`) {
+        if (e.target == containerNode) {
+           e.preventDefault()
+           containerNode.ondrop = function (e) {
+            buttonNumber = Number(buttonNode.dataset.matrixId)
+            buttonCoords = findCoordsByNumber(buttonNumber, matrix)
+            blankCoords = findCoordsByNumber(blankNumber, matrix)
+            isValid = isValidForSwap(buttonCoords, blankCoords);
+            if (!isValid) {
+                currentTarget.classList.remove(`selected`)
+                return
+            }
+            currentTarget.classList.remove(`selected`)
+            swap(blankCoords, buttonCoords, matrix);
+            setPositionItems(matrix, itemNodes)
+            count++
+            countSpan.innerHTML = `Moves: ${count}`
+           }
         }
-        
-        
-        e.target.classList.remove(`selected`)
-
-        swap(blankCoords, buttonCoords, matrix);
-        setPositionItems(matrix, itemNodes)
-        count++
-        countSpan.innerHTML = `Moves: ${count}`
-    }
 }
-
-
+currentTarget.classList.remove(`selected`)
+}
 containerNode.addEventListener(`dragstart`, drag)
 containerNode.addEventListener(`dragend`, drag)
 containerNode.addEventListener(`dragover`, drag)
