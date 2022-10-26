@@ -1,0 +1,173 @@
+$fullwidth: 100%
+$contentwidth: 1160px
+$orang: #f9804b
+$orang2: #fe9013
+$orangehover: #E47209
+
+$orangeborder1: #fa6f32
+$orangeborder2: #fe9013
+$greenavtive: #4B9200
+$yellow: #ffee2e
+$linear-background: linear-gradient(to left, $orang2, $orang)
+$textcolor: #333b41
+$bgc-property: background-image
+$indent: 79px
+$transition-time: 0.5s
+$gradient1: rgba(254, 189, 171, 0.74)
+$gradient2: rgba(243, 169, 248, 0.66)
+$gradient3: #E0D8F0
+$gradient4: #EAF7FE
+$gradient5: #EAF7FE
+$gradientBackground: linear-gradient(315.75deg, $gradient1 30.06%, $gradient2 50.74%, $gradient3 80.49%, $gradient4 127.9%, $gradient5 149.54%)
+
+$small-contentwidth: 940px
+
+%wrapper-container
+    width: $fullwidth
+    display: flex
+%flex-container
+    width: $contentwidth
+    display: flex
+
+%grid-container
+    width: $contentwidth
+    display: grid
+%logo
+    position: relative
+    h1, h2
+        display: flex
+        justify-content: center
+        align-items: center
+        width: 82px
+        height: 52px
+        margin: 0
+        border: 1px solid white
+        border-radius: 2px
+        position: relative
+        font-size: 19px
+        text-align: center
+        font-weight: 100
+        line-height: 1.2111
+        transition: $transition-time border
+        z-index: 100          
+        a
+            transition: $transition-time color
+            position: relative
+        svg
+            position: absolute
+            bottom: 7px
+            left: 10px
+            .bamboo
+                transition: $transition-time fill
+        &:hover 
+            border: 1px solid $orang
+            transition: $transition-time border
+            a
+                transition: $transition-time color
+                color: $orang
+            .bamboo
+                transition: $transition-time fill
+                fill: $orang   
+%nav
+    margin-left: 60px
+    width: 100%
+    position: relative
+    ul
+        list-style-type: none
+        display: flex
+        font-size: 16px
+        gap: 50px
+        padding-left: 0
+        position: relative
+        @media screen and ( max-width: 1200px ) 
+            gap: 40px
+        li
+            padding: 0 4px
+            a
+                transition: $transition-time color
+                &:hover
+                    transition: $transition-time color
+                    color: $orang
+            &:last-child
+                position: absolute
+                right: 0
+                padding: 0 
+
+                
+%button
+    width: 298px
+    height: 54px
+    background: $linear-background
+    color: white
+    border-radius: 25px
+    border: none
+    outline: none
+    padding: 0
+    align-self: center
+    text-transform: uppercase
+    font-size: 16px
+    font-weight: 400
+    line-height: 22px
+    transition: $transition-time background
+    position: relative
+    &:hover
+        transition: $transition-time background
+        cursor: pointer
+        background: linear-gradient(to left, $orangehover)
+    &:active
+        transition: $transition-time background
+        background: $greenavtive
+    &:before
+        position: absolute
+        content: ''
+        top: 0
+        right: 0
+        left: 0
+        bottom: 0
+        background: $orangehover
+        z-index: -1
+        transition: opacity $transition-time linear
+        opacity: 0
+%round-button
+    width: 62px
+    height: 62px
+    border-radius: 50%
+    background: $linear-background
+    color: white
+    outline: none
+    border: none
+    position: absolute
+    top: calc(50% - 31px)
+    transition: $transition-time background
+    &:hover
+        transition: $transition-time background
+        background: linear-gradient(to left, $orangehover)
+        cursor: pointer
+    &:active
+        transition: $transition-time background
+        background: $greenavtive
+
+%submit-button
+    width: 129px
+    height: 42px
+    font-family: 'Roboto'
+    font-style: normal
+    font-weight: 400
+    font-size: 16px
+    line-height: 22px
+    background-color: #f1f3f2
+    border-radius: 5px
+    border: 2px solid
+    display: inline-block
+    margin-left: 5px
+%mistake-button
+    color: #D31414
+    border-color: #d31414
+%default-button
+    color: black
+    border-color: rgba(51, 59, 65, 1)
+    cursor: pointer
+%active-button
+    color: $greenavtive
+    border-block-color: $greenavtive
+    cursor: pointer
