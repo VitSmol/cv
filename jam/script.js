@@ -392,6 +392,14 @@ function createAll() {
                     return 
                 }
                 saveResult(gameInfo, inputName.value)
+                if (document.querySelector(`.results`)) {
+                    modalContent.removeChild(document.querySelector(`.results`))
+                }
+                if (document.querySelector(`.form`)) {
+                    modalContent.removeChild(document.querySelector(`.form`))
+                }
+                modal.classList.remove(`modal__active`)
+                modalContent.classList.remove(`active`)
             })
 
             addWonModal(result)
@@ -495,17 +503,14 @@ function createAll() {
         modalContent.classList.remove(`active`)
     })
     saveBtn.addEventListener(`click`, ()=> {
-        alert(`You game is saved`)
+        // alert(`You game is saved`)
         localStorage.setItem(`saveGame`, JSON.stringify(matrix))
         localStorage.setItem(`saveNumberOfElements`, JSON.stringify(numberOfElements))
         localStorage.setItem(`saveCurrentSise`, currentSize)
         localStorage.setItem(`saveMinVal`, minVal)
         localStorage.setItem(`saveSecVal`, secVal)
         localStorage.setItem(`saveCount`, count)
-        console.log(minVal);
-        console.log(secVal);
-        console.log(count);
-        console.log(localStorage);
+
     })
 }
 
