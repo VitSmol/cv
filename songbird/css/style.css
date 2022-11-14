@@ -1,16 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Kurale&family=Lato:ital,wght@1,900&display=swap");
-.question__container .audio__container .controls .progress,
+.description__container .mini-audio__container .mini-audio .controls .progress,
+.description__container .mini-audio__container .mini-audio .controls .sound, .question__container .audio__container .controls .progress,
 .question__container .audio__container .controls .sound {
   -webkit-appearance: none;
   background: linear-gradient(to right, rgb(0, 188, 140) 0%, rgb(61, 133, 140) 0%, rgb(115, 115, 115) 0%, rgb(115, 115, 115) 100%);
   height: 5px;
 }
-.question__container .audio__container .controls .progress:hover,
+.description__container .mini-audio__container .mini-audio .controls .progress:hover,
+.description__container .mini-audio__container .mini-audio .controls .sound:hover, .question__container .audio__container .controls .progress:hover,
 .question__container .audio__container .controls .sound:hover {
   cursor: pointer;
 }
 
-.question__container .audio__container .controls .progress::-webkit-slider-thumb,
+.description__container .mini-audio__container .mini-audio .controls .progress::-webkit-slider-thumb,
+.description__container .mini-audio__container .mini-audio .controls .sound::-webkit-slider-thumb, .question__container .audio__container .controls .progress::-webkit-slider-thumb,
 .question__container .audio__container .controls .sound::-webkit-slider-thumb {
   -webkit-appearance: none;
   background-color: rgb(128, 128, 128);
@@ -19,7 +22,7 @@
   border-radius: 50%;
 }
 
-.question__container .audio__container .controls .play-button {
+.description__container .mini-audio__container .mini-audio .controls .play-button, .question__container .audio__container .controls .play-button {
   display: flex;
   align-items: center;
   transition: 0.2s;
@@ -31,7 +34,7 @@
   cursor: pointer;
   position: relative;
 }
-.question__container .audio__container .controls .play-button .control {
+.description__container .mini-audio__container .mini-audio .controls .play-button .control, .question__container .audio__container .controls .play-button .control {
   position: absolute;
   transition: 0.2s;
   width: 18px;
@@ -43,7 +46,7 @@
   transition: opacity 0.3s;
   z-index: -1;
 }
-.question__container .audio__container .controls .play-button .control.active {
+.description__container .mini-audio__container .mini-audio .controls .play-button .control.active, .question__container .audio__container .controls .play-button .control.active {
   transition: opacity 0.3s;
   opacity: 1;
   z-index: 50;
@@ -55,13 +58,12 @@
   align-items: center;
   height: 100vh;
   width: 100vw;
-  display: flex;
 }
 .container header, .container footer {
   position: fixed;
   left: 0;
   right: 0;
-  height: 100px;
+  height: 80px;
   background-color: rgba(0, 0, 0, 0.31);
   align-self: start;
   z-index: 300;
@@ -76,6 +78,7 @@
   display: flex;
   position: relative;
   justify-content: space-between;
+  align-items: center;
 }
 .container header .header__wrapper a, .container header .footer__wrapper a, .container footer .header__wrapper a, .container footer .footer__wrapper a {
   position: static;
@@ -85,13 +88,11 @@
   font-size: 2vw;
   text-transform: capitalize;
   transition: color 0.5s;
+  margin: 0 10px;
 }
 .container header .header__wrapper a:hover, .container header .header__wrapper a.active, .container header .footer__wrapper a:hover, .container header .footer__wrapper a.active, .container footer .header__wrapper a:hover, .container footer .header__wrapper a.active, .container footer .footer__wrapper a:hover, .container footer .footer__wrapper a.active {
   transition: color 0.5s;
   color: rgb(0, 155, 118);
-}
-.container header .header__wrapper a:first-child, .container header .footer__wrapper a:first-child, .container footer .header__wrapper a:first-child, .container footer .footer__wrapper a:first-child {
-  margin-right: 20px;
 }
 @media screen and (max-width: 1000px) {
   .container header .header__wrapper a, .container header .footer__wrapper a, .container footer .header__wrapper a, .container footer .footer__wrapper a {
@@ -100,13 +101,24 @@
 }
 @media screen and (max-width: 640px) {
   .container header .header__wrapper a, .container header .footer__wrapper a, .container footer .header__wrapper a, .container footer .footer__wrapper a {
-    font-size: 21px;
+    font-size: 17px;
   }
 }
 @media screen and (max-width: 640px) {
+  .container header .header__wrapper, .container footer .header__wrapper {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .container header .header__wrapper .header__navigation, .container footer .header__wrapper .header__navigation {
+    justify-self: center;
+  }
   .container header .footer__wrapper, .container footer .footer__wrapper {
     width: 100%;
     padding: 0 30px;
+  }
+  .container header .footer__wrapper .footer__logo, .container footer .footer__wrapper .footer__logo {
+    width: 120px;
   }
 }
 .container header .logo, .container footer .logo {
@@ -266,32 +278,100 @@ a.caption-layer:hover {
   transition: color 0.5s;
 }
 
-@media screen and (max-width: 640px) {
-  .header__wrapper {
-    flex-direction: column;
-    align-items: center;
+@media screen and (max-width: 900px) {
+  .container footer, .container header {
+    height: 70px;
+  }
+  .container .game__container {
+    height: 77%;
+  }
+  .container footer .footer__wrapper .footer__logo img {
+    width: 100px;
   }
 }
+@media screen and (max-width: 640px) {
+  header .header__wrapper {
+    align-items: center;
+  }
+  header .header__wrapper .logo {
+    width: 100px;
+    height: 25px;
+  }
+  header .header__wrapper .logo .header__navigation a {
+    font-size: 15px;
+  }
+}
+.header__navigation {
+  margin-right: 40px;
+}
+
 @media (max-width: 682px) {
   .caption {
     transform: translateX(-0.15em);
+    width: 300px;
+  }
+  .caption h1 {
+    --ry: -2deg;
+    font-size: 30px;
+  }
+  .caption a {
+    --ry: -2deg;
+    font-size: 30px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .container header .header__wrapper {
+    flex-direction: column;
+  }
+  .container header .header__wrapper .header__navigation {
+    justify-self: start;
+    align-items: start;
+  }
+  .container header .header__wrapper .logo {
+    align-self: center;
+    justify-self: center;
+    width: 120px;
+  }
+  footer .footer__wrapper h2 a {
+    font-size: 16px !important;
+    text-align: right;
+    margin-right: 0 !important;
+  }
+}
+@media screen and (max-height: 730px) {
+  footer, header, .game__container {
+    position: static !important;
+  }
+  .container {
+    flex-direction: column;
+    height: 100%;
+  }
+  #main-footer,
+#main-header {
+    position: fixed !important;
+  }
+  #main-container {
+    flex-direction: row;
+    height: 100vh;
   }
 }
 .game__container {
   position: relative;
   display: grid;
-  grid-template-areas: "birds birds birds birds" "question question question question" "list description description description" "next next next next";
-  grid-template-rows: 40px 1fr 2fr 40px;
-  gap: 20px;
+  grid-template-areas: "birds birds " "question question " "list description" "next next";
+  grid-template-rows: 6% 30% 53% 6%;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
   width: 90%;
-  height: 70%;
+  height: 75%;
   position: fixed;
   z-index: 1000;
   box-shadow: 0px 0px 10px 1px hsl(165, 45%, var(--light, 0%));
   background-color: rgba(0, 0, 0, 0.31);
   transform: translateX(-120%);
   transition: transform 1s;
-  padding: 20px;
+  padding: 15px;
+  bottom: 100px;
 }
 .game__container.start {
   transform: translateX(0);
@@ -304,13 +384,14 @@ a.caption-layer:hover {
   justify-content: space-between;
   padding: 0px 0px;
   margin-top: 0;
+  margin-bottom: 0;
   background-color: rgb(0, 155, 118);
   border-radius: 5px;
-  min-height: 40px;
+  height: 100%;
 }
 .game__container .birds__list .birds__list__item {
   text-align: center;
-  padding: 0 10px;
+  padding: 5px 10px;
   flex-grow: 1;
   flex-shrink: 0;
   display: inline-flex;
@@ -335,6 +416,61 @@ a.caption-layer:hover {
   top: -45px;
 }
 
+@media screen and (max-width: 1600px) {
+  .game__container {
+    grid-template-areas: "birds birds birds" "question question question " "list description description" "next next next";
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (max-width: 1200px) {
+  .game__container {
+    grid-template-areas: "birds birds birds birds" "question question question question " "list description description description" "next next next next";
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 5% 28% 53% 6%;
+    gap: 15px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .game__container {
+    grid-template-areas: "birds birds birds birds" "question question question question " "list list list list" "description description description description" "next next next next";
+    grid-template-rows: 10% 2fr 35px 3fr 6%;
+    gap: 10px;
+    width: 95%;
+  }
+  .game__container .birds__list {
+    margin-bottom: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+  .game__container .birds__list .birds__list__item {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 0;
+  }
+}
+@media screen and (max-width: 670px) {
+  .game__container {
+    width: 100%;
+    grid-template-rows: 10% auto auto auto 0.5fr;
+  }
+}
+@media screen and (max-width: 540px) {
+  .container .game__container {
+    padding: 10px;
+    grid-template-rows: 15% auto 60px 1fr 5%;
+    height: 79%;
+    bottom: 80px;
+  }
+  .container .game__container .birds__list {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+  }
+  .container .game__container .score {
+    top: -30px;
+    right: 10px;
+  }
+}
 .question__container {
   grid-area: question;
   display: flex;
@@ -344,8 +480,8 @@ a.caption-layer:hover {
   border-radius: 10px;
 }
 .question__container img {
-  width: 200px;
-  height: 155px;
+  width: 155px;
+  height: 115px;
   border-radius: 10px;
 }
 .question__container .audio__container {
@@ -354,7 +490,7 @@ a.caption-layer:hover {
   flex-grow: 1;
 }
 .question__container .audio__container .hidden__bird-name {
-  font-size: 32px;
+  font-size: 24px;
 }
 .question__container .audio__container .controls {
   display: flex;
@@ -385,6 +521,70 @@ a.caption-layer:hover {
   align-items: center;
   gap: 10px;
 }
+@media screen and (max-width: 900px) {
+  .question__container {
+    gap: 10px;
+    padding: 10px;
+  }
+  .question__container img {
+    width: 150px;
+    height: 100px;
+  }
+  .question__container .audio__container {
+    justify-content: space-evenly;
+  }
+  .question__container .audio__container .hidden__bird-name {
+    font-size: 20px;
+  }
+  .question__container .audio__container .hidden__bird-name .line {
+    margin: 5px 0;
+  }
+  .question__container .audio__container .controls .play-button {
+    width: 25px;
+    height: 25px;
+    min-width: 25px;
+    align-self: center;
+  }
+  .question__container .audio__container .controls .play-button svg {
+    width: 15px !important;
+    height: 15px !important;
+  }
+  .question__container .audio__container .controls .timebar .progress {
+    height: 2px;
+  }
+  .question__container .audio__container .controls .timebar .current-time,
+.question__container .audio__container .controls .timebar .duration {
+    font-size: 14px;
+  }
+  .question__container .audio__container .controls .sound__control .sound__icon svg {
+    width: 20px;
+  }
+  .question__container .audio__container .controls .sound {
+    height: 2px;
+    width: 70px;
+  }
+}
+@media screen and (max-width: 670px) {
+  .question__container .audio__container {
+    justify-content: start;
+  }
+}
+@media screen and (max-width: 670px) {
+  .question__container img {
+    width: 100px;
+  }
+  .question__container .controls .timebar span {
+    font-size: 12px;
+  }
+}
+.question__container .audio__container .controls .timebar .duration {
+  right: -15px;
+}
+
+.question__container .audio__container .controls .timebar .current-time {
+  left: -15px;
+}
+
 .questions__list {
   grid-area: list;
   background-color: rgba(48, 48, 48, 0.93);
@@ -429,8 +629,172 @@ a.caption-layer:hover {
   margin: 0 20px;
 }
 
+@media screen and (max-width: 900px) {
+  .questions__list ul {
+    flex-direction: row;
+  }
+  .questions__list ul li .point {
+    margin: 0 10px;
+  }
+  .questions__list ul li:last-child {
+    border-bottom-left-radius: 0px;
+  }
+}
+@media screen and (max-width: 670px) {
+  .questions__list ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+}
+.start-text {
+  display: none;
+}
+
 .description__container {
   grid-area: description;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  background-color: rgba(48, 48, 48, 0.93);
+  border-radius: 10px;
+}
+.description__container img {
+  width: 200px;
+  height: 155px;
+  border-radius: 10px;
+}
+.description__container .mini-audio__container {
+  display: flex;
+  width: 100%;
+  gap: 20px;
+}
+.description__container .mini-audio__container .mini-audio {
+  grid-row: 1;
+  width: 100%;
+}
+.description__container .mini-audio__container .mini-audio h2, .description__container .mini-audio__container .mini-audio h3 {
+  margin: 10px 0;
+}
+.description__container .mini-audio__container .mini-audio .controls {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+  gap: 20px;
+}
+.description__container .mini-audio__container .mini-audio .controls .play-button {
+  min-width: 40px;
+}
+.description__container .mini-audio__container .mini-audio .controls .timebar {
+  flex-grow: 3;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.description__container .mini-audio__container .mini-audio .controls .timebar .progress {
+  width: 100%;
+}
+.description__container .mini-audio__container .mini-audio .controls .timebar .current-time,
+.description__container .mini-audio__container .mini-audio .controls .timebar .duration {
+  position: absolute;
+  font-size: 12px;
+  bottom: -15px;
+}
+.description__container .mini-audio__container .mini-audio .controls .timebar .duration {
+  right: 0;
+}
+.description__container .mini-audio__container .mini-audio .controls .sound__control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.description__container .mini-audio__container .mini-audio .controls .sound__control .sound__icon svg {
+  width: 16px;
+}
+.description__container .mini-audio__container .mini-audio .controls .progress,
+.description__container .mini-audio__container .mini-audio .controls .sound {
+  height: 3px;
+}
+.description__container .mini-audio__container .mini-audio .controls .sound {
+  width: 70px;
+}
+
+@media screen and (max-width: 670px) {
+  .description__container {
+    padding: 8px;
+    gap: 10px;
+  }
+  .description__container .mini-audio__container img {
+    width: 150px;
+    height: 100px;
+  }
+  .description__container .mini-audio__container .mini-audio .mini-audio__caption h2 {
+    font-size: 20px;
+    margin: 5px;
+  }
+  .description__container .mini-audio__container .mini-audio .mini-audio__caption h3 {
+    margin: 5px;
+    font-size: 16px;
+  }
+  .description__container .mini-audio__container .mini-audio .controls .play-button {
+    width: 25px;
+    height: 25px;
+    min-width: 25px;
+    align-self: center;
+  }
+  .description__container .mini-audio__container .mini-audio .controls .play-button svg {
+    width: 15px !important;
+    height: 15px !important;
+  }
+}
+@media screen and (max-width: 1200px) {
+  p.description-text {
+    margin: 5px 0;
+  }
+}
+@media screen and (max-width: 670px) {
+  .description__container .mini-audio__container {
+    gap: 10px;
+  }
+  .description__container .mini-audio__container img {
+    width: 100px;
+  }
+  input.sound {
+    width: 40px !important;
+  }
+  .timebar {
+    flex-grow: 1 !important;
+  }
+  .controls {
+    gap: 10px !important;
+  }
+  .controls .progress::-webkit-slider-thumb,
+.controls .sound::-webkit-slider-thumb {
+    width: 10px !important;
+    height: 10px !important;
+  }
+  .description__container .mini-audio__container .mini-audio .controls .timebar .current-time {
+    left: -15px;
+  }
+  .description__container .mini-audio__container .mini-audio .controls .timebar .duration {
+    right: -15px;
+  }
+  p.description-text {
+    font-size: 14px;
+  }
+}
+.next-level {
+  grid-area: next;
+  outline: none;
+  background-color: #00bc8c;
+  padding: 5px 0;
+}
+.next-level:disabled {
+  background-color: rgba(48, 48, 48, 0.93);
+  border-radius: 10px;
+  color: white;
+  outline: none;
 }
 
 * {
@@ -466,23 +830,6 @@ body {
   z-index: 100;
 }
 
-.next-level__container {
-  grid-area: next;
-}
-
-@media screen and (max-width: 880px) {
-  ul {
-    flex-wrap: wrap;
-  }
-  ul li {
-    margin-bottom: 10px;
-  }
-}
-@media screen and (max-width: 380px) {
-  ul {
-    flex-direction: column;
-  }
-}
 .line {
   background: rgb(85, 85, 85);
   height: 1px;
