@@ -452,7 +452,7 @@ a.caption-layer:hover {
 @media screen and (max-width: 670px) {
   .game__container {
     width: 100%;
-    grid-template-rows: 10% auto auto auto 0.5fr;
+    grid-template-rows: 10% auto auto 0.9fr 5%;
   }
 }
 @media screen and (max-width: 540px) {
@@ -616,6 +616,12 @@ a.caption-layer:hover {
   background-color: rgba(48, 48, 48, 0.93);
   transition: background-color 0.2s;
 }
+.questions__list ul li .point.wrong {
+  background-color: red;
+}
+.questions__list ul li .point.win {
+  background-color: rgb(0, 155, 118);
+}
 .questions__list ul li:last-child {
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -754,7 +760,7 @@ a.caption-layer:hover {
 }
 @media screen and (max-width: 1200px) {
   p.description-text {
-    margin: 5px 0;
+    margin: 20px 0;
   }
 }
 @media screen and (max-width: 670px) {
@@ -793,12 +799,14 @@ a.caption-layer:hover {
   outline: none;
   background-color: #00bc8c;
   padding: 5px 0;
+  cursor: pointer;
 }
 .next-level:disabled {
   background-color: rgba(48, 48, 48, 0.93);
   border-radius: 10px;
   color: white;
   outline: none;
+  cursor: not-allowed;
 }
 
 * {
