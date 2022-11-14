@@ -648,6 +648,10 @@ a.caption-layer:hover {
   }
 }
 .start-text {
+  display: block;
+}
+
+.hidden {
   display: none;
 }
 

@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SongBird by VitSmol</title>
-  <script src="js/index.js" type="module" defer></script>
   <script src="js/game.js" type="module" defer></script>
+  <script src="js/index.js" type="module" defer></script>
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -99,7 +99,7 @@
       </div>
       <div class="questions__list">
         <ul class="lists">
-          <li class="questions__list__item">
+          <!-- <li class="questions__list__item">
             <div class="point"></div> 
             Ворон
           </li>
@@ -122,7 +122,7 @@
           <li class="questions__list__item">
             <div class="point"></div> 
             Синица
-          </li>
+          </li> -->
         </ul>
       </div>
 
@@ -131,14 +131,14 @@
         <div class="hidden-description hidden">
 
           <div class="mini-audio__container">
-            <img src="assets/img/bird.jpg" alt="bird">
+            <img src="assets/img/bird.jpg" alt="bird" id="bird-image">
             <div class="mini-audio">
               <div class="mini-audio__caption">
-                <h2>
+                <h2 id="bird-name">
                   Bird
                 </h2>
                 <hr class="line">
-                <h3>
+                <h3 id="bird-lat">
                   Bird lat
                 </h3>
                 <hr class="line">
