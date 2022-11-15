@@ -14,6 +14,7 @@ export const audio = document.querySelectorAll(`.audio-file`)[0]
 export const progress = document.querySelectorAll(`.progress`)[0]
 export const sound = document.querySelectorAll(`.sound`)[0]
 
+// Second group of control elements
 export const playButtonDescription = document.querySelectorAll(`.play-button`)[1]
 export const playDescription = document.querySelectorAll('.play')[1]
 export const pauseDescription = document.querySelectorAll('.pause')[1]
@@ -21,9 +22,30 @@ export const audioDescription = document.querySelectorAll(`.audio-file`)[1]
 export const progressDescription = document.querySelectorAll(`.progress`)[1]
 export const soundDescription = document.querySelectorAll(`.sound`)[1]
 
+const time = document.getElementById(`current-time`);
+const timeDescription = document.getElementById(`current-time-description`);
+
 sound.style.background = `linear-gradient(to right, rgb(0, 188, 140) ${sound.value * 100}%, rgb(61, 133, 140) ${sound.value * 100}%, rgb(115, 115, 115) ${sound.value * 100}%, rgb(115, 115, 115) ${sound.value * 100}%)`
 soundDescription.style.background = `linear-gradient(to right, rgb(0, 188, 140) ${sound.value * 100}%, rgb(61, 133, 140) ${sound.value * 100}%, rgb(115, 115, 115) ${sound.value * 100}%, rgb(115, 115, 115) ${sound.value * 100}%)`
 
+// изменение таймера
+
+const timerChange = (currentTime, timer, duration) => {
+  let second = Math.floor(currentTime);
+  let minutes = Math.floor(currentTime / 60);
+  if (second < 10) {
+    timer.innerHTML = `0${minutes}:0${second}`
+  }
+  if (second >= 10) {
+    timer.innerHTML = `0${minutes}:${second}`
+  }
+  if (second > 59 && (second - 60 * minutes) < 10) {
+    timer.innerHTML = `0${minutes}:0${second - 60 * minutes}`
+  }
+  if (second > 59 && (second - 60 * minutes) >= 10) {
+    timer.innerHTML = `0${minutes}:${second - 60 * minutes}`
+  }
+}
 
 // изменение звука
 export const soundChange = (audio, sound) => {
@@ -31,9 +53,10 @@ export const soundChange = (audio, sound) => {
   sound.style.background = `linear-gradient(to right, rgb(0, 188, 140) ${sound.value * 100}%, rgb(61, 133, 140) ${sound.value * 100}%, rgb(115, 115, 115) ${sound.value * 100}%, rgb(115, 115, 115) ${sound.value * 100}%)`
 }
 // обновление прогресса
-export const progressUpdate = (audio, progressElement, first, second) => {
+export const progressUpdate = (audio, progressElement, first, second, timer) => {
   const currentProgress = (audio.currentTime / audio.duration) * 100
   progressElement.value = currentProgress
+  timerChange(audio.currentTime, timer, audio.duration)
   progressElement.style.background = `linear-gradient(to right, rgb(0, 188, 140) ${currentProgress}%, rgb(61, 133, 140) ${currentProgress}%, rgb(115, 115, 115) ${currentProgress}%, rgb(115, 115, 115) ${currentProgress}%)`
   if (currentProgress == 100) {
     first.classList.add(`active`)
@@ -41,9 +64,11 @@ export const progressUpdate = (audio, progressElement, first, second) => {
   }
 }
 // перемотка
-export const rewind = (audio, progressElement) => {
+export const rewind = (audio, progressElement, timer) => {
   const currentProgress = progressElement.value;
   audio.currentTime = (currentProgress * audio.duration) / 100
+
+  timerChange(audio.currentTime, timer, audio.duration)
   progressElement.style.background = `linear-gradient(to right, rgb(0, 188, 140) ${currentProgress}%, rgb(61, 133, 140) ${currentProgress}%, rgb(115, 115, 115) ${currentProgress}%, rgb(115, 115, 115) ${currentProgress}%)`
 }
 
@@ -67,6 +92,7 @@ export const clickFunc = (audio, first, second) => {
 }
 
 //! Listeners
+
 // start/stop button
 playButton.addEventListener(`click`, () => {
   if (!audioDescription.paused) {
@@ -84,20 +110,20 @@ playButtonDescription.addEventListener(`click`, () => {
 
 // On audio change
 audio.addEventListener(`timeupdate`, () => {
-  progressUpdate(audio, progress, play, pause)
+  progressUpdate(audio, progress, play, pause, time)
 })
 audioDescription.addEventListener(`timeupdate`, () => {
-  progressUpdate(audioDescription, progressDescription, playDescription, pauseDescription)
+  progressUpdate(audioDescription, progressDescription, playDescription, pauseDescription, timeDescription)
 })
 
 // On progress change
 progress.addEventListener(`input`, () => {
-  rewind(audio, progress)
+  rewind(audio, progress, time)
 })
 
 // On progress change
 progressDescription.addEventListener(`input`, () => {
-  rewind(audioDescription, progressDescription)
+  rewind(audioDescription, progressDescription, timeDescription)
 })
 
 soundDescription.addEventListener(`input`, () => {
@@ -107,3 +133,4 @@ soundDescription.addEventListener(`input`, () => {
 sound.addEventListener(`input`, () => {
   soundChange(audio, sound)
 })
+

@@ -21,17 +21,55 @@ const nexLevelBtn = document.querySelector(`.next-level`)
 const birdsListItems = document.querySelectorAll(`.birds__list__item`)
 nexLevelBtn.disabled = true
 
-//todo реализовать: 1.таймер времени
-//todo реализовать: 2.общая продолжительность времени
-//todo реализовать: 3.клик по кнопке с обнулением и переходом к следующему разделу
-//todo реализовать: 4.звук правильного/не правильного ответа
+const wrong = `./assets/sound/wrong.mp3`
+const win = `./assets/sound/win.mp3`
 
+const sound = (src) => {
+  let audio = new Audio(src)
+  audio.autoplay = true
+}
+
+// todo при прохождение последнего размера выводить страницу с результатом
+// todo реализовать галерею
+// todo реализовать два языка
+
+//* resolved реализовать: 1.таймер времени
+//* resolved реализовать: 2.общая продолжительность времени
+//* resolved реализовать: 4.звук правильного/не правильного ответа
+//* resolved реализовать: 3.клик по кнопке с обнулением и переходом к следующему разделу
+//* resolved реализовать: 5.исправить счетчик: при клике на не правильный вопрос (повторном) счётчик продолжает уменьшаться
+
+const duration = document.getElementById(`duration`)
+
+const durationDescription = document.getElementById(`duration-description`)
+
+const getDuration = (duration, aud) => {
+    aud.addEventListener('loadeddata', () => {
+      let minutes = Math.floor(aud.duration / 60);
+      let seconds = Math.ceil(aud.duration % 60);
+      if (seconds < 10) {
+        seconds = `0`+seconds
+      } 
+      if (minutes < 10) {
+        minutes = `0`+minutes
+      }
+      let result = `${minutes}:${seconds}`
+      duration.innerHTML = result
+    })
+}
+
+getDuration(duration, game.audio)
+getDuration(durationDescription, game.audioDescription)
 
 let questions;
-
 let currentIndex = 0;
 let showQuestions = false
 let currentArray;
+
+const makePlayButtonDefault = (play, pause) => {
+  play.classList.add(`active`)
+  pause.classList.remove(`active`)
+}
 
 const activeChapter = (ind, arr) => {
   arr.forEach(el => {
@@ -67,7 +105,6 @@ const createQuestionsList = (arr, index) => {
     }
   });
   questions = document.querySelectorAll(`.questions__list__item`);
-  // console.log(questions);
 }
 
 createQuestionsList(birdsData, currentIndex)
@@ -91,8 +128,7 @@ function clickByQuestions(el) {
     startDescription.classList.toggle(`hidden`)
   }
   if (!game.audioDescription.paused) {
-    game.playDescription.classList.add(`active`)
-    game.pauseDescription.classList.remove(`active`)
+    makePlayButtonDefault(game.playDescription, game.pauseDescription)
   }
 
   let currentId = el.dataset.matrixId
@@ -107,12 +143,19 @@ function clickByQuestions(el) {
   game.audioDescription.addEventListener('loadeddata', () => {
     game.progressDescription.value = 0
   })
+
   game.progressDescription.style.background = `linear-gradient(to right, rgb(0, 188, 140) 0%, rgb(61, 133, 140) 0%, rgb(115, 115, 115) 0%, rgb(115, 115, 115) 0%)`
+  if (el.firstChild.classList.contains(`wrong`)) {
+    sound(wrong)
+    return
+  }
   if (!obj.isTrue && !resolve) {
+    sound(wrong)
     el.firstChild.classList.add(`wrong`)
     step++
   }
   if (obj.isTrue && !resolve) {
+    sound(win)
     el.firstChild.classList.add(`win`)
     score += 5 - step
     resolve = true
@@ -124,6 +167,8 @@ function clickByQuestions(el) {
 }
 
 const toNext = () => {
+  makePlayButtonDefault(game.play, game.pause)
+  game.audioDescription[`pause`]()
   game.audio.addEventListener('loadeddata', () => {
     game.progress.value = 0
   })
@@ -132,7 +177,7 @@ const toNext = () => {
   })
   game.progressDescription.style.background = `linear-gradient(to right, rgb(0, 188, 140) 0%, rgb(61, 133, 140) 0%, rgb(115, 115, 115) 0%, rgb(115, 115, 115) 0%)`
   game.progress.style.background = `linear-gradient(to right, rgb(0, 188, 140) 0%, rgb(61, 133, 140) 0%, rgb(115, 115, 115) 0%, rgb(115, 115, 115) 0%)`
- 
+
   descriptionBlock.classList.toggle(`hidden`)
   startDescription.classList.toggle(`hidden`)
   showQuestions = false
@@ -147,8 +192,12 @@ const toNext = () => {
 }
 
 nexLevelBtn.addEventListener(`click`, () => {
-  toNext()
-  
+  if (currentIndex < currentArray.length - 1) {
+    toNext();
+  } else {
+    alert(`You Win`)
+  }
+
   questions.forEach(el => {
     el.addEventListener(`click`, () => {
       clickByQuestions(el)
