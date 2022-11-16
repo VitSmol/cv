@@ -4,7 +4,9 @@ export const gameContainer = document.querySelector(`.game__container`);
 export const resultContainer = document.querySelector(`.result__container`);
 
 setTimeout(() => {
-  gameContainer.classList.add(`start`)
+  if (gameContainer) {
+    gameContainer.classList.add(`start`)
+  }
 }, 300);
 
 // First group of control elements
@@ -33,7 +35,7 @@ soundDescription.style.background = `linear-gradient(to right, rgb(0, 188, 140) 
 
 // изменение таймера
 
-const timerChange = (currentTime, timer, duration) => {
+export const timerChange = (currentTime, timer, duration) => {
   let second = Math.floor(currentTime);
   let minutes = Math.floor(currentTime / 60);
   if (second < 10) {
@@ -55,6 +57,7 @@ export const soundChange = (audio, sound) => {
   audio.volume = sound.value
   sound.style.background = `linear-gradient(to right, rgb(0, 188, 140) ${sound.value * 100}%, rgb(61, 133, 140) ${sound.value * 100}%, rgb(115, 115, 115) ${sound.value * 100}%, rgb(115, 115, 115) ${sound.value * 100}%)`
 }
+
 // обновление прогресса
 export const progressUpdate = (audio, progressElement, first, second, timer) => {
   const currentProgress = (audio.currentTime / audio.duration) * 100
@@ -66,6 +69,7 @@ export const progressUpdate = (audio, progressElement, first, second, timer) => 
     second.classList.remove(`active`)
   }
 }
+
 // перемотка
 export const rewind = (audio, progressElement, timer) => {
   const currentProgress = progressElement.value;

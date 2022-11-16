@@ -1,5 +1,4 @@
 import { birdsData } from "./data.js";
-
 import * as game from "./game.js";
 
 const descriptionBlock = document.querySelector(`.hidden-description`);
@@ -29,8 +28,10 @@ const sound = (src) => {
   audio.autoplay = true
 }
 
-// todo при прохождение последнего размера выводить страницу с результатом
-// todo реализовать галерею
+// todo при прохождение последнего теста выводить страницу 
+    // todoс результатом, добавить условие при макс кол-ве балло
+
+    // todo реализовать галерею
 // todo реализовать два языка
 
 //* resolved реализовать: 1.таймер времени
@@ -156,6 +157,8 @@ function clickByQuestions(el) {
   }
   if (obj.isTrue && !resolve) {
     sound(win)
+    game.audioDescription[`pause`]()
+    game.audio[`pause`]()
     el.firstChild.classList.add(`win`)
     score += 5 - step
     resolve = true
