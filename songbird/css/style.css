@@ -369,7 +369,7 @@ a.caption-layer:hover {
   box-shadow: 0px 0px 10px 1px hsl(165, 45%, var(--light, 0%));
   background-color: rgba(0, 0, 0, 0.31);
   transform: translateX(-120%);
-  transition: transform 1s;
+  transition: transform 0.1s;
   padding: 15px;
   bottom: 100px;
 }
@@ -807,6 +807,39 @@ a.caption-layer:hover {
   color: white;
   outline: none;
   cursor: not-allowed;
+}
+
+.result__container {
+  position: absolute;
+  z-index: 380;
+  background: rgba(48, 48, 48, 0.93);
+  inset: 30% 10%;
+  transform: translateX(120%);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+.result__container.start {
+  transform: translateX(0);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.5s;
+}
+.result__container .yes-no {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.result__container a {
+  font-size: 3vw;
+  color: white;
+  transition: color 0.5s;
+  text-shadow: 1px 1px 1px hsl(165, 45%, var(--light, 0%));
+}
+.result__container a:hover {
+  color: rgb(0, 155, 118);
+  transition: color 0.5s;
 }
 
 * {

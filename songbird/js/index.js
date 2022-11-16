@@ -195,7 +195,12 @@ nexLevelBtn.addEventListener(`click`, () => {
   if (currentIndex < currentArray.length - 1) {
     toNext();
   } else {
-    alert(`You Win`)
+    game.gameContainer.classList.remove(`start`)
+    game.resultContainer.classList.add(`start`)
+    document.querySelector(`.score-count`).innerHTML = score
+    game.audioDescription[`pause`]()
+    game.audio[`pause`]()
+    // alert(`You Win`)
   }
 
   questions.forEach(el => {

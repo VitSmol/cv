@@ -1,6 +1,7 @@
 import { birdsData } from "./data.js";
 
-const gameContainer = document.querySelector(`.game__container`);
+export const gameContainer = document.querySelector(`.game__container`);
+export const resultContainer = document.querySelector(`.result__container`);
 
 setTimeout(() => {
   gameContainer.classList.add(`start`)
@@ -21,6 +22,8 @@ export const pauseDescription = document.querySelectorAll('.pause')[1]
 export const audioDescription = document.querySelectorAll(`.audio-file`)[1]
 export const progressDescription = document.querySelectorAll(`.progress`)[1]
 export const soundDescription = document.querySelectorAll(`.sound`)[1]
+
+
 
 const time = document.getElementById(`current-time`);
 const timeDescription = document.getElementById(`current-time-description`);
