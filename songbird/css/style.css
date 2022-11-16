@@ -5,7 +5,8 @@
 .question__container .audio__container .controls .sound {
   -webkit-appearance: none;
   background: linear-gradient(to right, rgb(0, 188, 140) 0%, rgb(61, 133, 140) 0%, rgb(115, 115, 115) 0%, rgb(115, 115, 115) 100%);
-  height: 5px;
+  height: 2px;
+  border-radius: 2px;
 }
 .gallery__container .mini-audio .progress:hover,
 .gallery__container .mini-audio .sound:hover, .description__container .mini-audio__container .mini-audio .controls .progress:hover,
@@ -725,10 +726,6 @@ a.caption-layer:hover {
 .description__container .mini-audio__container .mini-audio .controls .sound__control .sound__icon svg {
   width: 16px;
 }
-.description__container .mini-audio__container .mini-audio .controls .progress,
-.description__container .mini-audio__container .mini-audio .controls .sound {
-  height: 3px;
-}
 .description__container .mini-audio__container .mini-audio .controls .sound {
   width: 70px;
 }
@@ -908,12 +905,19 @@ a.caption-layer:hover {
   flex-direction: column;
   gap: 20px;
   padding: 20px;
-  background-color: #666;
+  background-color: rgba(0, 0, 0, 0.38);
   border-radius: 10px;
+  transition: transform 0.5s;
 }
-.gallery__container .description__gallery.active {
+.gallery__container .description__gallery.to-left {
+  transition: transform 0.8s;
   position: relative;
-  transform: translateX(0);
+  transform: translateX(-100%);
+}
+.gallery__container .description__gallery.to-right {
+  transition: transform 0.8s;
+  position: relative;
+  transform: translateX(100%);
 }
 .gallery__container .mini-audio__container {
   display: flex;

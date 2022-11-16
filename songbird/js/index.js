@@ -1,4 +1,5 @@
 import { birdsData } from "./data.js";
+import * as data from "./data.js";
 import * as game from "./game.js";
 
 const descriptionBlock = document.querySelector(`.hidden-description`);
@@ -44,23 +45,8 @@ const duration = document.getElementById(`duration`)
 
 const durationDescription = document.getElementById(`duration-description`)
 
-const getDuration = (duration, aud) => {
-    aud.addEventListener('loadeddata', () => {
-      let minutes = Math.floor(aud.duration / 60);
-      let seconds = Math.ceil(aud.duration % 60);
-      if (seconds < 10) {
-        seconds = `0`+seconds
-      } 
-      if (minutes < 10) {
-        minutes = `0`+minutes
-      }
-      let result = `${minutes}:${seconds}`
-      duration.innerHTML = result
-    })
-}
-
-getDuration(duration, game.audio)
-getDuration(durationDescription, game.audioDescription)
+data.getDuration(duration, game.audio)
+data.getDuration(durationDescription, game.audioDescription)
 
 let questions;
 let currentIndex = 0;
@@ -122,7 +108,6 @@ let score = 0;
 let step = 0;
 
 function clickByQuestions(el) {
-
   if (!showQuestions) {
     showQuestions = true
     descriptionBlock.classList.toggle(`hidden`)
@@ -203,7 +188,6 @@ nexLevelBtn.addEventListener(`click`, () => {
     document.querySelector(`.score-count`).innerHTML = score
     game.audioDescription[`pause`]()
     game.audio[`pause`]()
-    // alert(`You Win`)
   }
 
   questions.forEach(el => {
