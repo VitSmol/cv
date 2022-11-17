@@ -1,6 +1,9 @@
 import { birdsData } from "./data.js";
+import { birdsDataEn } from "./data.js";
+import { lang } from "./translate.js";
 import * as data from "./data.js";
 import * as game from "./game.js";
+const langLinks = document.querySelectorAll(`.lang-link`)
 
 const descriptionBlock = document.querySelector(`.hidden-description`);
 const startDescription = document.querySelector(`.start-text`)
@@ -70,8 +73,12 @@ const random = (min, max) => {
   return Math.round(rand)
 }
 
-const createQuestionsList = (arr, index) => {
-  currentArray = [...arr[index]]
+const createQuestionsList = (arr, arrEn, index) => {
+  if (lang == `ru`) {
+    currentArray = [...arr[index]]
+  } else {
+    currentArray = [...arrEn[index]]
+  } 
   let rightQuestion = random(0, arr.length - 1)
 
   currentArray.forEach((el, ind) => {
@@ -94,7 +101,7 @@ const createQuestionsList = (arr, index) => {
   questions = document.querySelectorAll(`.questions__list__item`);
 }
 
-createQuestionsList(birdsData, currentIndex)
+createQuestionsList(birdsData, birdsDataEn, currentIndex)
 
 questions.forEach(el => {
   el.addEventListener(`click`, () => {
@@ -122,9 +129,13 @@ function clickByQuestions(el) {
     return el.id == currentId
   })
   image.src = obj.image;
+  image.setAttribute(`data-matrix-id`, `${obj.id}`)
   name.innerHTML = obj.name;
+  name.setAttribute(`data-matrix-id`, `${obj.id}`)
   nameLat.innerHTML = obj.species;
+  nameLat.setAttribute(`data-matrix-id`, `${obj.id}`)
   text.innerHTML = `${obj.description}`
+  text.setAttribute(`data-matrix-id`, `${obj.id}`)
   game.audioDescription.src = obj.audio
   game.audioDescription.addEventListener('loadeddata', () => {
     game.progressDescription.value = 0
@@ -151,6 +162,7 @@ function clickByQuestions(el) {
     questionImage.src = obj.image
     questionName.innerHTML = obj.name
     nexLevelBtn.disabled = false
+    questionName.setAttribute(`data-matrix-id`, `${obj.id}`)
   }
 }
 
@@ -176,7 +188,7 @@ const toNext = () => {
   questionImage.src = defaultSrc
   questionName.innerHTML = `******`
   activeChapter(currentIndex, birdsListItems)
-  createQuestionsList(birdsData, currentIndex)
+  createQuestionsList(birdsData, birdsDataEn, currentIndex)
 }
 
 nexLevelBtn.addEventListener(`click`, () => {
@@ -196,4 +208,45 @@ nexLevelBtn.addEventListener(`click`, () => {
     })
   })
   nexLevelBtn.disabled = true
+})
+
+
+//! УУУХХ бляя
+langLinks.forEach(el => {
+  el.addEventListener(`click`, function() {
+    let lang = this.dataset.matrixId
+    if (lang == `ru`) {
+      currentArray = [...birdsData[currentIndex]]
+    } else {
+      currentArray = [...birdsDataEn[currentIndex]]
+    } 
+    let matrixId = name.dataset.matrixId
+    if (matrixId) {
+
+      let obj = currentArray.find(el => {
+        return el.id == matrixId
+      })
+      // console.log(obj);
+      name.innerHTML = obj.name
+      nameLat.innerHTML = obj.species
+      text.innerHTML = obj.description
+    }
+
+    const items = document.querySelectorAll(`.questions__list__item`);
+    console.log(currentIndex);
+    items.forEach((el, ind) => {
+      if (lang == `ru`) {
+        el.removeChild(el.lastChild);
+        let ruText = birdsData[currentIndex][ind].name
+        el.append(ruText)
+        console.log(ruText);
+      } else {
+        el.removeChild(el.lastChild);
+        let enText = birdsDataEn[currentIndex][ind].name
+        el.append(enText)
+        // console.log(enText);
+      }
+      // console.log(el.dataset.matrixId);
+    })
+  })
 })

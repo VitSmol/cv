@@ -1,4 +1,8 @@
 import { birdsData } from "./data.js";
+import { birdsDataEn } from "./data.js";
+import { lang } from "./translate.js";
+
+console.log(lang);
 import * as data from "./data.js";
 
 const container = document.querySelector(`.description__gallery`)
