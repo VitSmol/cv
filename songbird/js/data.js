@@ -604,7 +604,21 @@ export const birdsDataEn = [
   ]
 ];
 
+const compare = arr => {
+  let res = []
+  arr.forEach((el, ind)=> {
+    res[ind] = [...el]
+  })
+  for (let i = 0; i < res.length; i++) {
+    for (let j = 0; j < res.length; j++) {
+        res[i][j].enName = birdsDataEn[i][j].name
+        res[i][j].enDescription = birdsDataEn[i][j].description
+    } 
+  }
+  return res
+} 
 
+export const birds = compare(birdsData)
 // изменение таймера
 
 export const timerChange = (currentTime, timer, duration) => {

@@ -1,17 +1,18 @@
-import { birdsData } from "./data.js";
-import { birdsDataEn } from "./data.js";
+import { birds } from "./data.js";
 import { lang } from "./translate.js";
 import * as data from "./data.js";
 import * as game from "./game.js";
+
 const langLinks = document.querySelectorAll(`.lang-link`)
 
 const descriptionBlock = document.querySelector(`.hidden-description`);
 const startDescription = document.querySelector(`.start-text`)
 const listOfQuestions = document.querySelector(`.lists`);
 const scoreCount = document.getElementById(`score-count`)
+const scoreText = document.getElementById(`score-text`)
 
 const defaultSrc = `assets/img/bird.jpg`
-
+console.log(scoreText);
 const questionImage = document.getElementById(`question-img`)
 const questionName = document.querySelector(`.question-name`)
 
@@ -20,8 +21,43 @@ const name = document.getElementById(`bird-name`);
 const nameLat = document.getElementById(`bird-lat`);
 const text = document.querySelector(`.description-text`);
 
+const startText = document.querySelector(`.start-text`)
 const nexLevelBtn = document.querySelector(`.next-level`)
 const birdsListItems = document.querySelectorAll(`.birds__list__item`)
+
+const menuArray = {
+    ru: [`Разминка`, `Воробьиные`, `Лестные птицы`, `Певчие Птицы`, `Хищные птицы`, `Морские птицы`],
+    en: [`Warm-up`, `Sparrows`, `Fairy Birds`, `Songbirds`, `Predator Birds`, `Sea Birds`]
+  }
+
+const btnScore = {
+  ru: {
+    button: `Далее`,
+    score: `Счёт: `,
+    startText: `Послушайте плеер. Выберите птицу из списка`
+  },
+  en: {
+    button: `Next Level`,
+    score: `Score: `,
+    startText: `Listen to the player. Select a bird from the list`
+  }
+}
+
+const translateBtn = (lang) => {
+  nexLevelBtn.innerHTML = btnScore[lang].button
+  scoreText.innerHTML = btnScore[lang].score
+  startText.innerHTML = btnScore[lang].startText
+}
+
+translateBtn(lang)
+
+const translateMenu = (arr, lang) => {
+  birdsListItems.forEach((el, ind) => {
+    el.innerHTML = arr[lang][ind]
+  })
+}
+translateMenu(menuArray, lang)
+
 nexLevelBtn.disabled = true
 
 const wrong = `./assets/sound/wrong.mp3`
@@ -33,19 +69,13 @@ const sound = (src) => {
 }
 
 // TODO при прохождение последнего теста выводить страницу 
-    // TODO результатом, добавить условие при макс кол-ве балло
+// TODO результатом, добавить условие при макс кол-ве балло
 
-    // TODO реализовать галерею
+// TODO реализовать галерею
 // TODO реализовать два языка
 
-//* resolved реализовать: 1.таймер времени
-//* resolved реализовать: 2.общая продолжительность времени
-//* resolved реализовать: 4.звук правильного/не правильного ответа
-//* resolved реализовать: 3.клик по кнопке с обнулением и переходом к следующему разделу
-//* resolved реализовать: 5.исправить счетчик: при клике на не правильный вопрос (повторном) счётчик продолжает уменьшаться
 
 const duration = document.getElementById(`duration`)
-
 const durationDescription = document.getElementById(`duration-description`)
 
 data.getDuration(duration, game.audio)
@@ -73,12 +103,8 @@ const random = (min, max) => {
   return Math.round(rand)
 }
 
-const createQuestionsList = (arr, arrEn, index) => {
-  if (lang == `ru`) {
-    currentArray = [...arr[index]]
-  } else {
-    currentArray = [...arrEn[index]]
-  } 
+const createQuestionsList = (arr, index) => {
+  currentArray = [...arr[index]]
   let rightQuestion = random(0, arr.length - 1)
 
   currentArray.forEach((el, ind) => {
@@ -87,7 +113,14 @@ const createQuestionsList = (arr, arrEn, index) => {
     li.setAttribute(`data-matrix-id`, `${el.id}`)
     const div = document.createElement(`div`)
     div.classList.add(`point`)
-    li.append(div, el.name)
+
+
+    if (lang === `ru`) {
+      li.append(div, el.name)
+    } else if (lang === `en`) {
+      li.append(div, el.enName)
+    }
+
     listOfQuestions.append(li)
 
     if (ind === rightQuestion) {
@@ -101,7 +134,7 @@ const createQuestionsList = (arr, arrEn, index) => {
   questions = document.querySelectorAll(`.questions__list__item`);
 }
 
-createQuestionsList(birdsData, birdsDataEn, currentIndex)
+createQuestionsList(birds, currentIndex)
 
 questions.forEach(el => {
   el.addEventListener(`click`, () => {
@@ -128,13 +161,20 @@ function clickByQuestions(el) {
   let obj = currentArray.find(el => {
     return el.id == currentId
   })
+
+  if (lang === `ru`) {
+    name.innerHTML = obj.name;
+    text.innerHTML = obj.description
+  } else if (lang === `en`) {
+    name.innerHTML = obj.enName;
+    text.innerHTML = obj.enDescription
+  }
+
   image.src = obj.image;
   image.setAttribute(`data-matrix-id`, `${obj.id}`)
-  name.innerHTML = obj.name;
   name.setAttribute(`data-matrix-id`, `${obj.id}`)
   nameLat.innerHTML = obj.species;
   nameLat.setAttribute(`data-matrix-id`, `${obj.id}`)
-  text.innerHTML = `${obj.description}`
   text.setAttribute(`data-matrix-id`, `${obj.id}`)
   game.audioDescription.src = obj.audio
   game.audioDescription.addEventListener('loadeddata', () => {
@@ -142,10 +182,12 @@ function clickByQuestions(el) {
   })
 
   game.progressDescription.style.background = `linear-gradient(to right, rgb(0, 188, 140) 0%, rgb(61, 133, 140) 0%, rgb(115, 115, 115) 0%, rgb(115, 115, 115) 0%)`
+
   if (el.firstChild.classList.contains(`wrong`)) {
     sound(wrong)
     return
   }
+
   if (!obj.isTrue && !resolve) {
     sound(wrong)
     el.firstChild.classList.add(`wrong`)
@@ -160,7 +202,11 @@ function clickByQuestions(el) {
     resolve = true
     scoreCount.innerHTML = score
     questionImage.src = obj.image
-    questionName.innerHTML = obj.name
+    if (lang === `ru`) {
+      questionName.innerHTML = obj.name
+    } else if (lang === `en`) {
+      questionName.innerHTML = obj.enName
+    }
     nexLevelBtn.disabled = false
     questionName.setAttribute(`data-matrix-id`, `${obj.id}`)
   }
@@ -188,7 +234,7 @@ const toNext = () => {
   questionImage.src = defaultSrc
   questionName.innerHTML = `******`
   activeChapter(currentIndex, birdsListItems)
-  createQuestionsList(birdsData, birdsDataEn, currentIndex)
+  createQuestionsList(birds, currentIndex)
 }
 
 nexLevelBtn.addEventListener(`click`, () => {
@@ -213,40 +259,51 @@ nexLevelBtn.addEventListener(`click`, () => {
 
 //! УУУХХ бляя
 langLinks.forEach(el => {
-  el.addEventListener(`click`, function() {
+  el.addEventListener(`click`, function () {
     let lang = this.dataset.matrixId
-    if (lang == `ru`) {
-      currentArray = [...birdsData[currentIndex]]
-    } else {
-      currentArray = [...birdsDataEn[currentIndex]]
-    } 
-    let matrixId = name.dataset.matrixId
-    if (matrixId) {
+    const items = document.querySelectorAll(`.questions__list__item`);
+    
+    translateMenu(menuArray, lang)
+    translateBtn(lang)
 
-      let obj = currentArray.find(el => {
+    items.forEach((el, i) => {
+      el.removeChild(el.lastChild);
+      if (lang === `ru`) {
+        el.append(birds[currentIndex][i].name)
+      } else if (lang === `en`) {
+        el.append(birds[currentIndex][i].enName)
+      }
+    })
+
+    let matrixId = name.dataset.matrixId
+
+    if (matrixId) {
+      let obj = birds[currentIndex].find(el => {
         return el.id == matrixId
       })
-      // console.log(obj);
-      name.innerHTML = obj.name
-      nameLat.innerHTML = obj.species
-      text.innerHTML = obj.description
+      if (lang === `ru`) {
+        name.innerHTML = obj.name
+        text.innerHTML = obj.description
+
+      } else if (lang === `en`) {
+        name.innerHTML = obj.enName
+        text.innerHTML = obj.enDescription
+      }
     }
 
-    const items = document.querySelectorAll(`.questions__list__item`);
-    console.log(currentIndex);
-    items.forEach((el, ind) => {
-      if (lang == `ru`) {
-        el.removeChild(el.lastChild);
-        let ruText = birdsData[currentIndex][ind].name
-        el.append(ruText)
-        console.log(ruText);
-      } else {
-        el.removeChild(el.lastChild);
-        let enText = birdsDataEn[currentIndex][ind].name
-        el.append(enText)
-        // console.log(enText);
+    let questionIndex = questionName.dataset.matrixId
+    console.log(resolve);
+    if (questionIndex && resolve) {
+      let question = birds[currentIndex].find(el => {
+        return el.id == questionIndex
+      })
+      if (lang === `ru`) {
+        questionName.innerHTML = question.name
+      } else if (lang === `en`) {
+        questionName.innerHTML = question.enName
       }
-      // console.log(el.dataset.matrixId);
-    })
+    }
+
   })
 })
+
