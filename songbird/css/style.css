@@ -866,6 +866,9 @@ a.caption-layer:hover {
   inset: 10% 8%;
   overflow: hidden;
 }
+.gallery__container #inner #inner-wrapper {
+  display: flex;
+}
 .gallery__container .left,
 .gallery__container .right {
   position: absolute;
@@ -903,6 +906,7 @@ a.caption-layer:hover {
 .gallery__container .description__gallery {
   display: flex;
   flex-direction: column;
+  min-width: 100%;
   gap: 20px;
   padding: 20px;
   background-color: rgba(0, 0, 0, 0.38);
@@ -972,6 +976,36 @@ a.caption-layer:hover {
 }
 .gallery__container .mini-audio .sound {
   width: 70px;
+}
+
+#language {
+  position: absolute;
+  z-index: 500;
+  right: 50%;
+  bottom: 5px;
+}
+#language ul {
+  list-style-type: none;
+  display: flex;
+}
+#language ul li {
+  cursor: pointer;
+  transition: transform 0.7s;
+}
+#language ul li:hover {
+  transition: transform 0.7s;
+  transform: scale(1.1);
+}
+#language img {
+  width: 70px;
+  height: 35px;
+}
+
+#ytWidget {
+  position: absolute;
+  right: 0;
+  z-index: 900;
+  bottom: 100px;
 }
 
 * {

@@ -2,7 +2,7 @@ import { birdsData } from "./data.js";
 import * as data from "./data.js";
 
 const container = document.querySelector(`.description__gallery`)
-const inner = document.getElementById(`inner`);
+const inner = document.getElementById(`inner-wrapper`);
 
 const prev = document.querySelector(`.left`)
 const next = document.querySelector(`.right`);
@@ -26,6 +26,7 @@ class GalleryItem {
     const birdLat = document.getElementById(`bird-lat`)
     const audio = document.querySelector(`.audio-file`)
     const description = document.querySelector(`.description-text`);
+
     img.src = this.image
     birdName.innerHTML = this.name
     birdLat.innerHTML = this.species
@@ -37,21 +38,28 @@ class GalleryItem {
   }
 }
 
-const startSlide = new GalleryItem(container, array[currentIndex]);
 
+const startSlide = new GalleryItem(container, array[currentIndex]);
 startSlide.createCard()
 startSlide.cloneCurrentContainer()
 
 const switchSlide = (sign) => {
-  sign === `next` ? currentIndex++ : currentIndex--;
-  currentIndex < 0 ? currentIndex = array.length - 1 :
-  currentIndex > array.length - 1 ? currentIndex = 0 : null
-    inner.innerHTML = '';
-    inner.append(clone)
-    
-  const newElement = new GalleryItem(clone, array[currentIndex]);
+  if (sign === `next`) {
+    currentIndex++
+  } else {
+    currentIndex--
+  }
+  //TODO добавить плавность анимации КОДИТЬ ТУТ!!11
+  let newElement = new GalleryItem(clone, array[currentIndex])
   newElement.createCard()
   newElement.cloneCurrentContainer()
+  inner.append(clone)
+  inner.removeChild(inner.lastChild)
+  // console.log(inner.firstChild);
+
+  // const newElement = new GalleryItem(clone, array[currentIndex]);
+  // newElement.createCard()
+  // newElement.cloneCurrentContainer()
 }
 
 function addListeners() {
@@ -65,7 +73,7 @@ function addListeners() {
   const duration = document.getElementById(`duration-description`);
 
   sound.style.background = `linear-gradient(to right, rgb(0, 188, 140) ${sound.value * 100}%, rgb(61, 133, 140) ${sound.value * 100}%, rgb(115, 115, 115) ${sound.value * 100}%, rgb(115, 115, 115) ${sound.value * 100}%)`
-  
+
   audio.addEventListener('loadeddata', () => {
     progress.value = 0
   })
