@@ -74,6 +74,8 @@ const sound = (src) => {
 // TODO реализовать галерею
 // TODO реализовать два языка
 
+// TODO исправить стили на странице с игрой (при мобильном отображении)
+
 
 const duration = document.getElementById(`duration`)
 const durationDescription = document.getElementById(`duration-description`)

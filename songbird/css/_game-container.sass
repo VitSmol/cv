@@ -1,0 +1,102 @@
+.game__container
+  position: relative
+  display: grid
+  grid-template-areas: "birds birds " "question question " "list description" "next next"
+  // grid-template-rows: 1fr 2fr 3fr 1fr
+  grid-template-rows: 6% 30% 53% 6%
+  grid-template-columns: repeat(2, 1fr)
+  gap: 10px
+  width: 90%
+  height: 75%
+  position: fixed
+  z-index: 1000
+  box-shadow: 0px 0px 10px 1px hsl(165, 45%, var(--light, 0%))
+  background-color: rgb(0 0 0 / 31%)
+  transform: translateX(-120%)
+  transition: transform 0.1s
+  padding: 15px
+  bottom: 100px
+  &.start
+    transform: translateX(0)
+    transition: transform 1s
+  .birds__list
+    grid-area: birds
+    list-style-type: none
+    display: flex
+    justify-content: space-between
+    padding: 0px 0px
+    margin-top: 0
+    margin-bottom: 0
+    background-color: $color
+    border-radius: 5px
+    height: 100%
+    .birds__list__item
+      text-align: center
+      padding: 5px 10px
+      flex-grow: 1
+      flex-shrink: 0
+      display: inline-flex
+      justify-content: center
+      align-items: center
+      min-height: 100%
+      &.active
+        background-color: $coloractive
+      &:first-child.active
+        border-bottom-left-radius: 5px
+        border-top-left-radius: 5px
+      &:last-child.active
+        border-bottom-right-radius: 5px
+        border-top-right-radius: 5px
+  .score
+    position: absolute
+    right: 0
+    top: -45px
+
+@media screen and (max-width: 1600px) 
+  .game__container
+    grid-template-areas: "birds birds birds" "question question question " "list description description" "next next next"
+    grid-template-columns: repeat(3, 1fr)
+@media screen and (max-width: 1200px) 
+  .game__container
+    grid-template-areas: "birds birds birds birds" "question question question question " "list description description description" "next next next next"
+    grid-template-columns: repeat(4, 1fr)
+    grid-template-rows:  5% 28% 53% 6%
+    gap: 15px
+
+@media screen and (max-width: 900px) 
+  .game__container
+    grid-template-areas: "birds birds birds birds" "question question question question " "list list list list" "description description description description" "next next next next"
+    grid-template-rows: 10% 2fr 35px 3fr 6%
+    gap: 10px
+    width: 95%
+    .birds__list
+      margin-bottom: 0
+      display: grid
+      grid-template-columns: 1fr 1fr 1fr
+      grid-template-rows: 1fr 1fr
+      .birds__list__item
+        // height: 30px
+        padding-top: 5px
+        padding-bottom: 5px
+        margin-bottom: 0
+@media screen and (max-width: 670px) 
+  .game__container
+    font-size: 14px
+    width: 100%
+    grid-template-rows: 10% auto auto .9fr 5%
+
+@media screen and (max-width: 540px) 
+  .container
+    .game__container
+      padding: 10px
+      grid-template-rows: 15% auto 60px 1fr 5%
+      height: 79%
+      bottom: 80px
+      .birds__list
+        grid-template-columns: 1fr 1fr
+        grid-template-rows: 1fr 1fr 1fr
+      .score
+        top: -30px
+        right: 10px
+
+

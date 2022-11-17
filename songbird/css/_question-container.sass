@@ -1,0 +1,99 @@
+.question__container
+    grid-area: question
+    display: flex
+    gap: 20px
+    padding: 20px
+    background-color: $bgc
+    border-radius: 10px
+    img
+      width: 155px
+      height: 100px
+      border-radius: 10px
+    .audio__container
+      display: flex
+      flex-direction: column
+      flex-grow: 1
+      .hidden__bird-name
+        font-size: 24px
+      .controls
+        display: flex
+        width: 100%
+        align-items: stretch
+        gap: 20px
+        .play-button
+          @extend %play-button
+        .timebar
+          flex-grow: 3
+          display: flex
+          align-items: center
+          position: relative
+          .progress
+            width: 100%
+          .current-time,
+          .duration
+            position: absolute
+            font-size: 17px
+            bottom: -15px
+          .duration
+            right: 0
+        .sound__control
+          display: flex
+          align-items: center
+          gap: 10px
+        .progress, 
+        .sound
+          @extend %progress
+        .progress::-webkit-slider-thumb, 
+        .sound::-webkit-slider-thumb  
+          @extend %disc
+
+@media screen and (max-width: 900px) 
+  .question__container 
+    gap: 10px
+    padding: 10px
+    img
+      width: 150px
+      height: 100px
+    .audio__container
+      justify-content: space-evenly
+      .hidden__bird-name
+        font-size: 20px
+        .line
+          margin: 5px 0
+      .controls
+        .play-button 
+          width: 25px 
+          height: 25px 
+          min-width: 25px
+          align-self: center
+          svg
+            width: 15px !important
+            height: 15px !important
+        .timebar
+          .progress
+            height: 2px 
+          .current-time,
+          .duration
+            font-size: 14px
+        .sound__control
+          .sound__icon
+            svg
+              width: 20px
+        .sound
+          height: 2px
+          width: 70px
+@media screen and (max-width: 670px) 
+  .question__container
+    .audio__container
+      justify-content: start
+
+@media screen and (max-width: 670px) 
+  .question__container
+    img
+      width: 100px
+    .controls .timebar span
+      font-size: 12px
+.question__container .audio__container .controls .timebar .duration 
+  right: -15px
+.question__container .audio__container .controls .timebar .current-time
+  left: -15px

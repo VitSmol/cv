@@ -1,0 +1,187 @@
+.container
+  display: flex
+  justify-content: center
+  align-items: center
+  height: 100vh
+  width: 100vw
+  header, footer
+    position: fixed
+    left: 0
+    right: 0
+    height: 80px
+    background-color: rgb(0 0 0 / 31%)
+    align-self: start
+    z-index: 300
+    width: 100vw
+    display: flex
+    justify-content: center
+    align-items: center
+    box-shadow: 0px 0px 10px 1px hsl(165, 45%, var(--light, 0%))
+    .header__wrapper, .footer__wrapper
+      width: 70%
+      display: flex
+      position: relative
+      justify-content: space-between
+      align-items: center
+      a
+        position: static
+        filter: none
+        color: white
+        letter-spacing: 1px
+        font-size: 2vw
+        text-transform: capitalize
+        transition: color 0.5s
+        margin: 0 10px
+        &:hover, &.active
+          transition: color 0.5s
+          color: $color
+        // &:not(::last-child)
+          // margin-right: 20px
+      @media screen and (max-width: 1000px) 
+        a
+          font-size: 2.5vw
+      @media screen and (max-width: 640px)
+        a
+          font-size: 17px
+    @media screen and (max-width: 640px)
+      .header__wrapper
+        width: 100%
+        padding-left: 20px
+        padding-right: 20px
+        .header__navigation
+          justify-self: center
+      .footer__wrapper
+        width: 100%
+        padding: 0 10px
+        .footer__logo
+          width: 120px
+    .logo
+      background-image: url(../assets/img/logo.svg)
+
+    .footer__logo, .logo
+      width: 200px
+      height: 55px
+      background-size: contain
+      background-repeat: no-repeat
+
+      img
+        filter: invert(1)
+        transition: filter 0.5s
+      a:hover img
+        transition: filter 0.5s
+        filter: none
+    .footer__logo
+      height: auto
+  footer
+    bottom: 0
+.caption, 
+.caption a
+  color: white
+  position: relative
+  z-index: 200
+  text-align: center
+  text-transform: uppercase
+.caption
+  width: 700px
+  transform-style: preserve-3d
+  h1, a
+    letter-spacing: 1.3px
+    display: grid
+    place-items: center
+    font-size: min(5vw, 10vw)
+    line-height: 0.9
+    --rx: 15deg
+    --ry: 15deg
+
+.caption-layer 
+  letter-spacing: 4.3px
+  position: absolute
+  left: 50%
+  top: 50%
+  width: 100%
+  text-align: center
+  // color: hsl(165, 45%, var(--light))
+  color: hsl(165, 100%, var(--light))
+  // color: rgb(0 156 var(--light, 0%))
+  transform: translate(-50%, -50%) rotateX(var(--rx, 0)) rotateY(var(--ry, 0)) translateZ(var(--tz, 0))
+  &:nth-child(1) 
+    filter: blur(6px)
+    color: #0006
+  @for $i from 0 to 20 
+    &:nth-child(#{$i + 2}) 
+      --tz: #{$i * 1 + 120}px
+      --light: #{($i + 1) * 2}%
+      
+.caption-layer:nth-child(21) 
+    --light: 39%
+
+a.caption-layer
+  top: 100px
+  font-size: 4vw
+  transition: color 0.5s
+  text-shadow: 1px 1px 1px hsl(165, 45%, var(--light, 0%))
+  &:hover
+    color: $color
+    transition: color 0.5s
+@media screen and (max-width: 900px) 
+  .container
+    footer, header
+      height: 70px
+    .game__container
+      height: 77%
+    footer .footer__wrapper .footer__logo img
+      width: 100px
+@media screen and (max-width: 640px)
+  header
+    .header__wrapper
+      align-items: center
+      .logo
+        width: 100px
+        height: 25px
+        .header__navigation
+          a
+            font-size: 15px
+.header__navigation
+  margin-right: 40px
+@media (max-width: 682px)
+  .caption 
+    transform: translateX(-0.15em)
+    width: 300px
+    h1
+      --ry: -2deg
+      font-size: 30px
+    a
+      --ry: -2deg
+      font-size: 30px
+
+@media screen and (max-width: 400px)
+  .container header
+    .header__wrapper
+      flex-direction: column
+      .header__navigation
+        justify-self: start
+        align-items: start
+        margin-right: 0
+      .logo
+        align-self: center
+        justify-self: center
+        width: 120px
+  footer .footer__wrapper h2 a
+    font-size: 14px !important
+    text-align: right
+    margin-right: 0 !important
+  .container footer .footer__wrapper .footer__logo img 
+      width: 50px
+
+@media screen and (max-height: 730px)
+  // footer, header, .game__container
+  //   position: static !important
+  // .container
+  //   flex-direction: column
+  //   height: 100%
+  // #main-footer,
+  // #main-header
+  //   position: fixed !important
+  // #main-container
+  //   flex-direction: row
+  //   height: 100vh

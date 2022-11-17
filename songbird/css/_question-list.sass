@@ -1,0 +1,58 @@
+.questions__list
+  grid-area: list
+  background-color: $bgc
+  border-radius: 10px
+  border: 1px solid $border-color
+  ul
+    height: 100%
+    display: flex
+    flex-direction: column
+    justify-content: space-evenly
+    list-style-type: none
+    margin: 0
+    padding: 0
+    li
+      border-bottom: 1px solid $border-color
+      flex-grow: 1
+      display: flex
+      align-items: center
+      transition: background-color 0.7s
+      &:hover
+        cursor: pointer
+        background-color: rgb(68, 68, 68)
+        transition: background-color 0.2s
+        .point
+          background-color: $bgc
+          transition: background-color 0.2s
+      .point
+        &.wrong
+          background-color: red
+        &.win
+          background-color: $color
+      &:last-child
+        border-bottom-left-radius: 10px
+        border-bottom-right-radius: 10px
+
+      .point
+        width: 10px
+        height: 10px
+        border-radius: 50%
+        background-color: rgb(68, 68, 68)
+        transition: background-color 0.7s
+        margin: 0 20px
+
+@media screen and (max-width: 900px) 
+  .questions__list
+    ul
+      flex-direction: row
+      li
+        .point
+          margin: 0 10px
+        &:last-child
+          border-bottom-left-radius: 0px
+
+@media screen and (max-width: 670px) 
+  .questions__list ul
+    display: grid
+    grid-template-columns: 1fr 1fr 1fr
+    grid-template-rows: 1fr 1fr

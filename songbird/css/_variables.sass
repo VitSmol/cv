@@ -1,0 +1,45 @@
+$color: rgb(0 155 118)
+$coloractive: #00bc8c
+$bgc: rgb(48 48 48 / 93%)
+$border-color: rgb(85, 85, 85)
+
+%progress
+  -webkit-appearance: none
+  background: linear-gradient(to right, rgb(0, 188, 140) 0%, rgb(61, 133, 140) 0%, rgb(115, 115, 115) 0%, rgb(115, 115, 115) 100%)
+  height: 2px
+  border-radius: 2px
+  &:hover
+    cursor: pointer
+%disc
+  -webkit-appearance: none
+  background-color: rgb(128 128 128)
+  width: 16px
+  height: 16px
+  border-radius: 50%
+
+%play-button
+  display: flex
+  align-items: center
+  transition: .2s
+  width: 40px
+  height: 40px
+  border: 2px solid rgb(0 188 140)
+  justify-content: center
+  border-radius: 50%
+  cursor: pointer
+  position: relative
+  .control
+    position: absolute
+    transition: .2s
+    width: 18px
+    height: 18px
+    color: rgb(84 177 193)
+    overflow: hidden
+    vertical-align: middle
+    opacity: 0
+    transition: opacity 0.3s
+    z-index: -1
+    &.active
+      transition: opacity 0.3s
+      opacity: 1
+      z-index: 50

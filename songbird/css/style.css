@@ -71,7 +71,7 @@
   background-color: rgba(0, 0, 0, 0.31);
   align-self: start;
   z-index: 300;
-  width: 100%;
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -119,7 +119,7 @@
   }
   .container header .footer__wrapper, .container footer .footer__wrapper {
     width: 100%;
-    padding: 0 30px;
+    padding: 0 10px;
   }
   .container header .footer__wrapper .footer__logo, .container footer .footer__wrapper .footer__logo {
     width: 120px;
@@ -330,6 +330,7 @@ a.caption-layer:hover {
   .container header .header__wrapper .header__navigation {
     justify-self: start;
     align-items: start;
+    margin-right: 0;
   }
   .container header .header__wrapper .logo {
     align-self: center;
@@ -337,26 +338,12 @@ a.caption-layer:hover {
     width: 120px;
   }
   footer .footer__wrapper h2 a {
-    font-size: 16px !important;
+    font-size: 14px !important;
     text-align: right;
     margin-right: 0 !important;
   }
-}
-@media screen and (max-height: 730px) {
-  footer, header, .game__container {
-    position: static !important;
-  }
-  .container {
-    flex-direction: column;
-    height: 100%;
-  }
-  #main-footer,
-#main-header {
-    position: fixed !important;
-  }
-  #main-container {
-    flex-direction: row;
-    height: 100vh;
+  .container footer .footer__wrapper .footer__logo img {
+    width: 50px;
   }
 }
 .game__container {
@@ -455,6 +442,7 @@ a.caption-layer:hover {
 }
 @media screen and (max-width: 670px) {
   .game__container {
+    font-size: 14px;
     width: 100%;
     grid-template-rows: 10% auto auto 0.9fr 5%;
   }
@@ -485,7 +473,7 @@ a.caption-layer:hover {
 }
 .question__container img {
   width: 155px;
-  height: 115px;
+  height: 100px;
   border-radius: 10px;
 }
 .question__container .audio__container {
@@ -794,6 +782,12 @@ a.caption-layer:hover {
     font-size: 14px;
   }
 }
+@media screen and (max-width: 670px) {
+  p.description-text {
+    margin-top: 20px;
+    margin-bottom: 0;
+  }
+}
 .next-level {
   grid-area: next;
   outline: none;
@@ -981,12 +975,14 @@ a.caption-layer:hover {
 #language {
   position: absolute;
   z-index: 500;
-  right: 50%;
-  bottom: 5px;
+  right: calc(50% - 35px);
+  bottom: 0px;
 }
 #language ul {
   list-style-type: none;
   display: flex;
+  padding: 0;
+  margin: 0;
 }
 #language ul li {
   cursor: pointer;
@@ -996,18 +992,19 @@ a.caption-layer:hover {
   transition: transform 0.7s;
   transform: scale(1.1);
 }
-#language img {
-  width: 70px;
-  height: 35px;
-}
 
-#ytWidget {
-  position: absolute;
-  right: 0;
-  z-index: 900;
-  bottom: 100px;
+@media screen and (max-width: 670px) {
+  #flags {
+    flex-direction: column;
+  }
+  #flags img {
+    width: 60px !important;
+    height: 30px !important;
+  }
+  #language {
+    right: calc(50% - 15px);
+  }
 }
-
 * {
   box-sizing: border-box;
 }
@@ -1020,6 +1017,7 @@ body {
           user-select: none;
   font-family: Kurale, sans-serif;
   overflow-x: hidden;
+  position: fixed;
 }
 
 #myVideo {
