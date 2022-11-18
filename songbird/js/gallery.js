@@ -1,9 +1,14 @@
-import { birdsData } from "./data.js";
-import { birdsDataEn } from "./data.js";
+// import { birdsData } from "./data.js";
+import { birds } from "./data.js";
 import { lang } from "./translate.js";
 
-console.log(lang);
 import * as data from "./data.js";
+
+const img = document.getElementById(`bird-image`)
+const birdName = document.getElementById(`bird-name`)
+const birdLat = document.getElementById(`bird-lat`)
+const audio = document.querySelector(`.audio-file`)
+const description = document.querySelector(`.description-text`);
 
 const container = document.querySelector(`.description__gallery`)
 const inner = document.getElementById(`inner-wrapper`);
@@ -11,31 +16,39 @@ const inner = document.getElementById(`inner-wrapper`);
 const prev = document.querySelector(`.left`)
 const next = document.querySelector(`.right`);
 
+const langLinks = document.querySelectorAll(`.lang-link`)
+
 let clone
-let array = birdsData.flat(Infinity)
+let array = birds.flat(Infinity)
 let currentIndex = 0;
 
 class GalleryItem {
-  constructor(container, object) {
+  constructor(container, object, lang) {
     this.container = container;
     this.audio = object.audio;
     this.description = object.description;
     this.image = object.image;
     this.name = object.name;
     this.species = object.species;
+    this.lang = lang;
+    this.enName = object.enName;
+    this.enDescription = object.enDescription
   }
   createCard() {
-    const img = document.getElementById(`bird-image`)
-    const birdName = document.getElementById(`bird-name`)
-    const birdLat = document.getElementById(`bird-lat`)
-    const audio = document.querySelector(`.audio-file`)
-    const description = document.querySelector(`.description-text`);
 
+    // const audio = await fetch(this.audio)
+    // console.log(audio);
     img.src = this.image
-    birdName.innerHTML = this.name
     birdLat.innerHTML = this.species
     audio.src = this.audio;
-    description.innerHTML = this.description
+    if (lang === `ru`) {
+      birdName.innerHTML = this.name
+      description.innerHTML = this.description
+    } else if (lang === `en`) {
+      birdName.innerHTML = this.enName
+      description.innerHTML = this.enDescription
+
+    }
   }
   cloneCurrentContainer() {
     clone = this.container.cloneNode(true)
@@ -44,8 +57,10 @@ class GalleryItem {
 
 
 const startSlide = new GalleryItem(container, array[currentIndex]);
+
 startSlide.createCard()
 startSlide.cloneCurrentContainer()
+
 
 const switchSlide = (sign) => {
   if (sign === `next`) {
@@ -53,7 +68,13 @@ const switchSlide = (sign) => {
   } else {
     currentIndex--
   }
+  if (currentIndex < 0) {
+    currentIndex = array.length - 1;
+  } else if (currentIndex > array.length - 1) {
+    currentIndex = 0
+  }
   //TODO добавить плавность анимации КОДИТЬ ТУТ!!11
+  console.log(currentIndex);
   let newElement = new GalleryItem(clone, array[currentIndex])
   newElement.createCard()
   newElement.cloneCurrentContainer()
@@ -110,3 +131,29 @@ prev.addEventListener(`click`, () => {
   switchSlide(`down`)
   addListeners()
 })
+
+langLinks.forEach(el => {
+  el.addEventListener(`click`, function() {
+    let lang = this.dataset.matrixId;
+    console.log(array[currentIndex]);
+    if (lang === `ru`) {
+      birdName.innerHTML = array[currentIndex].name
+      description.innerHTML = array[currentIndex].description
+    } else if (lang === `en`) {
+      birdName.innerHTML = array[currentIndex].enName
+      description.innerHTML = array[currentIndex].enDescription
+    }
+  })
+})
+
+async function getSrc(src) {
+  const data = await fetch(src, {
+    method: `GET`,
+    mode: `no-cors`,
+    cache: `no-cache`,
+  }).then(data => {
+    
+  })
+}
+
+getSrc(array[0].audio)

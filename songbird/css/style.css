@@ -857,7 +857,7 @@ a.caption-layer:hover {
   transform-origin: 50% 50% -500px;
   transition: 1s;
   position: fixed;
-  inset: 10% 8%;
+  inset: 5% 9%;
   overflow: hidden;
 }
 .gallery__container #inner #inner-wrapper {
@@ -876,7 +876,7 @@ a.caption-layer:hover {
   cursor: pointer;
 }
 .gallery__container .left {
-  left: 0;
+  left: 2%;
   border-top: 50px solid transparent;
   border-right: 30px solid white;
   border-bottom: 50px solid transparent;
@@ -887,7 +887,7 @@ a.caption-layer:hover {
   border-right-color: rgb(0, 155, 118);
 }
 .gallery__container .right {
-  right: 0;
+  right: 2%;
   border-top: 50px solid transparent;
   border-left: 30px solid white;
   border-bottom: 50px solid transparent;
@@ -972,6 +972,38 @@ a.caption-layer:hover {
   width: 70px;
 }
 
+@media screen and (max-width: 740px) {
+  #inner-wrapper .description__gallery .mini-audio__container {
+    flex-direction: column;
+    justify-content: start;
+    gap: 0;
+  }
+  #inner-wrapper .description__gallery .mini-audio__container img {
+    align-self: center;
+    width: 150px;
+  }
+}
+@media screen and (max-width: 600px) {
+  #inner-wrapper h2 {
+    font-size: 18px;
+  }
+  #inner-wrapper h3 {
+    font-size: 16px;
+  }
+  .gallery__container button.left,
+.gallery__container button.right {
+    border-top-width: 30px;
+    border-bottom-width: 30px;
+  }
+  .gallery__container .left {
+    border-right-width: 15px;
+    left: -5px;
+  }
+  .gallery__container .right {
+    border-left-width: 15px;
+    right: -5px;
+  }
+}
 #language {
   position: absolute;
   z-index: 500;
