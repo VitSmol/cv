@@ -1,7 +1,5 @@
-// import { birdsData } from "./data.js";
 import { birds } from "./data.js";
 import { lang } from "./translate.js";
-
 import * as data from "./data.js";
 
 const img = document.getElementById(`bird-image`)
@@ -35,7 +33,6 @@ class GalleryItem {
     this.enDescription = object.enDescription
   }
   createCard() {
-
     // const audio = await fetch(this.audio)
     // console.log(audio);
     img.src = this.image
@@ -49,18 +46,20 @@ class GalleryItem {
       description.innerHTML = this.enDescription
 
     }
+    // container.parentNode.append(container)
+    // let parent = this.container.parentNode
+    // parent.append(this.container)
   }
   cloneCurrentContainer() {
     clone = this.container.cloneNode(true)
   }
 }
 
-
-const startSlide = new GalleryItem(container, array[currentIndex]);
+const startSlide = new GalleryItem(container, array[currentIndex], lang);
 
 startSlide.createCard()
 startSlide.cloneCurrentContainer()
-
+console.log(clone);
 
 const switchSlide = (sign) => {
   if (sign === `next`) {
@@ -75,16 +74,13 @@ const switchSlide = (sign) => {
   }
   //TODO добавить плавность анимации КОДИТЬ ТУТ!!11
   console.log(currentIndex);
-  let newElement = new GalleryItem(clone, array[currentIndex])
+  let newElement = new GalleryItem(clone, array[currentIndex], lang)
   newElement.createCard()
   newElement.cloneCurrentContainer()
   inner.append(clone)
   inner.removeChild(inner.lastChild)
-  // console.log(inner.firstChild);
 
-  // const newElement = new GalleryItem(clone, array[currentIndex]);
-  // newElement.createCard()
-  // newElement.cloneCurrentContainer()
+  console.log(newElement);
 }
 
 function addListeners() {
@@ -97,6 +93,14 @@ function addListeners() {
   const time = document.getElementById(`current-time-description`);
   const duration = document.getElementById(`duration-description`);
 
+  const makePlayButtonDefault = (play, pause) => {
+    play.classList.add(`active`)
+    pause.classList.remove(`active`)
+  }
+
+  makePlayButtonDefault(play,pause)
+
+  progress.style.background = `linear-gradient(to right, rgb(0, 188, 140) 0%, rgb(61, 133, 140) 0%, rgb(115, 115, 115) 0%, rgb(115, 115, 115) 0%)`
   sound.style.background = `linear-gradient(to right, rgb(0, 188, 140) ${sound.value * 100}%, rgb(61, 133, 140) ${sound.value * 100}%, rgb(115, 115, 115) ${sound.value * 100}%, rgb(115, 115, 115) ${sound.value * 100}%)`
 
   audio.addEventListener('loadeddata', () => {
@@ -119,9 +123,6 @@ function addListeners() {
   })
 
 }
-
-addListeners()
-
 next.addEventListener(`click`, () => {
   switchSlide(`next`)
   addListeners()
@@ -131,6 +132,9 @@ prev.addEventListener(`click`, () => {
   switchSlide(`down`)
   addListeners()
 })
+
+addListeners()
+
 
 langLinks.forEach(el => {
   el.addEventListener(`click`, function() {
@@ -146,14 +150,14 @@ langLinks.forEach(el => {
   })
 })
 
-async function getSrc(src) {
-  const data = await fetch(src, {
-    method: `GET`,
-    mode: `no-cors`,
-    cache: `no-cache`,
-  }).then(data => {
-    
-  })
-}
+// async function getSrc(src) {
+//   const data = await fetch(src, {
+//     method: `GET`,
+//     mode: `no-cors`,
+//     cache: `no-cache`,
+//   }).then(data => {
 
-getSrc(array[0].audio)
+//   })
+// }
+
+// getSrc(array[0].audio)

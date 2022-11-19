@@ -87,7 +87,7 @@ let currentIndex = 0;
 let showQuestions = false
 let currentArray;
 
-const makePlayButtonDefault = (play, pause) => {
+export const makePlayButtonDefault = (play, pause) => {
   play.classList.add(`active`)
   pause.classList.remove(`active`)
 }
