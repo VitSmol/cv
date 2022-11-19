@@ -7,6 +7,15 @@ const translateArr = {
     "main": `главная`,
     "gallery": "галерея",
     "game": "играть",
+    "win": "Поздравляем!",
+    "first-text": "Вы выйграли со счётом: ",
+    "score": "очков",
+    "new-game": "Хотите начать игру заново?",
+    "no": "Нет",
+    "yes": "Да",
+    "zero": "К сожалению Вы не набрали ни одного очка",
+    "max": "Вы набрали максимальное количество очков!",
+    "back": "Вернуться",
   },
   en: {
     "caption": "guess the bird by voice",
@@ -14,6 +23,15 @@ const translateArr = {
     "main": `main`,
     "gallery": "gallery",
     "game": "game",
+    "win": "Сongratulations!",
+    "first-text": "You won with a ",
+    "score": "points",
+    "new-game": "Do you want to restart the game?",
+    "no": "No",
+    "yes": "Yes",
+    "zero": "Sorry, you didn't get any points.",
+    "max": "You have scored the maximum points!",
+    "back": "Return",
   }
 }
 

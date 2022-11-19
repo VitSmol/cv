@@ -190,15 +190,22 @@
 
 <!-- todo убрать start -->
     <div class="result__container"> 
-      <h2>Поздравляем!</h2>
-      <p>Вы выйграли со счетом: <span class="score-count"></span> очков!</p>
+      <h2 class="lang-win">Поздравляем!</h2>
+      <p class="winner"><span class="lang-first-text"> Вы выйграли со счетом:</span> <span class="score-count "></span> <span class="lang-score">очков!</span> </p>
+      
+      <h2 class="lang-zero">Вы не набрали ни одного очка</h2>
 
       <div class="if-not-max-score">
-        <h3>Хотите начать игру заново?</h3>
+        <h3 class="lang-new-game">Хотите начать игру заново?</h3>
         <div class="yes-no">
-          <a href="./">Нет</a>
-          <a href="./game.html">Да</a>
+          <a href="./" class="lang-no">Нет</a>
+          <a href="./game.html" class="lang-yes">Да</a>
         </div>
+      </div>
+
+      <div class="if-max">
+        <h3 class="lang-max">Вы набрали максимальное количество очков!</h3>
+        <a href="./" class="lang-back">Вернуться</a>
       </div>
     </div>
     <footer>

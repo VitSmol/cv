@@ -8,7 +8,9 @@ const birdLat = document.getElementById(`bird-lat`)
 const audio = document.querySelector(`.audio-file`)
 const description = document.querySelector(`.description-text`);
 
+// const parent = document.querySelector("#inner-wrapper")
 const container = document.querySelector(`.description__gallery`)
+
 const inner = document.getElementById(`inner-wrapper`);
 
 const prev = document.querySelector(`.left`)
@@ -33,8 +35,6 @@ class GalleryItem {
     this.enDescription = object.enDescription
   }
   createCard() {
-    // const audio = await fetch(this.audio)
-    // console.log(audio);
     img.src = this.image
     birdLat.innerHTML = this.species
     audio.src = this.audio;
@@ -46,9 +46,6 @@ class GalleryItem {
       description.innerHTML = this.enDescription
 
     }
-    // container.parentNode.append(container)
-    // let parent = this.container.parentNode
-    // parent.append(this.container)
   }
   cloneCurrentContainer() {
     clone = this.container.cloneNode(true)
@@ -59,7 +56,6 @@ const startSlide = new GalleryItem(container, array[currentIndex], lang);
 
 startSlide.createCard()
 startSlide.cloneCurrentContainer()
-console.log(clone);
 
 const switchSlide = (sign) => {
   if (sign === `next`) {
@@ -73,14 +69,12 @@ const switchSlide = (sign) => {
     currentIndex = 0
   }
   //TODO добавить плавность анимации КОДИТЬ ТУТ!!11
-  console.log(currentIndex);
   let newElement = new GalleryItem(clone, array[currentIndex], lang)
   newElement.createCard()
   newElement.cloneCurrentContainer()
   inner.append(clone)
   inner.removeChild(inner.lastChild)
-
-  console.log(newElement);
+  addListeners()
 }
 
 function addListeners() {
@@ -124,13 +118,13 @@ function addListeners() {
 
 }
 next.addEventListener(`click`, () => {
-  switchSlide(`next`)
   addListeners()
+  switchSlide(`next`)
 })
 
 prev.addEventListener(`click`, () => {
-  switchSlide(`down`)
   addListeners()
+  switchSlide(`down`)
 })
 
 addListeners()
@@ -139,7 +133,6 @@ addListeners()
 langLinks.forEach(el => {
   el.addEventListener(`click`, function() {
     let lang = this.dataset.matrixId;
-    console.log(array[currentIndex]);
     if (lang === `ru`) {
       birdName.innerHTML = array[currentIndex].name
       description.innerHTML = array[currentIndex].description

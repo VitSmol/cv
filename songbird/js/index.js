@@ -126,6 +126,7 @@ const createQuestionsList = (arr, index) => {
 
     if (ind === rightQuestion) {
       el.isTrue = true
+      console.log(el);
       game.audio.src = el.audio
       game.audio.addEventListener('loadeddata', () => {
         game.progress.value = 0
@@ -185,7 +186,7 @@ function clickByQuestions(el) {
   game.progressDescription.style.background = `linear-gradient(to right, rgb(0, 188, 140) 0%, rgb(61, 133, 140) 0%, rgb(115, 115, 115) 0%, rgb(115, 115, 115) 0%)`
 
   if (el.firstChild.classList.contains(`wrong`)) {
-    sound(wrong)
+    // sound(wrong)
     return
   }
 
@@ -247,6 +248,18 @@ nexLevelBtn.addEventListener(`click`, () => {
     document.querySelector(`.score-count`).innerHTML = score
     game.audioDescription[`pause`]()
     game.audio[`pause`]()
+    if (score === 30) {
+      document.querySelector(`.if-not-max-score`).style.display = `none`
+      document.querySelector(`.lang-zero`).style.display = `none`
+    } else if (score < 30 && score > 0) {
+      document.querySelector(`.if-max`).style.display = `none`
+      document.querySelector(`.lang-zero`).style.display = `none`
+    } else {
+      document.querySelector(`.lang-win`).style.display = `none`
+      document.querySelector(`.winner`).style.display = `none`
+      document.querySelector(`.if-max`).style.display = `none`
+      console.log(document.querySelector(`.win`));
+    }
   }
 
   questions.forEach(el => {
