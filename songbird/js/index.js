@@ -12,7 +12,6 @@ const scoreCount = document.getElementById(`score-count`)
 const scoreText = document.getElementById(`score-text`)
 
 const defaultSrc = `assets/img/bird.jpg`
-console.log(scoreText);
 const questionImage = document.getElementById(`question-img`)
 const questionName = document.querySelector(`.question-name`)
 
@@ -126,7 +125,7 @@ const createQuestionsList = (arr, index) => {
 
     if (ind === rightQuestion) {
       el.isTrue = true
-      console.log(el);
+      console.log(`Right answer number: ${el.id}`);
       game.audio.src = el.audio
       game.audio.addEventListener('loadeddata', () => {
         game.progress.value = 0
@@ -258,7 +257,6 @@ nexLevelBtn.addEventListener(`click`, () => {
       document.querySelector(`.lang-win`).style.display = `none`
       document.querySelector(`.winner`).style.display = `none`
       document.querySelector(`.if-max`).style.display = `none`
-      console.log(document.querySelector(`.win`));
     }
   }
 
@@ -306,7 +304,6 @@ langLinks.forEach(el => {
     }
 
     let questionIndex = questionName.dataset.matrixId
-    console.log(resolve);
     if (questionIndex && resolve) {
       let question = birds[currentIndex].find(el => {
         return el.id == questionIndex
