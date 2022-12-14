@@ -1,0 +1,25 @@
+<div class="nav__wrapper">
+  <nav>
+    <ul>
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+        <a routerLink="">Main</a>
+      </li>
+      <li routerLinkActive="active">
+        <a [routerLink]="['/about']">About</a>
+      </li>
+      <li routerLinkActive="active">
+        <a [routerLink]="['/contact']">Contact</a>
+      </li>
+      <li routerLinkActive="active">
+        <a [routerLink]="['/education']">Education</a>
+      </li>
+      <li routerLinkActive="active">
+        <a [routerLink]="['/skills']">Skills</a>
+      </li>
+      <li routerLinkActive="active">
+        <a [routerLink]="['/portfolio']">Portfolio</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+<router-outlet></router-outlet>

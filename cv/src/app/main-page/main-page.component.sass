@@ -1,0 +1,33 @@
+// .main__content
+//     // display: flex
+//     // justify-content: space-between
+//     // height: 100%
+//     // margin-top: 10%
+//     perspective: 1000px
+//     // padding: 0 40px 20px 40px
+//     *:not(:empty)
+//         transform-style: preserve-3d
+
+.content__wrap
+    h1
+        display: grid
+        place-items: baseline
+        font-size: 50px
+        line-height: 1.3
+        --rx: 3deg
+        --ry: -15deg
+        letter-spacing: 4.8px
+.wrap
+    height: 100%
+.content
+    position: absolute
+    color: hsl(0, 0%, var(--light, 0%))
+    transform: translate(10%, 35%) rotateX(var(--rx, 0)) rotateY(var(--ry, 0)) translateZ(var(--tz, 0))
+    &:nth-child(1)
+        filter: blur(6px)
+        color: #0006
+
+    @for $i from 0 to 20
+        &:nth-child(#{$i + 2})
+            --tz: #{$i * 1 + 100}px
+            --light: #{($i + 1) * 5}%
