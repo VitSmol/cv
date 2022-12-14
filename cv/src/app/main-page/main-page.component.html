@@ -3,29 +3,27 @@
   <div class="wrap">
     <h1>
        <div class="content">
-        {{hi}} <br>
-        {{name}} <br>
-        {{description}}
+        <span>
+          {{hi}} <br>
+        </span>
+        <span>
+          {{name}} <br>
+        </span>
+        <span>
+          {{description}}
+        </span>
       </div>
       <div class="content" *ngFor="let div of arr; let  i = index" aria-hidden="true">
-        {{hi}} <br>
-        {{name}} <br>
-        {{description}}
+        <span>
+          {{hi}} <br>
+        </span>
+        <span>
+          {{name}} <br>
+        </span>
+        <span>
+          {{description}}
+        </span>
       </div>
-      <!-- <div class="content" *ngIf="i !== 0" aria-hidden="true">
-        Привет! <br>
-        Меня зовут Виталий!
-      </div> -->
-      <!-- {{div}} -->
-      <!-- <div class="content">
-              Привет! <br>
-              Меня зовут Виталий!
-          </div>
-          <div class="content" aria-hidden="true">
-              Привет! <br>
-              Меня зовут Виталий!
-          </div> -->
-
     </h1>
   </div>
   </div>

@@ -1,6 +1,10 @@
 $bg-color1: rgb(166 89 15)
-$bg-color2: rgb(212 83 2 / 67%)
+$bg-color2: rgb(212 83 2)
 $color: white
+:host
+  display: grid
+  height: 100vh
+  grid-template-rows: auto 0 1fr auto
 .nav__wrapper
   display: flex
   justify-content: center
@@ -33,4 +37,5 @@ $color: white
 
 li.active a
   color: rgb(239 187 134) !important
+
 

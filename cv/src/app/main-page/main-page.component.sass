@@ -17,9 +17,13 @@
         --rx: 3deg
         --ry: -15deg
         letter-spacing: 4.8px
+        .content:last-child span
+          background-color: blue
+
 .wrap
     height: 100%
 .content
+    width: 70%
     position: absolute
     color: hsl(0, 0%, var(--light, 0%))
     transform: translate(10%, 35%) rotateX(var(--rx, 0)) rotateY(var(--ry, 0)) translateZ(var(--tz, 0))
