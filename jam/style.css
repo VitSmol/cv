@@ -104,7 +104,7 @@
 }
 
 .frame__container {
-  isplay: flex;
+  display: flex;
   flex-direction: column;
 }
 

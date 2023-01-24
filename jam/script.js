@@ -418,7 +418,7 @@ function createAll() {
 
     function sound() {
         let audio = new Audio();
-        audio.src = `sound.mp3`;
+        audio.src = `s.mp3`;
         audio.autoplay = true
     }
 
