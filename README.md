@@ -1,4 +1,9 @@
-# https://VitSmol.github.io/cv/cv
-# https://VitSmol.github.io/cv/songbird
-# https://VitSmol.github.io/cv/lab
+My old CV
+https://VitSmol.github.io/cv/cv
+
+SongBird quiz
+https://VitSmol.github.io/cv/songbird
+
+Just simple markup
+https://VitSmol.github.io/cv/lab
 
