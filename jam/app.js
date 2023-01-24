@@ -3,9 +3,7 @@ export const createArray = (k) => {
     return new Array(k*k).fill(0).map((el, ind) => el = ind + 1)
 }
 export const arr = createArray(k)
-// export const arr = new Array(16).fill(0).map((el, ind) => el = ind + 1)
 export const buttonsName = [`Shuffle`, `Stop`, `Results`, `Save`]
-// Shuffle Array
 export const shuffle = (array) => {
     let arr = [...array]
     return arr.sort(() => Math.random() -0.5 )

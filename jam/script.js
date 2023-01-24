@@ -17,14 +17,11 @@ if (localStorage.getItem(`saveCurrentSise`)) {
     currentSize = localStorage.getItem(`saveCurrentSise`)
 }
 if (localStorage.getItem(`saveCount`)) {
-    // currentSize = localStorage.getItem(`saveCurrentSise`)
     console.log(
         );
         countSpan.innerHTML = localStorage.getItem(`saveCount`)
 }
 
-    // console.log(countSpan);
-// countSpan.innerHTML = `Moves: ${count}`
 let startTime = false
 let interval;
 
