@@ -1,7 +1,7 @@
 /cv-ang/.angular
 /cv-ang/.vscode
 /cv-ang/node_modules
-# .vscode
+.vscode
 logs
 *.log
 npm-debug.log*
