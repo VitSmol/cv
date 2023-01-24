@@ -1,0 +1,142 @@
+.gallery__container
+    perspective: 1200px
+    overflow: hidden
+    position: fixed
+    z-index: 400
+    width: 90%
+    background-color: $bgc
+    border-radius: 10px
+    height: 70%
+    img
+        width: 45%
+        max-height: 300px
+        border-radius: 10px
+    #inner
+        display: flex
+        transform-style: preserve-3d
+        transform-origin: 50% 50% -500px
+        transition: 1s
+        position: fixed
+        inset: 5% 9%
+        overflow: hidden
+        #inner-wrapper
+            display: flex
+    .left,
+    .right
+        position: absolute
+        width: 0px
+        height: 0px
+        top: calc( 50% - 25px )
+        background: transparent
+        &:hover
+            cursor: pointer
+    .left
+        left: 2%
+        border-top: 50px solid transparent
+        border-right: 30px solid white
+        border-bottom: 50px solid transparent
+        transition: border-right-color 0.5s
+        &:hover
+            transition: border-right-color 0.5s
+            border-right-color: $color
+    .right
+        right: 2%
+        border-top: 50px solid transparent
+        border-left: 30px solid white
+        border-bottom: 50px solid transparent
+        transition: border-left-color 0.5s
+        &:hover
+            transition: border-left-color 0.5s
+            border-left-color: $color
+    .description__gallery
+        display: flex
+        flex-direction: column
+        min-width: 100%
+        gap: 20px
+        padding: 20px
+        background-color: rgb(0 0 0 / 38%)
+        border-radius: 10px
+        transition: transform 0.5s
+        &.to-left
+            transition: transform 0.8s
+            position: relative
+            transform: translateX(-100%)
+        &.to-right
+            transition: transform 0.8s
+            position: relative
+            transform: translateX(100%)
+    .mini-audio__container
+        display: flex
+        width: 100%
+        gap: 20px
+    .mini-audio
+        grid-row: 1
+        width: 100%
+        h2, h3
+            margin: 10px 0
+        .controls
+            display: flex
+            width: 100%
+            align-items: stretch
+            gap: 20px
+        .play-button
+            @extend %play-button
+            min-width: 40px
+        .timebar
+            flex-grow: 3
+            display: flex
+            align-items: center
+            position: relative
+            .progress
+                width: 100%
+            .current-time,
+            .duration
+                position: absolute
+                font-size: 12px
+                bottom: -15px
+            .duration
+                right: 0
+        .sound__control
+            display: flex
+            align-items: center
+            gap: 10px
+            .sound__icon 
+                svg
+                    width: 16px
+        .progress, 
+        .sound
+            @extend %progress
+            height: 3px
+        .progress::-webkit-slider-thumb, 
+        .sound::-webkit-slider-thumb  
+            @extend %disc
+        .sound
+            width: 70px
+
+@media screen and ( max-width: 740px )
+    #inner-wrapper
+        .description__gallery
+            .mini-audio__container
+                flex-direction: column 
+                justify-content: start
+                gap: 0
+                img
+                    align-self: center
+                    width: 150px
+@media screen and ( max-width: 600px )
+    #inner-wrapper
+        h2
+            font-size: 18px
+        h3
+            font-size: 16px
+    .gallery__container
+        button.left,
+        button.right
+            border-top-width: 30px
+            border-bottom-width: 30px
+        .left
+            border-right-width: 15px
+            left: -5px
+        .right
+            border-left-width: 15px
+            right: -5px

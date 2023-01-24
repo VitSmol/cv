@@ -1,0 +1,58 @@
+@import "_variables"
+@import url('https://fonts.googleapis.com/css2?family=Kurale&family=Lato:ital,wght@1,900&display=swap')
+
+
+@import "header"
+@import "game-container"
+@import "question-container"
+@import "question-list"
+@import "description-container"
+@import "next-level"
+@import "result-container"
+@import "gallery-container"
+@import "flags"
+
+*
+  box-sizing: border-box
+body
+  color: rgb(124 255 194)
+  user-select: none
+  font-family: Kurale, sans-serif
+  overflow-x: hidden
+  position: fixed
+
+#myVideo
+  position: fixed
+  right: 0
+  bottom: 0
+  min-width: 100%
+  min-height: 100%
+  z-index: -1
+#root
+  position: fixed
+  left: 0
+  right: 0
+  top: 0
+  bottom: 0
+  background: linear-gradient(to bottom, rgb(0 0 0) 0%, rgb(3 100 77 / 74%) 17%, rgb(7 88 70 / 67%) 35%, rgb(3 48 37 / 65%) 62%, rgb(1 8 6) 100%)
+  // background: linear-gradient(to bottom, rgb(0 0 0 / 80%) 0%,rgb(0 0 0 / 73%) 17%,rgb(0 0 0 / 66%) 35%,rgb(0 0 0 / 55%) 62%,rgb(0 0 0 / 40%) 100%)
+  z-index: 100
+
+
+
+
+// @media screen and (max-width: 880px)
+//   ul
+//     flex-wrap: wrap  
+//     li
+//       margin-bottom: 10px
+// @media screen and (max-width: 380px)
+//   ul
+//     flex-direction: column
+
+
+.line
+  background: $border-color
+  height: 1px
+  border: none
+  box-shadow: inset -5px 1px 3px #4b4b4b

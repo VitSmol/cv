@@ -1,0 +1,122 @@
+.start-text
+  display: block
+.hidden
+  display: none
+  
+.description__container
+  grid-area: description
+  display: flex
+  flex-direction: column
+  gap: 20px
+  padding: 20px
+  background-color: $bgc
+  border-radius: 10px
+  img
+    width: 200px
+    height: 155px
+    border-radius: 10px
+  .mini-audio__container
+    display: flex
+    width: 100%
+    gap: 20px
+    .mini-audio
+      grid-row: 1
+      width: 100%
+      h2, h3
+        margin: 10px 0
+      .controls
+        display: flex
+        width: 100%
+        align-items: stretch
+        gap: 20px
+        .play-button
+          @extend %play-button
+          min-width: 40px
+        .timebar
+          flex-grow: 3
+          display: flex
+          align-items: center
+          position: relative
+          .progress
+            width: 100%
+          .current-time,
+          .duration
+            position: absolute
+            font-size: 12px
+            bottom: -15px
+          .duration
+            right: 0
+        .sound__control
+          display: flex
+          align-items: center
+          gap: 10px
+          .sound__icon 
+            svg
+              width: 16px
+        .progress, 
+        .sound
+          @extend %progress
+        .progress::-webkit-slider-thumb, 
+        .sound::-webkit-slider-thumb  
+          @extend %disc
+        .sound
+          width: 70px
+
+@media screen and (max-width: 670px)
+  .description__container
+    padding: 8px
+    gap: 10px
+    .mini-audio__container
+      img
+        width: 150px
+        height: 100px
+      .mini-audio
+        .mini-audio__caption
+          h2
+            font-size: 20px
+            margin: 5px
+          h3
+            margin: 5px
+            font-size: 16px
+        .controls
+          .play-button
+            width: 25px
+            height: 25px
+            min-width: 25px
+            align-self: center
+            svg
+              width: 15px !important
+              height: 15px !important
+
+@media screen and (max-width: 1200px)
+  p.description-text
+      margin-top: 20px
+
+@media screen and (max-width: 670px)
+  .description__container
+    .mini-audio__container
+      gap: 10px
+      img
+        width: 100px
+  input.sound
+    width: 40px !important
+  .timebar
+    flex-grow: 1 !important
+  .controls
+    gap: 10px !important
+    .progress::-webkit-slider-thumb, 
+    .sound::-webkit-slider-thumb  
+      width: 10px !important
+      height: 10px !important
+  .description__container .mini-audio__container .mini-audio .controls .timebar .current-time
+    left: -15px
+  .description__container .mini-audio__container .mini-audio .controls .timebar .duration
+    right: -15px
+  p.description-text
+    font-size: 14px
+
+@media screen and (max-width: 670px)
+  p.description-text
+    margin-top: 20px
+    margin-bottom: 0
+

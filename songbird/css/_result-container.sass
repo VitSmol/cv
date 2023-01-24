@@ -1,0 +1,30 @@
+.result__container
+  position: absolute
+  z-index: 380
+  background: $bgc
+  inset: 30% 10%
+  transform: translateX(120%)
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  border-radius: 10px
+  transition: transform 1s
+  .if-max
+    text-align: center
+  &.start
+    transition: transform 1s
+    transform: translateX(0)
+  .yes-no
+    display: flex
+    justify-content: center
+    gap: 20px
+
+  a
+    font-size: 3vw
+    color: white
+    transition: color 0.5s
+    text-shadow: 1px 1px 1px hsl(165, 45%, var(--light, 0%))
+    &:hover
+      color: $color
+      transition: color 0.5s

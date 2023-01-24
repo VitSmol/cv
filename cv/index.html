@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VitSmol-CV</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/monokai-sublime.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header part-->
+    <header>
+        <button class="m-menu">
+            <span class="line first__line"></span>
+            <span class="line second__line"></span>
+            <span class="line last__line"></span>
+        </button>
+        <div class="header__name">
+            <img src="avatar.jpg" alt="avatar" class="header__image">
+            <h1 class="name">Vitaliy Smolitskiy</h1>
+        </div>
+        <nav class="header__nav">
+            <ul class="nav__list">
+                <li class="list__item"><a href="#contacts" class="item__link">Contacts</a></li>
+                <li class="list__item"><a href="#about" class="item__link">About</a></li>
+                <li class="list__item"><a href="#skills" class="item__link">Skills</a></li>
+                <li class="list__item"><a href="#portfolio" class="item__link">Portfolio</a></li>
+                <li class="list__item"><a href="#education" class="item__link">Education</a></li>
+                <li class="list__item"><a href="#english" class="item__link">English</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main">
+        <!-- Contacts section -->
+        <section class="section">
+            <span id="contacts"></span>
+            <div class="section__block">
+                <h2 class="section_caption">Contacts</h2>
+            </div>
+            <div class="list__block">
+                <ul class="section__list">
+                    <li class="section__list__item"><span>Location: </span>Gomel, Republic of Belarus</li>
+                    <li class="section__list__item"><span>Mobile/Viber/Telegram: </span>+375 29 119-88-09</li>
+                    <li class="section__list__item"><span>E-mail: </span><a href="mailto:smolitskiy@mail.ru">smolitskiy@mail.ru</a></li>
+                    <li class="section__list__item"><span>Discord: </span>KoRn#1160</li>
+                </ul>
+            </div>
+        </section>
+         <!-- About section -->
+        <section class="section" >
+            <span id="about"></span>
+            <div class="section__block">
+                <h2 class="section_caption">About</h2>
+            </div>
+            <div class="list__block about__block">
+                <div class="img__container">
+                    <img class="img__av" src="assets/av.jpg" alt="photo">
+                </div>
+                <ul class="section__list">
+                    <li class="section__list__item">35 years old. I have been working as a software engineer in the general heath department of the Gomel regional executive committee for 4 years.</li>
+                    <li class="section__list__item">At this stage, I plan to seriously engage in study and immersion in the world of Front-end, and in the future, Fullstack development.</li>
+                </ul>
+            </div>
+        </section>
+         <!-- Skill section -->
+        <section class="section">
+            <span id="skills"></span>
+            <div class="section__block">
+                <h2 class="section_caption">Skills</h2>
+            </div>
+            <div class="list__block skills__block">
+                <table class="skill__table">
+                    <tr>
+                        <th>Skill</th>
+                        <th>Knowledge lvl</th>
+                    </tr>
+                    <tr>
+                        <td>HTML</td>
+                        <td>9 / 10</td>
+                    </tr>
+                    <tr>
+                        <td>CSS</td>
+                        <td>8 / 10</td>
+                    </tr>
+                    <tr>
+                        <td>JS</td>
+                        <td>5 / 10</td>
+                    </tr>
+                    <tr>
+                        <td>PHP</td>
+                        <td>3 / 10</td>
+                    </tr>
+                    <tr>
+                        <td>GIT</td>
+                        <td>3 / 10</td>
+                    </tr>
+                </table>
+
+            </div>
+        </section>
+         <!-- Portfolio section -->
+        <section class="section">
+            <span id="portfolio"></span>
+            <div class="section__block">
+                <h2 class="section_caption">Portfolio</h2>
+            </div>
+            <div class="list__block">
+                
+                    <p class="section__list__item">Developed, launched and support the website of the general health department: <a href="https://gomeluzo.by" target="_blank">gomeluzo.by</a></p>
+                    <p class="section__list__item">Code example (CW Array Diff):  </p>
+                        <pre><code>
+function arrayDiff(a, b) {
+    return a.filter(el => !b.includes(el));
+}
+                        </code></pre>    
+                   
+                    <div class="portfolio__container">
+                        <div class="portfolio__row">
+                            <p class="section__list__item">
+                                
+                                    <a href="http://gomeluzo.by" target="_blank">
+                                        <img src="assets/guzo.jpg" alt="Museum">
+                                        <span class="portfolio__title">Сайт главного управления здравоохранения</span>
+                                    </a> 
+                               
+                            </p>
+                            
+                            <p class="section__list__item">
+                                <a href="https://rolling-scopes-school.github.io/vitsmol-JSFEPRESCHOOL/museum/" target="_blank"><img src="assets/museum.jpg" alt="Museum">
+                                <span class="portfolio__title">Сайт Лувра</span>
+                                </a> 
+                            </p>
+                        </div>
+                        <div class="portfolio__row">
+                            <p class="section__list__item">
+                                <a href="https://rolling-scopes-school.github.io/vitsmol-JSFEPRESCHOOL/vertical-slider/" target="_blank"><img src="assets/slider.jpg" alt="Museum">
+                                    <span class="portfolio__title">Вертикальный<br> слайдер</span>
+                                </a> 
+                            </p>
+                            
+                            <p class="section__list__item">
+                                <a href="https://rolling-scopes-school.github.io/vitsmol-JSFEPRESCHOOL/custom-video-player/" target="_blank"><img src="assets/player.jpg" alt="Museum">
+                                    <span class="portfolio__title">Видеоплеер</span>
+                                </a> 
+                            </p>
+                        </div>
+                </div>
+               
+            </div>
+        </section>
+         <!-- Education section -->
+        <section class="section">
+            <span id="education"></span>
+            <div class="section__block">
+                <h2 class="section_caption">Education</h2>
+            </div>
+            <div class="list__block skills__block">
+                <table class="skill__table">
+                    <tr>
+                        <th>Education</th>
+                        <th>Year of finishing</th>
+                        <th>Link to</th>
+                    </tr>
+                    <tr>
+                        <td>Belarusian State University of Transport</td>
+                        <td>2010</td>
+                        <td><a href="https://www.bsut.by/">BelSUT</a></td>
+                    </tr>
+                    <tr>
+                        <td>Rolling Scopes School, Javascript/Front-End Stage#0</td>
+                        <td>2021</td>
+                        <td><a href="https://rs.school/js/">RS-School</a></td>
+                    </tr>
+                    <tr>
+                        <td>Rolling Scopes School, Javascript/Front-End Stage#1</td>
+                        <td>In progress...</td>
+                        <td><a href="https://rs.school/js/">RS-School</a></td>
+                    </tr>
+                    <tr>
+                        <td>Self study</td>
+                        <td colspan="2">Infinity</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+         <!-- English section -->
+        <section class="section">
+            <span id="english"></span>
+            <div class="section__block">
+                <h2 class="section_caption">English</h2>
+            </div>
+            <div class="list__block">
+                <ul class="section__list">
+                    <li class="section__list__item">B2 - Upper Intermediate <a href="https://www.efset.org/cert/v2V7om" target="_blank">result link</a> </li>
+                </ul>
+            </div>
+        </section>
+        <section class="section">
+            <!-- <span id="english"></span> -->
+            <div class="section__block">
+                <h2 class="section_caption">Inputs</h2>
+            </div>
+            <div class="list__block comment__block">
+                    <input type="text" title="комментарий" class="comment__input mail__text">
+                    <button type="submit" class="check">Check</button>
+                    <input type="tel" class="tel__input">
+                    <span class="msg"></span>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <section class="rss-section">
+            <div class="rss-section__about">
+                <a href="https://rs.school/js/" target="_blank" class="rss-section__caption">
+                    <h2>Курс по Front-End</h2> 
+                    <img src="https://rs.school/images/rs_school_js.svg" alt="img on load" class="rss-section__image">
+                </a>
+            </div>
+            <div class="rss-section__block">
+                <a href="https://rs.school/js/" class="rss-section__link">
+                   
+                </a>
+            </div>
+        </section>
+        <section class="my-section">
+            <a href="https://github.com/VitSmol/rsschool-cv" class="my-section__link">
+                <img src="https://raw.githubusercontent.com/twbs/icons/b22e9c198dc7fa0ee86ee85ff6957b5b55f1ca93/icons/github.svg" alt="Gh" class="my-section__image">
+                <h2>My GitHub</h2>    
+            </a>
+        </section> 
+    </footer>
+    
+    <script src="js/highlight.js"></script>
+    <script src="js/javascript.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
