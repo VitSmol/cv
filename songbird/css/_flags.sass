@@ -1,0 +1,28 @@
+#language
+  position: absolute
+  z-index: 500
+  right: calc(50% - 35px)
+  bottom: 0px
+  ul
+    list-style-type: none
+    display: flex
+    padding: 0
+    margin: 0
+    li
+      cursor: pointer
+      transition: transform 0.7s
+      &:hover
+        transition: transform 0.7s
+        transform: scale(1.1)
+
+
+@media screen and (max-width: 670px)
+  #flags
+    flex-direction: column
+    img
+      width: 60px !important
+      height: 30px !important
+  #language
+    right: calc(50% - 15px)
+    bottom: 0px
+
