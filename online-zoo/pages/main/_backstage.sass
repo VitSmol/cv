@@ -1,0 +1,168 @@
+@import '../../assets/styles/_variables'
+
+.backstage__wrapper
+    @extend %wrapper-container
+    justify-content: center
+    position: relative
+    padding: 140px 0
+    overflow: hidden
+   
+    @media screen and ( min-width: 1001px ) and ( max-width: 1599px )
+        padding-top: 8.7vw
+        padding-bottom: 8.7vw
+    @media screen and ( min-width: 641px ) and ( max-width: 1000px )
+        padding-top: 110px
+        padding-bottom: 60px
+    @media screen and ( min-width: 321px ) and ( max-width: 640px )
+        padding-left: 0px
+        padding-top:  60px
+        padding-bottom: 0px
+    @media screen  and ( max-width: 950px )
+        padding-top: 60px
+    @media screen and ( min-width: 100px ) and ( max-width: 320px )
+        padding-top: 103px
+        padding-left: 10px
+        padding-right: 10px
+        padding-bottom: 0 
+        justify-content: start
+    img
+        position: absolute
+        right: -98px
+        top: 13px
+        @media screen and ( max-width: 1210px )
+            display: none
+        @media screen and ( min-width: 1397px ) and ( max-width: 1538px )
+            right: -150px
+        @media screen and ( min-width: 1211px ) and ( max-width: 1396px )
+            right: -210px
+        @media screen and ( min-width: 641px ) and ( max-width: 1000px )
+            display: none
+        @media screen and ( min-width: 321px ) and ( max-width: 640px )
+            width: 231px
+            height: auto
+            display: block
+            top: 3px
+            right: -101px
+        @media screen and ( max-width: 500px )
+            right: -161px
+        @media screen and ( min-width: 100px ) and ( max-width: 320px )
+            display: block
+            width: 105px
+            height: 217px
+            right: -74px
+            top: 39px
+
+.backstage__container
+    @extend %flex-container
+    gap: 85px
+    color: $textcolor
+    @media screen and ( min-width: 100px ) and ( max-width: 320px )
+        width: calc( 100% - 20px ) !important
+    @media screen and ( max-width: 1210px )
+            // width: 100%
+            // padding-left: 30px
+            // padding-right: 60px
+    // @media screen and ( max-width: 1210px )
+    //     .backstage__content
+    //         width: 100% !important
+    @media screen and ( min-width: 1001px ) and ( max-width: 1599px )
+        max-width: 90% !important
+        .backstage__content
+            // width: 40%
+        gap: 5.4vw
+    @media screen and ( min-width: 641px ) and ( max-width: 1000px )
+        gap: 30px
+        width: calc( 100% - 60px ) !important
+        @media screen  and ( max-width: 950px )
+            flex-direction: column-reverse
+            align-items: center
+            .image
+                max-width: 455px
+            .backstage__content
+                width: 100% !important
+                align-self: start
+                h2, h4
+                    text-align: left
+                    padding-left: 5px
+                h4
+                    margin-top: 28px
+                    margin-bottom: 0
+                p
+                    margin-top: 20px
+    @media screen and ( min-width: 321px ) and ( max-width: 640px )
+        width: calc( 100% - 40px ) !important
+        .backstage__content
+            width: 75vw !important
+            align-self: start
+            h2, h4
+                text-align: left
+                padding-left: 5px
+            h4
+                margin-top: 28px
+                margin-bottom: 0
+            p
+                margin-top: 20px
+    .image
+        position: static
+        min-width: 609px
+        height: 403px
+        background-image: url(../../assets/images/bamboo-cap.png)
+        @media screen and ( min-width: 1001px ) and ( max-width: 1599px )
+            min-width: 40vw
+            background-position-x: 50%
+        @media screen and ( min-width: 641px ) and ( max-width: 1000px )
+            min-width: 455px
+            height: 407px
+            background-position-x: 50%
+            background-position-y: center
+            
+        @media screen and ( max-width: 640px )
+            display: none
+        
+
+    h2
+        font-family: Roboto
+        font-weight: 400
+        font-size: 48px
+        line-height: 58px
+        margin-top: 0
+        margin-bottom: 20px
+        @media screen and ( min-width: 1001px ) and ( max-width: 1599px )
+            margin-top: -10px
+        @media screen and ( min-width: 641px ) and ( max-width: 1000px )
+            margin-top: -10px
+        // @media screen and ( min-width: 321px ) and ( max-width: 640px )
+        
+        @media screen and ( min-width: 100px ) and ( max-width: 500px )
+            font-size: 24px
+            line-height: 29px
+            margin-bottom: 0
+        @media screen and ( max-width: 640px )
+            font-size: 7.5vw !important
+    p
+        font-family: Roboto
+        font-weight: 400
+        font-size: 16px
+        line-height: 22px
+        color: $textcolor
+        @media screen and ( min-width: 1001px ) and ( max-width: 1599px )
+            margin-top: -10px
+        @media screen and ( min-width: 641px ) and ( max-width: 1000px )
+            padding-right: 10px
+        @media screen and ( min-width: 321px ) and ( max-width: 640px )
+            // font-size: 5vw
+        @media screen and ( min-width: 100px ) and ( max-width: 320px )
+            margin-top: 10px
+            font-size: 5vw
+    h4
+        font-family: Roboto
+        font-weight: 400
+        font-size: 24px
+        line-height: 29px
+        margin-top: 53px
+        margin-bottom: 34px
+        color: $textcolor
+        @media screen and ( min-width: 100px ) and ( max-width: 500px )
+            margin: 10px 0
+        @media screen and ( min-width: 321px ) and ( max-width: 639px )
+            font-size: 3.7vw
