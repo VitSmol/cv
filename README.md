@@ -8,4 +8,4 @@ Just simple markup
 https://VitSmol.github.io/cv/lab
 
 Tag game
-https://VitSmol.github.io/cv/lab
+https://VitSmol.github.io/cv/jam
