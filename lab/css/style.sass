@@ -1,0 +1,545 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap')
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@357&display=swap')
+
+$mainFontColor: rgb(96, 96, 110)
+$elementsColor: rgba(123, 238, 199, 1)
+%wrappers
+  max-width: 1300px
+  display: flex
+  flex-direction: column
+  margin: 0 auto
+  padding: 0 80px
+
+%headers
+  font-family: "Montserrat", sans-serif
+  font-weight: 700
+  color: $mainFontColor
+  line-height: 1.333
+  text-align: center
+  text-transform: uppercase
+  position: relative
+  z-index: 5
+%headersBefore
+  content: ''
+  position: absolute
+  width: 68px
+  height: 22px
+  z-index: -1
+  bottom: 0
+  background: $elementsColor
+%paragraphs
+  text-align: center
+  color: $mainFontColor
+  font-family: 'Open Sans', sans-serif
+  line-height: 1.714
+  font-size: 14px
+  margin-top: 15px
+  word-spacing: 1px
+%icons
+  position: absolute
+  top: calc(50% - 6px)
+  left: -25px
+  fill: $elementsColor
+%buttons
+  color: white
+  background: $elementsColor
+  font-family: "Montserrat", sans-serif
+  font-weight: 600
+  font-size: 14px
+  outline: none
+  border: none
+  transition: background 0.3s ease-in
+  text-transform: uppercase
+%buttonsHover
+  cursor: pointer
+  transition: background 0.3s ease-in
+  background: red
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+
+h2, h3, h4
+  @extend %headers
+.home
+  width: 100%
+  height: 500px
+.home, .weDo, .pricing, .form, footer
+  width: 100%
+    
+.home__wrapper
+  @extend %wrappers
+  height: 100%
+  background: url('../assets/bg.png')
+  header
+    display: flex
+    justify-content: space-between
+    padding: 40px 0px 35px 0px
+    align-items: center
+    .logo
+      font-family: "Montserrat", sans-serif
+      font-weight: bold
+      font-size: 18px
+      color: $mainFontColor
+      text-transform: uppercase
+    .header__navigation 
+      width: 30px 
+      height: 15px
+      ul
+        display: none
+      .navigation__menu
+        display: flex
+        flex-direction: column
+        height: 100%
+        justify-content: space-between
+      span
+          height: 1px
+          background-color: $mainFontColor
+          &:nth-child(1)
+            width: 31px
+          &:nth-child(2)
+            width: 15px
+          &:nth-child(3)
+            width: 23px
+.home__greeting
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  height: -webkit-fill-available
+  flex-grow: 1
+  h2
+    font-size: 35px
+  h3
+    font-size: 14px
+    margin-top: 15px
+  
+.weDo__wrapper
+  @extend %wrappers
+  padding-top: 143px
+  .weDo__header
+    display: flex
+    flex-direction: column
+    align-items: center
+    h2
+      font-size: 28px
+      &:before
+        @extend %headersBefore
+    p
+      max-width: 725px
+      @extend %paragraphs
+
+.weDo__content
+  display: flex
+  padding: 97px 0px
+  gap: 30px
+
+.content__description
+  color: $mainFontColor
+  font-family: 'Open Sans', sans-serif
+  line-height: 2.222
+  font-size: 14px
+  flex-basis: 50%
+  p
+    margin-top: -10px
+.content__image
+  flex-basis: 50%
+  height: 364px
+  background: url(../assets/content.png) no-repeat
+.content__lists
+  margin-top: 28px
+  display: flex
+  gap: 20px
+  ul
+    flex-basis: 50%
+    list-style-type: none
+    padding-left: 23px
+    li
+      position: relative
+      line-height: 2.2
+      ion-icon
+        @extend %icons
+
+.weDo__benefits
+  padding: 56px 0px
+  gap: 26px
+  display: flex
+  justify-content: space-between
+  .benefit__group
+    display: flex
+    gap: 26px
+  .benefit
+    display: flex
+    flex-direction: column
+    align-items: center
+    .benefit__icon
+      width: 53px
+      height: 53px
+      position: relative
+      ion-icon
+        font-size: 54px
+        font-weight: 100
+      &::before
+        position: absolute
+        content: ''
+        width: 51px
+        height: 21px
+        background-color: $elementsColor
+        bottom: 0
+        left: -10px
+    h4
+      font-size: 17px
+      margin-top: 25px
+    p
+      @extend %paragraphs
+      line-height: 2.143
+      margin-top: 6px
+    
+ion-icon
+  color: $mainFontColor
+
+.pricing__wrapper
+  @extend %wrappers
+  padding-top: 83px
+  .pricing__header
+    display: flex
+    flex-direction: column
+    align-items: center
+    h2
+      font-size: 28px
+      letter-spacing: 0.7px
+      &:before
+        @extend %headersBefore
+    p
+      max-width: 725px
+      @extend %paragraphs
+
+.pricing__plans
+  display: flex
+  justify-content: space-between
+  color: $mainFontColor
+  font-family: 'Open Sans', sans-serif
+  line-height: 2.222
+  font-size: 14px
+  margin-top: 98px
+  gap: 30px
+  .plan
+    position: relative
+    border-top: 5px solid $elementsColor
+    box-sizing: border-box
+    // width: minmax(30%,360px)
+    flex-basis: 33%
+    height: 490px
+    padding: 30px 30px 70px 33px
+    transition: all 0.3s ease-out
+    &::before
+      position: absolute
+      top: 0
+      right: 0
+      z-index: 50
+      content: ''
+      border-top: 9px solid $elementsColor
+      border-left: 9px solid transparent
+    h2
+      font-size: 30px
+      text-align: left
+      line-height: 0.7
+      letter-spacing: -1.2px;
+    span
+      display: block
+      width: 166px
+      text-transform: uppercase
+      background-color: $elementsColor
+      color: white
+      font-family: "Montserrat", sans-serif
+      font-weight: 700
+      font-size: 14px
+      padding-left: 20px
+      margin-top: 19px
+  .plan__list
+    margin-top: 36px
+    ul
+      list-style-type: none
+      padding-left: 20px
+      li
+        position: relative
+        line-height: 2.56
+        ion-icon
+          @extend %icons
+  .started
+    margin-top: 42px
+    width: 135px
+    height: 50px
+    @extend %buttons
+    &:hover
+      @extend %buttonsHover
+.pricing__plans:hover .plan
+  filter: blur(2px)
+
+.pricing__plans:hover .plan:hover
+  transition: all 0.2s ease-in
+  filter: none
+  box-shadow: 0px 0px 25px #00000052
+  border-radius: 10px
+  transform: scale(1.05)
+
+.form__wrapper
+  max-width: 1300px
+  margin: 148px auto 50px
+  background: $elementsColor
+  display: flex
+  justify-content: space-between
+  padding-right: 80px
+  padding-left: 80px
+  padding-top: 50px
+  padding-bottom: 49px
+
+  gap: 30px
+  .form__header, .form__container
+    flex-basis: 50%
+    h2
+      text-align: left
+      line-height: 1.57
+      letter-spacing: -0.6px
+  .form__header 
+    h2
+      font-size: 30px
+      color: white
+      margin-top: -10px
+    .touch
+      width: 165px
+      height: 50px
+      margin-top: 18px
+      @extend %buttons
+      background: white
+      color: $elementsColor
+      &:hover
+        @extend %buttonsHover
+        color: white
+  .form__container 
+    padding-left: 25px
+    padding-top: 11px
+    padding-bottom: 17px
+    padding-right: 26px
+    background: white
+    .form__description
+      padding-left: 3px
+    h2
+      font-size: 24px
+    p
+      @extend %paragraphs
+      text-align: left
+      margin-top: 0
+      font-size: 16px
+      line-height: 1.6
+    form
+      display: flex
+      margin-top: 25px
+    input
+      height: 50px
+      flex-grow: 1
+      border: 1px solid rgba(0, 0, 0, 0.1)
+      border-right: none
+      padding: 10px 15px
+      
+      &::placeholder
+        font-size: 11px
+        font-weight: 900
+        color: rgba(0, 0, 0, 0.2)
+    .send
+      width: 135px
+      height: 50px
+      @extend %buttons
+      &:hover
+        @extend %buttonsHover
+.footer__wrapper
+  font-family: "Montserrat", sans-serif
+  max-width: 1300px
+  margin: 0 auto
+  display: flex
+  justify-content: space-between
+  padding-left: 80px
+  padding-right: 80px
+  .footer__nav
+    display: flex
+    height: min-content
+    a
+      display: flex
+      align-items: center
+      text-transform: uppercase
+      text-decoration: none
+      color: $mainFontColor
+      font-weight: 400
+      font-size: 14px
+      letter-spacing: -0.3px
+      opacity: 0.8
+      transition: all 0.4s ease-out
+      &:hover
+        opacity: 1
+        text-shadow: 0 0 10px black
+        transition: all 0.4s ease-out
+      &:not(:last-child) 
+        &:after
+          opacity: 0.7
+          content: ''
+          background: $mainFontColor
+          width: 4px
+          height: 2px
+          margin-right: 16px
+          margin-left: 16px
+.contacts__copyright span
+  text-transform: uppercase
+  font-size: 14px
+  letter-spacing: -0.9px
+  color: $mainFontColor
+.contacts__social ul
+  display: flex
+  list-style-type: none
+  justify-content: right
+  margin-top: 20px
+  ion-icon
+    color: $mainFontColor
+    font-size: 18px
+    opacity: 0.7
+    transition: all 0.4s ease-out
+  li:not(:last-child)
+    margin-right: 14px
+  a
+    transition: all 0.4s ease-out
+    &:hover ion-icon
+      color: #ff0000bc
+      opacity: 1
+      transition: all 0.4s ease-out
+      
+// @media screen and ( max-width:  1260px)
+
+@media screen and ( max-width:  1127px)
+  .weDo__wrapper
+    padding-top: 30px
+  .weDo__content
+    flex-direction: column-reverse
+    padding-top: 20px
+    padding-bottom: 20px
+    .content__image
+      flex-basis: auto
+      width: 100%
+      max-height: 10vw
+      min-height: 100px
+      background-size: cover
+      background-position: center
+      background-attachment: fixed
+    .content__lists
+      margin-top: 15px
+      justify-content: center
+      gap:  20%
+      ul
+        flex-basis: auto
+    // height: 200px
+  .weDo__benefits
+    padding-top: 20px
+    padding-bottom: 20px
+  .pricing__wrapper
+    padding-top: 20px
+    padding-bottom: 20px
+  .pricing__plans, .form__wrapper
+    margin-top: 20px
+  .footer__wrapper
+    flex-direction: column
+    .footer__nav, .footer__contacts
+      display: flex
+      justify-content: center
+    .footer__contacts
+      margin-top: 10px
+      flex-direction: column
+      align-items: center
+  
+@media screen and ( max-width:  1030px)
+  .weDo__benefits
+    flex-direction: column
+  .pricing__plans
+    flex-direction: column
+    .plan
+      display: flex
+      height: auto
+      padding: 20px
+      justify-content: space-evenly
+      position: relative
+      .plan__header
+        display: flex
+        flex-direction: column
+        align-items: center
+      .plan__header, .plan__list
+        flex-basis: 50%
+        align-self: flex-start
+        h2
+          text-align: center
+      .plan__list, .started
+        margin-top: 0
+      .plan__list
+        // flex-grow: 1
+      .started
+        position: absolute
+        left: calc(10px + (25% - 67px))
+        bottom: 20px
+  .form__wrapper
+    padding: 25px 80px
+@media screen and ( max-width:  800px)
+  .form__wrapper
+    flex-direction: column
+    .form__header
+      display: flex
+      flex-direction: column
+      h2
+        text-align: center
+    .touch
+      flex-basis: auto
+      align-self: center
+  .footer__wrapper
+    flex-direction: row
+    padding-bottom: 20px
+  .footer__nav
+    flex-direction: column
+    a:after
+      display: none
+@media screen and ( max-width:  620px)
+  .footer__wrapper, 
+    flex-direction: column
+    align-items: flex-start
+    .footer__contacts
+      margin-top: 5px
+      flex-direction: column-reverse
+      align-items: flex-start
+      ul
+        margin-top: 0px
+  .pricing__plans .plan
+      flex-direction: column
+      justify-content: center
+      align-items: center
+      .plan__header
+        align-self: center
+      .plan__list
+        display: none
+      .started
+        margin-top: 10px 
+        position: static 
+
+@media screen and ( max-width:  500px)
+  .content__description
+    display: flex
+    flex-direction: column
+    align-items: center
+  .benefit__group
+    flex-direction: column 
+  .content__lists
+    flex-direction: column
+    ul li
+      line-height: 1.5
+  .form__container form
+    flex-direction: column
+    .send
+      align-self: center
+      margin-top: 10px
+  .home__wrapper, .weDo__wrapper, .pricing__wrapper, .form__wrapper
+    padding-left: 20px
+    padding-right: 20px
