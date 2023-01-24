@@ -110,5 +110,9 @@ dist
 # TernJS port file
 .tern-port
 
-# *.css.map
->>>>>>> d6404774963ca6e3dc386997e45fe27863302f4d
+*.css.map
+=========
+/cv-ang/.angular
+/cv-ang/.vscode
+/cv-ang/node_modules
+>>>>>>>>> Temporary merge branch 2
