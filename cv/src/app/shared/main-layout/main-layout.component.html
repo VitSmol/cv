@@ -1,29 +1,30 @@
 <!-- <div class="grid__wrapper"> -->
-  <div class="nav__wrapper">
-    <nav>
-      <ul>
-        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-          <a routerLink="">Main</a>
-        </li>
-        <li routerLinkActive="active">
-          <a [routerLink]="['/about']">About</a>
-        </li>
-        <li routerLinkActive="active">
-          <a [routerLink]="['/contact']">Contact</a>
-        </li>
-        <li routerLinkActive="active">
-          <a [routerLink]="['/education']">Education</a>
-        </li>
-        <li routerLinkActive="active">
-          <a [routerLink]="['/skills']">Skills</a>
-        </li>
-        <li routerLinkActive="active">
-          <a [routerLink]="['/portfolio']">Portfolio</a>
-        </li>
-      </ul>
-    </nav>
-  </div>
-  <router-outlet></router-outlet>
+<div class="nav__wrapper" (keydown.shift.t)="red()">
+    <div class=" change-lang" (click)="change()"></div>
+<nav>
+  <ul>
+    <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+      <a routerLink="">Main</a>
+    </li>
+    <li routerLinkActive="active">
+      <a [routerLink]="['/about']">About</a>
+    </li>
+    <li routerLinkActive="active">
+      <a [routerLink]="['/contact']">Contact</a>
+    </li>
+    <li routerLinkActive="active">
+      <a [routerLink]="['/education']">Education</a>
+    </li>
+    <li routerLinkActive="active">
+      <a [routerLink]="['/skills']">Skills</a>
+    </li>
+    <li routerLinkActive="active">
+      <a [routerLink]="['/portfolio']">Portfolio</a>
+    </li>
+  </ul>
+</nav>
+</div>
+<router-outlet></router-outlet>
 
-  <app-footer></app-footer>
+<app-footer></app-footer>
 <!-- </div> -->

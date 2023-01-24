@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 type Obj = {
   ru: {
@@ -21,7 +22,7 @@ type Obj = {
 export class MainPageComponent implements OnInit {
 
   arr = new Array(20).fill(0);
-  lang = 'ru'
+  lang = environment.lang
   hi: string = ``
   name: string = ``
   description:string = ``
@@ -45,5 +46,6 @@ export class MainPageComponent implements OnInit {
       this.name = this.greeting[this.lang as keyof Obj].name;
       this.description = this.greeting[this.lang as keyof Obj].description;
     }
+    
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-main-layout',
@@ -12,4 +13,13 @@ export class MainLayoutComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  change() {
+    environment.lang = 'en';
+    console.log(environment.lang);
+  }
+
+  red() {
+    const wrap = document.querySelector('.nav__wrapper');
+    (wrap as HTMLDivElement).style.background = 'red';
+  }
 }
