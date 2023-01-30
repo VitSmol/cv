@@ -1,0 +1,42 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { AdminLayoutComponent } from './shared/admin-layout/admin-layout.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
+import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from "@angular/material/button";
+import { MatIconModule } from "@angular/material/icon";
+import { MatInputModule } from "@angular/material/input";
+
+@NgModule({
+  declarations: [
+    AdminLayoutComponent,
+    LoginPageComponent,
+    DashboardPageComponent,
+  ],
+  imports: [
+    CommonModule,
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatIconModule,
+    MatInputModule,
+    RouterModule.forChild([
+      {
+        path: '', component: AdminLayoutComponent, children: [
+          { path: '', redirectTo: '/admin/login', pathMatch: 'full' },
+          { path: 'login', component: LoginPageComponent },
+          { path: 'dashboard', component: DashboardPageComponent },
+        ]
+      }
+    ]),
+  ],
+  exports: [],
+  providers: [
+    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}
+  ]
+})
+export class AdminModule { }
