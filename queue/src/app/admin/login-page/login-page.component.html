@@ -14,6 +14,10 @@
       </button>
       <mat-error *ngIf="password.invalid">Длина пароля {{password.value?.length}}. Минимальная длина - 6</mat-error>
     </mat-form-field>
-    <button [disabled]="(email.invalid || password.invalid)" class="btn" (submit)="submit()">Войти</button>
+    <button type="submit" [disabled]="(email.invalid || password.invalid) || submitted" class="btn" (click)="submit()">Войти</button>
   </div>
+  <div *ngIf="isLogin" class="spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+  <mat-error *ngIf="isError">Неправильный логин или пароль</mat-error>
 </div>
