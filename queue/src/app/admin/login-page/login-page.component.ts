@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/auth.service';
+import { Users } from 'src/app/shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-login-page',
@@ -45,7 +46,11 @@ export class LoginPageComponent implements OnInit {
     }
     this.auth.login(user).subscribe(res => {
       console.log(res);
-      this.router.navigate(['/admin', 'dashboard']);
+      if (res?.email === Users.admin) {
+        this.router.navigate(['/admin', 'dashboard']);
+      } else {
+        this.router.navigate(['/', '/']);
+      }
       this.submitted = false;
       this.isError = false;
     }, ()=> {
@@ -53,6 +58,7 @@ export class LoginPageComponent implements OnInit {
       this.isError = true;
       this.isLogin = false;
     })
+
 
   }
 }

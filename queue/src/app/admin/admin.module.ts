@@ -10,12 +10,15 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { AddPageComponent } from './add-page/add-page.component';
+import { AuthGuard } from '../shared/auth.guard';
 
 @NgModule({
   declarations: [
     AdminLayoutComponent,
     LoginPageComponent,
     DashboardPageComponent,
+    AddPageComponent,
   ],
   imports: [
     CommonModule,
@@ -31,7 +34,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
         path: '', component: AdminLayoutComponent, children: [
           { path: '', redirectTo: '/admin/login', pathMatch: 'full' },
           { path: 'login', component: LoginPageComponent },
-          { path: 'dashboard', component: DashboardPageComponent },
+          { path: 'dashboard', component: DashboardPageComponent, canActivate: [AuthGuard] },
+          { path: 'add', component: AddPageComponent, canActivate: [AuthGuard] },
         ]
       }
     ]),

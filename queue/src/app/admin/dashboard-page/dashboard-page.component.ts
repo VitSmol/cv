@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from 'src/app/shared/auth.service';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class DashboardPageComponent {
 
+  constructor(
+    public auth: AuthService
+  ){}
 }

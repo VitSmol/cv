@@ -6,10 +6,16 @@
           Главное управление по здравоохранению Гомельского облисполкома
         </a>
       </h3>
-      <ul>
-        <li></li>
-        <li></li>
-        <li></li>
+      <ul *ngIf="auth.isAuth()">
+        <li>
+          <a [routerLink]="['/admin', 'dashboard']">Панель управления</a>
+        </li>
+        <li>
+          <a [routerLink]="['/admin', 'add']">Добавить списки</a>
+        </li>
+        <li>
+          <a [routerLink]="['', '']" (click)="logout($event)">Выйти</a>
+        </li>
       </ul>
     </nav>
   </div>

@@ -34,3 +34,14 @@ export interface Resp {
   refreshToken?: string;
   registered?: boolean;
 }
+
+export enum Users {
+  admin = "it@gomeluzo.by",
+  bsmp = "bsmp@mail.gomel.by",
+  ggkb1 = "ggkb1@mail.gomel.by",
+  gokb = "reghosp@gokb.by",
+  zlobin = "zhlcrb@zhlcrb.by",
+  rechica = "rcrb@rechitsa.by",
+  svetl = "svetl-tmo@mail.gomel.by",
+  mozyr = "mozyrcgp@mcgp.by"
+}
