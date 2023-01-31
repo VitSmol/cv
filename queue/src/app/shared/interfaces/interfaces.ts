@@ -16,8 +16,21 @@ export enum ColumnsNames {
 export interface User {
   email: string;
   password: string;
+  returnSecureToken: boolean;
 }
 
 export interface Auth {
   login(user: User): any
+  setToken(resp: Resp): void
+}
+
+export interface Resp {
+  displayName?: string;
+  email?: string;
+  expiresIn?: string;
+  idToken?: string;
+  kind?: string;
+  localId?: string;
+  refreshToken?: string;
+  registered?: boolean;
 }

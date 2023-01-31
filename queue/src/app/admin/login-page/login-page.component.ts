@@ -41,8 +41,8 @@ export class LoginPageComponent implements OnInit {
     const user = {
       email: this.email.value as string,
       password: this.password.value as string,
+      returnSecureToken: true
     }
-    // console.log(user);
     this.auth.login(user).subscribe(res => {
       console.log(res);
       this.router.navigate(['/admin', 'dashboard']);
