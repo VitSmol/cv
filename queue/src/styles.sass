@@ -26,9 +26,28 @@ body
 
   .menu
     display: flex
-  ul
-    display: flex
+    align-items: baseline
+    justify-content: space-between
+    width: 100%
+    ul
+      display: flex
+      list-style-type: none
+      padding: 0
+      margin: 0
+      gap: 15px
+      li a
+        color: $main-color
+        &:hover
+          transition: 0.5s all
+          cursor: pointer
+          color: $text-hover
+  // ul
 .wrapp
+  position: fixed
+  z-index: 9999
+  top: 0
+  right: 0
+  left: 0
   color: $main-color
   background: red
   height: 70px

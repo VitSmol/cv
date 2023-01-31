@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environments.prod';
+import { allowedIPs } from '../admin/data/data';
 import { Auth, Resp, User } from './interfaces/interfaces';
 
 @Injectable({
@@ -46,5 +47,14 @@ export class AuthService implements Auth {
 
   isAuth() {
     return !!this.token
+  }
+
+  async getIP() {
+    const resp = await fetch('https://api.ipify.org')
+    const data = await resp.text()
+    if (allowedIPs.includes(data)) {
+      return true;
+    }
+    return false;
   }
 }

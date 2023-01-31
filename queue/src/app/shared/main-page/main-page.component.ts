@@ -1,8 +1,9 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
 import * as uuid from 'uuid';
 import * as XLSX from 'xlsx';
+import { AuthService } from '../auth.service';
 import { ColumnsNames } from '../interfaces/interfaces';
 
 @Component({
@@ -10,9 +11,20 @@ import { ColumnsNames } from '../interfaces/interfaces';
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.sass']
 })
-export class MainPageComponent {
+export class MainPageComponent implements OnInit  {
 
-  constructor() { }
+
+
+  constructor(
+    private auth: AuthService
+  ) { }
+
+
+
+  ngOnInit(): void {
+
+  }
+
   resultArray: any[] = [];
   csvRecords: any[] = [];
   header = true;
@@ -38,7 +50,6 @@ export class MainPageComponent {
 
   @ViewChild('fileImportInput') fileImportInput: any;
 
-
   compareArray(arr: any[]) {
     const result = arr.reduce((a, b) => {
       if (!a.find((v: { [x: string]: any; }) => v[ColumnsNames.number] === b[ColumnsNames.number] && v[ColumnsNames.fio] === b[ColumnsNames.fio])) {
@@ -58,8 +69,8 @@ export class MainPageComponent {
     XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
     XLSX.writeFile(wb, this.fileName);
   }
-  readExcel(evt: any) {
-    let file = evt.target.files[0];
+  readExcel(e: any) {
+    let file = e.target.files[0];
     let fileReader = new FileReader();
     fileReader.readAsBinaryString(file);
     fileReader.onload = (e) => {
@@ -76,10 +87,13 @@ export class MainPageComponent {
       }
       this.ExcelData = XLSX.utils.sheet_to_json(ws)
       this.ExcelData.forEach((patient) => {
+        //TODO
       })
       this.resultArray.push(this.ExcelData);
       this.resultArray = this.compareArray(this.resultArray.flat())
         .sort((a: { [x: string]: any; }, b: { [x: string]: any; }) => a[ColumnsNames.date] - b[ColumnsNames.date])
+      console.log(this.resultArray);
     }
+
   }
 }
