@@ -12,6 +12,8 @@ import { MatInputModule } from "@angular/material/input";
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { AddPageComponent } from './add-page/add-page.component';
 import { AuthGuard } from '../shared/auth.guard';
+import { MenuComponent } from './dashboard-page/menu/menu.component';
+import { ContentComponent } from './dashboard-page/content/content.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { AuthGuard } from '../shared/auth.guard';
     LoginPageComponent,
     DashboardPageComponent,
     AddPageComponent,
+    MenuComponent,
+    ContentComponent,
   ],
   imports: [
     CommonModule,

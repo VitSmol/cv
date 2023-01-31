@@ -50,6 +50,9 @@ export class MainPageComponent {
   }
   export() {
     const element = document.getElementById('my-table');
+    if (!element) {
+      return
+    }
     const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
