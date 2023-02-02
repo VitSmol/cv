@@ -1,9 +1,9 @@
 import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
-import * as uuid from 'uuid';
 import * as XLSX from 'xlsx';
 import { AuthService } from '../auth.service';
+import { DataHandlerService } from '../data-handler.service';
 import { ColumnsNames } from '../interfaces/interfaces';
 
 @Component({
@@ -11,17 +11,17 @@ import { ColumnsNames } from '../interfaces/interfaces';
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.sass']
 })
-export class MainPageComponent implements OnInit  {
-
-
+export class MainPageComponent implements OnInit {
 
   constructor(
-    private auth: AuthService
+    private auth: AuthService,
+    public handler: DataHandlerService
   ) { }
 
-
-
   ngOnInit(): void {
+    console.log(
+      // users.includes() //! delete it
+    );
 
   }
 
@@ -33,8 +33,9 @@ export class MainPageComponent implements OnInit  {
   //!
   ExcelData: any[] = [];
 
-  headers: any[] = [
+  headers: ColumnsNames[] = [
     ColumnsNames.number,
+    ColumnsNames.org,
     ColumnsNames.fio,
     ColumnsNames.address,
     ColumnsNames.sex,
@@ -45,7 +46,6 @@ export class MainPageComponent implements OnInit  {
     ColumnsNames.group,
     ColumnsNames.operDate,
     ColumnsNames.note,
-    // ColumnsNames.org,
   ]
 
   @ViewChild('fileImportInput') fileImportInput: any;
@@ -69,6 +69,7 @@ export class MainPageComponent implements OnInit  {
     XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
     XLSX.writeFile(wb, this.fileName);
   }
+
   readExcel(e: any) {
     let file = e.target.files[0];
     let fileReader = new FileReader();
@@ -78,22 +79,36 @@ export class MainPageComponent implements OnInit  {
       let sheetNames = workBook.SheetNames;
       const ws = workBook.Sheets[sheetNames[0]]
 
-      for (let key in ws) {
-        if (ws[key].w != ws[key].v) {
-          const array = (ws[key].w).split('/')
-          const date = new Date(+('20' + array[2]), +array[0] - 1, +array[1])
-          ws[key].v = date
+      sheetNames.forEach((sheet, ind) => {
+        const ws = workBook.Sheets[sheet]
+
+        for (let key in ws) {
+          let dateArray  = ws[key].w
+          try {
+            if(dateArray.match(/\d{1,2}\.\d{1,2}\.\d{1,4}/g)) {
+              dateArray = dateArray.split('.');
+              const date = new Date(+(dateArray[2]), +dateArray[1] - 1, +dateArray[0])
+              ws[key].v = date
+            }
+          } catch (error) {
+            continue
+          }
         }
-      }
-      this.ExcelData = XLSX.utils.sheet_to_json(ws)
-      this.ExcelData.forEach((patient) => {
-        //TODO
+        // console.log(ws);
+        this.ExcelData = XLSX.utils.sheet_to_json(ws)
+        this.ExcelData.forEach((patient) => {
+          //TODO
+          patient.org = sheetNames[ind]
+        })
+        this.resultArray.push(this.ExcelData);
+        this.resultArray = this.compareArray(this.resultArray.flat())
+          .sort((a: { [x: string]: any; }, b: { [x: string]: any; }) => a[ColumnsNames.date] - b[ColumnsNames.date])
       })
-      this.resultArray.push(this.ExcelData);
-      this.resultArray = this.compareArray(this.resultArray.flat())
-        .sort((a: { [x: string]: any; }, b: { [x: string]: any; }) => a[ColumnsNames.date] - b[ColumnsNames.date])
-      console.log(this.resultArray);
     }
+    // console.log(this.resultArray);
+  }
+  showResultArray() {
+    console.log(this.resultArray);
 
   }
 }
