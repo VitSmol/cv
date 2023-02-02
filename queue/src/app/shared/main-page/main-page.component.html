@@ -4,10 +4,12 @@
 
   <h2>Import xlsx</h2>
   <div class="button-group">
-    <input type="file" (change)="readExcel($event)" class="btn" value="">
+    <input type="file" (change)="readExcel($event)" class="btn" value="" multiple>
     <input type="button" (click)="export()" value="Экспортировать" class="btn">
     <input type="button" (click)="showResultArray()" class="btn btn-dark" value="Массив в консоль">
   </div>
+</div>
+
   <table *ngIf="ExcelData.length !== 0" id="my-table">
     <thead style="background: yellow;">
       <tr>
@@ -23,7 +25,6 @@
         <td>{{ item[ColumnsNames.sex] }}</td>
         <td>{{ item[ColumnsNames.birthday] }}</td>
         <td>{{ item[ColumnsNames.date] | date: 'dd.MM.YYYY'}}</td>
-        <!--  -->
         <td>{{ item[ColumnsNames.diag] }}</td>
         <td>{{ item[ColumnsNames.side] }}</td>
         <td>{{ item[ColumnsNames.group] }}</td>
@@ -32,4 +33,4 @@
       </tr>
     </tbody>
   </table>
-</div>
+

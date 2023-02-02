@@ -52,7 +52,7 @@ export class MainPageComponent implements OnInit {
 
   compareArray(arr: any[]) {
     const result = arr.reduce((a, b) => {
-      if (!a.find((v: { [x: string]: any; }) => v[ColumnsNames.number] === b[ColumnsNames.number] && v[ColumnsNames.fio] === b[ColumnsNames.fio])) {
+      if (!a.find((v: { [x: string]: any; }) => v[ColumnsNames.number] === b[ColumnsNames.number] && v[ColumnsNames.fio] === b[ColumnsNames.fio] && v[ColumnsNames.date] === b[ColumnsNames.date])) {
         a.push(b)
       }
       return a;
@@ -77,11 +77,8 @@ export class MainPageComponent implements OnInit {
     fileReader.onload = (e) => {
       let workBook = XLSX.read(fileReader.result, { type: 'binary' });
       let sheetNames = workBook.SheetNames;
-      const ws = workBook.Sheets[sheetNames[0]]
-
       sheetNames.forEach((sheet, ind) => {
         const ws = workBook.Sheets[sheet]
-
         for (let key in ws) {
           let dateArray  = ws[key].w
           try {
@@ -94,19 +91,26 @@ export class MainPageComponent implements OnInit {
             continue
           }
         }
-        // console.log(ws);
         this.ExcelData = XLSX.utils.sheet_to_json(ws)
         this.ExcelData.forEach((patient) => {
           //TODO
-          patient.org = sheetNames[ind]
+          if (sheetNames[ind] === `Калинковичи`) {
+            patient.org = `ГОКБ`
+          } else {
+            patient.org = sheetNames[ind]
+          }
+          if (patient[ColumnsNames.operDate]) {
+            console.log(patient);
+          }
+          patient.isOperated = false
         })
         this.resultArray.push(this.ExcelData);
         this.resultArray = this.compareArray(this.resultArray.flat())
           .sort((a: { [x: string]: any; }, b: { [x: string]: any; }) => a[ColumnsNames.date] - b[ColumnsNames.date])
       })
     }
-    // console.log(this.resultArray);
   }
+
   showResultArray() {
     console.log(this.resultArray);
 
