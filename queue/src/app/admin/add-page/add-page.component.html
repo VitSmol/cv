@@ -1,1 +1,36 @@
-<p>add-page works!</p>
+<div class="container">
+
+  <h3>Количество записей: {{resultArray.length}}</h3>
+
+  <h2>Import xlsx</h2>
+  <div class="button-group">
+    <input type="file" (change)="readExcel($event)" class="btn" value="" multiple>
+    <input type="button" (click)="export()" value="Экспортировать" class="btn">
+    <input type="button" (click)="showResultArray()" class="btn btn-dark" value="Массив в консоль">
+  </div>
+</div>
+
+  <table *ngIf="ExcelData.length !== 0" id="my-table">
+    <thead style="background: yellow;">
+      <tr>
+        <th *ngFor="let head of headers">{{head}} </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of resultArray; let ind = index;">
+        <td>{{ item[ColumnsNames.number] }}</td>
+        <td>{{ item.org }}</td>
+        <td>{{ item[ColumnsNames.fio] }}</td>
+        <td>{{ item[ColumnsNames.address] }}</td>
+        <td>{{ item[ColumnsNames.sex] }}</td>
+        <td>{{ item[ColumnsNames.birthday] }}</td>
+        <td>{{ item[ColumnsNames.date] | date: 'dd.MM.YYYY'}}</td>
+        <td>{{ item[ColumnsNames.diag] }}</td>
+        <td>{{ item[ColumnsNames.side] }}</td>
+        <td>{{ item[ColumnsNames.group] }}</td>
+        <td>{{ item[ColumnsNames.operDate] }}</td>
+        <td>{{ item[ColumnsNames.note] }}</td>
+      </tr>
+    </tbody>
+  </table>
+
