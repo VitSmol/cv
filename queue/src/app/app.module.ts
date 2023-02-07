@@ -8,19 +8,23 @@ import { MainLayoutComponent } from './shared/main-layout/main-layout.component'
 import { MainPageComponent } from './shared/main-page/main-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { CheckQueueComponent } from './shared/check-queue/check-queue.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainLayoutComponent,
-    MainPageComponent
+    MainPageComponent,
+    CheckQueueComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
