@@ -67,7 +67,5 @@ export class LoginPageComponent implements OnInit {
       this.isError = true;
       this.isLogin = false;
     })
-
-
   }
 }
