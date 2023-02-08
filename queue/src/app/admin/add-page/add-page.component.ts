@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { AuthService } from 'src/app/shared/auth.service';
 import { DataHandlerService } from 'src/app/shared/data-handler.service';
-import { ColumnsNames } from 'src/app/shared/interfaces/interfaces';
+import { ColumnsNames, ProstheticsType } from 'src/app/shared/interfaces/interfaces';
 import * as XLSX from 'xlsx';
 
 @Component({
@@ -67,6 +67,8 @@ export class AddPageComponent {
     fileReader.onload = (e) => {
       let workBook = XLSX.read(fileReader.result, { type: 'binary' });
       let sheetNames = workBook.SheetNames;
+      console.log(file);
+
       sheetNames.forEach((sheet, ind) => {
         const ws = workBook.Sheets[sheet]
         for (let key in ws) {
@@ -89,8 +91,11 @@ export class AddPageComponent {
           } else {
             patient.org = sheetNames[ind]
           }
-          if (patient[ColumnsNames.operDate]) {
-            console.log(patient);
+          if (file.name.split('.')[0].toLowerCase() === 'тэкс') {
+            patient.type = ProstheticsType.teks
+          }
+          if (file.name.split('.')[0].toLowerCase() === 'тэтс') {
+            patient.type = ProstheticsType.tets
           }
           patient.isOperated = false
         })
@@ -104,6 +109,7 @@ export class AddPageComponent {
   showResultArray() {
     // console.log(this.resultArray);
     console.log(JSON.stringify(this.resultArray));
+    console.log(this.resultArray);
 
   }
 
