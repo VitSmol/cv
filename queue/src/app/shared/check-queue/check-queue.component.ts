@@ -48,7 +48,9 @@ export class CheckQueueComponent implements OnInit {
   }
 
   log(val: string) {
-    // TODO
+    // TODO  1. Навести порядок с регистром (сделать всё верхним)
+    // TODO  2. Доделать логику фильтрации массива
+    // TODO  3. Закончить stepper
       const filterValue = this.orgFormGroup.value[val as keyof Object]
       this.arr =  this.arr.filter(el => el[val as keyof Object] === filterValue)
     console.log(
