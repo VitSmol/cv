@@ -1,4 +1,39 @@
 <div class="container">
-  <p>check-queue works!</p>
+
+  <mat-stepper orientation="vertical" class="stepper" [linear]="true">
+    <mat-step [stepControl]="orgFormGroup.controls.org" label="Выберите организацию" class="step">
+      <form [formGroup]="orgFormGroup">
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-select
+            placeholder="Выберите организацию*"
+            required
+            formControlName="org">
+            <mat-option [value]="user.shortName" *ngFor="let user of usersInfo"> {{ user.fullName }} </mat-option>
+          </mat-select>
+          <mat-error *ngIf="orgFormGroup.controls.org.invalid">Пожалуйста, выберите организацию</mat-error>
+        </mat-form-field>
+        <div>
+          <button
+            mat-raised-button color="accent" class="next-btn"
+            matStepperNext
+            [disabled]="orgFormGroup.controls.org.invalid"
+            (click)="log('org')"
+            >Далее</button>
+          </div>
+      </form>
+    </mat-step>
+    <mat-step >
+
+    </mat-step>
+    <mat-step>
+
+    </mat-step>
+    <mat-step>
+
+    </mat-step>
+    <mat-step>
+
+    </mat-step>
+  </mat-stepper>
 
 </div>

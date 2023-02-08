@@ -109,7 +109,7 @@ export class AddPageComponent {
   showResultArray() {
     // console.log(this.resultArray);
     console.log(JSON.stringify(this.resultArray));
-    console.log(this.resultArray);
+    // console.log(this.resultArray);
 
   }
 

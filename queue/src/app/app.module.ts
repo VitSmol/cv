@@ -14,6 +14,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatStepperModule } from '@angular/material/stepper';
 import {LayoutModule} from '@angular/cdk/layout';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
     FormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    MatFormFieldModule,
     MatButtonModule,
     MatSelectModule,
     MatStepperModule,
