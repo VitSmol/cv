@@ -1,4 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import exportFromJSON from 'export-from-json';
 import { AuthService } from 'src/app/shared/auth.service';
 import { DataHandlerService } from 'src/app/shared/data-handler.service';
 import { ColumnsNames, ProstheticsType } from 'src/app/shared/interfaces/interfaces';
@@ -12,7 +14,7 @@ import * as XLSX from 'xlsx';
 export class AddPageComponent {
   constructor(
     private auth: AuthService,
-    public handler: DataHandlerService
+    public handler: DataHandlerService,
   ) { }
 
   resultArray: any[] = [];
@@ -49,6 +51,7 @@ export class AddPageComponent {
     }, [])
     return result;
   }
+
   export() {
     const element = document.getElementById('my-table');
     if (!element) {
@@ -60,6 +63,10 @@ export class AddPageComponent {
     XLSX.writeFile(wb, this.fileName);
   }
 
+  exportToJson() {
+    exportFromJSON({data: this.resultArray, fileName: 'testData', exportType: 'json'})
+  }
+
   readExcel(e: any) {
     let file = e.target.files[0];
     let fileReader = new FileReader();
@@ -67,7 +74,6 @@ export class AddPageComponent {
     fileReader.onload = (e) => {
       let workBook = XLSX.read(fileReader.result, { type: 'binary' });
       let sheetNames = workBook.SheetNames;
-      console.log(file);
 
       sheetNames.forEach((sheet, ind) => {
         const ws = workBook.Sheets[sheet]
@@ -86,16 +92,16 @@ export class AddPageComponent {
         this.ExcelData = XLSX.utils.sheet_to_json(ws)
         this.ExcelData.forEach((patient) => {
           //TODO
-          if (sheetNames[ind] === `Калинковичи`) {
-            patient.org = `ГОКБ`
-          } else {
-            patient.org = sheetNames[ind]
-          }
+          // if (sheetNames[ind] === `Калинковичи`) {
+          //   patient.org = `ГОКБ`
+          // } else {
+            patient.org = sheetNames[ind].toLowerCase()
+          // }
           if (file.name.split('.')[0].toLowerCase() === 'тэкс') {
-            patient.type = ProstheticsType.teks
+            patient.type = ProstheticsType.teks.toLowerCase()
           }
           if (file.name.split('.')[0].toLowerCase() === 'тэтс') {
-            patient.type = ProstheticsType.tets
+            patient.type = ProstheticsType.tets.toLowerCase()
           }
           patient.isOperated = false
         })
@@ -104,11 +110,13 @@ export class AddPageComponent {
           .sort((a: { [x: string]: any; }, b: { [x: string]: any; }) => a[ColumnsNames.date] - b[ColumnsNames.date])
       })
     }
+    console.log(this.resultArray);
+
   }
 
   showResultArray() {
     // console.log(this.resultArray);
-    console.log(JSON.stringify(this.resultArray));
+    console.log(this.resultArray);
     // console.log(this.resultArray);
 
   }
