@@ -1,7 +1,7 @@
 <div class="container">
 
   <mat-stepper orientation="vertical" class="stepper" [linear]="true">
-    <mat-step [stepControl]="orgFormGroup.controls.org" label="Выберите организацию" class="step">
+    <mat-step [stepControl]="orgFormGroup.controls.org" label="Организация здравоохранения" class="step">
       <form [formGroup]="orgFormGroup">
         <mat-form-field appearance="fill" class="form-field">
           <mat-select
@@ -22,17 +22,57 @@
           </div>
       </form>
     </mat-step>
-    <mat-step >
-
+    <mat-step [stepControl]="orgFormGroup.controls.type" label="Вид протезирования" class="step">
+      <form [formGroup]="orgFormGroup">
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-select
+            placeholder="Выберите вид протезирования*"
+            required
+            formControlName="type">
+            <mat-option [value]="ProstheticsType.teks"> {{ ProstheticsType.teks }} </mat-option>
+            <mat-option [value]="ProstheticsType.tets"> {{ ProstheticsType.tets }} </mat-option>
+          </mat-select>
+          <mat-error *ngIf="orgFormGroup.controls.type.invalid">Пожалуйста, выберите вид протезирования</mat-error>
+        </mat-form-field>
+        <div>
+          <button
+            mat-raised-button color="accent" class="next-btn"
+            matStepperNext
+            [disabled]="orgFormGroup.controls.org.invalid"
+            (click)="log('type')"
+            >Далее</button>
+          </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="orgFormGroup.controls.number" label="Номер листа ожидания" class="step">
+      <form [formGroup]="orgFormGroup">
+        <mat-form-field appearance="fill" class="form-field">
+          <input formControlName="number" type="text" matInput required placeholder="Введите номер листа ожидания">
+          <mat-error *ngIf="orgFormGroup.controls.number.invalid">Пожалуйста, введите номер листа ожидания</mat-error>
+        </mat-form-field>
+        <div>
+          <button
+            mat-raised-button color="accent" class="next-btn"
+            matStepperNext
+            [disabled]="orgFormGroup.controls.number.invalid"
+            (click)="log('number')"
+            >Далее</button>
+          </div>
+      </form>
     </mat-step>
     <mat-step>
-
-    </mat-step>
-    <mat-step>
-
-    </mat-step>
-    <mat-step>
-
+      <ng-template matStepLabel>Результат</ng-template>
+      <p>You are now done.</p>
+      <div *ngIf="patient">
+        <!-- {{showResult(patient)}} -->
+        <h3>Уважаемый(ая) {{ patient[ColumnsNames.fio].split(' ')[1] + ' ' + patient[ColumnsNames.fio].split(' ')[2] }}</h3>
+        <h4>Ваш номер в очереди на эндопротезирование в Учреждении &laquo;{{org?.fullName}}&#187; : <strong>{{this.number + 1}}</strong></h4>
+        <!-- <button mat-button matStepperPrevious>Back</button> -->
+        <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
+      </div>
+      <div *ngIf="!patient">
+        К сожалению ничего не найдено. Пожалуйста проверьте данные, которые Вы ввели
+      </div>
     </mat-step>
   </mat-stepper>
 

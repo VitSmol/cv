@@ -5,7 +5,7 @@ import { StepperOrientation } from '@angular/material/stepper';
 import { map, Observable } from 'rxjs';
 import { usersInfo } from 'src/app/admin/data/data';
 import { DataHandlerService } from '../data-handler.service';
-import { Org } from '../interfaces/interfaces';
+import { ColumnsNames, Org, ProstheticsType } from '../interfaces/interfaces';
 
 @Component({
   selector: 'app-check-queue',
@@ -17,6 +17,12 @@ export class CheckQueueComponent implements OnInit {
   query: any
   usersInfo: Org[] = usersInfo
   isEditable = true;
+  ProstheticsType = ProstheticsType;
+  patient: any
+  number: any
+  ColumnsNames = ColumnsNames
+  org: any
+
   //! for stepper
   stepperOrientation: Observable<StepperOrientation>;
   orgFormGroup = this.formBuilder.group({
@@ -44,19 +50,28 @@ export class CheckQueueComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dataService.getAll().subscribe({next: (data: any) => this.arr = data})
+    this.dataService.getAll().subscribe({ next: (data: any) => this.arr = data })
   }
 
   log(val: string) {
     // TODO  1. Навести порядок с регистром (сделать всё верхним)
-    // TODO  2. Доделать логику фильтрации массива
+    // TODO  2. Доделать логику фильтрации массива (в случае)
     // TODO  3. Закончить stepper
-      const filterValue = this.orgFormGroup.value[val as keyof Object]
-      this.arr =  this.arr.filter(el => el[val as keyof Object] === filterValue)
-    console.log(
-      this.arr
-    );
-
+    const filterValue = this.orgFormGroup.value[val as keyof Object]
+    if (val === 'number' && this.patient) {
+      console.log(this.orgFormGroup.value);
+      this.patient = this.arr.find(el => el[ColumnsNames.number] == filterValue)
+      this.number = this.arr.indexOf(this.patient);
+      console.log(this.patient);
+      return
+    }
+    this.arr = this.arr.filter(el => el[val as keyof Object] === filterValue).sort((a: { [x: string]: any; }, b: { [x: string]: any; }) => a[ColumnsNames.number] - b[ColumnsNames.number])
+    console.log(this.arr);
   }
+  // showResult(patient: any) {
+  //   const patientName = patient[ColumnsNames.fio].split(' ')[1] + ' ' + patient[ColumnsNames.fio].split(' ')[2]
+  //   this.org = usersInfo.find(el => el.shortName === this.patient.org)
+  //   console.log(patientName);
+  // }
 
 }
