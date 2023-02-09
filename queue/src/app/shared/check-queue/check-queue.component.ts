@@ -72,9 +72,4 @@ export class CheckQueueComponent implements OnInit {
     console.log(this.arr);
 
   }
-  // showResult(patient: any) {
-  //   const patientName = patient[ColumnsNames.fio].split(' ')[1] + ' ' + patient[ColumnsNames.fio].split(' ')[2]
-  //   console.log(patientName);
-  // }
-
 }

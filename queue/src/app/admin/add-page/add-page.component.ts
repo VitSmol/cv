@@ -95,6 +95,12 @@ export class AddPageComponent {
           // if (sheetNames[ind] === `Калинковичи`) {
           //   patient.org = `ГОКБ`
           // } else {
+            if (sheetNames[ind] === 'Речица') {
+              console.log('речица');
+              patient[ColumnsNames.number] = patient[ColumnsNames.fio].split(' ')[3]
+
+            }
+
             patient.org = sheetNames[ind].toLowerCase()
           // }
           if (file.name.split('.')[0].toLowerCase() === 'тэкс') {
