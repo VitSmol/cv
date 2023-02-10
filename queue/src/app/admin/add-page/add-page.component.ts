@@ -69,9 +69,14 @@ export class AddPageComponent {
     const res: any[] = [];
     arr.forEach((el) => {
       // const orgShort =
+      let nameFatherName = el[ColumnsNames.fio]
+      if (nameFatherName) {
+        nameFatherName = nameFatherName.split(' ')[1] + ' ' + nameFatherName.split(' ')[2]
+      }
+
       const resEl = {
         number: el[ColumnsNames.number],
-        fio: el[ColumnsNames.fio],
+        fio: nameFatherName,
         type: el.type,
         org: el.org,
         orgFullInfo: usersInfo.find(user => user.shortName.toLowerCase() === el.org)

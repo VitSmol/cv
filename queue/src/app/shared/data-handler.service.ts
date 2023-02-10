@@ -14,6 +14,6 @@ export class DataHandlerService {
   ) { }
 
   getAll() {
-   return this.http.get(this.url2)
+   return this.http.get(this.url)
   }
 }

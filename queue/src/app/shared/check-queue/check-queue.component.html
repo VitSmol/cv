@@ -46,7 +46,7 @@
       <ng-template matStepLabel>Результат</ng-template>
       <div *ngIf="patient">
         <!-- {{showResult(patient)}} -->
-        <h3>Уважаемый(ая) {{ patient.fio.split(' ')[1] + ' ' + patient.fio.split(' ')[2] }}
+        <h3>Уважаемый(ая) {{ patient.fio.split(' ')[0] + ' ' + patient.fio.split(' ')[1] }}
         </h3>
         <h4>Ваш номер в очереди на эндопротезирование в Учреждении &laquo;{{this.patient.orgFullInfo.fullName}}&#187; :
           <strong>{{this.number + 1}}</strong>
