@@ -20,8 +20,8 @@ export class CheckQueueComponent implements OnInit {
   ProstheticsType = ProstheticsType;
   patient: any
   number: any
-  ColumnsNames = ColumnsNames
   org: any
+  ColumnsNames = ColumnsNames
 
   //! for stepper
   stepperOrientation: Observable<StepperOrientation>;
@@ -61,9 +61,9 @@ export class CheckQueueComponent implements OnInit {
     const filterValue = (this.orgFormGroup.value[val as keyof Object] as unknown as string).toLowerCase();
     if (val === 'number') {
       console.log(this.orgFormGroup.value);
-      this.patient = this.arr.find(el => el[ColumnsNames.number] == filterValue)
+      this.patient = this.arr.find(el => el.number == filterValue)
       if (!this.patient) return;
-      this.org = usersInfo.find(el => el.shortName.toLowerCase() === this.patient.org)
+      this.org = usersInfo.find(user => user.shortName.toLowerCase() === this.patient.org)
       this.number = this.arr.indexOf(this.patient);
       return
     }

@@ -46,12 +46,11 @@
       <ng-template matStepLabel>Результат</ng-template>
       <div *ngIf="patient">
         <!-- {{showResult(patient)}} -->
-        <h3>Уважаемый(ая) {{ patient[ColumnsNames.fio].split(' ')[1] + ' ' + patient[ColumnsNames.fio].split(' ')[2] }}
+        <h3>Уважаемый(ая) {{ patient.fio.split(' ')[1] + ' ' + patient.fio.split(' ')[2] }}
         </h3>
-        <h4>Ваш номер в очереди на эндопротезирование в Учреждении &laquo;{{this.org?.fullName}}&#187; :
-          <strong>{{this.number + 1}}</strong></h4>
-        <!-- <button mat-button matStepperPrevious>Back</button> -->
-        <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
+        <h4>Ваш номер в очереди на эндопротезирование в Учреждении &laquo;{{this.patient.orgFullInfo.fullName}}&#187; :
+          <strong>{{this.number + 1}}</strong>
+        </h4>
       </div>
       <div *ngIf="!patient">
         К сожалению ничего не найдено. Пожалуйста проверьте данные, которые Вы ввели

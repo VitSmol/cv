@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/shared/auth.service';
 import { DataHandlerService } from 'src/app/shared/data-handler.service';
 import { ColumnsNames, ProstheticsType } from 'src/app/shared/interfaces/interfaces';
 import * as XLSX from 'xlsx';
+import { usersInfo } from '../data/data';
 
 @Component({
   selector: 'app-add-page',
@@ -23,6 +24,7 @@ export class AddPageComponent {
   fileName = 'excel.xlsx';
   ColumnsNames = ColumnsNames;
   ExcelData: any[] = [];
+  arrayForQueue: any[] = [];
 
   headers: ColumnsNames[] = [
     ColumnsNames.number,
@@ -63,8 +65,24 @@ export class AddPageComponent {
     XLSX.writeFile(wb, this.fileName);
   }
 
+  transformArray(arr: any[]) {
+    const res: any[] = [];
+    arr.forEach((el) => {
+      // const orgShort =
+      const resEl = {
+        number: el[ColumnsNames.number],
+        fio: el[ColumnsNames.fio],
+        type: el.type,
+        org: el.org,
+        orgFullInfo: usersInfo.find(user => user.shortName.toLowerCase() === el.org)
+      }
+      res.push(resEl)
+   })
+   return res;
+  }
   exportToJson() {
-    exportFromJSON({data: this.resultArray, fileName: 'testData', exportType: 'json'})
+    this.arrayForQueue = this.transformArray(this.resultArray)
+    exportFromJSON({data: this.arrayForQueue, fileName: 'testData', exportType: 'json'})
   }
 
   readExcel(e: any) {
@@ -92,9 +110,6 @@ export class AddPageComponent {
         this.ExcelData = XLSX.utils.sheet_to_json(ws)
         this.ExcelData.forEach((patient) => {
           //TODO
-          // if (sheetNames[ind] === `Калинковичи`) {
-          //   patient.org = `ГОКБ`
-          // } else {
             if (sheetNames[ind] === 'Речица') {
               console.log('речица');
               patient[ColumnsNames.number] = patient[ColumnsNames.fio].split(' ')[3]

@@ -8,11 +8,12 @@ import { ColumnsNames } from './interfaces/interfaces';
 })
 export class DataHandlerService {
   url = 'assets/testData.json';
+  url2 = 'https://queue-d8808-default-rtdb.asia-southeast1.firebasedatabase.app/'
   constructor(
     private http: HttpClient
   ) { }
 
   getAll() {
-   return this.http.get(this.url)
+   return this.http.get(this.url2)
   }
 }
