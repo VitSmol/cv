@@ -3,7 +3,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import exportFromJSON from 'export-from-json';
 import { AuthService } from 'src/app/shared/auth.service';
 import { DataHandlerService } from 'src/app/shared/data-handler.service';
-import { ColumnsNames, ProstheticsType } from 'src/app/shared/interfaces/interfaces';
+import { ColumnsNames, FullName, ProstheticsType } from 'src/app/shared/interfaces/interfaces';
 import * as XLSX from 'xlsx';
 import { usersInfo } from '../data/data';
 
@@ -79,8 +79,13 @@ export class AddPageComponent {
         fio: nameFatherName,
         type: el.type,
         org: el.org,
-        orgFullInfo: usersInfo.find(user => user.shortName.toLowerCase() === el.org)
+        orgFullInfo: usersInfo.find(user => user.shortName.toLowerCase() === el.org),
+        org2: el.org2,
       }
+      // if (el.org === "калинковичи") {
+      //   console.log(el);
+      //   el.orgFullInfo.fullName = "Гомельская областная клиническая больница"
+      // }
       res.push(resEl)
    })
    return res;
@@ -90,6 +95,12 @@ export class AddPageComponent {
     exportFromJSON({data: this.arrayForQueue, fileName: 'testData', exportType: 'json'})
   }
 
+//! считываем данные из Excel табличкек.
+//! сортируем по дате постановки на учет
+//! если имя листа - Речица разбиваем фио
+//! и копируем номер в графу №п.п.
+//! добавляем поле тазобедренные/коленный сустав
+//! TODO: реализовать калинковичи (добавить поле org2)
   readExcel(e: any) {
     let file = e.target.files[0];
     let fileReader = new FileReader();
@@ -116,11 +127,13 @@ export class AddPageComponent {
         this.ExcelData.forEach((patient) => {
           //TODO
             if (sheetNames[ind] === 'Речица') {
-              console.log('речица');
               patient[ColumnsNames.number] = patient[ColumnsNames.fio].split(' ')[3]
-
             }
-
+            if (sheetNames[ind].match(/Кал/g)) {
+              console.log('Калинковичи');
+              patient.org = 'калинковичи'
+              patient.org2 = FullName.gokb
+            }
             patient.org = sheetNames[ind].toLowerCase()
           // }
           if (file.name.split('.')[0].toLowerCase() === 'тэкс') {
@@ -137,7 +150,6 @@ export class AddPageComponent {
       })
     }
     console.log(this.resultArray);
-
   }
 
   showResultArray() {

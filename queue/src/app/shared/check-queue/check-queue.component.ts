@@ -54,21 +54,20 @@ export class CheckQueueComponent implements OnInit {
   }
 
   log(val: string) {
-    // TODO  1. Навести порядок с регистром (сделать всё верхним)
-    // TODO  2. Доделать логику фильтрации массива (в случае)
-    // TODO  3. Закончить stepper
 
-    const filterValue = (this.orgFormGroup.value[val as keyof Object] as unknown as string).toLowerCase();
+    let filterValue = (this.orgFormGroup.value[val as keyof Object] as unknown as string).toLowerCase();
+
     if (val === 'number') {
       console.log(this.orgFormGroup.value);
-      this.patient = this.arr.find(el => el.number == filterValue)
+      this.patient = this.arr.find(el => el.number.toLowerCase() == filterValue)
+      console.log(filterValue);
       if (!this.patient) return;
       this.org = usersInfo.find(user => user.shortName.toLowerCase() === this.patient.org)
       this.number = this.arr.indexOf(this.patient);
       return
     }
-    this.arr = this.arr.filter(el => el[val as keyof Object] === filterValue).sort((a: { [x: string]: any; }, b: { [x: string]: any; }) => a[ColumnsNames.number] - b[ColumnsNames.number])
-    console.log(filterValue);
+
+    this.arr = this.arr.filter(el => el[val as keyof Object] === filterValue).sort((a: { [x: string]: any; }, b: { [x: string]: any; }) => a[ColumnsNames.date] - b[ColumnsNames.date])
     console.log(this.arr);
 
   }
