@@ -79,13 +79,13 @@ export class AddPageComponent {
         // console.log(nameFatherName);
 
         nameFatherName.forEach((item: any, ind: string | number) => {
-          if (el === ' ') {
+          if (item === ' ') {
             delete nameFatherName[ind]
           }
         } )
         // nameFatherName = nameFatherName.flat()
 
-        nameFatherName = nameFatherName[1] + nameFatherName[2]
+        nameFatherName = nameFatherName[1] + ' ' + nameFatherName[2]
         // nameFatherName.split(' ')[1] + ' ' + nameFatherName.split(' ')[2]
 
       }

@@ -61,33 +61,9 @@ export class CheckQueueComponent implements OnInit {
     this.dataService.getAll().subscribe({ next: (data: any) => this.arr = data })
   }
 
+  // добавляем данные в запрос
   getQuery(val: string) {
     this.query.set(val, this.orgFormGroup.value[val as keyof Object] as unknown as string)
-    // console.log(this.query);
-
-
-    // let filterValue: string = ''
-    // if (val === 'date') {
-    //   console.log(this.orgFormGroup.value);
-    //   return
-    // } else {
-    //   filterValue = (this.orgFormGroup.value[val as keyof Object] as unknown as string).toLowerCase();
-    // }
-
-    // if (val === 'number') {
-    //   console.log(this.orgFormGroup.value);
-    //   this.patient = this.arr.find(el => el.number.toLowerCase() == filterValue)
-    //   console.log(filterValue);
-    //   if (!this.patient) return;
-    //   this.org = usersInfo.find(user => user.shortName.toLowerCase() === this.patient.org)
-    //   this.number = this.arr.indexOf(this.patient);
-    //   return
-    // }
-
-    // //! filter array
-    // this.arr = this.arr.filter(el => el[val as keyof Object] === filterValue).sort((a: { [x: string]: any; }, b: { [x: string]: any; }) => a[ColumnsNames.date] - b[ColumnsNames.date])
-    // console.log(this.arr);
-
   }
 
   getResult() {
@@ -111,6 +87,8 @@ export class CheckQueueComponent implements OnInit {
       console.log(this.patient.fio);
 
       this.patient.fio = this.dataService.decode(this.patient.fio)
+      console.log(this.patient.fio);
+
       if (patientResultDate !== queryDateResult) {
         delete this.patient;
         return

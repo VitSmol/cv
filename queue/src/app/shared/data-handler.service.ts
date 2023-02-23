@@ -25,8 +25,18 @@ export class DataHandlerService {
     return typeof str
   }
   decode(str: string) {
-    const result = str.split('-').map((val) => String.fromCharCode((val as unknown as number) / 0.1)).join('');
+    let result = str.split('-').map((val) => String.fromCharCode((val as unknown as number) / 0.1)).join('');
+    result = this.firstCharLowerCase(result)
     return result
+  }
+  firstCharLowerCase(str: string) {
+    let result = str.split(' ');
+    console.log(result);
+    return result.map(el => {
+      console.log(el[0].toUpperCase());
+      return el[0].toUpperCase() + el.slice(1)
+    }).join(' ')
+    return result.join(' ')
   }
 }
 
