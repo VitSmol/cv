@@ -16,6 +16,8 @@ import {LayoutModule} from '@angular/cdk/layout';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -32,8 +34,10 @@ import { MatInputModule } from '@angular/material/input';
     HttpClientModule,
     MatFormFieldModule,
     MatButtonModule,
+    MatDatepickerModule,
     MatSelectModule,
     MatStepperModule,
+    MatNativeDateModule,
     MatInputModule,
     LayoutModule,
     ReactiveFormsModule
@@ -42,7 +46,8 @@ import { MatInputModule } from '@angular/material/input';
     {
       provide: STEPPER_GLOBAL_OPTIONS,
       useValue: {showError: true}
-    }
+    },
+    {provide: MAT_DATE_LOCALE, useValue: 'ru-RU'}
   ],
   bootstrap: [AppComponent]
 })

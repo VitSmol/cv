@@ -7,6 +7,13 @@ import { usersInfo } from 'src/app/admin/data/data';
 import { DataHandlerService } from '../data-handler.service';
 import { ColumnsNames, Org, ProstheticsType } from '../interfaces/interfaces';
 
+interface Query {
+  date?: Date,
+  number?: number,
+  type?: string,
+  org?: string,
+}
+
 @Component({
   selector: 'app-check-queue',
   templateUrl: './check-queue.component.html',
@@ -14,7 +21,8 @@ import { ColumnsNames, Org, ProstheticsType } from '../interfaces/interfaces';
 })
 export class CheckQueueComponent implements OnInit {
   arr: any[] = [];
-  query: any
+  resultArr: any[] = [];
+  query = new Map();
   usersInfo: Org[] = usersInfo
   isEditable = true;
   ProstheticsType = ProstheticsType;
@@ -53,22 +61,60 @@ export class CheckQueueComponent implements OnInit {
     this.dataService.getAll().subscribe({ next: (data: any) => this.arr = data })
   }
 
-  log(val: string) {
+  getQuery(val: string) {
+    this.query.set(val, this.orgFormGroup.value[val as keyof Object] as unknown as string)
+    // console.log(this.query);
 
-    let filterValue = (this.orgFormGroup.value[val as keyof Object] as unknown as string).toLowerCase();
 
-    if (val === 'number') {
-      console.log(this.orgFormGroup.value);
-      this.patient = this.arr.find(el => el.number.toLowerCase() == filterValue)
-      console.log(filterValue);
-      if (!this.patient) return;
-      this.org = usersInfo.find(user => user.shortName.toLowerCase() === this.patient.org)
-      this.number = this.arr.indexOf(this.patient);
-      return
+    // let filterValue: string = ''
+    // if (val === 'date') {
+    //   console.log(this.orgFormGroup.value);
+    //   return
+    // } else {
+    //   filterValue = (this.orgFormGroup.value[val as keyof Object] as unknown as string).toLowerCase();
+    // }
+
+    // if (val === 'number') {
+    //   console.log(this.orgFormGroup.value);
+    //   this.patient = this.arr.find(el => el.number.toLowerCase() == filterValue)
+    //   console.log(filterValue);
+    //   if (!this.patient) return;
+    //   this.org = usersInfo.find(user => user.shortName.toLowerCase() === this.patient.org)
+    //   this.number = this.arr.indexOf(this.patient);
+    //   return
+    // }
+
+    // //! filter array
+    // this.arr = this.arr.filter(el => el[val as keyof Object] === filterValue).sort((a: { [x: string]: any; }, b: { [x: string]: any; }) => a[ColumnsNames.date] - b[ColumnsNames.date])
+    // console.log(this.arr);
+
+  }
+
+  getResult() {
+    this.arr = this.arr.filter(el => !el.isOperate)
+
+    let queryArr = Object.entries(Object.fromEntries(this.query.entries()))
+    for (let [key, value] of queryArr) {
+      if (key !== 'date' && key !== 'number') {
+        this.arr = this.arr.filter(el => el[key] === (value as string).toLowerCase())
+      } else if (key === 'number') {
+        this.patient = this.arr.find(el => el.number.toLowerCase() == (value as string).toLowerCase());
+        this.number = this.arr.indexOf(this.patient);
+      }
     }
+    if (this.patient) {
+      console.log(this.arr);
+      const patientDate = new Date(this.patient.date);
+      const queryDate = new Date(this.query.get('date'));
+      const patientResultDate = '' + patientDate.getFullYear() + patientDate.getMonth() + patientDate.getDate()
+      const queryDateResult = '' + queryDate.getFullYear() + queryDate.getMonth() + queryDate.getDate()
+      console.log(this.patient.fio);
 
-    this.arr = this.arr.filter(el => el[val as keyof Object] === filterValue).sort((a: { [x: string]: any; }, b: { [x: string]: any; }) => a[ColumnsNames.date] - b[ColumnsNames.date])
-    console.log(this.arr);
-
+      this.patient.fio = this.dataService.decode(this.patient.fio)
+      if (patientResultDate !== queryDateResult) {
+        delete this.patient;
+        return
+      }
+    }
   }
 }

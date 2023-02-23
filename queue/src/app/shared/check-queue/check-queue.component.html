@@ -11,7 +11,7 @@
         </mat-form-field>
         <div>
           <button mat-raised-button color="accent" class="next-btn" matStepperNext
-            [disabled]="orgFormGroup.controls.org.invalid" (click)="log('org')">Далее</button>
+            [disabled]="orgFormGroup.controls.org.invalid" (click)="getQuery('org')">Далее</button>
         </div>
       </form>
     </mat-step>
@@ -26,7 +26,7 @@
         </mat-form-field>
         <div>
           <button mat-raised-button color="accent" class="next-btn" matStepperNext
-            [disabled]="orgFormGroup.controls.type.invalid" (click)="log('type')">Далее</button>
+            [disabled]="orgFormGroup.controls.type.invalid" (click)="getQuery('type')">Далее</button>
         </div>
       </form>
     </mat-step>
@@ -38,10 +38,29 @@
         </mat-form-field>
         <div>
           <button mat-raised-button color="accent" class="next-btn" matStepperNext
-            [disabled]="orgFormGroup.controls.number.invalid" (click)="log('number')">Далее</button>
+            [disabled]="orgFormGroup.controls.number.invalid" (click)="getQuery('number')" >Далее</button>
         </div>
       </form>
     </mat-step>
+    <mat-step [stepControl]="orgFormGroup.controls.date" label="Дата постановки на очередь" class="step">
+      <form [formGroup]="orgFormGroup">
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Введите дату постановки на очередь</mat-label>
+          <input matInput [matDatepicker]="dp" formControlName="date" >
+          <mat-hint>DD.MM.YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="dp"> </mat-datepicker-toggle>
+          <mat-datepicker #dp disabled="false"></mat-datepicker>
+        </mat-form-field>
+        <div>
+          <button mat-raised-button color="accent" class="next-btn" matStepperNext
+            [disabled]="orgFormGroup.controls.date.invalid" (click)="getQuery('date')" (click)="getResult()">Далее</button>
+        </div>
+      </form>
+    </mat-step>
+
+
+
+
     <mat-step>
       <ng-template matStepLabel>Результат</ng-template>
       <div *ngIf="patient">
@@ -62,7 +81,7 @@
       <div *ngIf="!patient">
         К сожалению ничего не найдено. Пожалуйста проверьте данные, которые Вы ввели
       </div>
-    </mat-step> 
+    </mat-step>
   </mat-stepper>
 
 </div>

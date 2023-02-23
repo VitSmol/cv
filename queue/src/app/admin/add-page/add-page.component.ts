@@ -44,6 +44,7 @@ export class AddPageComponent {
 
   @ViewChild('fileImportInput') fileImportInput: any;
 
+  //! Фильтрация дубликатов
   compareArray(arr: any[]) {
     const result = arr.reduce((a, b) => {
       if (!a.find((v: { [x: string]: any; }) => v[ColumnsNames.number] === b[ColumnsNames.number] && v[ColumnsNames.fio] === b[ColumnsNames.fio] && v[ColumnsNames.date] === b[ColumnsNames.date])) {
@@ -54,7 +55,7 @@ export class AddPageComponent {
     return result;
   }
 
-  export() {
+  exportToXLSX() {
     const element = document.getElementById('my-table');
     if (!element) {
       return
@@ -65,27 +66,45 @@ export class AddPageComponent {
     XLSX.writeFile(wb, this.fileName);
   }
 
+  //! Подготавливаем массив для экспорта в JSON
   transformArray(arr: any[]) {
     const res: any[] = [];
     arr.forEach((el) => {
-      // const orgShort =
       let nameFatherName = el[ColumnsNames.fio]
       if (nameFatherName) {
-        nameFatherName = nameFatherName.split(' ')[1] + ' ' + nameFatherName.split(' ')[2]
+        if (nameFatherName.trim().split(' ').length != 3) {
+          console.log(el);
+        }
+        nameFatherName = nameFatherName.trim().split(' ')
+        // console.log(nameFatherName);
+
+        nameFatherName.forEach((item: any, ind: string | number) => {
+          if (el === ' ') {
+            delete nameFatherName[ind]
+          }
+        } )
+        // nameFatherName = nameFatherName.flat()
+
+        nameFatherName = nameFatherName[1] + nameFatherName[2]
+        // nameFatherName.split(' ')[1] + ' ' + nameFatherName.split(' ')[2]
+
       }
+      const name = this.handler.encode(nameFatherName)
 
       const resEl = {
-        number: el[ColumnsNames.number],
-        fio: nameFatherName,
+        number: `${el[ColumnsNames.number]}`,
+        fio: name,
         type: el.type,
         org: el.org,
         orgFullInfo: usersInfo.find(user => user.shortName.toLowerCase() === el.org),
         org2: el.org2,
+        isOperate: el.isOperated,
+        date: new Date(el[ColumnsNames.date]) //.setDate(el[ColumnsNames.date].getDate() + 1),
       }
-      // if (el.org === "калинковичи") {
-      //   console.log(el);
-      //   el.orgFullInfo.fullName = "Гомельская областная клиническая больница"
-      // }
+      if (resEl.fio == undefined) {
+        console.log(resEl);
+
+      }
       res.push(resEl)
    })
    return res;
@@ -142,7 +161,15 @@ export class AddPageComponent {
           if (file.name.split('.')[0].toLowerCase() === 'тэтс') {
             patient.type = ProstheticsType.tets.toLowerCase()
           }
-          patient.isOperated = false
+          // if (patient[ColumnsNames.operDate] == "") {
+          if (!!patient[ColumnsNames.operDate]) {
+            patient.isOperated = true
+          } else {
+            patient.isOperated = false
+          }
+
+
+          // }
         })
         this.resultArray.push(this.ExcelData);
         this.resultArray = this.compareArray(this.resultArray.flat())

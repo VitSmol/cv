@@ -5,7 +5,7 @@
   <h2>Import xlsx</h2>
   <div class="button-group">
     <input type="file" (change)="readExcel($event)" class="btn" value="" multiple>
-    <input type="button" (click)="export()" value="Экспортировать" class="btn">
+    <input type="button" (click)="exportToXLSX()" value="Экспортировать" class="btn">
     <input type="button" (click)="showResultArray()" class="btn btn-dark" value="Массив в консоль">
     <input type="button" (click)="exportToJson()" class="btn btn-dark" value="Сохранить в JSON">
   </div>
