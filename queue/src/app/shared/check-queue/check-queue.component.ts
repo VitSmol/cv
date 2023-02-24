@@ -68,14 +68,14 @@ export class CheckQueueComponent implements OnInit {
   // добавляем данные в запрос
   getQuery(val: string) {
     this.query.set(val, this.orgFormGroup.value[val as keyof Object] as unknown as string)
-    console.log(this.query);
+    // console.log(this.query);
 
   }
 
   getResult() {
     this.arr = this.resultArr.filter(el => !el.isOperate)
-    console.log(this.resultArr);
-    console.log(this.arr);
+    // console.log(this.resultArr);
+    // console.log(this.arr);
 
     let queryArr = Object.entries(Object.fromEntries(this.query.entries()))
     for (let [key, value] of queryArr) {
@@ -87,15 +87,15 @@ export class CheckQueueComponent implements OnInit {
       }
     }
     if (this.patient) {
-      console.log(this.arr);
+      // console.log(this.arr);
       const patientDate = new Date(this.patient.date);
       const queryDate = new Date(this.query.get('date'));
       const patientResultDate = '' + patientDate.getFullYear() + patientDate.getMonth() + patientDate.getDate()
       const queryDateResult = '' + queryDate.getFullYear() + queryDate.getMonth() + queryDate.getDate()
-      console.log(this.patient.fio);
+      // console.log(this.patient.fio);
 
       this.patient.fio = this.dataService.decode(this.patient.fio)
-      console.log(this.patient.fio);
+      // console.log(this.patient.fio);
 
       if (patientResultDate !== queryDateResult) {
         delete this.patient;
@@ -109,7 +109,7 @@ export class CheckQueueComponent implements OnInit {
     this.patient.fio = this.dataService.encode(this.patient.fio)
     this.query.clear()
     // delete this.patient
-    console.log(this.resultArr);
+    // console.log(this.resultArr);
 
   }
 }
