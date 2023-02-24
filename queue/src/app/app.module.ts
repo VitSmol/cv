@@ -17,7 +17,8 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { DateAdapter, MatNativeDateModule, MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material/core';
+import { AppDateAdapter, APP_DATE_FORMATS } from './shared/check-queue/adapters/date.adapter';
 
 @NgModule({
   declarations: [
@@ -27,11 +28,13 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
     CheckQueueComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
-    FormsModule,
     BrowserAnimationsModule,
+    BrowserModule,
+    FormsModule,
     HttpClientModule,
+    // MatCardModule,
+
     MatFormFieldModule,
     MatButtonModule,
     MatDatepickerModule,
@@ -47,6 +50,13 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
       provide: STEPPER_GLOBAL_OPTIONS,
       useValue: {showError: true}
     },
+    // {
+    //   provide: DateAdapter, useClass: AppDateAdapter,
+    // },
+    // {
+    //   provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS
+    // },
+
     {provide: MAT_DATE_LOCALE, useValue: 'ru-RU'}
   ],
   bootstrap: [AppComponent]

@@ -1,6 +1,6 @@
 <div class="container">
 
-  <mat-stepper orientation="vertical" class="stepper" [linear]="true">
+  <mat-stepper orientation="vertical" class="stepper" [linear]="true" #stepper>
     <mat-step [stepControl]="orgFormGroup.controls.org" label="Организация здравоохранения" class="step">
       <form [formGroup]="orgFormGroup">
         <mat-form-field appearance="fill" class="form-field">
@@ -44,12 +44,17 @@
     </mat-step>
     <mat-step [stepControl]="orgFormGroup.controls.date" label="Дата постановки на очередь" class="step">
       <form [formGroup]="orgFormGroup">
-        <mat-form-field appearance="fill" class="form-field">
-          <mat-label>Введите дату постановки на очередь</mat-label>
-          <input matInput [matDatepicker]="dp" formControlName="date" >
-          <mat-hint>DD.MM.YYYY</mat-hint>
-          <mat-datepicker-toggle matIconSuffix [for]="dp"> </mat-datepicker-toggle>
+        <mat-form-field appearance="fill" class="form-field" id="dateField">
+          <mat-label>Выберите дату постановки на очередь</mat-label>
+          <mat-datepicker-toggle matIconPrefix [for]="dp"> </mat-datepicker-toggle>
           <mat-datepicker #dp disabled="false"></mat-datepicker>
+          <input hidden type="date" placeholder="{{selected | date: 'dd.MM.YYYY'}}"  [(ngModel)]="selected"  matInput [matDatepicker]="dp" formControlName="date">
+          <mat-hint> Выбранная Вами дата: {{ selected | date: 'dd.MM.YYYY'}}</mat-hint>
+            <!-- <mat-calendar [(selected)]="selected" formControlName="date">
+
+            </mat-calendar>
+            <p>Дата: {{ selected  }}</p> -->
+
         </mat-form-field>
         <div>
           <button mat-raised-button color="accent" class="next-btn" matStepperNext
@@ -57,10 +62,6 @@
         </div>
       </form>
     </mat-step>
-
-
-
-
     <mat-step>
       <ng-template matStepLabel>Результат</ng-template>
       <div *ngIf="patient">
@@ -76,10 +77,12 @@
           <h4>Ваш номер в очереди на эндопротезирование в Учреждении &laquo;{{this.patient.orgFullInfo.fullName}}&#187;:
             <strong>{{this.number + 1}}</strong>
           </h4>
+          <button mat-raised-button color="accent" (click)="stepper.reset()" (click)="updateValues()">Повторить поиск</button>
         </ng-template>
       </div>
       <div *ngIf="!patient">
         К сожалению ничего не найдено. Пожалуйста проверьте данные, которые Вы ввели
+        <button mat-button color="accent" (click)="stepper.reset()" (click)="updateValues()">Попробовать заново</button>
       </div>
     </mat-step>
   </mat-stepper>

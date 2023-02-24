@@ -83,11 +83,7 @@ export class AddPageComponent {
             delete nameFatherName[ind]
           }
         } )
-        // nameFatherName = nameFatherName.flat()
-
         nameFatherName = nameFatherName[1] + ' ' + nameFatherName[2]
-        // nameFatherName.split(' ')[1] + ' ' + nameFatherName.split(' ')[2]
-
       }
       const name = this.handler.encode(nameFatherName)
 
