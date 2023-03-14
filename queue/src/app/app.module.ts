@@ -19,6 +19,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { DateAdapter, MatNativeDateModule, MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material/core';
 import { AppDateAdapter, APP_DATE_FORMATS } from './shared/check-queue/adapters/date.adapter';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -33,8 +34,6 @@ import { AppDateAdapter, APP_DATE_FORMATS } from './shared/check-queue/adapters/
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    // MatCardModule,
-
     MatFormFieldModule,
     MatButtonModule,
     MatDatepickerModule,
@@ -50,13 +49,9 @@ import { AppDateAdapter, APP_DATE_FORMATS } from './shared/check-queue/adapters/
       provide: STEPPER_GLOBAL_OPTIONS,
       useValue: {showError: true}
     },
-    // {
-    //   provide: DateAdapter, useClass: AppDateAdapter,
-    // },
-    // {
-    //   provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS
-    // },
-
+    {
+      provide: LocationStrategy, useClass: HashLocationStrategy
+    },
     {provide: MAT_DATE_LOCALE, useValue: 'ru-RU'}
   ],
   bootstrap: [AppComponent]

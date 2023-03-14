@@ -5,3 +5,7 @@
 /queue/node_modules
 /queue/.angular
 /queue/.vscode
+
+/angularPHP/node_modules
+/angularPHP/.angular
+/angularPHP/.vscode

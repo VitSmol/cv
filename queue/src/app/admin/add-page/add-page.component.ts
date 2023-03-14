@@ -76,8 +76,6 @@ export class AddPageComponent {
           console.log(el);
         }
         nameFatherName = nameFatherName.trim().split(' ')
-        // console.log(nameFatherName);
-
         nameFatherName.forEach((item: any, ind: string | number) => {
           if (item === ' ') {
             delete nameFatherName[ind]

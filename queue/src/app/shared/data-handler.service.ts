@@ -31,9 +31,9 @@ export class DataHandlerService {
   }
   firstCharLowerCase(str: string) {
     let result = str.split(' ');
-    console.log(result);
+    // console.log(result);
     return result.map(el => {
-      console.log(el[0].toUpperCase());
+      // console.log(el[0].toUpperCase());
       return el[0].toUpperCase() + el.slice(1)
     }).join(' ')
     return result.join(' ')

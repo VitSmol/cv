@@ -74,7 +74,6 @@ export class CheckQueueComponent implements OnInit {
 
   getResult() {
     this.arr = this.resultArr.filter(el => !el.isOperate)
-    // console.log(this.resultArr);
     // console.log(this.arr);
 
     let queryArr = Object.entries(Object.fromEntries(this.query.entries()))
@@ -104,9 +103,9 @@ export class CheckQueueComponent implements OnInit {
     }
   }
   updateValues() {
-    // this.router.navigate(['/'])
-    // this.router.navigate(['/queue'])
-    this.patient.fio = this.dataService.encode(this.patient.fio)
+    if (this.patient) {
+      this.patient.fio = this.dataService.encode(this.patient.fio)
+    }
     this.query.clear()
     // delete this.patient
     // console.log(this.resultArr);
