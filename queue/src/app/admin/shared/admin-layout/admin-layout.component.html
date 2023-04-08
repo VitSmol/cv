@@ -7,11 +7,17 @@
         </a>
       </h3>
       <ul *ngIf="auth.isAuth()">
-        <li>
+        <li routerLinkActive="active">
           <a [routerLink]="['/admin', 'dashboard']">Панель управления</a>
         </li>
-        <li>
+        <li routerLinkActive="active">
           <a [routerLink]="['/admin', 'add']">Добавить списки</a>
+        </li>
+        <li routerLinkActive="active">
+          <a [routerLink]="['/admin', 'once-add']">Добавить запись</a>
+        </li>
+        <li routerLinkActive="active">
+          <a [routerLink]="['/admin', 'list']">Все записи</a>
         </li>
         <li>
           <a [routerLink]="['', '']" (click)="logout($event)">Выйти</a>

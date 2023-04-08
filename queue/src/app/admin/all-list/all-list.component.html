@@ -1,0 +1,39 @@
+<p>all-list works!</p>
+<table class="table table-stripped">
+  <thead class="bg-">
+    <th>№</th>
+    <th>Номер листка</th>
+    <th>Дата постановки на учет (число, месяц, год)</th>
+    <th>Фамилия</th>
+    <th>Имя</th>
+    <th>Отчество</th>
+    <th>Дата рождения</th>
+    <th>Адрес места жительства (места пребывания), телефон</th>
+    <th>Диагноз</th>
+    <th>Дата оперативного вмешательства (год, месяц, число)</th>
+    <th>Дополнительная информация</th>
+    <th>Вид протезирования</th>
+    <th>Организация здравоохранения</th>
+    <th>Действие</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let patient of patients; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ patient.listnumber }}</td>
+      <td>{{ patient.date | date }}</td>
+      <td>{{ patient.lastname }}</td>
+      <td>{{ patient.name }}</td>
+      <td>{{ patient.fathername }}</td>
+      <td>{{ patient.birthday }}</td>
+      <td>{{ patient.address }}</td>
+      <td>{{ patient.diag }}</td>
+      <td>{{ patient.operdate }}</td>
+      <td>{{ patient.info }}</td>
+      <td>{{ patient.type }}</td>
+      <td>{{ patient.org }}</td>
+      <td>
+        <button (click)="deletePatient(patient)" class="btn btn-info">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

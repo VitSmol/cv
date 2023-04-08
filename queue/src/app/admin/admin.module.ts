@@ -14,6 +14,8 @@ import { AddPageComponent } from './add-page/add-page.component';
 import { AuthGuard } from '../shared/auth.guard';
 import { MenuComponent } from './dashboard-page/menu/menu.component';
 import { ContentComponent } from './dashboard-page/content/content.component';
+import { OnceAddComponent } from './once-add/once-add.component';
+import { AllListComponent } from './all-list/all-list.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { ContentComponent } from './dashboard-page/content/content.component';
     AddPageComponent,
     MenuComponent,
     ContentComponent,
+    OnceAddComponent,
+    AllListComponent,
   ],
   imports: [
     CommonModule,
@@ -40,6 +44,8 @@ import { ContentComponent } from './dashboard-page/content/content.component';
           { path: 'login', component: LoginPageComponent },
           { path: 'dashboard', component: DashboardPageComponent, canActivate: [AuthGuard] },
           { path: 'add', component: AddPageComponent, canActivate: [AuthGuard] },
+          { path: 'once-add', component: OnceAddComponent, canActivate: [AuthGuard] },
+          { path: 'list', component: AllListComponent, canActivate: [AuthGuard] },
         ]
       }
     ]),

@@ -77,3 +77,22 @@ export enum ProstheticsType {
   tets = "Тазобедренный сустав",
   teks = "коленный сустав",
 }
+
+export interface Patient {
+  id?: number;
+  name?: string;
+  lastname?: string;
+  listnumber?: string;
+  fathername?: string;
+  date: string;
+  birthday?: string;
+  address?: string;
+  diag?: string;
+  operdate?: string;
+  info?: string;
+  type?: string;
+  org?: string;
+
+
+
+}
