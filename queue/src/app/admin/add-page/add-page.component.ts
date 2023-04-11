@@ -1,17 +1,17 @@
 import { Component, ViewChild } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 import exportFromJSON from 'export-from-json';
 import { AuthService } from 'src/app/admin/shared/auth.service';
 import { DataHandlerService } from 'src/app/shared/data-handler.service';
-import { ColumnsNames, FullName, ProstheticsType } from 'src/app/admin/shared/interfaces/interfaces';
+import { ColumnsNames, FullName, ProstheticsType } from 'src/app/admin/shared/interfaces';
 import * as XLSX from 'xlsx';
-import { usersInfo } from '../data/data';
+import { usersInfo } from '../shared/data';
 
 @Component({
   selector: 'app-add-page',
   templateUrl: './add-page.component.html',
   styleUrls: ['./add-page.component.sass']
 })
+
 export class AddPageComponent {
   constructor(
     private auth: AuthService,

@@ -1,4 +1,4 @@
-import { Emails, FullName, ShortName, Org } from "src/app/admin/shared/interfaces/interfaces"
+import { Emails, FullName, ShortName, Org } from "src/app/admin/shared/interfaces"
 
 export const allowedIPs = [
   "194.158.192.78",

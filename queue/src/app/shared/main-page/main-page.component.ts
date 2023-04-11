@@ -3,7 +3,7 @@ import { ViewChild } from '@angular/core';
 
 import { AuthService } from '../../admin/shared/auth.service';
 import { DataHandlerService } from '../data-handler.service';
-import { ColumnsNames } from '../../admin/shared/interfaces/interfaces';
+import { ColumnsNames } from '../../admin/shared/interfaces';
 
 @Component({
   selector: 'app-main-page',

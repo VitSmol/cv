@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Patient } from 'src/app/admin/shared/interfaces/interfaces';
+import { Patient } from 'src/app/admin/shared/interfaces';
 import { PatientService } from '../shared/patient.service';
 
 @Component({

@@ -5,9 +5,9 @@ import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
 import { StepperOrientation } from '@angular/material/stepper';
 import { Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
-import { usersInfo } from 'src/app/admin/data/data';
+import { usersInfo } from 'src/app/admin/shared/data';
 import { DataHandlerService } from '../data-handler.service';
-import { ColumnsNames, Org, ProstheticsType } from '../../admin/shared/interfaces/interfaces';
+import { ColumnsNames, Org, ProstheticsType } from '../../admin/shared/interfaces';
 
 
 interface Query {
