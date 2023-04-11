@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Patient } from 'src/app/shared/interfaces/interfaces';
+import { Patient } from 'src/app/admin/shared/interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root'

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
-import { ColumnsNames } from './interfaces/interfaces';
+import { ColumnsNames } from '../admin/shared/interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -31,9 +31,7 @@ export class DataHandlerService {
   }
   firstCharLowerCase(str: string) {
     let result = str.split(' ');
-    // console.log(result);
     return result.map(el => {
-      // console.log(el[0].toUpperCase());
       return el[0].toUpperCase() + el.slice(1)
     }).join(' ')
     return result.join(' ')

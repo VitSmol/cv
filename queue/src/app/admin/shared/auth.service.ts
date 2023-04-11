@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environments.prod';
-import { allowedIPs } from '../admin/data/data';
+import { allowedIPs } from '../data/data';
 import { Auth, Resp, User } from './interfaces/interfaces';
 
 @Injectable({

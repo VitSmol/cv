@@ -228,5 +228,7 @@
     "svetlogorsk",
     "teks",
     "zlobin"
-  ]
+  ],
+  "editor.fontSize": 16,
+  "workbench.settings.editor": "ui"
 }
