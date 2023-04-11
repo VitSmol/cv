@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./once-add.component.sass']
 })
 export class OnceAddComponent {
-
+  addForm: any
 }

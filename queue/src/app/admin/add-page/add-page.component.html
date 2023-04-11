@@ -8,6 +8,8 @@
     <input type="button" (click)="exportToXLSX()" value="Экспортировать" class="btn">
     <input type="button" (click)="showResultArray()" class="btn btn-dark" value="Массив в консоль">
     <input type="button" (click)="exportToJson()" class="btn btn-dark" value="Сохранить в JSON">
+    <input type="button" (click)="deleteOper()" class="btn btn-dark" value="Удалить прооперированных">
+    <input type="button" (click)="deleteDie()" class="btn btn-dark" value="Удалить умерших">
   </div>
 </div>
 
@@ -21,10 +23,11 @@
       <tr *ngFor="let item of resultArray; let ind = index;">
         <td>{{ item[ColumnsNames.number] }}</td>
         <td>{{ item.org }}</td>
+        <td>{{ item.type }}</td>
         <td>{{ item[ColumnsNames.fio] }}</td>
         <td>{{ item[ColumnsNames.address] }}</td>
         <td>{{ item[ColumnsNames.sex] }}</td>
-        <td>{{ item[ColumnsNames.birthday] }}</td>
+        <td>{{ item[ColumnsNames.birthday] | customDate }}</td>
         <td>{{ item[ColumnsNames.date] | date: 'dd.MM.YYYY'}}</td>
         <td>{{ item[ColumnsNames.diag] }}</td>
         <td>{{ item[ColumnsNames.side] }}</td>

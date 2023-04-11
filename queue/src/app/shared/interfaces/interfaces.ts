@@ -10,7 +10,8 @@ export enum ColumnsNames {
   group = 'Группа инвалидности',
   operDate = 'Дата оперативного вмешательства (год, месяц, число)',
   note = 'Дополнительная информация',
-  org = 'Организация здравоохранения'
+  org = 'Организация здравоохранения',
+  type = 'Тип протезирования'
 }
 
 export interface User {
@@ -92,6 +93,7 @@ export interface Patient {
   info?: string;
   type?: string;
   org?: string;
+  sex?: string;
 
 
 

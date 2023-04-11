@@ -12,7 +12,6 @@ constructor( private patientService: PatientService){}
 patients: Patient[] = []
 
   ngOnInit(): void {
-    // throw new Error('Method not implemented.');
     this.load()
   }
   load() {
@@ -24,7 +23,6 @@ patients: Patient[] = []
 
   deletePatient(patient: Patient): void {
     console.log(patient);
-
     this.patientService.deletePatient(patient.id).subscribe(response => {
       this.load()
     })

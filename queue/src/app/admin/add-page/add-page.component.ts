@@ -29,6 +29,7 @@ export class AddPageComponent {
   headers: ColumnsNames[] = [
     ColumnsNames.number,
     ColumnsNames.org,
+    ColumnsNames.type,
     ColumnsNames.fio,
     ColumnsNames.address,
     ColumnsNames.sex,
@@ -66,7 +67,7 @@ export class AddPageComponent {
     XLSX.writeFile(wb, this.fileName);
   }
 
-  //! Подготавливаем массив для экспорта в JSON
+  //! Подготавливаем массив для экспорта в JSON / XLSX
   transformArray(arr: any[]) {
     const res: any[] = [];
     arr.forEach((el) => {
@@ -97,23 +98,23 @@ export class AddPageComponent {
       }
       if (resEl.fio == undefined) {
         console.log(resEl);
-
       }
       res.push(resEl)
    })
    return res;
   }
+
   exportToJson() {
     this.arrayForQueue = this.transformArray(this.resultArray)
     exportFromJSON({data: this.arrayForQueue, fileName: 'testData', exportType: 'json'})
   }
 
-//! считываем данные из Excel табличкек.
+//! считываем данные из Excel табличек.
 //! сортируем по дате постановки на учет
 //! если имя листа - Речица разбиваем фио
 //! и копируем номер в графу №п.п.
 //! добавляем поле тазобедренные/коленный сустав
-//! TODO: реализовать калинковичи (добавить поле org2)
+//!  реализовать калинковичи (добавить поле org2)
   readExcel(e: any) {
     let file = e.target.files[0];
     let fileReader = new FileReader();
@@ -123,13 +124,27 @@ export class AddPageComponent {
       let sheetNames = workBook.SheetNames;
 
       sheetNames.forEach((sheet, ind) => {
-        const ws = workBook.Sheets[sheet]
+        const ws:any = workBook.Sheets[sheet];
+        // console.log(ws);
+
         for (let key in ws) {
+          if (key.includes('E')) {
+
+          }
           let dateArray  = ws[key].w
           try {
-            if(dateArray.match(/\d{1,2}\.\d{1,2}\.\d{1,4}/g)) {
+            if(dateArray.match(/\d{1,2}\.\d{1,2}\.\d{1,4}/g) && !key.includes('J') && !key.includes('K') && !key.includes('C')) {
               dateArray = dateArray.split('.');
               const date = new Date(+(dateArray[2]), +dateArray[1] - 1, +dateArray[0])
+              ws[key].v = date
+            } else if (dateArray.match(/\d{1,2}\/\d{1,2}\/\d{1,4}/g)) {
+              dateArray = dateArray.split('/');
+              if (+dateArray[2] < 24 && +dateArray[2] > 16) {
+                dateArray[2] = "20" + dateArray[2];
+              } else {
+                dateArray[2] = "19" + dateArray[2];
+              }
+              const date = new Date(+dateArray[2], +dateArray[0] - 1, +dateArray[1]);
               ws[key].v = date
             }
           } catch (error) {
@@ -137,13 +152,13 @@ export class AddPageComponent {
           }
         }
         this.ExcelData = XLSX.utils.sheet_to_json(ws)
+
         this.ExcelData.forEach((patient) => {
-          //TODO
+            patient.note = patient[ColumnsNames.note]
             if (sheetNames[ind] === 'Речица') {
               patient[ColumnsNames.number] = patient[ColumnsNames.fio].split(' ')[3]
             }
             if (sheetNames[ind].match(/Кал/g)) {
-              console.log('Калинковичи');
               patient.org = 'калинковичи'
               patient.org2 = FullName.gokb
             }
@@ -161,9 +176,9 @@ export class AddPageComponent {
           } else {
             patient.isOperated = false
           }
-
-
+          patient[ColumnsNames.operDate] = patient[ColumnsNames.operDate]
           // }
+
         })
         this.resultArray.push(this.ExcelData);
         this.resultArray = this.compareArray(this.resultArray.flat())
@@ -174,10 +189,17 @@ export class AddPageComponent {
   }
 
   showResultArray() {
-    // console.log(this.resultArray);
     console.log(this.resultArray);
-    // console.log(this.resultArray);
+  }
 
+  deleteOper() {
+    this.resultArray = this.resultArray.filter(el => !el.isOperated);
+  }
+
+  deleteDie() {
+    this.resultArray = this.resultArray.filter(el => {
+      console.log(el.note);
+    })
   }
 
 }

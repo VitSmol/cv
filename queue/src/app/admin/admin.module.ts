@@ -16,6 +16,7 @@ import { MenuComponent } from './dashboard-page/menu/menu.component';
 import { ContentComponent } from './dashboard-page/content/content.component';
 import { OnceAddComponent } from './once-add/once-add.component';
 import { AllListComponent } from './all-list/all-list.component';
+import { CustomDatePipe } from '../shared/custom-date.pipe';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { AllListComponent } from './all-list/all-list.component';
     ContentComponent,
     OnceAddComponent,
     AllListComponent,
+    CustomDatePipe
   ],
   imports: [
     CommonModule,

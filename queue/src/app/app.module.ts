@@ -26,7 +26,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     AppComponent,
     MainLayoutComponent,
     MainPageComponent,
-    CheckQueueComponent
+    CheckQueueComponent,
   ],
   imports: [
     AppRoutingModule,
