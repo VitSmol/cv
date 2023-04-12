@@ -20,11 +20,6 @@ export interface User {
   returnSecureToken: boolean;
 }
 
-export interface Auth {
-  login(user: User): any
-  setToken(resp: Resp): void
-}
-
 export interface Resp {
   displayName?: string;
   email?: string;
@@ -94,6 +89,7 @@ export interface Patient {
   type?: string;
   org?: string;
   sex?: string;
+  isOperated?: string;
 
 
 

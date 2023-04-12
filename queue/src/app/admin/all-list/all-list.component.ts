@@ -16,7 +16,10 @@ patients: Patient[] = []
   }
   load() {
     this.patientService.getPatients().subscribe((response: any) => {
-      console.log(response.data);
+      response.data.forEach((el: Patient) => {
+        console.log(typeof el.operdate);
+      })
+      // console.log(response.data.date);
       this.patients = response.data;
     })
   }
@@ -26,5 +29,10 @@ patients: Patient[] = []
     this.patientService.deletePatient(patient.id).subscribe(response => {
       this.load()
     })
+  }
+
+  logPatient(patient: Patient): void {
+  console.log(patient);
+
   }
 }

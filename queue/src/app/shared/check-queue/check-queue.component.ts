@@ -73,7 +73,7 @@ export class CheckQueueComponent implements OnInit {
   }
 
   getResult() {
-    this.arr = this.resultArr.filter(el => !el.isOperate)
+    this.arr = this.resultArr.filter(el => !el.isOperated)
     // console.log(this.arr);
 
     let queryArr = Object.entries(Object.fromEntries(this.query.entries()))

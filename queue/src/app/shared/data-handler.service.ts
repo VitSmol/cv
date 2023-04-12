@@ -7,7 +7,7 @@ import { ColumnsNames } from '../admin/shared/interfaces';
   providedIn: 'root'
 })
 export class DataHandlerService {
-  url = 'assets/testData.json';
+  url = 'assets/testDataNew.json';
   url2 = 'https://queue-d8808-default-rtdb.asia-southeast1.firebasedatabase.app/'
   constructor(
     private http: HttpClient

@@ -3,12 +3,12 @@ import { Injectable } from '@angular/core';
 import { tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environments.prod';
 import { allowedIPs } from './data';
-import { Auth, Resp, User } from './interfaces';
+import { Resp, User } from './interfaces';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService implements Auth {
+export class AuthService  {
 
 
   constructor(

@@ -93,7 +93,7 @@ export class AddPageComponent {
         org: el.org,
         orgFullInfo: usersInfo.find(user => user.shortName.toLowerCase() === el.org),
         org2: el.org2,
-        isOperate: el.isOperated,
+        isOperated: el.isOperated,
         date: new Date(el[ColumnsNames.date]) //.setDate(el[ColumnsNames.date].getDate() + 1),
       }
       if (resEl.fio == undefined) {
