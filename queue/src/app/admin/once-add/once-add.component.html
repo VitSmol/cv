@@ -3,7 +3,7 @@
     <h1>Add new patient</h1>
   </div>
 
-  <form [formGroup]="addForm" novalidate class="form">
+  <form [formGroup]="addForm" class="form">
     <div class="row">
       <div class="input-container">
         <div class="col-md-6">{{ ColumnsNames.number }}</div>
@@ -14,7 +14,7 @@
       <div class="input-container">
         <div class="col-md-6">{{ ColumnsNames.date }}</div>
         <div class="col-md-6">
-          <input class="form-control"  type="date" name="date" formControlName="date">
+          <input class="form-control" [max]="this.getMaxDate(this.date)"  type="date" name="date" formControlName="date">
         </div>
       </div>
       <div class="input-container">
@@ -44,8 +44,8 @@
       <div class="input-container">
         <div class="col-md-6">{{ ColumnsNames.sex }}</div>
         <div class="col-md-6">
-          Мужской <input type="radio" name="sex" formControlName="sex" value="male">
-          Женский <input type="radio" name="sex" formControlName="sex" value="female">
+          Мужской <input type="radio" name="sex" formControlName="sex" value="м">
+          Женский <input type="radio" name="sex" formControlName="sex" value="ж">
         </div>
       </div>
       <div class="input-container">
@@ -78,6 +78,27 @@
           <input class="form-control"  type="text" name="info" formControlName="info">
         </div>
       </div>
+      <div class="input-container">
+        <div class="col-md-6">{{ ColumnsNames.type }}</div>
+        <div class="col-md-6">
+          <select class="form-select" name="type" formControlName="type">
+            Выберите тип протезирования:
+            <option *ngFor="let item of types" [value]="item">{{item}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="input-container">
+        <div class="col-md-6">{{ ColumnsNames.org }}</div>
+        <div class="col-md-6">
+          <select class="form-select select" name="org" formControlName="org">
+            Выберите тип протезирования:
+            <option *ngFor="let item of orgs" [value]="item">{{item}}</option>
+          </select>
+        </div>
+      </div>
+
+
     </div>
     <div class="row">
       <div class="col-md-12">

@@ -19,4 +19,10 @@ export class PatientService {
   deletePatient(id: any) {
     return this.http.delete(this.baseUrl+'delete.php?id='+id)
   }
+
+  createPatient(patient: Patient) {
+    console.log(patient);
+    return this.http.post(this.baseUrl+'insert.php', patient);
+
+  }
 }
