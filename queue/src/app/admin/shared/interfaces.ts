@@ -90,6 +90,8 @@ export interface Patient {
   org?: string;
   sex?: string;
   isOperated?: string;
+  side?: string;
+  invalidgroup?: string;
 
 
 

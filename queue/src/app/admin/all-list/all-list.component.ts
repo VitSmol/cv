@@ -19,7 +19,6 @@ patients: Patient[] = []
       response.data.forEach((el: Patient) => {
         console.log(typeof el.operdate);
       })
-      // console.log(response.data.date);
       this.patients = response.data;
     })
   }

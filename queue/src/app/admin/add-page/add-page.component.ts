@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import exportFromJSON from 'export-from-json';
 import { AuthService } from 'src/app/admin/shared/auth.service';
 import { DataHandlerService } from 'src/app/shared/data-handler.service';
-import { ColumnsNames, FullName, ProstheticsType } from 'src/app/admin/shared/interfaces';
+import { ColumnsNames, FullName, Patient, ProstheticsType } from 'src/app/admin/shared/interfaces';
 import * as XLSX from 'xlsx';
 import { usersInfo } from '../shared/data';
 
@@ -116,22 +116,17 @@ export class AddPageComponent {
 //! добавляем поле тазобедренные/коленный сустав
 //!  реализовать калинковичи (добавить поле org2)
   readExcel(e: any) {
-    let file = e.target.files[0];
+    let file = e.target.files[0]; //! обрабатываемый Excel файл
     let fileReader = new FileReader();
     fileReader.readAsBinaryString(file);
     fileReader.onload = (e) => {
       let workBook = XLSX.read(fileReader.result, { type: 'binary' });
-      let sheetNames = workBook.SheetNames;
+      let sheetNames = workBook.SheetNames; //! имена листов
 
       sheetNames.forEach((sheet, ind) => {
-        const ws:any = workBook.Sheets[sheet];
-        // console.log(ws);
-
+        const ws: XLSX.WorkSheet = workBook.Sheets[sheet]; //! лист Excel
         for (let key in ws) {
-          if (key.includes('E')) {
-
-          }
-          let dateArray  = ws[key].w
+          let dateArray  = ws[key].w;
           try {
             if(dateArray.match(/\d{1,2}\.\d{1,2}\.\d{1,4}/g) && !key.includes('J') && !key.includes('K') && !key.includes('C')) {
               dateArray = dateArray.split('.');
@@ -151,10 +146,13 @@ export class AddPageComponent {
             continue
           }
         }
-        this.ExcelData = XLSX.utils.sheet_to_json(ws)
+        this.ExcelData = XLSX.utils.sheet_to_json(ws);
 
         this.ExcelData.forEach((patient) => {
-            patient.note = patient[ColumnsNames.note]
+
+            patient.info = patient[ColumnsNames.note]
+            patient.org = sheetNames[ind].toLowerCase()
+
             if (sheetNames[ind] === 'Речица') {
               patient[ColumnsNames.number] = patient[ColumnsNames.fio].split(' ')[3]
             }
@@ -162,22 +160,18 @@ export class AddPageComponent {
               patient.org = 'калинковичи'
               patient.org2 = FullName.gokb
             }
-            patient.org = sheetNames[ind].toLowerCase()
-          // }
           if (file.name.split('.')[0].toLowerCase() === 'тэкс') {
             patient.type = ProstheticsType.teks.toLowerCase()
           }
           if (file.name.split('.')[0].toLowerCase() === 'тэтс') {
             patient.type = ProstheticsType.tets.toLowerCase()
           }
-          // if (patient[ColumnsNames.operDate] == "") {
           if (!!patient[ColumnsNames.operDate]) {
             patient.isOperated = true
           } else {
             patient.isOperated = false
           }
           patient[ColumnsNames.operDate] = patient[ColumnsNames.operDate]
-          // }
 
         })
         this.resultArray.push(this.ExcelData);
@@ -185,7 +179,6 @@ export class AddPageComponent {
           .sort((a: { [x: string]: any; }, b: { [x: string]: any; }) => a[ColumnsNames.date] - b[ColumnsNames.date])
       })
     }
-    console.log(this.resultArray);
   }
 
   showResultArray() {
