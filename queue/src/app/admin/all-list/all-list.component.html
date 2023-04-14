@@ -43,7 +43,7 @@
       <td>{{ patient.org }}</td>
       <td>
         <button (click)="deletePatient(patient)" class="btn btn-info">Delete</button>
-        <button (click)="logPatient(patient)" class="btn btn-info">Log</button>
+        <a href="#/admin/edit/{{patient.id}}" class="btn btn-info">Edit</a>
       </td>
     </tr>
   </tbody>

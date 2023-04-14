@@ -17,6 +17,7 @@ import { ContentComponent } from './dashboard-page/content/content.component';
 import { OnceAddComponent } from './once-add/once-add.component';
 import { AllListComponent } from './all-list/all-list.component';
 import { CustomDatePipe } from './shared/custom-date.pipe';
+import { EditPageComponent } from './edit-page/edit-page.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { CustomDatePipe } from './shared/custom-date.pipe';
     ContentComponent,
     OnceAddComponent,
     AllListComponent,
-    CustomDatePipe
+    CustomDatePipe,
+    EditPageComponent
   ],
   imports: [
     CommonModule,
@@ -48,6 +50,7 @@ import { CustomDatePipe } from './shared/custom-date.pipe';
           { path: 'add', component: AddPageComponent, canActivate: [AuthGuard] },
           { path: 'once-add', component: OnceAddComponent, canActivate: [AuthGuard] },
           { path: 'list', component: AllListComponent, canActivate: [AuthGuard] },
+          { path: 'edit/:id', component: EditPageComponent, canActivate: [AuthGuard]}
         ]
       }
     ]),
