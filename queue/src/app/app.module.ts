@@ -12,7 +12,7 @@ import { CheckQueueComponent } from './shared/check-queue/check-queue.component'
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatStepperModule } from '@angular/material/stepper';
-import {LayoutModule} from '@angular/cdk/layout';
+import { LayoutModule } from '@angular/cdk/layout';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -46,12 +46,12 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
   providers: [
     {
       provide: STEPPER_GLOBAL_OPTIONS,
-      useValue: {showError: true}
+      useValue: { showError: true }
     },
     {
       provide: LocationStrategy, useClass: HashLocationStrategy
     },
-    {provide: MAT_DATE_LOCALE, useValue: 'ru-RU'}
+    { provide: MAT_DATE_LOCALE, useValue: 'ru-RU' }
   ],
   bootstrap: [AppComponent]
 })

@@ -71,7 +71,7 @@ export type Org = {
 
 export enum ProstheticsType {
   tets = "Тазобедренный сустав",
-  teks = "коленный сустав",
+  teks = "Коленный сустав",
 }
 
 export interface Patient {
