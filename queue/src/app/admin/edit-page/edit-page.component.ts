@@ -39,7 +39,8 @@ export class EditPageComponent implements OnInit {
       diag: ['', Validators.required],
       side: [''],
       invalidgroup: [''],
-      operDate: [''],
+      isOperated: [''],
+      operdate: [''],
       info: [''],
       org: ['', Validators.required],
       type: ['', Validators.required]
@@ -51,6 +52,7 @@ export class EditPageComponent implements OnInit {
     if (+this.patient_id > 0) {
       this.patientService.getPatient(+this.patient_id).subscribe(response => {
         this.patient = response[`data` as keyof object];
+        console.log(this.patient);
         this.patient.isOperated == '0' ? this.patient_isOperated = false : this.patient_isOperated = true;
         this.addForm.patchValue(response[`data` as keyof object]);
       })
@@ -66,9 +68,11 @@ export class EditPageComponent implements OnInit {
   }
 
   onEdit() {
-    const patient = this.addForm.value;
+    this.patient = this.addForm.value;
+    this.patient_isOperated ? this.patient.isOperated = "1" : this.patient.isOperated = "0"
+    console.log(this.patient);
 
-    this.patientService.updatePatient(patient).subscribe((data: any) => {
+    this.patientService.updatePatient(this.patient).subscribe((data: any) => {
       this.router.navigate(['admin', 'list'])
     },
       err => {
@@ -77,4 +81,12 @@ export class EditPageComponent implements OnInit {
   }
 
   // TODO реализовать проверку чекбокса
+  checkbox(e: any) {
+    if (e.target.checked) {
+      this.patient_isOperated = true;
+    } else {
+      this.patient_isOperated = false;
+    }
+    console.log(this.patient);
+  }
 }

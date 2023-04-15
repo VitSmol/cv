@@ -64,14 +64,14 @@
       <div class="input-container">
         <div class="col-md-6">Прооперирован</div>
         <div class="col-md-6">
-          <input type="checkbox" name="isOperated" [checked]="patient_isOperated">
+          <input type="checkbox" name="isOperated" [checked]="this.patient_isOperated"  (change)="checkbox($event)">
         </div>
       </div>
 
       <div class="input-container">
         <div class="col-md-6">{{ ColumnsNames.operDate }}</div>
         <div class="col-md-6">
-          <input class="form-control"  type="date" name="birthday" formControlName="birthday">
+          <input class="form-control"  type="date" name="operDate" formControlName="operdate">
         </div>
       </div>
 
