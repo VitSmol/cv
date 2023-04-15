@@ -16,6 +16,10 @@ export class PatientService {
     return this.http.get<Patient[]>(this.baseUrl + 'view.php');
   }
 
+  getPatient(id: number) {
+    return this.http.get<Patient[]>(this.baseUrl + 'view.php?id=' + id);
+  }
+
   deletePatient(id: any) {
     return this.http.delete(this.baseUrl+'delete.php?id='+id)
   }
@@ -23,6 +27,9 @@ export class PatientService {
   createPatient(patient: Patient) {
     console.log(patient);
     return this.http.post(this.baseUrl+'insert.php', patient);
+  }
 
+  updatePatient(patient: Patient) {
+    return this.http.put(this.baseUrl+'update.php', patient)
   }
 }

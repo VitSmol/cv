@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Апр 12 2023 г., 15:55
+-- Время создания: Апр 14 2023 г., 17:58
 -- Версия сервера: 10.4.27-MariaDB
 -- Версия PHP: 8.0.25
 
@@ -24,6 +24,18 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `loginregister`
+--
+
+CREATE TABLE `loginregister` (
+  `id` int(11) NOT NULL,
+  `login` varchar(255) NOT NULL,
+  `password` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `patients`
 --
 
@@ -38,6 +50,8 @@ CREATE TABLE `patients` (
   `birthday` date NOT NULL,
   `address` varchar(255) NOT NULL,
   `diag` varchar(255) NOT NULL,
+  `side` varchar(100) NOT NULL,
+  `invalidgroup` varchar(100) NOT NULL,
   `isOperated` tinyint(10) NOT NULL,
   `operdate` date NOT NULL,
   `info` varchar(255) NOT NULL,
@@ -49,12 +63,20 @@ CREATE TABLE `patients` (
 -- Дамп данных таблицы `patients`
 --
 
-INSERT INTO `patients` (`id`, `listnumber`, `date`, `lastname`, `name`, `fathername`, `sex`, `birthday`, `address`, `diag`, `isOperated`, `operdate`, `info`, `type`, `org`) VALUES
-(1, '3915', '2019-10-08', 'Самохвостовская', 'Лидия', 'Николаевна', 'ж', '1959-02-18', 'Буда-Кошелевский р-н. д.Ховхло ул.Вагонная ', 'ДФА справа', 1, '0000-00-00', '', 'Коленный сустав', 'Учреждение \"Гомельская областная клиническая больница\"');
+INSERT INTO `patients` (`id`, `listnumber`, `date`, `lastname`, `name`, `fathername`, `sex`, `birthday`, `address`, `diag`, `side`, `invalidgroup`, `isOperated`, `operdate`, `info`, `type`, `org`) VALUES
+(29, '0000', '2023-03-27', 'Синицын', 'number of bound variables does not match number of tokens', 'Евгеньевич', 'м', '2023-03-06', 'Лос-Анджелес', 'деменция', 'справа', '4', 1, '0000-00-00', 'неуравновешен', 'Тазобедренный сустав', 'Речицкая центральная районная больница'),
+(30, '0000', '2023-03-27', 'Синицын', 'number of bound variables does not match number of tokens', 'Евгеньевич', 'м', '2023-03-06', 'Лос-Анджелес', 'деменция', 'справа', '4', 1, '0000-00-00', 'неуравновешен', 'Тазобедренный сустав', 'Речицкая центральная районная больница'),
+(31, '0000', '2023-03-27', 'Синицын', 'number of bound variables does not match number of tokens', 'Евгеньевич', 'м', '2023-03-06', 'Лос-Анджелес', 'деменция', 'справа', '4', 1, '0000-00-00', 'неуравновешен', 'Тазобедренный сустав', 'Речицкая центральная районная больница');
 
 --
 -- Индексы сохранённых таблиц
 --
+
+--
+-- Индексы таблицы `loginregister`
+--
+ALTER TABLE `loginregister`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Индексы таблицы `patients`
@@ -67,10 +89,16 @@ ALTER TABLE `patients`
 --
 
 --
+-- AUTO_INCREMENT для таблицы `loginregister`
+--
+ALTER TABLE `loginregister`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT для таблицы `patients`
 --
 ALTER TABLE `patients`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

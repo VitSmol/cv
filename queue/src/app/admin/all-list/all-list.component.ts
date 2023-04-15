@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Patient } from 'src/app/admin/shared/interfaces';
 import { PatientService } from '../shared/patient.service';
 
@@ -8,16 +9,19 @@ import { PatientService } from '../shared/patient.service';
   styleUrls: ['./all-list.component.sass']
 })
 export class AllListComponent implements OnInit {
-constructor( private patientService: PatientService){}
-patients: Patient[] = []
+  constructor(
+    private patientService: PatientService,
+    private router: Router
+  ) { }
+  patients: Patient[] = []
 
   ngOnInit(): void {
     this.load()
   }
+
   load() {
     this.patientService.getPatients().subscribe((response: any) => {
       response.data.forEach((el: Patient) => {
-        console.log(typeof el.operdate);
       })
       this.patients = response.data;
     })
@@ -30,8 +34,7 @@ patients: Patient[] = []
     })
   }
 
-  logPatient(patient: Patient): void {
-  console.log(patient);
-
+  navigate(id: number | undefined) {
+    this.router.navigate(['/admin', 'edit',id]);
   }
 }

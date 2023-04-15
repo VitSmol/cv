@@ -42,8 +42,9 @@
       <td>{{ patient.type }}</td>
       <td>{{ patient.org }}</td>
       <td>
-        <button (click)="deletePatient(patient)" class="btn btn-info">Delete</button>
-        <a href="#/admin/edit/{{patient.id}}" class="btn btn-info">Edit</a>
+        <button (click)="deletePatient(patient)" class="btn btn-danger">Delete</button>
+        <button (click)="navigate(patient.id)" class="btn btn-info">Edit-BTN</button>
+        <!-- <a href="#/admin/edit/{{patient.id}}" class="btn btn-info">Edit</a> -->
       </td>
     </tr>
   </tbody>
