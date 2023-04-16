@@ -92,7 +92,4 @@ export interface Patient {
   isOperated?: string;
   side?: string;
   invalidgroup?: string;
-
-
-
 }
