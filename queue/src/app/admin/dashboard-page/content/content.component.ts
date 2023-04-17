@@ -9,7 +9,7 @@ import { Patient, Types } from '../../shared/phpInterface';
   styleUrls: ['./content.component.sass']
 })
 export class ContentComponent implements OnInit {
-  typesArr: Types[] = [];
+
   patientsArr: Patient[] = [];
   ColumnsNames = ColumnsNames
 
@@ -17,16 +17,11 @@ export class ContentComponent implements OnInit {
 
   }
   ngOnInit(): void {
-  this.loadTypes()
+
   this.loadPatients()
   }
 
-  loadTypes() {
-    this.service.getTypes().subscribe(types => {
-      this.typesArr = types
-      console.log(this.typesArr);
-    })
-  }
+
   loadPatients() {
     this.service.getPatients().subscribe(response => {
       this.patientsArr = response;

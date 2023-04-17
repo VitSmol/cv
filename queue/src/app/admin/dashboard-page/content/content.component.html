@@ -139,160 +139,51 @@
           </div>
         </div>
       </div>
-
-      <div class="row">
-        <div class="col-12">
-          <div class="card">
-            <div class="card-header card-header-tabs card-header-success">
-              <div class="nav-tabs-navigation">
-                <div class="nav-tabs-wrapper">
-                  <span class="nav-tabs-title">Выберите тип протезирования:</span>
-                </div>
-              </div>
-            </div>
-            <div class="card-body">
-              <div class="tab-content">
-                <div class="tab-pane active" id="profile">
-                  <table class="table">
-                    <tbody>
-                      <tr *ngFor="let item of typesArr">
-                        <td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input checked class="form-check-input" type="checkbox"
-                                [value]="item.type === 'Коленный сустав' ? 'teks' : 'tets'">
-                              <span class="form-check-sign">
-                                <span class="check"></span>
-                              </span>
-                            </label>
-                          </div>
-                        </td>
-                        <td>{{ item.type }}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-
-                <div class="tab-pane" id="settings">
-                  <table class="table">
-                    <tbody>
-                      <tr>
-                        <td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" value="">
-                              <span class="form-check-sign">
-                                <span class="check"></span>
-                              </span>
-                            </label>
-                          </div>
-                        </td>
-                        <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
-                        <td class="td-actions text-right">
-                          <button class="btn btn-primary btn-link btn-sm" rel="tooltip" title="Edit Task" type="button">
-                            <i class="material-icons">edit</i>
-                          </button>
-                          <button class="btn btn-danger btn-link btn-sm" rel="tooltip" title="Remove" type="button">
-                            <i class="material-icons">close</i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input checked class="form-check-input" type="checkbox" value="">
-                              <span class="form-check-sign">
-                                <span class="check"></span>
-                              </span>
-                            </label>
-                          </div>
-                        </td>
-                        <td>Flooded: One year later, assessing what was lost and what was found
-                          when a ravaging rain swept through metro Detroit
-                        </td>
-                        <td class="td-actions text-right">
-                          <button class="btn btn-primary btn-link btn-sm" rel="tooltip" title="Edit Task" type="button">
-                            <i class="material-icons">edit</i>
-                          </button>
-                          <button class="btn btn-danger btn-link btn-sm" rel="tooltip" title="Remove" type="button">
-                            <i class="material-icons">close</i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input checked class="form-check-input" type="checkbox" value="">
-                              <span class="form-check-sign">
-                                <span class="check"></span>
-                              </span>
-                            </label>
-                          </div>
-                        </td>
-                        <td>Sign contract for "What are conference organizers afraid of?"</td>
-                        <td class="td-actions text-right">
-                          <button class="btn btn-primary btn-link btn-sm" rel="tooltip" title="Edit Task" type="button">
-                            <i class="material-icons">edit</i>
-                          </button>
-                          <button class="btn btn-danger btn-link btn-sm" rel="tooltip" title="Remove" type="button">
-                            <i class="material-icons">close</i>
-                          </button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header card-header-warning">
+            <h4 class="card-title">Список пациентов</h4>
+            <!-- <p class="card-category">New employees on 15th September, 2016</p> -->
           </div>
-        </div>
-        <div class="col-12">
-          <div class="card">
-            <div class="card-header card-header-warning">
-              <h4 class="card-title">Список пациентов</h4>
-              <!-- <p class="card-category">New employees on 15th September, 2016</p> -->
-            </div>
-            <div class="card-body table-responsive">
-              <table class="table table-hover">
-                <thead class="text-warning">
-                  <!-- <th>ID</th> -->
-                  <th>{{ColumnsNames.number}}</th>
-                  <th> {{ ColumnsNames.fio  }} </th>
-                  <th> {{ ColumnsNames.address  }}  </th>
-                  <th> {{ ColumnsNames.sex  }}  </th>
-                  <th> {{ ColumnsNames.birthday }}  </th>
-                  <th> {{ ColumnsNames.date }}  </th>
-                  <th> {{ ColumnsNames.diag }}  </th>
-                  <th> {{ ColumnsNames.side }}  </th>
-                  <th> {{ ColumnsNames.group }}  </th>
-                  <th> {{ ColumnsNames.operDate }}  </th>
-                  <th> {{ ColumnsNames.note }}  </th>
-                  <th> {{ ColumnsNames.type }}  </th>
-                  <th>Действия</th>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let patient of patientsArr">
-                    <!-- <td>{{ patient.id }}</td> -->
-                    <td>{{ patient.listnumber }}</td>
-                    <td>{{ patient.lastname + ' ' + patient.name + ' ' + patient.fathername }}</td>
-                    <td>{{ patient.address }}</td>
-                    <td>{{ patient.sex }}</td>
-                    <td>{{ patient.birthday }}</td>
-                    <td>{{ patient.date }}</td>
-                    <td>{{ patient.diag }}</td>
-                    <td>{{ patient.side }}</td>
-                    <td>{{ patient.invalidgroup }}</td>
-                    <td>{{ patient.operdate }}</td>
-                    <td>{{ patient.info }}</td>
-                    <td>{{ patient.type }}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+          <div class="card-body table-responsive">
+            <table class="table table-hover">
+              <thead class="text-warning">
+                <!-- <th>ID</th> -->
+                <th>{{ColumnsNames.number}}</th>
+                <th> {{ ColumnsNames.fio }} </th>
+                <th> {{ ColumnsNames.address }} </th>
+                <th> {{ ColumnsNames.sex }} </th>
+                <th> {{ ColumnsNames.birthday }} </th>
+                <th> {{ ColumnsNames.date }} </th>
+                <th> {{ ColumnsNames.diag }} </th>
+                <th> {{ ColumnsNames.side }} </th>
+                <th> {{ ColumnsNames.group }} </th>
+                <th> {{ ColumnsNames.operDate }} </th>
+                <th> {{ ColumnsNames.note }} </th>
+                <th> {{ ColumnsNames.type }} </th>
+                <th>Действия</th>
+              </thead>
+              <tbody>
+                <tr *ngFor="let patient of patientsArr">
+                  <!-- <td>{{ patient.id }}</td> -->
+                  <td>{{ patient.listnumber }}</td>
+                  <td>{{ patient.lastname + ' ' + patient.name + ' ' + patient.fathername }}</td>
+                  <td>{{ patient.address }}</td>
+                  <td>{{ patient.sex }}</td>
+                  <td>{{ patient.birthday }}</td>
+                  <td>{{ patient.date }}</td>
+                  <td>{{ patient.diag }}</td>
+                  <td>{{ patient.side }}</td>
+                  <td>{{ patient.invalidgroup }}</td>
+                  <td>{{ patient.operdate }}</td>
+                  <td>{{ patient.info }}</td>
+                  <td>{{ patient.type }}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>

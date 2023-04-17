@@ -20,4 +20,25 @@
           </li>
       </ul>
   </div>
+  <div class="logo">
+      <a class="simple-text logo-normal">
+          Вид протезирования
+      </a>
+  </div>
+  <div class="sidebar-wrapper">
+      <ul class="nav">
+          <li class="nav-item active">
+              <a class="nav-link">
+                  <!-- <i class="material-icons">dashboard</i> -->
+                  <p>Все</p>
+              </a>
+          </li>
+          <li class="nav-item" *ngFor="let item of typesArr">
+              <a class="nav-link">
+                  <!-- <i class="material-icons">dashboard</i> -->
+                  <p>{{ item.type}}</p>
+              </a>
+          </li>
+      </ul>
+  </div>
 </div>
