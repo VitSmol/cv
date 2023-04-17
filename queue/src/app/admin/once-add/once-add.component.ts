@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ColumnsNames, FullName, Patient, ProstheticsType } from '../shared/interfaces';
+import { ColumnsNames, FullName, ProstheticsType } from '../shared/interfaces';
 import { PatientService } from '../shared/patient.service';
 
 @Component({
@@ -38,7 +38,7 @@ export class OnceAddComponent {
         org: ['', Validators.required],
         type: ['', Validators.required]
       })
-      this.maxDate = `${this.date.getFullYear()}-${this.date.getMonth() + 1}-${this.date.getDate()}`;
+      // this.maxDate = `${this.date.getFullYear()}-${this.date.getMonth() + 1}-${this.date.getDate()}`;
     }
 
     getMaxDate(date: Date): string {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Patient } from 'src/app/admin/shared/interfaces';
 import { PatientService } from '../shared/patient.service';
+import { Patient } from '../shared/phpInterface';
 
 @Component({
   selector: 'app-all-list',

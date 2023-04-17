@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import exportFromJSON from 'export-from-json';
 import { AuthService } from 'src/app/admin/shared/auth.service';
 import { DataHandlerService } from 'src/app/shared/data-handler.service';
-import { ColumnsNames, FullName, Patient, ProstheticsType } from 'src/app/admin/shared/interfaces';
+import { ColumnsNames, FullName, ProstheticsType } from 'src/app/admin/shared/interfaces';
 import * as XLSX from 'xlsx';
 import { usersInfo } from '../shared/data';
 
