@@ -13,6 +13,7 @@ export class AllListComponent implements OnInit {
     private patientService: PatientService,
     private router: Router
   ) { }
+
   patients: Patient[] = []
 
   ngOnInit(): void {
@@ -21,9 +22,7 @@ export class AllListComponent implements OnInit {
 
   load() {
     this.patientService.getPatients().subscribe((response: any) => {
-      response.data.forEach((el: Patient) => {
-      })
-      this.patients = response.data;
+      this.patients = response;
     })
   }
 

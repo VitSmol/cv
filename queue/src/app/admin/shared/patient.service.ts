@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
-import { Oz, Patient } from 'src/app/admin/shared/phpInterface';
+import { Oz, Patient, Types } from 'src/app/admin/shared/phpInterface';
 
 @Injectable({
   providedIn: 'root'
@@ -36,5 +36,9 @@ export class PatientService {
 
   getOz(): Observable<Oz[]> {
     return this.http.get<Oz[]>(this.baseUrl + 'getOZ/view.php')
+  }
+
+  getTypes(): Observable<Types[]> {
+    return this.http.get<Types[]>(this.baseUrl + 'getTypes/view.php')
   }
 }
