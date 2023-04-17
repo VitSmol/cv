@@ -14,7 +14,7 @@ export class AllListComponent implements OnInit {
     private router: Router
   ) { }
 
-  patients: Patient[] = []
+  patients: any
 
   ngOnInit(): void {
     this.load()

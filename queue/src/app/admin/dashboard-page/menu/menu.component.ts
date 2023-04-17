@@ -19,13 +19,11 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
     this.loadOz();
     this.loadTypes()
-
   }
 
   loadOz() {
     this.service.getOz().subscribe(response => {
       this.ozArray = response
-      console.log(this.ozArray);
     })
   }
   loadTypes() {
@@ -36,11 +34,10 @@ export class MenuComponent implements OnInit {
   }
 
   getPatientsByOrg(org: string) {
-    // this.service.getPatients().subscribe(data => {
-    //   console.log( data.filter(patient => {
-    //     return patient.org === org
-    //   }))
-    // })
-    this.service.getPatientsByOrg(org)
+    this.service.getPatientsByOrgRX(org);
   }
+
+  // getPatientsByType(type: string) {
+  //   this.service.getPatientsByTypeRX(type);
+  // }
 }

@@ -10,24 +10,20 @@ import { Patient, Types } from '../../shared/phpInterface';
 })
 export class ContentComponent implements OnInit {
 
-  patientsArr: Patient[] = [];
+  patientsArr: any
   ColumnsNames = ColumnsNames
 
   constructor(private service: PatientService) {
 
   }
   ngOnInit(): void {
-
     this.loadPatients()
-
   }
 
-
   loadPatients() {
-    this.service.getPatients().subscribe(response => {
-      this.patientsArr = response;
-      console.log(this.patientsArr);
-
+    this.service.patientsSubject.subscribe(patients => {
+      console.log(patients);
+      this.patientsArr = patients
     })
   }
 }
