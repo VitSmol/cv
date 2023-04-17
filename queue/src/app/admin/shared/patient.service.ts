@@ -21,6 +21,15 @@ export class PatientService {
     return this.http.get<Patient[]>(this.baseUrl + 'view.php?id=' + id);
   }
 
+  getPatientsByOrg (org: string | undefined) {
+    let arr = []
+    this.getPatients().subscribe(data => {
+      arr = data.filter(patient => patient.org === org);
+      console.log(arr);
+
+    })
+  }
+
   deletePatient(id: any) {
     return this.http.delete(this.baseUrl+'delete.php?id='+id)
   }

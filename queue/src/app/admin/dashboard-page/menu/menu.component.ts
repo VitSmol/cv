@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PatientService } from '../../shared/patient.service';
-import { Oz, Types } from '../../shared/phpInterface';
+import { Oz, Patient, Types } from '../../shared/phpInterface';
 
 @Component({
   selector: 'app-menu',
@@ -35,4 +35,12 @@ export class MenuComponent implements OnInit {
     })
   }
 
+  getPatientsByOrg(org: string) {
+    // this.service.getPatients().subscribe(data => {
+    //   console.log( data.filter(patient => {
+    //     return patient.org === org
+    //   }))
+    // })
+    this.service.getPatientsByOrg(org)
+  }
 }

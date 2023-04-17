@@ -81,7 +81,6 @@ export class EditPageComponent implements OnInit {
       })
   }
 
-  // TODO реализовать проверку чекбокса
   checkbox(e: any) {
     if (e.target.checked) {
       this.patient_isOperated = true;

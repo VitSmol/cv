@@ -18,7 +18,8 @@ export class ContentComponent implements OnInit {
   }
   ngOnInit(): void {
 
-  this.loadPatients()
+    this.loadPatients()
+
   }
 
 
