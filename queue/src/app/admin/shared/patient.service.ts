@@ -54,7 +54,7 @@ export class PatientService {
   //* Методы для редактирования данных о пациенте
   //? Поиск пациента по ID
   getPatient(id: number) {
-    return this.http.get<Patient[]>(this.baseUrl + 'view.php?id=' + id);
+    return this.http.get<Patient>(this.baseUrl + 'view.php?id=' + id);
   }
   //? Обновление данных пациента
   updatePatient(patient: Patient) {

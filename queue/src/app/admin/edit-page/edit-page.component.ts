@@ -52,10 +52,11 @@ export class EditPageComponent implements OnInit {
     this.patient_id = this.url.snapshot.params['id']
     if (+this.patient_id > 0) {
       this.patientService.getPatient(+this.patient_id).subscribe(response => {
-        this.patient = response[`data` as keyof object];
+        console.log(response);
+        this.patient = response as Patient;
         console.log(this.patient);
         this.patient.isOperated == '0' ? this.patient_isOperated = false : this.patient_isOperated = true;
-        this.addForm.patchValue(response[`data` as keyof object]);
+        this.addForm.patchValue(this.patient);
       })
     }
   }
