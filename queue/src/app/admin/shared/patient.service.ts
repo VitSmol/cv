@@ -17,52 +17,55 @@ export class PatientService {
   ) { }
   baseUrl = "http://localhost/php/";
 
-//! Реактивные методы.
-// TODO нужно разобраться
+  //! Реактивные методы.
+  // TODO нужно разобраться
 
-getPatientsRX() {
-  this.patientsSubject.next(this.http.get<Patient[]>(this.baseUrl + 'view.php'))
-}
+  getPatientsRX() {
+    this.patientsSubject.next(this.http.get<Patient[]>(this.baseUrl + 'view.php'))
+  }
 
-getPatientsByOrgRX (org: string | undefined) {
-  this.http.get<Patient[]>(this.baseUrl + 'view.php').subscribe(data => {
-    let patients = data.filter(patient => patient.org === org);
-    this.patientsSubject.next(patients);
-  })
-}
-
+  getPatientsByOrgRX(org: string | undefined) {
+    this.http.get<Patient[]>(this.baseUrl + 'view.php').subscribe(data => {
+      this.patientsSubject.next(data.filter(patient => patient.org === org));
+    })
+  }
 
   getPatients() {
     return this.http.get<Patient[]>(this.baseUrl + 'view.php');
   }
 
-  getPatient(id: number) {
-    return this.http.get<Patient[]>(this.baseUrl + 'view.php?id=' + id);
-  }
-
-  getPatientsByOrg (org: string | undefined) {
+  getPatientsByOrg(org: string | undefined) {
     let arr = []
     this.getPatients().subscribe(data => {
       arr = data.filter(patient => patient.org === org);
     })
   }
 
+  //* Удаление пациента
   deletePatient(id: any) {
-    return this.http.delete(this.baseUrl+'delete.php?id='+id)
+    return this.http.delete(this.baseUrl + 'delete.php?id=' + id)
   }
 
+  //* Создание паиента
   createPatient(patient: Patient) {
-    return this.http.post(this.baseUrl+'insert.php', patient);
+    return this.http.post(this.baseUrl + 'insert.php', patient);
   }
 
+  //* Методы для редактирования данных о пациенте
+  //? Поиск пациента по ID
+  getPatient(id: number) {
+    return this.http.get<Patient[]>(this.baseUrl + 'view.php?id=' + id);
+  }
+  //? Обновление данных пациента
   updatePatient(patient: Patient) {
-    return this.http.put(this.baseUrl+'update.php', patient)
+    return this.http.put(this.baseUrl + 'update.php', patient)
   }
 
+  //* Поиск списка организаций в БД
   getOz(): Observable<Oz[]> {
     return this.http.get<Oz[]>(this.baseUrl + 'getOZ/view.php')
   }
-
+//* Поиск типа протезирования в БД
   getTypes(): Observable<Types[]> {
     return this.http.get<Types[]>(this.baseUrl + 'getTypes/view.php')
   }
