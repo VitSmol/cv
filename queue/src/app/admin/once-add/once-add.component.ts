@@ -33,20 +33,18 @@ export class OnceAddComponent {
         diag: ['', Validators.required],
         side: [''],
         invalidgroup: [''],
-        // operDate: [''],
         info: [''],
         org: ['', Validators.required],
         type: ['', Validators.required]
       })
-      // this.maxDate = `${this.date.getFullYear()}-${this.date.getMonth() + 1}-${this.date.getDate()}`;
     }
 
+    // Метод находит текущую дату, переводит в человекочитаемый формат и делее устанавливает в дефолтное 
     getMaxDate(date: Date): string {
       const check = (val: number): string => val < 10 ? '0' + val : val as unknown as string;
       let day  = check(date.getDate())
       let month = check(date.getMonth() + 1);
       const year = date.getFullYear();
-
       return `${year}-${month}-${day}`;
     }
 
@@ -55,7 +53,6 @@ export class OnceAddComponent {
       this.patientService.createPatient(patient).subscribe((data: any) => {
         this.router.navigate(['admin','list'])
       },
-
       err => {
         console.log(err)
       })

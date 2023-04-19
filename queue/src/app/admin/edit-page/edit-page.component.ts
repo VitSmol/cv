@@ -72,8 +72,6 @@ export class EditPageComponent implements OnInit {
   onEdit() {
     this.patient = this.addForm.value;
     this.patient_isOperated ? this.patient.isOperated = "1" : this.patient.isOperated = "0"
-    console.log(this.patient);
-
     this.patientService.updatePatient(this.patient).subscribe((data: any) => {
       this.router.navigate(['admin', 'list'])
     },

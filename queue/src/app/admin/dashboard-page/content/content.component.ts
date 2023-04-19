@@ -23,7 +23,7 @@ export class ContentComponent implements OnInit {
   loadPatients() {
     this.service.patientsSubject.subscribe(patients => {
       console.log(patients);
-      this.patientsArr = patients
+      this.patientsArr = patients;
     })
   }
 }
