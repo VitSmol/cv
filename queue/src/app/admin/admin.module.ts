@@ -21,7 +21,7 @@ import { CustomDatePipe } from './shared/custom-date.pipe';
 import { EditPageComponent } from './edit-page/edit-page.component';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -48,7 +48,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    BrowserAnimationsModule,
+    // BrowserAnimationsModule,
     RouterModule.forChild([
       {
         path: '', component: AdminLayoutComponent, children: [

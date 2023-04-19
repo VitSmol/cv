@@ -146,9 +146,144 @@
             <!-- <p class="card-category">New employees on 15th September, 2016</p> -->
           </div>
           <div class="card-body table-responsive">
-            <table class="table table-hover">
+
+            <table [dataSource]="dataSource" mat-table>
+
+              <ng-container matColumnDef="listnumber">
+                <th *matHeaderCellDef mat-header-cell class="text-warning">{{ColumnsNames.number}}</th>
+                <td *matCellDef="let patient" mat-cell>
+                  {{ patient.listnumber }}
+                </td>
+              </ng-container>
+
+
+              <ng-container matColumnDef="name">
+                <th *matHeaderCellDef mat-header-cell class="text-warning">
+                  {{ ColumnsNames.fio }}
+                </th>
+                <td *matCellDef="let patient" mat-cell>
+                  {{ patient.lastname + ' ' + patient.name + ' ' + patient.fathername  }}
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="address">
+                <th *matHeaderCellDef mat-header-cell class="text-warning">
+                  {{ ColumnsNames.address }}
+                </th>
+                <td *matCellDef="let patient" mat-cell>
+                  {{ patient.address }}
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="sex">
+                <th *matHeaderCellDef mat-header-cell class="text-warning">
+                  {{ ColumnsNames.sex }}
+                </th>
+                <td *matCellDef="let patient" mat-cell>
+                  {{ patient.sex }}
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="birthday">
+                <th *matHeaderCellDef mat-header-cell class="text-warning">
+                  {{ ColumnsNames.birthday }}
+                </th>
+                <td *matCellDef="let patient" mat-cell>
+                  {{ patient.birthday }}
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="date">
+                <th *matHeaderCellDef mat-header-cell class="text-warning">
+                  {{ ColumnsNames.date }}
+                </th>
+                <td *matCellDef="let patient" mat-cell>
+                   {{ patient.date | date: "dd.MM.YYYY"}}
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="diag">
+                <th *matHeaderCellDef mat-header-cell class="text-warning">
+                  {{ ColumnsNames.diag  }}
+                </th>
+                <td *matCellDef="let patient" mat-cell>
+                   {{ patient.diag }}
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="side">
+                <th *matHeaderCellDef mat-header-cell class="text-warning">
+                  {{ ColumnsNames.side }}
+                </th>
+                <td *matCellDef="let patient" mat-cell>
+                   {{ patient.side }}
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="isOperated">
+                <th *matHeaderCellDef mat-header-cell class="text-warning">
+                  Прооперирован
+                </th>
+                <td *matCellDef="let patient" mat-cell>
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input class="form-check-input" disabled type="checkbox" name="isOperated" [checked]="patient.isOperated != '0'">
+                      <span class="form-check-sign">
+                        <span class="check"></span>
+                      </span>
+                    </label>
+                  </div>
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="operdate">
+                <th *matHeaderCellDef mat-header-cell class="text-warning">
+                  {{ ColumnsNames.operDate }}
+                </th>
+                <td *matCellDef="let patient" mat-cell>
+                  {{ patient.operdate === "0000-00-00" ? "-" : patient.operdate | date: "dd.MM.YYYY"}}
+                </td>
+              </ng-container>
+
+
+              <ng-container matColumnDef="info">
+                <th *matHeaderCellDef mat-header-cell class="text-warning">
+                  {{ ColumnsNames.note }}
+                </th>
+                <td *matCellDef="let patient" mat-cell>
+                   {{ patient.info }}
+                </td>
+              </ng-container>
+
+
+              <ng-container matColumnDef="type">
+                <th *matHeaderCellDef mat-header-cell class="text-warning">
+                  {{ ColumnsNames.type }}
+                </th>
+                <td *matCellDef="let patient" mat-cell>
+                   {{ patient.type }}
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="org">
+                <th *matHeaderCellDef mat-header-cell class="text-warning">
+                  {{ ColumnsNames.org }}
+                </th>
+                <td *matCellDef="let patient" mat-cell>
+                   {{ patient.org }}
+                </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns" class="text-warning"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+
+
+            </table>
+
+
+            <!-- <table class="table table-hover">
               <thead class="text-warning">
-                <!-- <th>ID</th> -->
                 <th>{{ColumnsNames.number}}</th>
                 <th> {{ ColumnsNames.fio }} </th>
                 <th> {{ ColumnsNames.address }} </th>
@@ -167,7 +302,6 @@
               </thead>
               <tbody>
                 <tr *ngFor="let patient of patientsArr" [class.operated]="patient.isOperated === '1'">
-                  <!-- <td>{{ patient.id }}</td> -->
                   <td [class.novalue] ="!patient.listnumber || patient.listnumber.length === 0">{{ patient.listnumber }}</td>
                   <td [class.novalue] ="!patient.lastname || patient.lastname.length === 0">{{ patient.lastname + ' ' + patient.name + ' ' + patient.fathername }}</td>
                   <td [class.novalue] ="!patient.address || patient.address.length === 0">{{ patient.address }}</td>
@@ -194,7 +328,9 @@
                   <td>{{ patient.org }}</td>
                 </tr>
               </tbody>
-            </table>
+            </table> -->
+
+
           </div>
         </div>
       </div>
