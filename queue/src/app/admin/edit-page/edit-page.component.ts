@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ColumnsNames, FullName, ProstheticsType } from '../shared/interfaces';
-import { PatientService } from '../shared/patient.service';
-import { Patient } from '../shared/phpInterface';
+import { ColumnsNames, FullName, ProstheticsType } from '../shared/interfaces/interfaces';
+import { PatientService } from '../shared/services/patient.service';
+import { Patient } from '../shared/interfaces/phpInterface';
 
 @Component({
   selector: 'app-edit-page',

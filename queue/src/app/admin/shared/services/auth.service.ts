@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environments.prod';
-import { allowedIPs } from './data';
-import { Resp, User } from './interfaces';
+import { allowedIPs } from '../data';
+import { Resp, User } from '../interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root'

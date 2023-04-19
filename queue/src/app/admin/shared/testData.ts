@@ -1,4 +1,4 @@
-import { FullName, Patient, ProstheticsType } from "./interfaces";
+import { FullName, Patient, ProstheticsType } from "./interfaces/interfaces";
 
 export class testData {
 

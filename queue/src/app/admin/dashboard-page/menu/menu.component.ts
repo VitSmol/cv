@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PatientService } from '../../shared/patient.service';
-import { Oz, Patient, Types } from '../../shared/phpInterface';
+import { PatientService } from '../../shared/services/patient.service';
+import { Oz, Patient, Types } from '../../shared/interfaces/phpInterface';
 
 @Component({
   selector: 'app-menu',

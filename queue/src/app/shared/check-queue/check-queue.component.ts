@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
 import { usersInfo } from 'src/app/admin/shared/data';
 import { DataHandlerService } from '../data-handler.service';
-import { ColumnsNames, Org, ProstheticsType } from '../../admin/shared/interfaces';
+import { ColumnsNames, Org, ProstheticsType } from '../../admin/shared/interfaces/interfaces';
 
 
 interface Query {

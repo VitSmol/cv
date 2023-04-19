@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
-import { Oz, Patient, Types } from 'src/app/admin/shared/phpInterface';
+import { Oz, Patient, Types } from 'src/app/admin/shared/interfaces/phpInterface';
 
 @Injectable({
   providedIn: 'root'

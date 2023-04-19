@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ColumnsNames, FullName, ProstheticsType } from '../shared/interfaces';
-import { PatientService } from '../shared/patient.service';
+import { ColumnsNames, FullName, ProstheticsType } from '../shared/interfaces/interfaces';
+import { PatientService } from '../shared/services/patient.service';
 
 @Component({
   selector: 'app-once-add',

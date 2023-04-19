@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ColumnsNames } from '../../shared/interfaces';
-import { PatientService } from '../../shared/patient.service';
-import { Patient, Types } from '../../shared/phpInterface';
+import { ColumnsNames } from '../../shared/interfaces/interfaces';
+import { PatientService } from '../../shared/services/patient.service';
+import { Patient, Types } from '../../shared/interfaces/phpInterface';
 
 @Component({
   selector: 'app-content',
