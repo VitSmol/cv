@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject, shareReplay } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import { Oz, Patient, Types } from 'src/app/admin/shared/interfaces/phpInterface';
 
@@ -9,19 +9,19 @@ import { Oz, Patient, Types } from 'src/app/admin/shared/interfaces/phpInterface
 })
 export class PatientService {
 
-  patientsSubject = new Subject();
+  baseUrl = "http://localhost/php/";
+
+  patientsSubject = new BehaviorSubject<Patient[]>([]);
   typeSubject = new Subject();
 
   constructor(
     private http: HttpClient
   ) { }
-  baseUrl = "http://localhost/php/";
-
-  //! Реактивные методы.
-  // TODO нужно разобраться
 
   getPatientsRX() {
-    this.patientsSubject.next(this.http.get<Patient[]>(this.baseUrl + 'view.php'))
+    //! РЕШЕНИЕ ПРОБЛЕМЫ BEHAVIORSUBJECT
+    this.http.get<Patient[]>(this.baseUrl + "view.php").pipe(shareReplay(1))
+      .subscribe((response: Patient[]) => this.patientsSubject.next(response));
   }
 
   getPatientsByOrgRX(org: string | undefined) {

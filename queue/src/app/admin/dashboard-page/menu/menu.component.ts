@@ -29,15 +29,10 @@ export class MenuComponent implements OnInit {
   loadTypes() {
     this.service.getTypes().subscribe(types => {
       this.typesArr = types
-      console.log(this.typesArr);
     })
   }
 
   showPatientsByOrg(org: string) {
     this.service.getPatientsByOrgRX(org);
   }
-
-  // getPatientsByType(type: string) {
-  //   this.service.getPatientsByTypeRX(type);
-  // }
 }

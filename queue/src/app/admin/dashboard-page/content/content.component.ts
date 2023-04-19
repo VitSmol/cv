@@ -17,7 +17,9 @@ export class ContentComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    this.loadPatients()
+    //! ДА СУКА ГОСПОДИ! ЭТО РЕШЕНИЕ
+    this.service.getPatientsRX()
+    this.service.patientsSubject.subscribe(data => this.patientsArr = data);
   }
 
   loadPatients() {
