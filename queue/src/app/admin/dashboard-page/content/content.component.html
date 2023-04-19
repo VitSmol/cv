@@ -158,6 +158,7 @@
                 <th> {{ ColumnsNames.diag }} </th>
                 <th> {{ ColumnsNames.side }} </th>
                 <th> {{ ColumnsNames.group }} </th>
+                <th>Прооперирован</th>
                 <th> {{ ColumnsNames.operDate }} </th>
                 <th> {{ ColumnsNames.note }} </th>
                 <th> {{ ColumnsNames.type }} </th>
@@ -165,19 +166,30 @@
                 <th>Действия</th>
               </thead>
               <tbody>
-                <tr *ngFor="let patient of patientsArr">
+                <tr *ngFor="let patient of patientsArr" [class.operated]="patient.isOperated === '1'">
                   <!-- <td>{{ patient.id }}</td> -->
-                  <td>{{ patient.listnumber }}</td>
-                  <td>{{ patient.lastname + ' ' + patient.name + ' ' + patient.fathername }}</td>
-                  <td>{{ patient.address }}</td>
-                  <td>{{ patient.sex }}</td>
-                  <td>{{ patient.birthday }}</td>
-                  <td>{{ patient.date }}</td>
-                  <td>{{ patient.diag }}</td>
-                  <td>{{ patient.side }}</td>
-                  <td>{{ patient.invalidgroup }}</td>
-                  <td>{{ patient.operdate }}</td>
-                  <td>{{ patient.info }}</td>
+                  <td [class.novalue] ="!patient.listnumber || patient.listnumber.length === 0">{{ patient.listnumber }}</td>
+                  <td [class.novalue] ="!patient.lastname || patient.lastname.length === 0">{{ patient.lastname + ' ' + patient.name + ' ' + patient.fathername }}</td>
+                  <td [class.novalue] ="!patient.address || patient.address.length === 0">{{ patient.address }}</td>
+                  <td [class.novalue] ="!patient.sex || patient.sex.length === 0">{{ patient.sex }}</td>
+                  <td [class.novalue] ="!patient.birthday || patient.birthday.length === 0">{{ patient.birthday }}</td>
+                  <td>{{ patient.date | date: "dd.MM.YYYY"}}</td>
+                  <td [class.novalue] ="!patient.diag || patient.diag.length === 0">{{ patient.diag }}</td>
+                  <td [class.novalue] ="!patient.side || patient.side.length === 0">{{ patient.side }}</td>
+                  <td [class.novalue] ="!patient.invalidgroup || patient.invalidgroup.length === 0">{{ patient.invalidgroup }}</td>
+                  <td>
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input class="form-check-input" disabled type="checkbox" name="isOperated" [checked]="patient.isOperated != '0'">
+                        <span class="form-check-sign">
+                          <span class="check"></span>
+                        </span>
+                      </label>
+                    </div>
+                  </td>
+                  <td>{{ patient.operdate === "0000-00-00" ? "-" : patient.operdate | date: "dd.MM.YYYY"}}
+                  </td>
+                  <td [class.novalue] ="!patient.info || patient.info.length === 0">{{ patient.info }}</td>
                   <td>{{ patient.type }}</td>
                   <td>{{ patient.org }}</td>
                 </tr>

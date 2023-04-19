@@ -9,8 +9,10 @@ import { Oz, Patient, Types } from '../../shared/interfaces/phpInterface';
 })
 
 export class MenuComponent implements OnInit {
+
   ozArray: Oz[] = [];
   typesArr: Types[] = [];
+  selectedOrg!: string
 
   constructor(
     private service: PatientService
@@ -33,6 +35,7 @@ export class MenuComponent implements OnInit {
   }
 
   showPatientsByOrg(org: string) {
+    this.selectedOrg = org
     this.service.getPatientsByOrgRX(org);
   }
 }
