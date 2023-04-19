@@ -30,16 +30,18 @@ export class PatientService {
     })
   }
 
+  //! старые методы используетя в компоненте all-list
   getPatients() {
     return this.http.get<Patient[]>(this.baseUrl + 'view.php');
   }
 
-  getPatientsByOrg(org: string | undefined) {
-    let arr = []
-    this.getPatients().subscribe(data => {
-      arr = data.filter(patient => patient.org === org);
-    })
-  }
+//! пока нигде не используется
+  // getPatientsByOrg(org: string | undefined) {
+  //   let arr = []
+  //   this.getPatients().subscribe(data => {
+  //     arr = data.filter(patient => patient.org === org);
+  //   })
+  // }
 
   //* Удаление пациента
   deletePatient(id: any) {

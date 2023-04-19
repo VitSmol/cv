@@ -33,7 +33,7 @@ export class MenuComponent implements OnInit {
     })
   }
 
-  getPatientsByOrg(org: string) {
+  showPatientsByOrg(org: string) {
     this.service.getPatientsByOrgRX(org);
   }
 
