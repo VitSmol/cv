@@ -10,6 +10,7 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTableModule } from '@angular/material/table';
 import { AddPageComponent } from './add-page/add-page.component';
 import { AuthGuard } from './shared/auth.guard';
 import { MenuComponent } from './dashboard-page/menu/menu.component';
@@ -18,6 +19,9 @@ import { OnceAddComponent } from './once-add/once-add.component';
 import { AllListComponent } from './all-list/all-list.component';
 import { CustomDatePipe } from './shared/custom-date.pipe';
 import { EditPageComponent } from './edit-page/edit-page.component';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -41,6 +45,10 @@ import { EditPageComponent } from './edit-page/edit-page.component';
     MatIconModule,
     MatInputModule,
     MatProgressSpinnerModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    BrowserAnimationsModule,
     RouterModule.forChild([
       {
         path: '', component: AdminLayoutComponent, children: [
