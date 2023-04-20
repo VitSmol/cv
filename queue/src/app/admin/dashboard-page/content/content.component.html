@@ -147,11 +147,26 @@
           </div>
           <div class="card-body table-responsive">
 
-            <table [dataSource]="dataSource" mat-table>
+            <table [dataSource]="dataSource" mat-table cellpadding="13">
+              <colgroup>
+                <col class="col-listnumber">
+                <col class="col-name">
+                <col class="col-address">
+                <col class="col-sex">
+                <col class="col-birthday">
+                <col class="col-date">
+                <col class="col-diag">
+                <col class="col-side">
+                <col class="col-isOperated">
+                <col class="col-operdate">
+                <col class="col-info">
+                <col class="col-type">
+                <col class="col-org">
+              </colgroup>
 
               <ng-container matColumnDef="listnumber">
-                <th *matHeaderCellDef mat-header-cell class="text-warning">{{ColumnsNames.number}}</th>
-                <td *matCellDef="let patient" mat-cell>
+                <th class="col-listnumber" *matHeaderCellDef mat-header-cell class="text-warning">{{ColumnsNames.number}}</th>
+                <td class="col-listnumber" *matCellDef="let patient" mat-cell>
                   {{ patient.listnumber }}
                 </td>
               </ng-container>
@@ -161,7 +176,7 @@
                 <th *matHeaderCellDef mat-header-cell class="text-warning">
                   {{ ColumnsNames.fio }}
                 </th>
-                <td *matCellDef="let patient" mat-cell>
+                <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'">
                   {{ patient.lastname + ' ' + patient.name + ' ' + patient.fathername  }}
                 </td>
               </ng-container>
@@ -170,7 +185,7 @@
                 <th *matHeaderCellDef mat-header-cell class="text-warning">
                   {{ ColumnsNames.address }}
                 </th>
-                <td *matCellDef="let patient" mat-cell>
+                <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'">
                   {{ patient.address }}
                 </td>
               </ng-container>
@@ -179,7 +194,7 @@
                 <th *matHeaderCellDef mat-header-cell class="text-warning">
                   {{ ColumnsNames.sex }}
                 </th>
-                <td *matCellDef="let patient" mat-cell>
+                <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'" >
                   {{ patient.sex }}
                 </td>
               </ng-container>
@@ -188,8 +203,8 @@
                 <th *matHeaderCellDef mat-header-cell class="text-warning">
                   {{ ColumnsNames.birthday }}
                 </th>
-                <td *matCellDef="let patient" mat-cell>
-                  {{ patient.birthday }}
+                <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'">
+                  {{ patient.birthday | date: "dd.MM.YYYY"}}
                 </td>
               </ng-container>
 
@@ -197,7 +212,7 @@
                 <th *matHeaderCellDef mat-header-cell class="text-warning">
                   {{ ColumnsNames.date }}
                 </th>
-                <td *matCellDef="let patient" mat-cell>
+                <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'">
                    {{ patient.date | date: "dd.MM.YYYY"}}
                 </td>
               </ng-container>
@@ -206,7 +221,7 @@
                 <th *matHeaderCellDef mat-header-cell class="text-warning">
                   {{ ColumnsNames.diag  }}
                 </th>
-                <td *matCellDef="let patient" mat-cell>
+                <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'">
                    {{ patient.diag }}
                 </td>
               </ng-container>
@@ -215,22 +230,19 @@
                 <th *matHeaderCellDef mat-header-cell class="text-warning">
                   {{ ColumnsNames.side }}
                 </th>
-                <td *matCellDef="let patient" mat-cell>
+                <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'">
                    {{ patient.side }}
                 </td>
               </ng-container>
 
               <ng-container matColumnDef="isOperated">
                 <th *matHeaderCellDef mat-header-cell class="text-warning">
-                  Прооперирован
+                  Оперирован
                 </th>
-                <td *matCellDef="let patient" mat-cell>
+                <td *matCellDef="let patient" mat-cell >
                   <div class="form-check">
-                    <label class="form-check-label">
-                      <input class="form-check-input" disabled type="checkbox" name="isOperated" [checked]="patient.isOperated != '0'">
-                      <span class="form-check-sign">
-                        <span class="check"></span>
-                      </span>
+                    <label >
+                      <input type="checkbox" name="isOperated" disabled [checked]="patient.isOperated != '0'">
                     </label>
                   </div>
                 </td>
@@ -240,7 +252,7 @@
                 <th *matHeaderCellDef mat-header-cell class="text-warning">
                   {{ ColumnsNames.operDate }}
                 </th>
-                <td *matCellDef="let patient" mat-cell>
+                <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'">
                   {{ patient.operdate === "0000-00-00" ? "-" : patient.operdate | date: "dd.MM.YYYY"}}
                 </td>
               </ng-container>
@@ -250,7 +262,7 @@
                 <th *matHeaderCellDef mat-header-cell class="text-warning">
                   {{ ColumnsNames.note }}
                 </th>
-                <td *matCellDef="let patient" mat-cell>
+                <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'">
                    {{ patient.info }}
                 </td>
               </ng-container>
@@ -260,7 +272,7 @@
                 <th *matHeaderCellDef mat-header-cell class="text-warning">
                   {{ ColumnsNames.type }}
                 </th>
-                <td *matCellDef="let patient" mat-cell>
+                <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'">
                    {{ patient.type }}
                 </td>
               </ng-container>
@@ -269,68 +281,14 @@
                 <th *matHeaderCellDef mat-header-cell class="text-warning">
                   {{ ColumnsNames.org }}
                 </th>
-                <td *matCellDef="let patient" mat-cell>
+                <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'">
                    {{ patient.org }}
                 </td>
               </ng-container>
 
               <tr mat-header-row *matHeaderRowDef="displayedColumns" class="text-warning"></tr>
               <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-
-
             </table>
-
-
-            <!-- <table class="table table-hover">
-              <thead class="text-warning">
-                <th>{{ColumnsNames.number}}</th>
-                <th> {{ ColumnsNames.fio }} </th>
-                <th> {{ ColumnsNames.address }} </th>
-                <th> {{ ColumnsNames.sex }} </th>
-                <th> {{ ColumnsNames.birthday }} </th>
-                <th> {{ ColumnsNames.date }} </th>
-                <th> {{ ColumnsNames.diag }} </th>
-                <th> {{ ColumnsNames.side }} </th>
-                <th> {{ ColumnsNames.group }} </th>
-                <th>Прооперирован</th>
-                <th> {{ ColumnsNames.operDate }} </th>
-                <th> {{ ColumnsNames.note }} </th>
-                <th> {{ ColumnsNames.type }} </th>
-                <th> {{ ColumnsNames.org }} </th>
-                <th>Действия</th>
-              </thead>
-              <tbody>
-                <tr *ngFor="let patient of patientsArr" [class.operated]="patient.isOperated === '1'">
-                  <td [class.novalue] ="!patient.listnumber || patient.listnumber.length === 0">{{ patient.listnumber }}</td>
-                  <td [class.novalue] ="!patient.lastname || patient.lastname.length === 0">{{ patient.lastname + ' ' + patient.name + ' ' + patient.fathername }}</td>
-                  <td [class.novalue] ="!patient.address || patient.address.length === 0">{{ patient.address }}</td>
-                  <td [class.novalue] ="!patient.sex || patient.sex.length === 0">{{ patient.sex }}</td>
-                  <td [class.novalue] ="!patient.birthday || patient.birthday.length === 0">{{ patient.birthday }}</td>
-                  <td>{{ patient.date | date: "dd.MM.YYYY"}}</td>
-                  <td [class.novalue] ="!patient.diag || patient.diag.length === 0">{{ patient.diag }}</td>
-                  <td [class.novalue] ="!patient.side || patient.side.length === 0">{{ patient.side }}</td>
-                  <td [class.novalue] ="!patient.invalidgroup || patient.invalidgroup.length === 0">{{ patient.invalidgroup }}</td>
-                  <td>
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input class="form-check-input" disabled type="checkbox" name="isOperated" [checked]="patient.isOperated != '0'">
-                        <span class="form-check-sign">
-                          <span class="check"></span>
-                        </span>
-                      </label>
-                    </div>
-                  </td>
-                  <td>{{ patient.operdate === "0000-00-00" ? "-" : patient.operdate | date: "dd.MM.YYYY"}}
-                  </td>
-                  <td [class.novalue] ="!patient.info || patient.info.length === 0">{{ patient.info }}</td>
-                  <td>{{ patient.type }}</td>
-                  <td>{{ patient.org }}</td>
-                </tr>
-              </tbody>
-            </table> -->
-
-
           </div>
         </div>
       </div>
