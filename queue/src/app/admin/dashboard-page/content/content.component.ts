@@ -4,6 +4,8 @@ import { PatientService } from '../../shared/services/patient.service';
 import { Patient, Types } from '../../shared/interfaces/phpInterface';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
 
 @Component({
   selector: 'app-content',
@@ -15,12 +17,16 @@ export class ContentComponent implements OnInit, AfterViewInit {
   patientsArr: any
   ColumnsNames = ColumnsNames
 
-  public displayedColumns = ['listnumber', 'name', 'address', 'sex', 'birthday', 'date', 'diag', 'side', 'isOperated', 'operdate', 'info', 'type', 'org']
+  public displayedColumns = ['listnumber', 'lastname', 'address', 'sex', 'birthday', 'date', 'diag', 'side', 'isOperated', 'operdate', 'info', 'type', 'org']
   public dataSource!: MatTableDataSource<Patient>
 
   @ViewChild(MatPaginator) paginator!: MatPaginator
+  @ViewChild(MatSort) sort!: MatSort
 
-  constructor(private service: PatientService) {
+  constructor(
+    private service: PatientService,
+    private _liveAnnouncer: LiveAnnouncer
+    ) {
 
   }
   ngAfterViewInit(): void {
@@ -36,6 +42,7 @@ export class ContentComponent implements OnInit, AfterViewInit {
       this.refreshTable(data)
       this.dataSource = new MatTableDataSource(this.patientsArr);
       this.dataSource.paginator = this.paginator
+      this.dataSource.sort = this.sort
     });
 
   }
