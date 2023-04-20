@@ -41,8 +41,10 @@ export class ContentComponent implements OnInit, AfterViewInit {
       this.patientsArr = data
       this.refreshTable(data)
       this.dataSource = new MatTableDataSource(this.patientsArr);
-      this.dataSource.paginator = this.paginator
-      this.dataSource.sort = this.sort
+      setTimeout(()=> {
+        this.dataSource.paginator = this.paginator
+        this.dataSource.sort = this.sort
+      }, 500)
     });
 
   }
