@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject, shareReplay } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import { Oz, Patient, Types } from 'src/app/admin/shared/interfaces/phpInterface';
+import { OzDAOArray } from 'src/app/dao/implements/OzDAOArray';
+import { PatientDAOArray } from 'src/app/dao/implements/PatientsDAOArray';
 
 @Injectable({
   providedIn: 'root'
@@ -18,21 +20,26 @@ export class PatientService {
     private http: HttpClient
   ) { }
 
+  private patientsDAO = new PatientDAOArray(this.http)
+  private ozDAO = new OzDAOArray(this.http)
+
+  //* Рабочий метод DAO
   getPatientsRX() {
     //! РЕШЕНИЕ ПРОБЛЕМЫ BEHAVIORSUBJECT
-    this.http.get<Patient[]>(this.baseUrl + "view.php").pipe(shareReplay(1))
+    this.patientsDAO.getAll().pipe(shareReplay(1))
       .subscribe((response: Patient[]) => this.patientsSubject.next(response));
   }
-
+//* Рабочий метод DAO
   getPatientsByOrgRX(org: string | undefined) {
-    this.http.get<Patient[]>(this.baseUrl + 'view.php').subscribe(data => {
+    this.patientsDAO.getAll().subscribe(data => {
       this.patientsSubject.next(data.filter(patient => patient.org === org));
     })
   }
 
+//* Рабочий метод DAO
   //! старые методы используетя в компоненте all-list
   getPatients() {
-    return this.http.get<Patient[]>(this.baseUrl + 'view.php');
+    return this.patientsDAO.getAll();
   }
 
   //* Удаление пациента
@@ -57,7 +64,7 @@ export class PatientService {
 
   //* Поиск списка организаций в БД
   getOz(): Observable<Oz[]> {
-    return this.http.get<Oz[]>(this.baseUrl + 'getOZ/view.php')
+    return this.ozDAO.getAll()
   }
 //* Поиск типа протезирования в БД
   getTypes(): Observable<Types[]> {

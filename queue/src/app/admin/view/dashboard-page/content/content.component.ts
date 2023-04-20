@@ -25,7 +25,6 @@ export class ContentComponent implements OnInit, AfterViewInit {
 
   constructor(
     private service: PatientService,
-    private _liveAnnouncer: LiveAnnouncer
     ) {
 
   }
@@ -46,7 +45,6 @@ export class ContentComponent implements OnInit, AfterViewInit {
         this.dataSource.sort = this.sort
       }, 500)
     });
-
   }
 
   refreshTable(data: any) {
