@@ -165,7 +165,8 @@
               </colgroup>
 
               <ng-container matColumnDef="listnumber">
-                <th class="col-listnumber" *matHeaderCellDef mat-header-cell class="text-warning">{{ColumnsNames.number}}</th>
+                <th class="col-listnumber" *matHeaderCellDef mat-header-cell class="text-warning">
+                  {{ColumnsNames.number}}</th>
                 <td class="col-listnumber" *matCellDef="let patient" mat-cell>
                   {{ patient.listnumber }}
                 </td>
@@ -177,7 +178,7 @@
                   {{ ColumnsNames.fio }}
                 </th>
                 <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'">
-                  {{ patient.lastname + ' ' + patient.name + ' ' + patient.fathername  }}
+                  {{ patient.lastname + ' ' + patient.name + ' ' + patient.fathername }}
                 </td>
               </ng-container>
 
@@ -194,7 +195,7 @@
                 <th *matHeaderCellDef mat-header-cell class="text-warning">
                   {{ ColumnsNames.sex }}
                 </th>
-                <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'" >
+                <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'">
                   {{ patient.sex }}
                 </td>
               </ng-container>
@@ -213,16 +214,16 @@
                   {{ ColumnsNames.date }}
                 </th>
                 <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'">
-                   {{ patient.date | date: "dd.MM.YYYY"}}
+                  {{ patient.date | date: "dd.MM.YYYY"}}
                 </td>
               </ng-container>
 
               <ng-container matColumnDef="diag">
                 <th *matHeaderCellDef mat-header-cell class="text-warning">
-                  {{ ColumnsNames.diag  }}
+                  {{ ColumnsNames.diag }}
                 </th>
                 <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'">
-                   {{ patient.diag }}
+                  {{ patient.diag }}
                 </td>
               </ng-container>
 
@@ -231,7 +232,7 @@
                   {{ ColumnsNames.side }}
                 </th>
                 <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'">
-                   {{ patient.side }}
+                  {{ patient.side }}
                 </td>
               </ng-container>
 
@@ -239,9 +240,9 @@
                 <th *matHeaderCellDef mat-header-cell class="text-warning">
                   Оперирован
                 </th>
-                <td *matCellDef="let patient" mat-cell >
+                <td *matCellDef="let patient" mat-cell>
                   <div class="form-check">
-                    <label >
+                    <label>
                       <input type="checkbox" name="isOperated" disabled [checked]="patient.isOperated != '0'">
                     </label>
                   </div>
@@ -263,7 +264,7 @@
                   {{ ColumnsNames.note }}
                 </th>
                 <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'">
-                   {{ patient.info }}
+                  {{ patient.info }}
                 </td>
               </ng-container>
 
@@ -273,7 +274,7 @@
                   {{ ColumnsNames.type }}
                 </th>
                 <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'">
-                   {{ patient.type }}
+                  {{ patient.type }}
                 </td>
               </ng-container>
 
@@ -282,13 +283,16 @@
                   {{ ColumnsNames.org }}
                 </th>
                 <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'">
-                   {{ patient.org }}
+                  {{ patient.org }}
                 </td>
               </ng-container>
 
               <tr mat-header-row *matHeaderRowDef="displayedColumns" class="text-warning"></tr>
               <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
+
+            <mat-paginator [pageSizeOptions]="[5,10,50,100]" showFirstLastButtons=""></mat-paginator>
+
           </div>
         </div>
       </div>
