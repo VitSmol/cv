@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ColumnsNames, FullName, ProstheticsType } from '../shared/interfaces/interfaces';
-import { PatientService } from '../shared/services/patient.service';
+import { ColumnsNames, FullName, ProstheticsType } from '../../shared/interfaces/interfaces';
+import { PatientService } from '../../shared/services/patient.service';
 
 @Component({
   selector: 'app-once-add',
@@ -39,7 +39,7 @@ export class OnceAddComponent {
       })
     }
 
-    // Метод находит текущую дату, переводит в человекочитаемый формат и делее устанавливает в дефолтное 
+    // Метод находит текущую дату, переводит в человекочитаемый формат и делее устанавливает в дефолтное
     getMaxDate(date: Date): string {
       const check = (val: number): string => val < 10 ? '0' + val : val as unknown as string;
       let day  = check(date.getDate())

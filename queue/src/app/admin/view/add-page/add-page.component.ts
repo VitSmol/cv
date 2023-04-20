@@ -4,7 +4,7 @@ import { AuthService } from 'src/app/admin/shared/services/auth.service';
 import { DataHandlerService } from 'src/app/shared/data-handler.service';
 import { ColumnsNames, FullName, ProstheticsType } from 'src/app/admin/shared/interfaces/interfaces';
 import * as XLSX from 'xlsx';
-import { usersInfo } from '../shared/data';
+import { usersInfo } from '../../shared/data';
 
 @Component({
   selector: 'app-add-page',

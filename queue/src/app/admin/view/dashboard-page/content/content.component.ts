@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { ColumnsNames } from '../../shared/interfaces/interfaces';
-import { PatientService } from '../../shared/services/patient.service';
-import { Patient, Types } from '../../shared/interfaces/phpInterface';
+import { ColumnsNames } from '../../../shared/interfaces/interfaces';
+import { PatientService } from '../../../shared/services/patient.service';
+import { Patient, Types } from '../../../shared/interfaces/phpInterface';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
