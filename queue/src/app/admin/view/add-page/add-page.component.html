@@ -4,12 +4,15 @@
 
   <h2>Import xlsx</h2>
   <div class="button-group">
-    <input type="file" (change)="readExcel($event)" class="btn" value="" multiple>
+    <input type="file" (change)="readExcel($event)" class="btn" value="Импорт XLSX" multiple>
     <input type="button" (click)="exportToXLSX()" value="Экспортировать" class="btn">
     <input type="button" (click)="showResultArray()" class="btn btn-dark" value="Массив в консоль">
     <input type="button" (click)="exportToJson()" class="btn btn-dark" value="Сохранить в JSON">
-    <input type="button" (click)="deleteOper()" class="btn btn-dark" value="Удалить прооперированных">
-    <input type="button" (click)="deleteDie()" class="btn btn-dark" value="Удалить умерших">
+    <input type="button" (click)="refactorArray(resultArray)" class="btn btn-dark" value="Переработать массив">
+    <input type="button" (click)="upload()" class="btn btn-dark" value="Загрузить массив в БД">
+    <!-- <input type="button" (click)="deleteOper()" class="btn btn-dark" value="Удалить прооперированных"> -->
+    <!-- <input type="button" (click)="deleteDie()" class="btn btn-dark" value="Удалить умерших">
+     -->
   </div>
 </div>
 

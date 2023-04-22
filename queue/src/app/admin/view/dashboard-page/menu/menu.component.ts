@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PatientService } from '../../../shared/services/patient.service';
 import { Oz, Patient, Types } from '../../../shared/interfaces/phpInterface';
 
@@ -10,7 +10,8 @@ import { Oz, Patient, Types } from '../../../shared/interfaces/phpInterface';
 
 export class MenuComponent implements OnInit {
 
-  ozArray: Oz[] = [];
+  @Input() ozArray: Oz[] = [];
+
   typesArr: Types[] = [];
   selectedOrg!: string
 
@@ -19,23 +20,18 @@ export class MenuComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.loadOz();
-    this.loadTypes()
+    // this.loadOz();
+    // this.loadTypes()
   }
 
-  loadOz() {
-    this.service.getOz().subscribe(response => {
-      this.ozArray = response
-    })
-  }
   loadTypes() {
-    this.service.getTypes().subscribe(types => {
-      this.typesArr = types
-    })
+    // this.service.getTypes().subscribe(types => {
+    //   this.typesArr = types
+    // })
   }
 
   showPatientsByOrg(org: string) {
     this.selectedOrg = org
-    this.service.getPatientsByOrgRX(org);
+    // this.service.getPatientsByOrgRX(org);
   }
 }

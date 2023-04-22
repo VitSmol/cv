@@ -5,6 +5,8 @@ import { DataHandlerService } from 'src/app/shared/data-handler.service';
 import { ColumnsNames, FullName, ProstheticsType } from 'src/app/admin/shared/interfaces/interfaces';
 import * as XLSX from 'xlsx';
 import { usersInfo } from '../../shared/data';
+import { Oz, Patient } from '../../shared/interfaces/phpInterface';
+import { PatientService } from '../../shared/services/patient.service';
 
 @Component({
   selector: 'app-add-page',
@@ -16,7 +18,11 @@ export class AddPageComponent {
   constructor(
     private auth: AuthService,
     public handler: DataHandlerService,
+    public service: PatientService
   ) { }
+
+  oz!: Oz[]
+  readyArray!: any[]
 
   resultArray: any[] = [];
   csvRecords: any[] = [];
@@ -195,4 +201,64 @@ export class AddPageComponent {
     })
   }
 
+  async refactorArray(arr: any) {
+    this.service.getOz().subscribe( async (response) => {
+        this.oz = await response;
+        console.log(this.oz);
+
+    this.readyArray = await arr.reduce((acc: any, el: any): any => {
+      const patientOrg = el.org;
+      const currentOZ = this.oz.find(oz => oz.orgshortname.toLocaleLowerCase() === patientOrg.toLocaleLowerCase());
+      let sex;
+      if (!el[ColumnsNames.sex]) {
+        sex = ''
+      } else {
+        sex = el[ColumnsNames.sex][0]
+      }
+      let address; //.split(' ').flat(Infinity).join(' ')
+      if (!el[ColumnsNames.address]) {
+        address = ''
+      } else {
+        address = el[ColumnsNames.address].split(' ').flat(Infinity).join(' ')
+      }
+      const fio = el[ColumnsNames.fio].trim().split(' ').flat(Infinity)
+      if (fio.length !== 3) {
+        console.log(el);
+
+      }
+      acc.push({
+        listnumber: el[ColumnsNames.number],
+        address: address,
+        birthday: el[ColumnsNames.birthday],
+        date: el[ColumnsNames.date],
+        sex: sex,
+        diag: el[ColumnsNames.diag],
+        side: el[ColumnsNames.side],
+        invalidgroup: el[ColumnsNames.group],
+        operdate: el[ColumnsNames.operDate],
+        info: el.info,
+        isOperated: el.isOperated ? '1' : '0',
+        type: el.type[0].toUpperCase() + el.type.slice(1),
+        lastname: fio[0],
+        name: fio[1],
+        fathername: fio[2],
+        org: currentOZ?.orgname
+      })
+      return acc;
+    }, [])
+
+  })
+  }
+  upload() {
+    console.log(this.readyArray);
+    this.readyArray.forEach((el: Patient) => {
+        this.service.createPatient(el).subscribe((data: any) => {
+          if (data.message === "required fields cannot be empty") {
+            console.log(el);
+
+          }
+        })
+      // console.log(`create`);
+    })
+  }
 }

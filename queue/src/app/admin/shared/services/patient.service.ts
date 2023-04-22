@@ -37,10 +37,16 @@ export class PatientService {
   }
 
 //* Рабочий метод DAO
-  //! старые методы используетя в компоненте all-list
   getPatients() {
     return this.patientsDAO.getAll();
   }
+
+  //* Поиск списка организаций в БД DAO
+  getOz(): Observable<Oz[]> {
+    return this.ozDAO.getAll()
+  }
+
+
 
   //* Удаление пациента
   deletePatient(id: string) {
@@ -54,6 +60,7 @@ export class PatientService {
 
   //* Методы для редактирования данных о пациенте
   //? Поиск пациента по ID
+
   getPatient(id: number) {
     return this.http.get<Patient>(this.baseUrl + 'view.php?id=' + id);
   }
@@ -62,10 +69,7 @@ export class PatientService {
     return this.http.put(this.baseUrl + 'update.php', patient)
   }
 
-  //* Поиск списка организаций в БД
-  getOz(): Observable<Oz[]> {
-    return this.ozDAO.getAll()
-  }
+
 //* Поиск типа протезирования в БД
   getTypes(): Observable<Types[]> {
     return this.http.get<Types[]>(this.baseUrl + 'getTypes/view.php')
