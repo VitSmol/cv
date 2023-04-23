@@ -3,5 +3,8 @@
     [ozArray] = "Oz"
     (selectOz)="onSelectOz($event)"
     ></app-menu>
-  <app-content [patientsArr]="patientsArr"></app-content>
+  <app-content
+    [patientsArr]="patientsArr"
+    (updatePatient)="update($event)"
+  ></app-content>
 </div>

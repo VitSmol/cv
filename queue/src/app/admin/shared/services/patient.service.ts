@@ -34,31 +34,6 @@ export class PatientService {
     return this.ozDAO.getAll()
   }
 
-  //Observable<Patient[]>
-  // async getPatientsByOz(oz: String): Promise<any> {
-  //   let arr: Patient[] = [];
-  //   this.patientsDAO.getAll().subscribe(async (data: any) => {
-  //     arr = await data.filter((p: Patient) => p.org === oz);
-  //     // console.log(oz);
-  //     return arr;
-  //   })
-  //   // console.log(arr);
-  // }
-
-  //* Рабочий метод DAO
-  // getPatientsRX() {
-  //   //! РЕШЕНИЕ ПРОБЛЕМЫ BEHAVIORSUBJECT
-  //   this.patientsDAO.getAll().pipe(shareReplay(1))
-  //     .subscribe((response: Patient[]) => this.patientsSubject.next(response));
-  // }
-//* Рабочий метод DAO
-  // getPatientsByOrg(org: string | undefined) {
-  //   return this.patientsDAO.getAll()
-  //   // .subscribe(data => {
-  //   //   this.patientsSubject.next(data.filter(patient => patient.org === org));
-  //   // })
-  // }
-
 
   //* Удаление пациента
   deletePatient(id: string) {
@@ -89,11 +64,35 @@ export class PatientService {
   }
 
 
-
+//! Старые не используемые методы
   // getPatientsByTypeRX(type: string) {
   //   this.http.get<Patient[]>(this.baseUrl + 'view.php').subscribe(data => {
   //     let arr = data.filter(patient => patient.type === type);
   //     this.patientsSubject.next(arr);
   //   })
+  // }
+  //Observable<Patient[]>
+  // async getPatientsByOz(oz: String): Promise<any> {
+  //   let arr: Patient[] = [];
+  //   this.patientsDAO.getAll().subscribe(async (data: any) => {
+  //     arr = await data.filter((p: Patient) => p.org === oz);
+  //     // console.log(oz);
+  //     return arr;
+  //   })
+  //   // console.log(arr);
+  // }
+
+  //* Рабочий метод DAO
+  // getPatientsRX() {
+  //   //! РЕШЕНИЕ ПРОБЛЕМЫ BEHAVIORSUBJECT
+  //   this.patientsDAO.getAll().pipe(shareReplay(1))
+  //     .subscribe((response: Patient[]) => this.patientsSubject.next(response));
+  // }
+//* Рабочий метод DAO
+  // getPatientsByOrg(org: string | undefined) {
+  //   return this.patientsDAO.getAll()
+  //   // .subscribe(data => {
+  //   //   this.patientsSubject.next(data.filter(patient => patient.org === org));
+  //   // })
   // }
 }

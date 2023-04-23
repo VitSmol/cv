@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { ColumnsNames } from '../../../shared/interfaces/interfaces';
 import { PatientService } from '../../../shared/services/patient.service';
 import { Patient, Types } from '../../../shared/interfaces/phpInterface';
@@ -13,7 +13,6 @@ import { MatSort } from '@angular/material/sort';
 })
 export class ContentComponent implements OnInit {
 
-  // patientsArr: any
   ColumnsNames = ColumnsNames
 
   public displayedColumns = ['listnumber', 'lastname', 'address', 'sex', 'birthday', 'date', 'diag', 'side', 'isOperated', 'operdate', 'info', 'type', 'org']
@@ -24,16 +23,15 @@ export class ContentComponent implements OnInit {
 
   public patientsArr!: Patient[]
 
+  @Output() updatePatient = new EventEmitter<Patient>();
+
   @Input('patientsArr')
   public set setPatients(patients: Patient[]) {
     this.patientsArr = patients;
-    console.log(patients);
-
     setTimeout(() => {
-      this.fillTable()
+      this.fillTable() //? без задержки не работает
     }, 1);
   }
-  // public patientsArr: Patient[] = [];
 
   constructor(
     private service: PatientService,
@@ -43,38 +41,8 @@ export class ContentComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource();
-    // this.getDataRecursive()
     this.fillTable();
-    //! ДА СУКА ГОСПОДИ! ЭТО РЕШЕНИЕ
-    // this.service.getPatientsRX()
-    // this.service.patientsSubject.subscribe(data => {
-    //   this.patientsArr = data
-    //   this.refreshTable(data)
-    //   this.dataSource = new MatTableDataSource(this.patientsArr);
-    //   setTimeout(()=> {
-    //     this.dataSource.paginator = this.paginator
-    //     this.dataSource.sort = this.sort
-    //   }, 500)
-    // });
   }
-
-  getData() {
-    this.dataSource.data = this.patientsArr
-    this.fillTable()
-
-  }
-  // getDataRecursive() {
-  //   if (!this.patientsArr) {
-  //     setTimeout(()=> {
-  //       this.getDataRecursive()
-  //     }, 1);
-  //   } else {
-  //     this.dataSource.data = this.patientsArr
-  //     this.fillTable()
-  //     console.log(this.patientsArr);
-  //     return
-  //   }
-  // }
 
   fillTable() {
     if (!this.dataSource) return
@@ -85,5 +53,8 @@ export class ContentComponent implements OnInit {
   public addTableObjects() {
     this.dataSource.sort = this.sort; // компонент для сортировки данных (если необходимо)
     this.dataSource.paginator = this.paginator; // обновить компонент постраничности (кол-во записей, страниц)
+  }
+  onClickPatient(patient: Patient) {
+    this.updatePatient.emit(patient);
   }
 }

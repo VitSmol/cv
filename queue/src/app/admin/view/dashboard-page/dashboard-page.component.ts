@@ -33,4 +33,9 @@ export class DashboardPageComponent implements OnInit {
       });
     })
   }
+
+  update(e: Patient) {
+    console.log(e);
+
+  }
 }
