@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PatientService } from '../../../shared/services/patient.service';
 import { Oz, Patient, Types } from '../../../shared/interfaces/phpInterface';
 
@@ -11,27 +11,26 @@ import { Oz, Patient, Types } from '../../../shared/interfaces/phpInterface';
 export class MenuComponent implements OnInit {
 
   @Input() ozArray: Oz[] = [];
+  @Output() selectOz = new EventEmitter<String>();
 
-  typesArr: Types[] = [];
   selectedOrg!: string
+  typesArr: Types[] = [];
 
   constructor(
     private service: PatientService
   ) { }
 
   ngOnInit(): void {
-    // this.loadOz();
-    // this.loadTypes()
+
   }
 
   loadTypes() {
-    // this.service.getTypes().subscribe(types => {
-    //   this.typesArr = types
-    // })
+
   }
 
-  showPatientsByOrg(org: string) {
-    this.selectedOrg = org
-    // this.service.getPatientsByOrgRX(org);
+  showPatientsByOrg(oz: Oz) {
+    if (this.selectedOrg === oz.orgname) return;
+    this.selectedOrg = oz.orgname
+    this.selectOz.emit(this.selectedOrg);
   }
 }

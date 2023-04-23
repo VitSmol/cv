@@ -1,18 +1,17 @@
-import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ColumnsNames } from '../../../shared/interfaces/interfaces';
 import { PatientService } from '../../../shared/services/patient.service';
 import { Patient, Types } from '../../../shared/interfaces/phpInterface';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { LiveAnnouncer } from '@angular/cdk/a11y';
 
 @Component({
   selector: 'app-content',
   templateUrl: './content.component.html',
   styleUrls: ['./content.component.sass']
 })
-export class ContentComponent implements OnInit, AfterViewInit {
+export class ContentComponent implements OnInit {
 
   // patientsArr: any
   ColumnsNames = ColumnsNames
@@ -23,21 +22,28 @@ export class ContentComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator
   @ViewChild(MatSort, { static: false }) sort!: MatSort
 
-  @Input() public patientsArr: Patient[] = [];
+  public patientsArr!: Patient[]
+
+  @Input('patientsArr')
+  public set setPatients(patients: Patient[]) {
+    this.patientsArr = patients;
+    console.log(patients);
+
+    setTimeout(() => {
+      this.fillTable()
+    }, 1);
+  }
+  // public patientsArr: Patient[] = [];
 
   constructor(
     private service: PatientService,
   ) {
 
   }
-  ngAfterViewInit(): void {
-    // throw new Error('Method not implemented.');
-    // this.getData()
-  }
 
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource();
-    this.getDataRecursive()
+    // this.getDataRecursive()
     this.fillTable();
     //! ДА СУКА ГОСПОДИ! ЭТО РЕШЕНИЕ
     // this.service.getPatientsRX()
@@ -57,25 +63,26 @@ export class ContentComponent implements OnInit, AfterViewInit {
     this.fillTable()
 
   }
-  getDataRecursive() {
-    if (!this.patientsArr) {
-      setTimeout(()=> {
-        this.getDataRecursive()
-      }, 1);
-    } else {
-      this.dataSource.data = this.patientsArr
-      this.fillTable()
-      console.log(this.patientsArr);
-      return
-    }
-  }
+  // getDataRecursive() {
+  //   if (!this.patientsArr) {
+  //     setTimeout(()=> {
+  //       this.getDataRecursive()
+  //     }, 1);
+  //   } else {
+  //     this.dataSource.data = this.patientsArr
+  //     this.fillTable()
+  //     console.log(this.patientsArr);
+  //     return
+  //   }
+  // }
 
   fillTable() {
+    if (!this.dataSource) return
     this.dataSource.data = this.patientsArr;
     this.addTableObjects()
   }
 
-  private addTableObjects() {
+  public addTableObjects() {
     this.dataSource.sort = this.sort; // компонент для сортировки данных (если необходимо)
     this.dataSource.paginator = this.paginator; // обновить компонент постраничности (кол-во записей, страниц)
   }

@@ -1,4 +1,7 @@
 <div class="wrapper ">
-  <app-menu [ozArray] = "Oz"></app-menu>
+  <app-menu
+    [ozArray] = "Oz"
+    (selectOz)="onSelectOz($event)"
+    ></app-menu>
   <app-content [patientsArr]="patientsArr"></app-content>
 </div>

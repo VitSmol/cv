@@ -11,8 +11,8 @@
                   <p>Все</p>
               </a>
           </li>
-          <li class="nav-item" *ngFor="let oz of ozArray" [class.active]="oz.orgname === selectedOrg">
-              <a class="nav-link" (click)="showPatientsByOrg(oz.orgname)">
+          <li class="nav-item" *ngFor="let oz of ozArray" [class.active]="oz.orgname == selectedOrg">
+              <a class="nav-link" (click)="showPatientsByOrg(oz)">
                   <p>{{ oz.orgshortname }}</p>
               </a>
           </li>

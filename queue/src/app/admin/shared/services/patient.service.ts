@@ -23,20 +23,8 @@ export class PatientService {
   private patientsDAO = new PatientDAOArray(this.http)
   private ozDAO = new OzDAOArray(this.http)
 
-  //* Рабочий метод DAO
-  getPatientsRX() {
-    //! РЕШЕНИЕ ПРОБЛЕМЫ BEHAVIORSUBJECT
-    this.patientsDAO.getAll().pipe(shareReplay(1))
-      .subscribe((response: Patient[]) => this.patientsSubject.next(response));
-  }
-//* Рабочий метод DAO
-  getPatientsByOrgRX(org: string | undefined) {
-    this.patientsDAO.getAll().subscribe(data => {
-      this.patientsSubject.next(data.filter(patient => patient.org === org));
-    })
-  }
 
-//* Рабочий метод DAO
+  //* Рабочий метод DAO
   getPatients() {
     return this.patientsDAO.getAll();
   }
@@ -46,6 +34,30 @@ export class PatientService {
     return this.ozDAO.getAll()
   }
 
+  //Observable<Patient[]>
+  // async getPatientsByOz(oz: String): Promise<any> {
+  //   let arr: Patient[] = [];
+  //   this.patientsDAO.getAll().subscribe(async (data: any) => {
+  //     arr = await data.filter((p: Patient) => p.org === oz);
+  //     // console.log(oz);
+  //     return arr;
+  //   })
+  //   // console.log(arr);
+  // }
+
+  //* Рабочий метод DAO
+  // getPatientsRX() {
+  //   //! РЕШЕНИЕ ПРОБЛЕМЫ BEHAVIORSUBJECT
+  //   this.patientsDAO.getAll().pipe(shareReplay(1))
+  //     .subscribe((response: Patient[]) => this.patientsSubject.next(response));
+  // }
+//* Рабочий метод DAO
+  // getPatientsByOrg(org: string | undefined) {
+  //   return this.patientsDAO.getAll()
+  //   // .subscribe(data => {
+  //   //   this.patientsSubject.next(data.filter(patient => patient.org === org));
+  //   // })
+  // }
 
 
   //* Удаление пациента
@@ -64,6 +76,7 @@ export class PatientService {
   getPatient(id: number) {
     return this.http.get<Patient>(this.baseUrl + 'view.php?id=' + id);
   }
+
   //? Обновление данных пациента
   updatePatient(patient: Patient) {
     return this.http.put(this.baseUrl + 'update.php', patient)
