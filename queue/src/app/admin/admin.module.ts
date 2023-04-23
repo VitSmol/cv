@@ -22,7 +22,8 @@ import { EditPageComponent } from './view/dialog/edit-page/edit-page.component';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -39,18 +40,19 @@ import { MatDialogModule } from '@angular/material/dialog';
   ],
   imports: [
     CommonModule,
-    MatFormFieldModule,
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
     MatIconModule,
     MatInputModule,
+    MatFormFieldModule,
     MatProgressSpinnerModule,
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
     MatDialogModule,
-    // BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatRadioModule,
     RouterModule.forChild([
       {
         path: '', component: AdminLayoutComponent, children: [

@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ColumnsNames, FullName, ProstheticsType } from '../../../shared/interfaces/interfaces';
 import { PatientService } from '../../../shared/services/patient.service';
@@ -13,7 +13,7 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dial
 })
 export class EditPageComponent implements OnInit {
   ColumnsNames = ColumnsNames;
-  addForm: any
+  addForm: FormGroup
   date: Date = new Date();
   maxDate: string = '';
   patient_id: string = '';
@@ -31,6 +31,7 @@ export class EditPageComponent implements OnInit {
     public dialogRef: MatDialogRef<EditPageComponent>,
     @Inject(MAT_DIALOG_DATA) public data: [Patient, string],
     public dialog: MatDialog
+
   ) {
     this.addForm = this.formBuilder.group({
       id: [],
@@ -51,6 +52,7 @@ export class EditPageComponent implements OnInit {
       org: ['', Validators.required],
       type: ['', Validators.required]
     })
+    this.addForm.get('date')?.disable()
   }
 
   public dialogTitle: string = '';

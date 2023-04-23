@@ -1,106 +1,112 @@
 <div class="container">
-  <div>
-    <h1>Редактировать данные</h1>
-  </div>
 
-  <form [formGroup]="addForm" class="form">
-    <div class="row">
+  <mat-dialog-content>
+    <div>
+      <h1 mat-dialog-title>Редактировать данные</h1>
+    </div>
+
+    <mat-form [formGroup]="addForm" class="form" appearance="fill">
+      <!-- <div class="row"> -->
       <div class="input-container">
-        <div class="col-md-6">ID</div>
-        <div class="col-md-6">
-          <input class="form-control" type="text"  formControlName="id">
+        <div class="col-md-12">
+          <input matInput placeholder="ID" class="form-control" type="text" formControlName="id" style="display: none">
         </div>
       </div>
+
+      <mat-form-field class="input-container">
+        <mat-label>{{ ColumnsNames.number }}</mat-label>
+        <input matInput class="form-control" placeholder="Номер листка ожидания" type="text" name="listnumber"
+          formControlName="listnumber">
+        <mat-error *ngIf="addForm.get('listnumber')?.errors?.['required']">Поле обязательно для заполнения</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="input-container">
+        <mat-label>Для выбора даты нажмите на иконку календаря</mat-label>
+        <mat-datepicker-toggle matIconPrefix [for]="dp"></mat-datepicker-toggle>
+        <mat-datepicker #dp disabled="false"></mat-datepicker>
+        <input matInput [matDatepicker]="dp" formControlName="date" [max]="this.getMaxDate(this.date)">
+      </mat-form-field>
+
+      <mat-form-field class="input-container">
+        <mat-label>Фамилия</mat-label>
+        <input class="form-control" type="text" name="lastname" formControlName="lastname" matInput>
+        <mat-error *ngIf="addForm.get('lastname')?.errors?.['required']">Поле обязательно для заполнения</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="input-container">
+        <mat-label>Имя</mat-label>
+          <input class="form-control" type="text" name="name" formControlName="name" matInput>
+      </mat-form-field>
+
+      <mat-form-field class="input-container">
+        <mat-label>Отчество</mat-label>
+          <input class="form-control" type="text" name="fathername" formControlName="fathername" matInput>
+      </mat-form-field>
+
+      <mat-form-field class="input-container">
+        <mat-label>{{ ColumnsNames.address }}</mat-label>
+          <input class="form-control" type="text" name="address" formControlName="address" matInput>
+      </mat-form-field>
+
       <div class="input-container">
-        <div class="col-md-6">{{ ColumnsNames.number }}</div>
-        <div class="col-md-6">
-          <input class="form-control"  type="text" name="listnumber" formControlName="listnumber">
-        </div>
-      </div>
-      <div class="input-container">
-        <div class="col-md-6">{{ ColumnsNames.date }}</div>
-        <div class="col-md-6">
-          <input class="form-control"  [max]="this.getMaxDate(this.date)"  type="date" name="date" formControlName="date">
-        </div>
-      </div>
-      <div class="input-container">
-        <div class="col-md-6">Фамилия</div>
-        <div class="col-md-6">
-          <input class="form-control"  type="text" name="lastname" formControlName="lastname">
-        </div>
-      </div>
-      <div class="input-container">
-        <div class="col-md-6">Имя</div>
-        <div class="col-md-6">
-          <input class="form-control"  type="text" name="name" formControlName="name">
-        </div>
-      </div>
-      <div class="input-container">
-        <div class="col-md-6">Отчество</div>
-        <div class="col-md-6">
-          <input class="form-control"  type="text" name="fathername" formControlName="fathername">
-        </div>
-      </div>
-      <div class="input-container">
-        <div class="col-md-6">{{ ColumnsNames.address }}</div>
-        <div class="col-md-6">
-          <input class="form-control"  type="text" name="address" formControlName="address">
-        </div>
-      </div>
-      <div class="input-container">
-        <div class="col-md-6">{{ ColumnsNames.sex }}</div>
+        <mat-label>{{ ColumnsNames.sex }}</mat-label>
         <div class="col-md-6">
           Мужской <input type="radio" name="sex" formControlName="sex" value="м">
           Женский <input type="radio" name="sex" formControlName="sex" value="ж">
         </div>
       </div>
+
       <div class="input-container">
-        <div class="col-md-6">{{ ColumnsNames.birthday }}</div>
+        <mat-label>{{ ColumnsNames.birthday }}</mat-label>
         <div class="col-md-6">
-          <input class="form-control"  type="date" name="birthday" formControlName="birthday">
+          <input class="form-control" type="date" name="birthday" formControlName="birthday">
         </div>
       </div>
 
       <div class="input-container">
-        <div class="col-md-6">Прооперирован</div>
+        <mat-label>Прооперирован</mat-label>
         <div class="col-md-6">
-          <input type="checkbox" name="isOperated" [checked]="this.patient_isOperated"  (change)="checkbox($event)">
+          <input type="checkbox" name="isOperated" [checked]="this.patient_isOperated" (change)="checkbox($event)">
         </div>
       </div>
 
       <div class="input-container">
-        <div class="col-md-6">{{ ColumnsNames.operDate }}</div>
+        <mat-label>{{ ColumnsNames.operDate }}</mat-label>
         <div class="col-md-6">
-          <input class="form-control"  type="date" name="operDate" formControlName="operdate">
+          <input class="form-control" type="date" name="operDate" formControlName="operdate">
         </div>
       </div>
 
       <div class="input-container">
-        <div class="col-md-6">{{ ColumnsNames.diag }}</div>
+        <mat-label>{{ ColumnsNames.diag }}</mat-label>
         <div class="col-md-6">
-          <input class="form-control"  type="text" name="diag" formControlName="diag">
+          <input class="form-control" type="text" name="diag" formControlName="diag">
         </div>
       </div>
+
       <div class="input-container">
-        <div class="col-md-6">{{ ColumnsNames.side }}</div>
+        <mat-label>{{ ColumnsNames.side }}</mat-label>
         <div class="col-md-6">
-          <input class="form-control"  type="text" name="side" formControlName="side">
+          <input class="form-control" type="text" name="side" formControlName="side">
         </div>
       </div>
+
       <div class="input-container">
-        <div class="col-md-6">{{ ColumnsNames.group }}</div>
+        <mat-label>{{ ColumnsNames.group }}</mat-label>
         <div class="col-md-6">
-          <input class="form-control"  type="text" name="invalidgroup" formControlName="invalidgroup">
+          <input class="form-control" type="text" name="invalidgroup" formControlName="invalidgroup">
         </div>
       </div>
+
       <div class="input-container">
-        <div class="col-md-6">{{ ColumnsNames.note }}</div>
+        <mat-label>{{ ColumnsNames.note }}</mat-label>
         <div class="col-md-6">
-          <input class="form-control"  type="text" name="info" formControlName="info">
+          <input class="form-control" type="text" name="info" formControlName="info">
         </div>
       </div>
+
       <div class="input-container">
-        <div class="col-md-6">{{ ColumnsNames.type }}</div>
+        <mat-label>{{ ColumnsNames.type }}</mat-label>
         <div class="col-md-6">
           <select class="form-select" name="type" formControlName="type">
             Выберите тип протезирования:
@@ -110,7 +116,7 @@
       </div>
 
       <div class="input-container">
-        <div class="col-md-6">{{ ColumnsNames.org }}</div>
+        <mat-label>{{ ColumnsNames.org }}</mat-label>
         <div class="col-md-6">
           <select class="form-select select" name="org" formControlName="org">
             Выберите тип протезирования:
@@ -118,17 +124,14 @@
           </select>
         </div>
       </div>
+      <!-- </div> -->
 
-
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <button type="submit" class="btn btn-success"
-          (click)="onEdit()"
-          [disabled]="!this.addForm.valid"
-
-          >Изменить данные</button>
+      <div class="row">
+        <div class="col-md-12">
+          <button type="submit" class="btn btn-success" (click)="onEdit()" [disabled]="!this.addForm.valid">Изменить
+            данные</button>
+        </div>
       </div>
-    </div>
-  </form>
+    </mat-form>
+  </mat-dialog-content>
 </div>

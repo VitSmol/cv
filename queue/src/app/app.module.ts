@@ -42,7 +42,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     MatInputModule,
     LayoutModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [
     {
