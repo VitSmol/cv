@@ -5,6 +5,8 @@ import { Patient, Types } from '../../../shared/interfaces/phpInterface';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { MatDialog } from '@angular/material/dialog';
+import { EditPageComponent } from '../../dialog/edit-page/edit-page.component';
 
 @Component({
   selector: 'app-content',
@@ -34,7 +36,7 @@ export class ContentComponent implements OnInit {
   }
 
   constructor(
-    private service: PatientService,
+    private dialog: MatDialog
   ) {
 
   }
@@ -44,17 +46,31 @@ export class ContentComponent implements OnInit {
     this.fillTable();
   }
 
-  fillTable() {
+  fillTable(): void {
     if (!this.dataSource) return
     this.dataSource.data = this.patientsArr;
     this.addTableObjects()
   }
 
-  public addTableObjects() {
+  public addTableObjects(): void {
     this.dataSource.sort = this.sort; // компонент для сортировки данных (если необходимо)
     this.dataSource.paginator = this.paginator; // обновить компонент постраничности (кол-во записей, страниц)
   }
-  onClickPatient(patient: Patient) {
+
+  // открытие диалогового окна
+  openEditPatientDialog(patient: Patient): void {
     this.updatePatient.emit(patient);
+    const dialogRef = this.dialog.open(EditPageComponent, {
+      data: [patient, "Редактирование пациента"],
+      autoFocus: false,
+      width: '50vw',
+      height: '83vh'
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // обработка результата
+      console.log(result);
+
+    });
   }
 }

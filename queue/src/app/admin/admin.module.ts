@@ -18,9 +18,10 @@ import { ContentComponent } from './view/dashboard-page/content/content.componen
 import { OnceAddComponent } from './view/once-add/once-add.component';
 import { AllListComponent } from './view/all-list/all-list.component';
 import { CustomDatePipe } from './shared/custom-date.pipe';
-import { EditPageComponent } from './view/edit-page/edit-page.component';
+import { EditPageComponent } from './view/dialog/edit-page/edit-page.component';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatDialogModule } from '@angular/material/dialog';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -48,6 +49,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
+    MatDialogModule,
     // BrowserAnimationsModule,
     RouterModule.forChild([
       {
@@ -66,6 +68,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
   exports: [],
   providers: [
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } }
-  ]
+  ],
+  entryComponents: [
+    EditPageComponent,
+  ],
 })
 export class AdminModule { }

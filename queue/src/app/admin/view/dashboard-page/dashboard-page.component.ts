@@ -12,7 +12,7 @@ export class DashboardPageComponent implements OnInit {
 
   patientsArr!: Patient[];
   Oz!: Oz[]
-  selectedOz!: String
+  selectedOz!: string
 
   constructor(
     public auth: AuthService,
@@ -25,7 +25,7 @@ export class DashboardPageComponent implements OnInit {
   }
 
 
-  onSelectOz(e: String) {
+  onSelectOz(e: string) {
     this.selectedOz = e
     this.service.getPatients().subscribe((data: Patient[]) => {
       this.patientsArr = data.filter((p: Patient) =>{
@@ -35,7 +35,7 @@ export class DashboardPageComponent implements OnInit {
   }
 
   update(e: Patient) {
-    console.log(e);
+    // console.log(e);
 
   }
 }

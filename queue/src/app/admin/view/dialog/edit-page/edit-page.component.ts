@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ColumnsNames, FullName, ProstheticsType } from '../../shared/interfaces/interfaces';
-import { PatientService } from '../../shared/services/patient.service';
-import { Patient } from '../../shared/interfaces/phpInterface';
+import { ColumnsNames, FullName, ProstheticsType } from '../../../shared/interfaces/interfaces';
+import { PatientService } from '../../../shared/services/patient.service';
+import { Patient } from '../../../shared/interfaces/phpInterface';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-edit-page',
@@ -26,6 +27,10 @@ export class EditPageComponent implements OnInit {
     private router: Router,
     private patientService: PatientService,
     private url: ActivatedRoute,
+
+    public dialogRef: MatDialogRef<EditPageComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: [Patient, string],
+    public dialog: MatDialog
   ) {
     this.addForm = this.formBuilder.group({
       id: [],
@@ -48,11 +53,17 @@ export class EditPageComponent implements OnInit {
     })
   }
 
+  public dialogTitle: string = '';
+  // public patient: Patient
+
   ngOnInit(): void {
-    this.patient_id = this.url.snapshot.params['id']
+    this.patient = this.data[0];
+    this.dialogTitle = this.data[1];
+
+    this.patient_id = this.patient.id
     if (+this.patient_id > 0) {
-      this.patientService.getPatient(+this.patient_id).subscribe(response => {
-        console.log(response);
+      this.patientService.getPatient(+this.patient.id).subscribe(response => {
+        // console.log(response);
         this.patient = response as Patient;
         console.log(this.patient);
         this.patient.isOperated == '0' ? this.patient_isOperated = false : this.patient_isOperated = true;
@@ -73,7 +84,8 @@ export class EditPageComponent implements OnInit {
     this.patient = this.addForm.value;
     this.patient_isOperated ? this.patient.isOperated = "1" : this.patient.isOperated = "0"
     this.patientService.updatePatient(this.patient).subscribe((data: any) => {
-      this.router.navigate(['admin', 'list'])
+      // this.router.navigate(['admin', 'dashboard'])
+      this.dialogRef.close()
     },
       err => {
         console.log(err)

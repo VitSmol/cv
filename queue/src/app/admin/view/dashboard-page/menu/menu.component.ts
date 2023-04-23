@@ -11,7 +11,7 @@ import { Oz, Patient, Types } from '../../../shared/interfaces/phpInterface';
 export class MenuComponent implements OnInit {
 
   @Input() ozArray: Oz[] = [];
-  @Output() selectOz = new EventEmitter<String>();
+  @Output() selectOz = new EventEmitter<string>();
 
   selectedOrg!: string
   typesArr: Types[] = [];
