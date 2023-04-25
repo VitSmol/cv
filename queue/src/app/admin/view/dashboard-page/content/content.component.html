@@ -68,7 +68,7 @@
   </nav> -->
   <div class="content">
     <div class="container-fluid">
-      <div class="row">
+      <div class="row statistic--container">
         <div class="col-lg-3 col-md-6 col-sm-6">
           <div class="card card-stats">
             <div class="card-header card-header-warning card-header-icon">
@@ -137,7 +137,7 @@
           </div>
         </div>
       </div>
-      <div class="col-12">
+      <div class="col table__col">
         <div class="card">
           <div class="card-header card-header-warning">
             <h4 class="card-title">Список пациентов</h4>
@@ -283,11 +283,11 @@
                 </td>
               </ng-container>
 
-              <tr mat-header-row *matHeaderRowDef="displayedColumns" class="text-warning "></tr>
+              <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true" class="text-warning" ></tr>
               <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="pointer"></tr>
             </table>
 
-            <mat-paginator [pageSize]="5" [pageSizeOptions]="[5,10,50,100]" showFirstLastButtons=""></mat-paginator>
+            <mat-paginator [pageSize]="20" [pageSizeOptions]="[5,10,20,50,100]" showFirstLastButtons=""></mat-paginator>
 
           </div>
           <div *ngIf="patientsArr && patientsArr.length === 0">

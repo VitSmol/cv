@@ -21,7 +21,7 @@
       </mat-form-field>
 
       <mat-form-field class="input-container">
-        <mat-label>Для выбора даты нажмите на иконку календаря</mat-label>
+        <mat-label>Дата постановки на учет (для изменения даты нажмите на иконку календаря)</mat-label>
         <mat-datepicker-toggle matIconPrefix [for]="dp"></mat-datepicker-toggle>
         <mat-datepicker #dp disabled="false"></mat-datepicker>
         <input matInput [matDatepicker]="dp" formControlName="date" [max]="this.getMaxDate(this.date)">
@@ -48,13 +48,12 @@
           <input class="form-control" type="text" name="address" formControlName="address" matInput>
       </mat-form-field>
 
-      <div class="input-container">
+      <mat-radio-group formControlName="sex" class="input-container">
         <mat-label>{{ ColumnsNames.sex }}</mat-label>
-        <div class="col-md-6">
-          Мужской <input type="radio" name="sex" formControlName="sex" value="м">
-          Женский <input type="radio" name="sex" formControlName="sex" value="ж">
-        </div>
-      </div>
+          <mat-radio-button value="м" matInput>Мужской</mat-radio-button>
+          <mat-radio-button value="ж" matInput>Женский</mat-radio-button>
+      </mat-radio-group>
+
 
       <div class="input-container">
         <mat-label>{{ ColumnsNames.birthday }}</mat-label>
@@ -77,33 +76,25 @@
         </div>
       </div>
 
-      <div class="input-container">
+      <mat-form-field class="input-container">
         <mat-label>{{ ColumnsNames.diag }}</mat-label>
-        <div class="col-md-6">
-          <input class="form-control" type="text" name="diag" formControlName="diag">
-        </div>
-      </div>
+          <input matInput  class="form-control" type="text" name="diag" formControlName="diag">
+      </mat-form-field>
 
-      <div class="input-container">
+      <mat-form-field class="input-container">
         <mat-label>{{ ColumnsNames.side }}</mat-label>
-        <div class="col-md-6">
-          <input class="form-control" type="text" name="side" formControlName="side">
-        </div>
-      </div>
+          <input matInput  class="form-control" type="text" name="side" formControlName="side">
+      </mat-form-field>
 
-      <div class="input-container">
+      <mat-form-field class="input-container">
         <mat-label>{{ ColumnsNames.group }}</mat-label>
-        <div class="col-md-6">
-          <input class="form-control" type="text" name="invalidgroup" formControlName="invalidgroup">
-        </div>
-      </div>
+          <input matInput class="form-control" type="text" name="invalidgroup" formControlName="invalidgroup">
+      </mat-form-field>
 
-      <div class="input-container">
+      <mat-form-field class="input-container">
         <mat-label>{{ ColumnsNames.note }}</mat-label>
-        <div class="col-md-6">
-          <input class="form-control" type="text" name="info" formControlName="info">
-        </div>
-      </div>
+          <input matInput  class="form-control" type="text" name="info" formControlName="info">
+      </mat-form-field>
 
       <div class="input-container">
         <mat-label>{{ ColumnsNames.type }}</mat-label>
@@ -119,7 +110,7 @@
         <mat-label>{{ ColumnsNames.org }}</mat-label>
         <div class="col-md-6">
           <select class="form-select select" name="org" formControlName="org">
-            Выберите тип протезирования:
+            Организация здравоохранения:
             <option *ngFor="let item of orgs" [value]="item">{{item}}</option>
           </select>
         </div>
