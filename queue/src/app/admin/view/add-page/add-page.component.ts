@@ -133,6 +133,8 @@ export class AddPageComponent {
         const ws: XLSX.WorkSheet = workBook.Sheets[sheet]; //! лист Excel
         for (let key in ws) {
           let dateArray  = ws[key].w;
+          console.log(dateArray);
+
           try {
             if(dateArray.match(/\d{1,2}\.\d{1,2}\.\d{1,4}/g) && !key.includes('J') && !key.includes('K') && !key.includes('C')) {
               dateArray = dateArray.split('.');
@@ -140,7 +142,7 @@ export class AddPageComponent {
               ws[key].v = date
             } else if (dateArray.match(/\d{1,2}\/\d{1,2}\/\d{1,4}/g)) {
               dateArray = dateArray.split('/');
-              if (+dateArray[2] < 24 && +dateArray[2] > 16) {
+              if (+dateArray[2] < 26 && +dateArray[2] > 16) {
                 dateArray[2] = "20" + dateArray[2];
               } else {
                 dateArray[2] = "19" + dateArray[2];
@@ -209,35 +211,62 @@ export class AddPageComponent {
     this.readyArray = await arr.reduce((acc: any, el: any): any => {
       const patientOrg = el.org;
       const currentOZ = this.oz.find(oz => oz.orgshortname.toLocaleLowerCase() === patientOrg.toLocaleLowerCase());
+
+      //! обработка даты постановки на учет
+      let date = new Date(el[ColumnsNames.date])
+      date.setDate(date.getDate() + 1);
+
+      let birthday;
+      try {
+        if (typeof el[ColumnsNames.birthday] === 'number') {
+          birthday = el[ColumnsNames.birthday]
+        } else if (typeof el[ColumnsNames.birthday] === 'object') {
+          birthday = el[ColumnsNames.birthday].getFullYear()
+        } else {
+          birthday = 'Неизвестно'
+        }
+      } catch (error) {
+        console.log(el);
+
+      }
+
       let sex;
       if (!el[ColumnsNames.sex]) {
         sex = ''
       } else {
         sex = el[ColumnsNames.sex][0]
       }
+
       let address; //.split(' ').flat(Infinity).join(' ')
       if (!el[ColumnsNames.address]) {
         address = ''
       } else {
-        address = el[ColumnsNames.address].split(' ').flat(Infinity).join(' ')
+        address = el[ColumnsNames.address].trim().split(' ').flat(Infinity).join(' ')
       }
+
       const fio = el[ColumnsNames.fio].trim().split(' ').flat(Infinity)
       if (fio.length !== 3) {
         console.log(el);
+      }
 
+      let isOperated;
+      if (!!el.isOperated) {
+        isOperated = 1
+      } else {
+        isOperated = 0
       }
       acc.push({
         listnumber: el[ColumnsNames.number],
         address: address,
-        birthday: el[ColumnsNames.birthday],
-        date: el[ColumnsNames.date],
+        birthday: birthday,
+        date: date,
         sex: sex,
         diag: el[ColumnsNames.diag],
         side: el[ColumnsNames.side],
         invalidgroup: el[ColumnsNames.group],
         operdate: el[ColumnsNames.operDate],
         info: el.info,
-        isOperated: el.isOperated ? '1' : '0',
+        isOperated: isOperated,
         type: el.type[0].toUpperCase() + el.type.slice(1),
         lastname: fio[0],
         name: fio[1],
@@ -246,6 +275,7 @@ export class AddPageComponent {
       })
       return acc;
     }, [])
+    console.log(this.readyArray);
 
   })
   }
@@ -255,7 +285,6 @@ export class AddPageComponent {
         this.service.createPatient(el).subscribe((data: any) => {
           if (data.message === "required fields cannot be empty") {
             console.log(el);
-
           }
         })
       // console.log(`create`);

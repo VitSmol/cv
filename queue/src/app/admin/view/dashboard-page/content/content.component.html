@@ -201,7 +201,7 @@
                   {{ ColumnsNames.birthday }}
                 </th>
                 <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'" (click)="openEditPatientDialog(patient)">
-                  {{ patient.birthday | date: "dd.MM.YYYY"}}
+                  {{ patient.birthday }}
                 </td>
               </ng-container>
 
@@ -234,12 +234,12 @@
 
               <ng-container matColumnDef="isOperated">
                 <th *matHeaderCellDef mat-header-cell class="text-warning">
-                  Оперирован
+                  Оперирован (либо исключен из очереди по иной причине)
                 </th>
                 <td *matCellDef="let patient" mat-cell (click)="openEditPatientDialog(patient)">
                   <div class="form-check">
                     <label>
-                      <input type="checkbox" name="isOperated" disabled [checked]="patient.isOperated != '0'">
+                      <input type="checkbox" name="isOperated" disabled [checked]="patient.isOperated == 1">
                     </label>
                   </div>
                 </td>
@@ -250,7 +250,7 @@
                   {{ ColumnsNames.operDate }}
                 </th>
                 <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'" (click)="openEditPatientDialog(patient)">
-                  {{ patient.operdate === "0000-00-00" ? "-" : patient.operdate | date: "dd.MM.YYYY"}}
+                  {{ patient.operdate}}
                 </td>
               </ng-container>
 
