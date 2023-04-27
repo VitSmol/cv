@@ -3,12 +3,13 @@
     <h1>Add new patient</h1>
   </div>
 
-  <form [formGroup]="addForm" class="form">
+  <form [formGroup]="addForm" class="add__form">
     <div class="row">
       <div class="input-container">
         <div class="col-md-6">{{ ColumnsNames.number }}</div>
         <div class="col-md-6">
-          <input class="form-control"  type="text" name="listnumber" formControlName="listnumber">
+          <mat-label>Номер ПП</mat-label>
+          <input class="form-control" matInput  type="text" name="listnumber" formControlName="listnumber">
         </div>
       </div>
       <div class="input-container">

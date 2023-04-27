@@ -1,128 +1,159 @@
-<div class="container">
+<!-- <div class="container"> -->
 
-  <mat-dialog-content>
-    <div>
-      <h1 mat-dialog-title>Редактировать данные</h1>
+<!-- <div> -->
+<h1 mat-dialog-title>Редактировать данные</h1>
+<!-- </div> -->
+<mat-dialog-content class="dialog__content">
+
+  <form [formGroup]="addForm" class="add__form">
+
+    <mat-form-field>
+      <mat-label>{{ ColumnsNames.number }}</mat-label>
+      <input matInput placeholder="Номер листка ожидания" type="text" name="listnumber" formControlName="listnumber"
+        [(ngModel)]="addForm.value.listnumber" required>
+      <button *ngIf="addForm.value.listnumber" matSuffix mat-icon-button aria-label="Clear"
+        (click)="addForm.value.listnumber=''">
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-error *ngIf="addForm.get('listnumber')?.errors?.['required']">Поле обязательно для заполнения</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Дата постановки на учет (для изменения даты нажмите на иконку календаря)</mat-label>
+      <mat-datepicker-toggle matIconPrefix [for]="dp"></mat-datepicker-toggle>
+      <mat-datepicker touchUi #dp disabled="false"></mat-datepicker>
+      <input matInput [matDatepicker]="dp" formControlName="date" [max]="this.getMaxDate(this.date)" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Фамилия</mat-label>
+      <input type="text" name="lastname" formControlName="lastname" matInput required
+        [(ngModel)]="addForm.value.lastname">
+      <button *ngIf="addForm.value.lastname" matSuffix mat-icon-button aria-label="Clear"
+        (click)="addForm.value.lastname=''">
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-error *ngIf="addForm.get('lastname')?.errors?.['required']">Поле обязательно для заполнения</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Имя</mat-label>
+      <input type="text" name="name" formControlName="name" matInput required [(ngModel)]="addForm.value.name">
+      <button *ngIf="addForm.value.name" matSuffix mat-icon-button aria-label="Clear" (click)="addForm.value.name=''">
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-error *ngIf="addForm.get('name')?.errors?.['required']">Поле обязательно для заполнения</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Отчество</mat-label>
+      <input type="text" name="fathername" formControlName="fathername" matInput
+        [(ngModel)]="addForm.value.fathername">
+      <button *ngIf="addForm.value.fathername" matSuffix mat-icon-button aria-label="Clear"
+        (click)="addForm.value.fathername=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>{{ ColumnsNames.address }}</mat-label>
+      <input type="text" name="address" formControlName="address" matInput
+        [(ngModel)]="addForm.value.address">
+      <button *ngIf="addForm.value.address" matSuffix mat-icon-button aria-label="Clear"
+        (click)="addForm.value.address=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+
+    <mat-radio-group formControlName="sex">
+      <mat-label>{{ ColumnsNames.sex }}</mat-label>
+      <mat-radio-button id="radio1" value="м" matInput>Мужской</mat-radio-button>
+      <mat-radio-button id="radio2" value="ж" matInput>Женский</mat-radio-button>
+    </mat-radio-group>
+
+
+    <mat-form-field>
+      <mat-label>Год рождения</mat-label>
+      <input matInput type="number" name="birthday" formControlName="birthday">
+    </mat-form-field>
+
+
+    <div class="check">
+      Прооперирован
+      <input type="checkbox" name="isOperated" [checked]="this.patient_isOperated" (change)="checkbox($event)">
     </div>
 
-    <mat-form [formGroup]="addForm" class="form" appearance="fill">
-      <!-- <div class="row"> -->
-      <div class="input-container">
-        <div class="col-md-12">
-          <input matInput placeholder="ID" class="form-control" type="text" formControlName="id" style="display: none">
-        </div>
-      </div>
+    <mat-form-field>
+      <mat-label>Информация об оперативном вмешательстве</mat-label>
+      <input type="text" matInput name="operDate" formControlName="operdate"
+        [(ngModel)]="addForm.value.operdate">
+      <button *ngIf="addForm.value.operdate" matSuffix mat-icon-button aria-label="Clear"
+        (click)="addForm.value.operdate=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
 
-      <mat-form-field class="input-container">
-        <mat-label>{{ ColumnsNames.number }}</mat-label>
-        <input matInput class="form-control" placeholder="Номер листка ожидания" type="text" name="listnumber"
-          formControlName="listnumber">
-        <mat-error *ngIf="addForm.get('listnumber')?.errors?.['required']">Поле обязательно для заполнения</mat-error>
-      </mat-form-field>
+    <mat-form-field>
+      <mat-label>{{ ColumnsNames.diag }}</mat-label>
+      <input matInput type="text" name="diag" formControlName="diag"
+        [(ngModel)]="addForm.value.diag">
+      <button *ngIf="addForm.value.diag" matSuffix mat-icon-button aria-label="Clear" (click)="addForm.value.diag=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
 
-      <mat-form-field class="input-container">
-        <mat-label>Дата постановки на учет (для изменения даты нажмите на иконку календаря)</mat-label>
-        <mat-datepicker-toggle matIconPrefix [for]="dp"></mat-datepicker-toggle>
-        <mat-datepicker #dp disabled="false"></mat-datepicker>
-        <input matInput [matDatepicker]="dp" formControlName="date" [max]="this.getMaxDate(this.date)">
-      </mat-form-field>
+    <mat-form-field>
+      <mat-label>{{ ColumnsNames.side }}</mat-label>
+      <input matInput type="text" name="side" formControlName="side"
+        [(ngModel)]="addForm.value.side">
+      <button *ngIf="addForm.value.side" matSuffix mat-icon-button aria-label="Clear" (click)="addForm.value.side=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
 
-      <mat-form-field class="input-container">
-        <mat-label>Фамилия</mat-label>
-        <input class="form-control" type="text" name="lastname" formControlName="lastname" matInput>
-        <mat-error *ngIf="addForm.get('lastname')?.errors?.['required']">Поле обязательно для заполнения</mat-error>
-      </mat-form-field>
+    <mat-form-field>
+      <mat-label>{{ ColumnsNames.group }}</mat-label>
+      <input matInput type="text" name="invalidgroup" formControlName="invalidgroup"
+        [(ngModel)]="addForm.value.invalidgroup">
+      <button *ngIf="addForm.value.invalidgroup" matSuffix mat-icon-button aria-label="Clear"
+        (click)="addForm.value.invalidgroup=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
 
-      <mat-form-field class="input-container">
-        <mat-label>Имя</mat-label>
-          <input class="form-control" type="text" name="name" formControlName="name" matInput>
-      </mat-form-field>
+    <mat-form-field>
+      <mat-label>{{ ColumnsNames.note }}</mat-label>
+      <input matInput type="text" name="info" formControlName="info"
+        [(ngModel)]="addForm.value.info">
+      <button *ngIf="addForm.value.info" matSuffix mat-icon-button aria-label="Clear" (click)="addForm.value.info=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
 
-      <mat-form-field class="input-container">
-        <mat-label>Отчество</mat-label>
-          <input class="form-control" type="text" name="fathername" formControlName="fathername" matInput>
-      </mat-form-field>
+    <mat-form-field>
+      <mat-label>{{ ColumnsNames.type }}</mat-label>
+      <mat-select name="type" formControlName="type">
+        <mat-option *ngFor="let item of types" [value]="item">{{item}}</mat-option>
+      </mat-select>
+    </mat-form-field>
 
-      <mat-form-field class="input-container">
-        <mat-label>{{ ColumnsNames.address }}</mat-label>
-          <input class="form-control" type="text" name="address" formControlName="address" matInput>
-      </mat-form-field>
+    <mat-form-field>
+      <mat-label>{{ ColumnsNames.org }}</mat-label>
+      <mat-select name="org" formControlName="org">
+        <mat-option *ngFor="let item of orgs" [value]="item">{{item}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
 
-      <mat-radio-group formControlName="sex" class="input-container">
-        <mat-label>{{ ColumnsNames.sex }}</mat-label>
-          <mat-radio-button value="м" matInput>Мужской</mat-radio-button>
-          <mat-radio-button value="ж" matInput>Женский</mat-radio-button>
-      </mat-radio-group>
+<mat-dialog-actions>
+  <div class="row">
+    <div class="col-md-12">
+      <button type="submit" class="btn btn-success" (click)="onEdit()" [disabled]="!this.addForm.valid">Изменить
+        данные</button>
+    </div>
+  </div>
 
-
-      <div class="input-container">
-        <mat-label>{{ ColumnsNames.birthday }}</mat-label>
-        <div class="col-md-6">
-          <input class="form-control" type="date" name="birthday" formControlName="birthday">
-        </div>
-      </div>
-
-      <div class="input-container">
-        <mat-label>Прооперирован</mat-label>
-        <div class="col-md-6">
-          <input type="checkbox" name="isOperated" [checked]="this.patient_isOperated" (change)="checkbox($event)">
-        </div>
-      </div>
-
-      <div class="input-container">
-        <mat-label>{{ ColumnsNames.operDate }}</mat-label>
-        <div class="col-md-6">
-          <input class="form-control" type="date" name="operDate" formControlName="operdate">
-        </div>
-      </div>
-
-      <mat-form-field class="input-container">
-        <mat-label>{{ ColumnsNames.diag }}</mat-label>
-          <input matInput  class="form-control" type="text" name="diag" formControlName="diag">
-      </mat-form-field>
-
-      <mat-form-field class="input-container">
-        <mat-label>{{ ColumnsNames.side }}</mat-label>
-          <input matInput  class="form-control" type="text" name="side" formControlName="side">
-      </mat-form-field>
-
-      <mat-form-field class="input-container">
-        <mat-label>{{ ColumnsNames.group }}</mat-label>
-          <input matInput class="form-control" type="text" name="invalidgroup" formControlName="invalidgroup">
-      </mat-form-field>
-
-      <mat-form-field class="input-container">
-        <mat-label>{{ ColumnsNames.note }}</mat-label>
-          <input matInput  class="form-control" type="text" name="info" formControlName="info">
-      </mat-form-field>
-
-      <div class="input-container">
-        <mat-label>{{ ColumnsNames.type }}</mat-label>
-        <div class="col-md-6">
-          <select class="form-select" name="type" formControlName="type">
-            Выберите тип протезирования:
-            <option *ngFor="let item of types" [value]="item">{{item}}</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="input-container">
-        <mat-label>{{ ColumnsNames.org }}</mat-label>
-        <div class="col-md-6">
-          <select class="form-select select" name="org" formControlName="org">
-            Организация здравоохранения:
-            <option *ngFor="let item of orgs" [value]="item">{{item}}</option>
-          </select>
-        </div>
-      </div>
-      <!-- </div> -->
-
-      <div class="row">
-        <div class="col-md-12">
-          <button type="submit" class="btn btn-success" (click)="onEdit()" [disabled]="!this.addForm.valid">Изменить
-            данные</button>
-        </div>
-      </div>
-    </mat-form>
-  </mat-dialog-content>
-</div>
+</mat-dialog-actions>
+<!-- </div> -->

@@ -70,6 +70,7 @@ export class EditPageComponent implements OnInit {
         console.log(this.patient);
         this.patient.isOperated == '0' ? this.patient_isOperated = false : this.patient_isOperated = true;
         this.addForm.patchValue(this.patient);
+        // this.addForm.value.org = this.patient.org
       })
     }
   }

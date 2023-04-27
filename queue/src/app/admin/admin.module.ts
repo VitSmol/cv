@@ -24,6 +24,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatDialogModule,
     MatDatepickerModule,
     MatRadioModule,
+    MatCheckboxModule,
+    MatSelectModule,
     RouterModule.forChild([
       {
         path: '', component: AdminLayoutComponent, children: [
@@ -69,7 +73,7 @@ import {MatRadioModule} from '@angular/material/radio';
   ],
   exports: [],
   providers: [
-    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } }
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } }
   ],
   entryComponents: [
     EditPageComponent,

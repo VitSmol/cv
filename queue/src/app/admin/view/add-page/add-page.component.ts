@@ -283,9 +283,7 @@ export class AddPageComponent {
     console.log(this.readyArray);
     this.readyArray.forEach((el: Patient) => {
         this.service.createPatient(el).subscribe((data: any) => {
-          if (data.message === "required fields cannot be empty") {
-            console.log(el);
-          }
+
         })
       // console.log(`create`);
     })
