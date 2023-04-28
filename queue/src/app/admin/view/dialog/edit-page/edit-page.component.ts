@@ -56,21 +56,15 @@ export class EditPageComponent implements OnInit {
   }
 
   public dialogTitle: string = '';
-  // public patient: Patient
 
   ngOnInit(): void {
     this.patient = this.data[0];
     this.dialogTitle = this.data[1];
 
-    this.patient_id = this.patient.id
-    if (+this.patient_id > 0) {
+    if (+this.patient.id > 0) {
       this.patientService.getPatient(+this.patient.id).subscribe(response => {
-        // console.log(response);
         this.patient = response as Patient;
-        console.log(this.patient);
-        this.patient.isOperated == '0' ? this.patient_isOperated = false : this.patient_isOperated = true;
         this.addForm.patchValue(this.patient);
-        // this.addForm.value.org = this.patient.org
       })
     }
   }

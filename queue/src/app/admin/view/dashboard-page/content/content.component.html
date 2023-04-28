@@ -144,7 +144,8 @@
           </div>
           <div class="card-body table-responsive" *ngIf="patientsArr && patientsArr.length > 0">
             <!-- matSortActive - колонка для сортировки по умолчанию, matSortDirection - по возрастанию -->
-            <table [dataSource]="dataSource" mat-table cellpadding="13" matSort matSortActive="date" matSortDirection="asc" matSortDisableClear>
+            <table [dataSource]="dataSource" mat-table cellpadding="13" matSort matSortActive="date"
+              matSortDirection="asc" matSortDisableClear>
               <colgroup>
                 <col class="col-listnumber">
                 <col class="col-name">
@@ -173,7 +174,8 @@
                 <th *matHeaderCellDef mat-header-cell class="text-warning" mat-sort-header>
                   {{ ColumnsNames.fio }}
                 </th>
-                <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'" (click)="openEditPatientDialog(patient)">
+                <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'"
+                  (click)="openEditPatientDialog(patient)">
                   {{ patient.lastname + ' ' + patient.name + ' ' + patient.fathername }}
                 </td>
               </ng-container>
@@ -182,7 +184,8 @@
                 <th *matHeaderCellDef mat-header-cell class="text-warning">
                   {{ ColumnsNames.address }}
                 </th>
-                <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'" (click)="openEditPatientDialog(patient)">
+                <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'"
+                  (click)="openEditPatientDialog(patient)">
                   {{ patient.address }}
                 </td>
               </ng-container>
@@ -191,7 +194,8 @@
                 <th *matHeaderCellDef mat-header-cell class="text-warning" mat-sort-header>
                   {{ ColumnsNames.sex }}
                 </th>
-                <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'" (click)="openEditPatientDialog(patient)">
+                <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'"
+                  (click)="openEditPatientDialog(patient)">
                   {{ patient.sex }}
                 </td>
               </ng-container>
@@ -200,16 +204,18 @@
                 <th *matHeaderCellDef mat-header-cell class="text-warning">
                   {{ ColumnsNames.birthday }}
                 </th>
-                <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'" (click)="openEditPatientDialog(patient)">
+                <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'"
+                  (click)="openEditPatientDialog(patient)">
                   {{ patient.birthday }}
                 </td>
               </ng-container>
 
-              <ng-container matColumnDef="date" >
-                <th *matHeaderCellDef mat-header-cell class="text-warning"  mat-sort-header>
+              <ng-container matColumnDef="date">
+                <th *matHeaderCellDef mat-header-cell class="text-warning" mat-sort-header>
                   {{ ColumnsNames.date }}
                 </th>
-                <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'" (click)="openEditPatientDialog(patient)">
+                <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'"
+                  (click)="openEditPatientDialog(patient)">
                   {{ patient.date | date: "dd.MM.YYYY"}}
                 </td>
               </ng-container>
@@ -218,7 +224,8 @@
                 <th *matHeaderCellDef mat-header-cell class="text-warning">
                   {{ ColumnsNames.diag }}
                 </th>
-                <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'" (click)="openEditPatientDialog(patient)">
+                <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'"
+                  (click)="openEditPatientDialog(patient)">
                   {{ patient.diag }}
                 </td>
               </ng-container>
@@ -227,7 +234,8 @@
                 <th *matHeaderCellDef mat-header-cell class="text-warning">
                   {{ ColumnsNames.side }}
                 </th>
-                <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'" (click)="openEditPatientDialog(patient)">
+                <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'"
+                  (click)="openEditPatientDialog(patient)">
                   {{ patient.side }}
                 </td>
               </ng-container>
@@ -249,7 +257,8 @@
                 <th *matHeaderCellDef mat-header-cell class="text-warning">
                   {{ ColumnsNames.operDate }}
                 </th>
-                <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'" (click)="openEditPatientDialog(patient)">
+                <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'"
+                  (click)="openEditPatientDialog(patient)">
                   {{ patient.operdate}}
                 </td>
               </ng-container>
@@ -259,7 +268,8 @@
                 <th *matHeaderCellDef mat-header-cell class="text-warning">
                   {{ ColumnsNames.note }}
                 </th>
-                <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'" (click)="openEditPatientDialog(patient)">
+                <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'"
+                  (click)="openEditPatientDialog(patient)">
                   {{ patient.info }}
                 </td>
               </ng-container>
@@ -269,7 +279,8 @@
                 <th *matHeaderCellDef mat-header-cell class="text-warning" mat-sort-header>
                   {{ ColumnsNames.type }}
                 </th>
-                <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'" (click)="openEditPatientDialog(patient)">
+                <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'"
+                  (click)="openEditPatientDialog(patient)">
                   {{ patient.type }}
                 </td>
               </ng-container>
@@ -278,12 +289,13 @@
                 <th *matHeaderCellDef mat-header-cell class="text-warning">
                   {{ ColumnsNames.org }}
                 </th>
-                <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'" (click)="openEditPatientDialog(patient)">
+                <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'"
+                  (click)="openEditPatientDialog(patient)">
                   {{ patient.org }}
                 </td>
               </ng-container>
 
-              <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true" class="text-warning" ></tr>
+              <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true" class="text-warning"></tr>
               <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="pointer"></tr>
             </table>
 

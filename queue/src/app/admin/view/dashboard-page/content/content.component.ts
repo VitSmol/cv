@@ -63,7 +63,7 @@ export class ContentComponent implements OnInit {
     const dialogRef = this.dialog.open(EditPageComponent, {
       data: [patient, "Редактирование пациента"],
       autoFocus: false,
-      width: '50vw',
+      width: '70vw',
       height: '83vh'
     });
 

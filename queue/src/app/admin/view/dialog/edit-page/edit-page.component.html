@@ -6,7 +6,7 @@
 <mat-dialog-content class="dialog__content">
 
   <form [formGroup]="addForm" class="add__form">
-
+<fieldset>
     <mat-form-field>
       <mat-label>{{ ColumnsNames.number }}</mat-label>
       <input matInput placeholder="Номер листка ожидания" type="text" name="listnumber" formControlName="listnumber"
@@ -65,6 +65,10 @@
       </button>
     </mat-form-field>
 
+    <mat-form-field>
+      <mat-label>Год рождения</mat-label>
+      <input matInput type="number" name="birthday" formControlName="birthday">
+    </mat-form-field>
 
     <mat-radio-group formControlName="sex">
       <mat-label>{{ ColumnsNames.sex }}</mat-label>
@@ -72,17 +76,17 @@
       <mat-radio-button id="radio2" value="ж" matInput>Женский</mat-radio-button>
     </mat-radio-group>
 
-
-    <mat-form-field>
-      <mat-label>Год рождения</mat-label>
-      <input matInput type="number" name="birthday" formControlName="birthday">
-    </mat-form-field>
-
-
     <div class="check">
-      Прооперирован
-      <input type="checkbox" name="isOperated" [checked]="this.patient_isOperated" (change)="checkbox($event)">
+      <label for="isOperated">
+        Прооперирован (либо исключен из очереди по иным причинам)
+      </label>
+        <input type="checkbox"  id="isOperated" name="isOperated" [checked]="patient.isOperated !== '0'" (change)="checkbox($event)">
     </div>
+
+  </fieldset>
+
+  <fieldset>
+
 
     <mat-form-field>
       <mat-label>Информация об оперативном вмешательстве</mat-label>
@@ -144,6 +148,8 @@
         <mat-option *ngFor="let item of orgs" [value]="item">{{item}}</mat-option>
       </mat-select>
     </mat-form-field>
+  </fieldset>
+
   </form>
 </mat-dialog-content>
 
