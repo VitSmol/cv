@@ -36,7 +36,7 @@ export class EditPageComponent implements OnInit {
     this.addForm = this.formBuilder.group({
       id: [],
       listnumber: ['', Validators.required],
-      date: [this.getMaxDate(this.date), Validators.required],
+      date: ['', Validators.required],
       lastname: ['', Validators.required],
       name: ['', Validators.required],
       fathername: [''],
@@ -69,6 +69,7 @@ export class EditPageComponent implements OnInit {
     }
   }
 
+  //! выбирает дату не более текущей для поля date (дата постановки на учет)
   getMaxDate(date: Date): string {
     const check = (val: number): string => val < 10 ? '0' + val : val as unknown as string;
     let day = check(date.getDate())
@@ -79,9 +80,8 @@ export class EditPageComponent implements OnInit {
 
   onEdit() {
     this.patient = this.addForm.value;
-    this.patient_isOperated ? this.patient.isOperated = "1" : this.patient.isOperated = "0"
+    console.log(this.patient);
     this.patientService.updatePatient(this.patient).subscribe((data: any) => {
-      // this.router.navigate(['admin', 'dashboard'])
       this.dialogRef.close()
     },
       err => {
@@ -90,11 +90,6 @@ export class EditPageComponent implements OnInit {
   }
 
   checkbox(e: any) {
-    if (e.target.checked) {
-      this.patient_isOperated = true;
-    } else {
-      this.patient_isOperated = false;
-    }
-    console.log(this.patient);
+    this.addForm.value.isOperated = e.target.checked ? '1' : '0'
   }
 }
