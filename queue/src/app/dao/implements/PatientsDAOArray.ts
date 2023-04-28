@@ -14,6 +14,10 @@ export class PatientDAOArray implements PatientsDAO {
     return this.http.get<Patient[]>(environment.baseUrl + 'view.php');
   }
 
+  update(patient: Patient): Observable<Patient> {
+     return this.http.put<Patient>(environment.baseUrl + 'update.php', patient)
+  }
+
   add(patient: Patient): Observable<Patient> {
     throw new Error("Method not implemented.");
   }
@@ -21,9 +25,6 @@ export class PatientDAOArray implements PatientsDAO {
     throw new Error("Method not implemented.");
   }
   delete(id: string): Observable<Patient> {
-    throw new Error("Method not implemented.");
-  }
-  update(id: string): Observable<Patient> {
     throw new Error("Method not implemented.");
   }
 

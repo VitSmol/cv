@@ -84,17 +84,20 @@ export class EditPageComponent implements OnInit {
     for (let [key, value] of Object.entries(this.patient)) {
       typeof value === 'string' ? this.patient[key as keyof Patient] = value.trim() : null
     }
-    console.log(this.patient);
+    this.dialogRef.close(this.patient)
 
-    return
-    this.patientService.updatePatient(this.patient).subscribe((data: any) => {
-      this.dialogRef.close()
-    },
-      err => {
-        console.log(err)
-      })
+    //TODO Обновление пациента прямо из окна (раскомментировать в экстренной ситуации)
+    // this.patientService.updatePatient(this.patient).subscribe((data: any) => {
+    //   this.dialogRef.close(this.patient)
+    // },
+    //   err => {
+    //     console.log(err)
+    //   })
   }
 
+  onCancel() {
+    this.dialogRef.close(null)
+  }
   checkbox(e: any) {
     this.addForm.value.isOperated = e.target.checked ? '1' : '0'
   }

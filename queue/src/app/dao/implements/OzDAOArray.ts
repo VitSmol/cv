@@ -31,7 +31,7 @@ export class OzDAOArray implements OzDAO {
     throw new Error("Method not implemented.");
   }
 
-  update(id: string): Observable<Oz> {
+  update(oz: Oz): Observable<Oz> {
     throw new Error("Method not implemented.");
   }
 

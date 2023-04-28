@@ -24,17 +24,25 @@ export class DashboardPageComponent implements OnInit {
     this.service.getOz().subscribe((data: Oz[]) => this.Oz = data);
   }
 
+  filterByOz (patients: Patient[], oz:string): Patient[] {
+    return patients.filter((p: Patient) => {
+      return p.org === oz;
+    })
+  }
 
   onSelectOz(e: string) {
     this.selectedOz = e
     this.service.getPatients().subscribe((data: Patient[]) => {
-      this.patientsArr = data.filter((p: Patient) =>{
-        return p.org === this.selectedOz
-      });
+      this.patientsArr = this.filterByOz(data, this.selectedOz)
     })
   }
 
-  update(e: Patient) {
+  updPatient(patient: Patient) {
+    this.service.updatePatient(patient).subscribe(() => {
+      this.service.getPatients().subscribe((data: Patient[]) => {
+        this.patientsArr = this.filterByOz(data, this.selectedOz)
+      })
+    })
     // console.log(e);
 
   }

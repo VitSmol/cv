@@ -5,6 +5,9 @@
     ></app-menu>
   <app-content
     [patientsArr]="patientsArr"
-    (updatePatient)="update($event)"
-  ></app-content>
+    (updatePatient)="updPatient($event)"
+  >
+<!-- ! updatePatient - переменная из компонента content -->
+<!-- ! updPatient - метод из класса dashboard -->
+</app-content>
 </div>

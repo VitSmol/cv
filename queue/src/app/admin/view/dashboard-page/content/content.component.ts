@@ -67,10 +67,12 @@ export class ContentComponent implements OnInit {
       height: '85vh'
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      // обработка результата
-      console.log(result);
-
+    dialogRef.afterClosed().subscribe((result: Patient) => {
+      //* обработка результата Передаем измененного пациента через Output в dashboard
+      if (result as Patient) {
+        this.updatePatient.emit(result);
+        return
+      }
     });
   }
 }

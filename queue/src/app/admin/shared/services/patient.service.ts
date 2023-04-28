@@ -34,6 +34,10 @@ export class PatientService {
     return this.ozDAO.getAll()
   }
 
+  //* Обновление данных пациента в БД DAO
+  updatePatient(patient: Patient) {
+    return this.patientsDAO.update(patient); //! метод из класса PatientDAOArray
+  }
 
   //* Удаление пациента
   deletePatient(id: string) {
@@ -52,10 +56,7 @@ export class PatientService {
     return this.http.get<Patient>(this.baseUrl + 'view.php?id=' + id);
   }
 
-  //? Обновление данных пациента
-  updatePatient(patient: Patient) {
-    return this.http.put(this.baseUrl + 'update.php', patient)
-  }
+
 
 
 //* Поиск типа протезирования в БД
