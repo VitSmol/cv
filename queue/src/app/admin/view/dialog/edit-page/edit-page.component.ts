@@ -80,7 +80,13 @@ export class EditPageComponent implements OnInit {
 
   onEdit() {
     this.patient = this.addForm.value;
+    //! Цикл убирает лишние пробелы в полях
+    for (let [key, value] of Object.entries(this.patient)) {
+      typeof value === 'string' ? this.patient[key as keyof Patient] = value.trim() : null
+    }
     console.log(this.patient);
+
+    return
     this.patientService.updatePatient(this.patient).subscribe((data: any) => {
       this.dialogRef.close()
     },

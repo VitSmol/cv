@@ -64,7 +64,7 @@ export class ContentComponent implements OnInit {
       data: [patient, "Редактирование пациента"],
       autoFocus: false,
       width: '70vw',
-      height: '83vh'
+      height: '85vh'
     });
 
     dialogRef.afterClosed().subscribe((result) => {
