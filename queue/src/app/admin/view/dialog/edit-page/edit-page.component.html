@@ -41,7 +41,7 @@
           formControlName="lastname"
           required
           [(ngModel)]="addForm.value.lastname"
-          (blur)="_lastname.value.trim().length === 0 ? addForm.value.lastname = null : addForm.value.lastname = _lastname.value.trim()[0].toUpperCase() + _lastname.value.trim().slice(1)"
+          (blur)="_lastname.value.trim().length === 0 ? addForm.value.lastname = '' : addForm.value.lastname = _lastname.value.trim()[0].toUpperCase() + _lastname.value.trim().slice(1)"
           >
         <button *ngIf="addForm.value.lastname" matSuffix mat-icon-button aria-label="Clear"
           (click)="addForm.value.lastname=''">
@@ -61,7 +61,7 @@
           formControlName="name"
           required
           [(ngModel)]="addForm.value.name"
-          (blur)="_name.value.trim().length === 0 ? addForm.value.name = null : addForm.value.name = _name.value.trim()[0].toUpperCase() + _name.value.trim().slice(1)"
+          (blur)="_name.value.trim().length === 0 ? addForm.value.name = '' : addForm.value.name = _name.value.trim()[0].toUpperCase() + _name.value.trim().slice(1)"
           >
         <button *ngIf="addForm.value.name" matSuffix mat-icon-button aria-label="Clear"
           (click)="addForm.value.name=''">
@@ -80,7 +80,7 @@
           name="fathername"
           formControlName="fathername"
           [(ngModel)]="addForm.value.fathername"
-          (blur)="_fathername.value.trim().length === 0 ? addForm.value.fathername = null : addForm.value.fathername = _fathername.value.trim()[0].toUpperCase() + _fathername.value.trim().slice(1)"
+          (blur)="_fathername.value.trim().length === 0 ? addForm.value.fathername = '' : addForm.value.fathername = _fathername.value.trim()[0].toUpperCase() + _fathername.value.trim().slice(1)"
           >
         <button *ngIf="addForm.value.fathername" matSuffix mat-icon-button aria-label="Clear"
           (click)="addForm.value.fathername=''">
@@ -98,7 +98,7 @@
           formControlName="address"
           required
           [(ngModel)]="addForm.value.address"
-          (blur)="_address.value.trim().length === 0 ? addForm.value.address = null : addForm.value.address = _address.value.trim()"
+          (blur)="_address.value.trim().length === 0 ? addForm.value.address = '' : addForm.value.address = _address.value.trim()"
           >
         <button *ngIf="addForm.value.address" matSuffix mat-icon-button aria-label="Clear"
           (click)="addForm.value.address=''">
@@ -132,7 +132,7 @@
           name="operDate"
           formControlName="operdate"
           [(ngModel)]="addForm.value.operdate"
-          (blur)="_operdate.value.trim().length === 0 ? addForm.value.operdate = null : addForm.value.operdate = _operdate.value.trim()[0].toUpperCase() + _operdate.value.trim().slice(1)"
+          (blur)="_operdate.value.trim().length === 0 ? addForm.value.operdate = '' : addForm.value.operdate = _operdate.value.trim()[0].toUpperCase() + _operdate.value.trim().slice(1)"
           >
         <button *ngIf="addForm.value.operdate" matSuffix mat-icon-button aria-label="Clear"
           (click)="addForm.value.operdate=''">
@@ -150,7 +150,7 @@
           formControlName="diag"
           required=""
           [(ngModel)]="addForm.value.diag"
-          (blur)="_diag.value.trim().length === 0 ? addForm.value.diag = null : addForm.value.diag = _diag.value.trim()[0].toUpperCase() + _diag.value.trim().slice(1)"
+          (blur)="_diag.value.trim().length === 0 ? addForm.value.diag = '' : addForm.value.diag = _diag.value.trim()[0].toUpperCase() + _diag.value.trim().slice(1)"
           >
         <button *ngIf="addForm.value.diag" matSuffix mat-icon-button aria-label="Clear" (click)="addForm.value.diag=''">
           <mat-icon>close</mat-icon>
@@ -168,7 +168,7 @@
           name="side"
           formControlName="side"
           [(ngModel)]="addForm.value.side"
-          (blur)="_side.value.trim().length === 0 ? addForm.value.side = null : addForm.value.side = _side.value.trim()[0].toUpperCase() + _side.value.trim().slice(1)"
+          (blur)="_side.value.trim().length === 0 ? addForm.value.side = '' : addForm.value.side = _side.value.trim()[0].toUpperCase() + _side.value.trim().slice(1)"
           >
         <button *ngIf="addForm.value.side" matSuffix mat-icon-button aria-label="Clear" (click)="addForm.value.side=''">
           <mat-icon>close</mat-icon>
@@ -184,7 +184,7 @@
           name="invalidgroup"
           formControlName="invalidgroup"
           [(ngModel)]="addForm.value.invalidgroup"
-          (blur)="_invalidgroup.value.trim().length === 0 ? addForm.value.invalidgroup = null : addForm.value.invalidgroup = _invalidgroup.value.trim()[0].toUpperCase() + _invalidgroup.value.trim().slice(1)"
+          (blur)="_invalidgroup.value.trim().length === 0 ? addForm.value.invalidgroup = '' : addForm.value.invalidgroup = _invalidgroup.value.trim()[0].toUpperCase() + _invalidgroup.value.trim().slice(1)"
           >
         <button *ngIf="addForm.value.invalidgroup" matSuffix mat-icon-button aria-label="Clear"
           (click)="addForm.value.invalidgroup=''">
@@ -201,7 +201,7 @@
           name="info"
           formControlName="info"
           [(ngModel)]="addForm.value.info"
-          (blur)="_info.value.trim().length === 0 ? addForm.value.info = null : addForm.value.info = _info.value.trim()[0].toUpperCase() + _info.value.trim().slice(1)"
+          (blur)="_info.value.trim().length === 0 ? addForm.value.info = '' : addForm.value.info = _info.value.trim()[0].toUpperCase() + _info.value.trim().slice(1)"
           >
         <button *ngIf="addForm.value.info" matSuffix mat-icon-button aria-label="Clear" (click)="addForm.value.info=''">
           <mat-icon>close</mat-icon>

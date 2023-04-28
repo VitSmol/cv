@@ -25,9 +25,13 @@ export class DashboardPageComponent implements OnInit {
   }
 
   filterByOz (patients: Patient[], oz:string): Patient[] {
-    return patients.filter((p: Patient) => {
-      return p.org === oz;
-    })
+    if (this.selectedOz) {
+      return patients.filter((p: Patient) => {
+        return p.org === oz;
+      })
+    } else {
+      return patients
+    }
   }
 
   onSelectOz(e: string) {
