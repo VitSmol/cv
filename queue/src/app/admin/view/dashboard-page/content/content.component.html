@@ -246,7 +246,7 @@
                 </th>
                 <td *matCellDef="let patient" mat-cell (click)="openEditPatientDialog(patient)">
                   <div class="form-check">
-                    <label>
+                    <label class="checked">
                       <input type="checkbox" name="isOperated" disabled [checked]="patient.isOperated == 1">
                     </label>
                   </div>

@@ -218,12 +218,12 @@
       <mat-form-field>
         <mat-label>{{ ColumnsNames.org }}</mat-label>
         <mat-select name="org" formControlName="org">
-          <mat-option *ngFor="let item of orgs" [value]="item">{{item}}</mat-option>
+          <mat-option *ngFor="let item of orgs" [value]="item.orgname">{{item.orgname}}</mat-option>
         </mat-select>
       </mat-form-field>
 
       <div class="check">
-        <label for="isOperated">
+        <label for="isOperated" class="checked">
           Прооперирован (либо исключен из очереди по иным причинам)
         </label>
         <input type="checkbox" id="isOperated" name="isOperated" [checked]="patient.isOperated !== '0'"

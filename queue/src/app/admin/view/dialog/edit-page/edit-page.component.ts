@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import { ColumnsNames, FullName, ProstheticsType } from '../../../shared/interfaces/interfaces';
 import { PatientService } from '../../../shared/services/patient.service';
-import { Patient } from '../../../shared/interfaces/phpInterface';
+import { Oz, Patient } from '../../../shared/interfaces/phpInterface';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -21,11 +21,11 @@ export class EditPageComponent implements OnInit {
   patient_isOperated: boolean = false;
 
   types: string[] = [ProstheticsType.teks, ProstheticsType.tets];
-  orgs: string[] = [FullName.ggkb1, FullName.gokb, FullName.kalink, FullName.mozyr, FullName.rechica, FullName.svetlogorsk, FullName.zlobin];
+  orgs: Oz[] = [] //= [FullName.ggkb1, FullName.gokb, FullName.kalink, FullName.mozyr, FullName.rechica, FullName.svetlogorsk, FullName.zlobin];
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private patientService: PatientService,
+    private service: PatientService,
     private url: ActivatedRoute,
 
     public dialogRef: MatDialogRef<EditPageComponent>,
@@ -60,13 +60,15 @@ export class EditPageComponent implements OnInit {
   ngOnInit(): void {
     this.patient = this.data[0];
     this.dialogTitle = this.data[1];
-
     if (+this.patient.id > 0) {
-      this.patientService.getPatient(+this.patient.id).subscribe(response => {
+      this.service.getPatient(+this.patient.id).subscribe(response => {
         this.patient = response as Patient;
         this.addForm.patchValue(this.patient);
       })
     }
+    this.service.getOz().subscribe((data: Oz[]) => {
+      this.orgs = data
+    })
   }
 
   //! выбирает дату не более текущей для поля date (дата постановки на учет)
@@ -80,10 +82,15 @@ export class EditPageComponent implements OnInit {
 
   onEdit() {
     this.patient = this.addForm.value;
+    this.patient.isOperated = this.patient_isOperated ? '1' : '0';
     //! Цикл убирает лишние пробелы в полях
+    console.log(this.patient);
+
     for (let [key, value] of Object.entries(this.patient)) {
       typeof value === 'string' ? this.patient[key as keyof Patient] = value.trim() : null
     }
+    console.log(this.patient);
+    // return
     this.dialogRef.close(this.patient)
 
     //TODO Обновление пациента прямо из окна (раскомментировать в экстренной ситуации)
@@ -99,6 +106,8 @@ export class EditPageComponent implements OnInit {
     this.dialogRef.close(null)
   }
   checkbox(e: any) {
-    this.addForm.value.isOperated = e.target.checked ? '1' : '0'
+    this.patient_isOperated = e.target.checked ? true : false
+    console.log(this.addForm.value.isOperated);
+
   }
 }
