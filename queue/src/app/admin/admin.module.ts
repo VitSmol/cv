@@ -26,6 +26,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
+import { ConfirmComponent } from './view/dialog/confirm/confirm.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { MatSelectModule } from '@angular/material/select';
     OnceAddComponent,
     AllListComponent,
     CustomDatePipe,
-    EditPageComponent
+    EditPageComponent,
+    ConfirmComponent
   ],
   imports: [
     CommonModule,
@@ -77,6 +79,7 @@ import { MatSelectModule } from '@angular/material/select';
   ],
   entryComponents: [
     EditPageComponent,
+    ConfirmComponent
   ],
 })
 export class AdminModule { }

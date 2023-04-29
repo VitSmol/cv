@@ -26,6 +26,7 @@ export class ContentComponent implements OnInit {
   public patientsArr!: Patient[]
 
   @Output() updatePatient = new EventEmitter<Patient>();
+  @Output() deletePatient = new EventEmitter<Patient>();
 
   @Input('patientsArr')
   public set setPatients(patients: Patient[]) {
@@ -67,10 +68,14 @@ export class ContentComponent implements OnInit {
       height: '85vh'
     });
 
-    dialogRef.afterClosed().subscribe((result: Patient) => {
+    dialogRef.afterClosed().subscribe((result: any) => {
       //* обработка результата Передаем измененного пациента через Output в dashboard
-      if (result as Patient) {
-        this.updatePatient.emit(result);
+      if (result.message === 'update') {
+        this.updatePatient.emit(result.patient);
+        return
+      }
+      if (result.message === 'delete') {
+        this.deletePatient.emit(result.patient)
         return
       }
     });

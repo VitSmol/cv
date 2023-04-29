@@ -46,18 +46,19 @@ export class PatientService {
   }
 
 
-  //? Удаление пациента
+  //* Удаление пациента из БД DAO
   deletePatient(id: string) {
-    return this.http.delete(this.baseUrl + 'delete.php?id=' + id)
+    return this.patientsDAO.delete(id);
+    // return this.http.delete(this.baseUrl + 'delete.php?id=' + id)
   }
 
-  //? Создание паиента
+//* Добавление пациента в БД DAO
   createPatient(patient: Patient) {
-    return this.http.post(this.baseUrl + 'insert.php', patient);
+    return this.patientsDAO.add(patient)
+    // return this.http.post(this.baseUrl + 'insert.php', patient);
   }
 
   //? Методы для редактирования данных о пациенте
-
   getPatient(id: number) {
     return this.http.get<Patient>(this.baseUrl + 'view.php?id=' + id);
   }

@@ -5,6 +5,7 @@ import { ColumnsNames, FullName, ProstheticsType } from '../../../shared/interfa
 import { PatientService } from '../../../shared/services/patient.service';
 import { Oz, Patient, Types } from '../../../shared/interfaces/phpInterface';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ConfirmComponent } from '../confirm/confirm.component';
 
 @Component({
   selector: 'app-edit-page',
@@ -83,18 +84,47 @@ export class EditPageComponent implements OnInit {
     this.patient = this.addForm.value;
     this.patient.isOperated = this.patient_isOperated ? '1' : '0';
     //! Цикл убирает лишние пробелы в полях
-    console.log(this.patient);
-
     for (let [key, value] of Object.entries(this.patient)) {
       typeof value === 'string' ? this.patient[key as keyof Patient] = value.trim() : null
     }
-    this.dialogRef.close(this.patient)
+
+    const dialogRef = this.dialog.open(ConfirmComponent, {
+      data: {
+        dialogTitle: 'Изменение данных пользователя',
+        message: `Вы действительно хотите изменить данные о пациенте ${this.patient.lastname} ${this.patient.name} ${this.patient.fathername}?`
+      },
+      autoFocus: false
+    })
+    dialogRef.afterClosed().subscribe((result: boolean) => {
+      if (result) this.dialogRef.close({
+        message: 'update',
+        patient: this.patient
+      })
+    })
+
   }
 
   onCancel() {
     this.dialogRef.close(null)
   }
 
+  onDelete() {
+    const dialogRef = this.dialog.open(ConfirmComponent, {
+      data: {
+        dialogTitle: 'Удалить пользователя',
+        message: `Вы действительно хотите удалить данные о пациенте ${this.patient.lastname} ${this.patient.name} ${this.patient.fathername}?`
+      },
+      autoFocus: false
+    })
+    dialogRef.afterClosed().subscribe((result: boolean) => {
+      if (result) {
+        this.dialogRef.close({
+          message: 'delete',
+          patient: this.patient
+        })
+      }
+    })
+  }
   checkbox(e: Event) {
     this.patient_isOperated = (e.target as HTMLInputElement).checked ? true : false
   }

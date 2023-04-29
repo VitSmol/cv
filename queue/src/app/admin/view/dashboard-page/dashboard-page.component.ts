@@ -47,7 +47,13 @@ export class DashboardPageComponent implements OnInit {
         this.patientsArr = this.filterByOz(data, this.selectedOz)
       })
     })
-    // console.log(e);
-
+  }
+  delPatient(patient: Patient) {
+    this.service.deletePatient(patient.id).subscribe(()=> {
+      this.service.getPatients().subscribe((data: Patient[]) => {
+        this.patientsArr = this.filterByOz(data, this.selectedOz)
+      })
+    })
+    console.log(patient);
   }
 }
