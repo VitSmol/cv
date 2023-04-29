@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { Oz, Patient, Types } from 'src/app/admin/shared/interfaces/phpInterface';
 import { OzDAOArray } from 'src/app/dao/implements/OzDAOArray';
 import { PatientDAOArray } from 'src/app/dao/implements/PatientsDAOArray';
+import { TypesDAOArray } from 'src/app/dao/implements/TypesDAOArray';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,8 @@ export class PatientService {
 
   baseUrl = "http://localhost/php/";
 
-  patientsSubject = new BehaviorSubject<Patient[]>([]);
-  typeSubject = new Subject();
+  // patientsSubject = new BehaviorSubject<Patient[]>([]);
+  // typeSubject = new Subject();
 
   constructor(
     private http: HttpClient
@@ -22,7 +23,7 @@ export class PatientService {
 
   private patientsDAO = new PatientDAOArray(this.http)
   private ozDAO = new OzDAOArray(this.http)
-
+  private typesDAO = new TypesDAOArray(this.http)
 
   //* Рабочий метод DAO
   getPatients(): Observable<Patient[]> {
@@ -34,23 +35,28 @@ export class PatientService {
     return this.ozDAO.getAll()
   }
 
+  //* Поиск типа протезирования в БД DAO
+  getTypes(): Observable<Types[]> {
+    return this.typesDAO.getAll()
+  }
+
   //* Обновление данных пациента в БД DAO
   updatePatient(patient: Patient) {
     return this.patientsDAO.update(patient); //! метод из класса PatientDAOArray
   }
 
-  //* Удаление пациента
+
+  //? Удаление пациента
   deletePatient(id: string) {
     return this.http.delete(this.baseUrl + 'delete.php?id=' + id)
   }
 
-  //* Создание паиента
+  //? Создание паиента
   createPatient(patient: Patient) {
     return this.http.post(this.baseUrl + 'insert.php', patient);
   }
 
-  //* Методы для редактирования данных о пациенте
-  //? Поиск пациента по ID
+  //? Методы для редактирования данных о пациенте
 
   getPatient(id: number) {
     return this.http.get<Patient>(this.baseUrl + 'view.php?id=' + id);
@@ -59,10 +65,7 @@ export class PatientService {
 
 
 
-//* Поиск типа протезирования в БД
-  getTypes(): Observable<Types[]> {
-    return this.http.get<Types[]>(this.baseUrl + 'getTypes/view.php')
-  }
+
 
 
 //! Старые не используемые методы

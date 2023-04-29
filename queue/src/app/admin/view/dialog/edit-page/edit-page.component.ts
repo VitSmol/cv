@@ -1,9 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { CheckboxControlValueAccessor, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ColumnsNames, FullName, ProstheticsType } from '../../../shared/interfaces/interfaces';
 import { PatientService } from '../../../shared/services/patient.service';
-import { Oz, Patient } from '../../../shared/interfaces/phpInterface';
+import { Oz, Patient, Types } from '../../../shared/interfaces/phpInterface';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -20,7 +20,7 @@ export class EditPageComponent implements OnInit {
   patient!: Patient;
   patient_isOperated: boolean = false;
 
-  types: string[] = [ProstheticsType.teks, ProstheticsType.tets];
+  types: Types[] = []//[ProstheticsType.teks, ProstheticsType.tets];
   orgs: Oz[] = [] //= [FullName.ggkb1, FullName.gokb, FullName.kalink, FullName.mozyr, FullName.rechica, FullName.svetlogorsk, FullName.zlobin];
   constructor(
     private formBuilder: FormBuilder,
@@ -66,9 +66,8 @@ export class EditPageComponent implements OnInit {
         this.addForm.patchValue(this.patient);
       })
     }
-    this.service.getOz().subscribe((data: Oz[]) => {
-      this.orgs = data
-    })
+    this.service.getOz().subscribe((data: Oz[]) => this.orgs = data);
+    this.service.getTypes().subscribe((data: Types[]) => this.types = data);
   }
 
   //! выбирает дату не более текущей для поля date (дата постановки на учет)
@@ -89,25 +88,14 @@ export class EditPageComponent implements OnInit {
     for (let [key, value] of Object.entries(this.patient)) {
       typeof value === 'string' ? this.patient[key as keyof Patient] = value.trim() : null
     }
-    console.log(this.patient);
-    // return
     this.dialogRef.close(this.patient)
-
-    //TODO Обновление пациента прямо из окна (раскомментировать в экстренной ситуации)
-    // this.patientService.updatePatient(this.patient).subscribe((data: any) => {
-    //   this.dialogRef.close(this.patient)
-    // },
-    //   err => {
-    //     console.log(err)
-    //   })
   }
 
   onCancel() {
     this.dialogRef.close(null)
   }
-  checkbox(e: any) {
-    this.patient_isOperated = e.target.checked ? true : false
-    console.log(this.addForm.value.isOperated);
 
+  checkbox(e: Event) {
+    this.patient_isOperated = (e.target as HTMLInputElement).checked ? true : false
   }
 }

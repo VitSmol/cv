@@ -241,7 +241,7 @@
               </ng-container>
 
               <ng-container matColumnDef="isOperated">
-                <th *matHeaderCellDef mat-header-cell class="text-warning">
+                <th *matHeaderCellDef mat-header-cell class="text-warning" mat-sort-header>
                   Оперирован (либо исключен из очереди по иной причине)
                 </th>
                 <td *matCellDef="let patient" mat-cell (click)="openEditPatientDialog(patient)">

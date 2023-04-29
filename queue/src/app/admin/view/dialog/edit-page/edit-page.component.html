@@ -211,7 +211,7 @@
       <mat-form-field>
         <mat-label>{{ ColumnsNames.type }}</mat-label>
         <mat-select name="type" formControlName="type">
-          <mat-option *ngFor="let item of types" [value]="item">{{item}}</mat-option>
+          <mat-option *ngFor="let item of types" [value]="item.type">{{item.type}}</mat-option>
         </mat-select>
       </mat-form-field>
 

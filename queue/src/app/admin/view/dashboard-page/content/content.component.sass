@@ -10,6 +10,7 @@
   padding: 0 3px
   font-size: 13px
   text-align: center
+  font-weight: bold
 
 .card-header.card-header-tabs.card-header-success
   padding: 10px 15px !important
@@ -21,10 +22,11 @@
   padding-top: 10px
   padding-bottom: 10px
 
-.table > tbody > tr > td
+table > tbody > tr > td
   padding: 2px
-.table > thead > th
+table > thead > th
   padding: 2px
+
 
 .operated
   text-decoration: line-through
@@ -37,6 +39,7 @@
   font-size: 13px
   padding: 0 5px
   text-align: center
+  vertical-align: top
 
 .mat-mdc-table .mdc-data-table__row
     height: auto
@@ -57,9 +60,9 @@
 
 .mdc-data-table__cell,
 .mdc-data-table__header-cell
-  border-right-width: 1px
-  border-right-style: solid
-  border-right-color: rgba(0, 0, 0, 0.12)
+  // border-right-width: 1px
+  // border-right-style: solid
+  // border-right-color: rgba(0, 0, 0, 0.12)
 
 $indent: 20px
 $bg-color:  rgba(255, 153, 0, 1)
@@ -85,12 +88,8 @@ $search-field-height: 54px
 
 tr.pointer
   cursor: pointer
-  transition: all .3s ease-in-out
-  &:hover
-    transition: all .3s ease-in-out
-    background-color: rgba(200, 200, 200, 0.2)
-    color: #3C4858
-    box-shadow: none
+  // transition: all .3s ease-in-out
+
 .table-responsive
   height: 60vh
   overflow: auto
