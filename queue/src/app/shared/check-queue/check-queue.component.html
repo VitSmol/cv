@@ -50,11 +50,6 @@
           <mat-datepicker #dp disabled="false"></mat-datepicker>
           <input hidden type="date" placeholder="{{selected | date: 'dd.MM.YYYY'}}"  [(ngModel)]="selected"  matInput [matDatepicker]="dp" formControlName="date">
           <mat-hint> Выбранная Вами дата: {{ selected | date: 'dd.MM.YYYY'}}</mat-hint>
-            <!-- <mat-calendar [(selected)]="selected" formControlName="date">
-
-            </mat-calendar>
-            <p>Дата: {{ selected  }}</p> -->
-
         </mat-form-field>
         <div>
           <button mat-raised-button color="accent" class="next-btn" matStepperNext
@@ -65,7 +60,6 @@
     <mat-step>
       <ng-template matStepLabel>Результат</ng-template>
       <div *ngIf="patient">
-        <!-- {{showResult(patient)}} -->
         <h3>Уважаемый(ая) {{ patient.fio.split(' ')[0] + ' ' + patient.fio.split(' ')[1] }}
         </h3>
         <div *ngIf="patient.org === 'калинковичи'; else full">

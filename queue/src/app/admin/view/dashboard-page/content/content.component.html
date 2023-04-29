@@ -143,7 +143,7 @@
             <h4 class="card-title">Список пациентов</h4>
           </div>
           <div class="card-body table-responsive" *ngIf="patientsArr && patientsArr.length > 0">
-            <!-- matSortActive - колонка для сортировки по умолчанию, matSortDirection - по возрастанию -->
+            <!--TODO matSortActive - колонка для сортировки по умолчанию, matSortDirection - по возрастанию -->
             <table [dataSource]="dataSource" mat-table cellpadding="13" matSort matSortActive="date"
               matSortDirection="asc" matSortDisableClear>
               <colgroup>

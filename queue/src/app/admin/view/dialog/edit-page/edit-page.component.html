@@ -28,7 +28,16 @@
         <mat-label>Дата постановки на учет (для изменения даты нажмите на иконку календаря)</mat-label>
         <mat-datepicker-toggle matIconPrefix [for]="dp"></mat-datepicker-toggle>
         <mat-datepicker touchUi #dp disabled="false"></mat-datepicker>
-        <input matInput [matDatepicker]="dp" formControlName="date" [max]="this.getMaxDate(this.date)" required>
+        <input
+          readonly="true"
+          matInput
+          [matDatepicker]="dp"
+          formControlName="date"
+          [max]="this.getMaxDate(this.date)"
+          required
+          (click)="dp.open()"
+          >
+          <!--TODO readonly="true" - блокирует ввод даты с клавиатуры, (click)="dp.open" - открывает календарь по клику на инпут -->
       </mat-form-field>
 
       <mat-form-field>

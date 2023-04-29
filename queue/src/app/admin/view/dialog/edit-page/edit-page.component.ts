@@ -53,7 +53,7 @@ export class EditPageComponent implements OnInit {
       org: ['', Validators.required],
       type: ['', Validators.required]
     })
-    this.addForm.get('date')?.disable()
+    // this.addForm.get('date')?.disable()
   }
 
   public dialogTitle: string = '';
