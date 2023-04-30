@@ -5,12 +5,7 @@
   &:first-child
     width: 45px
 
-.text-warning th
-  vertical-align: baseline
-  padding: 0 3px
-  font-size: 13px
-  text-align: left
-  font-weight: bold
+
 
 .card-header.card-header-tabs.card-header-success
   padding: 10px 15px !important
@@ -30,7 +25,7 @@ table > thead > th
 
 .operated
   text-decoration: line-through
-  color: #3f3f3366
+  color: #3f3f3313
 
 .novalues
   background-color: #ff00001c
@@ -58,11 +53,6 @@ table > thead > th
     padding-left: 33%
     padding-bottom: 10%
 
-.mdc-data-table__cell,
-.mdc-data-table__header-cell
-  // border-right-width: 1px
-  // border-right-style: solid
-  // border-right-color: rgba(0, 0, 0, 0.12)
 
 $indent: 20px
 $bg-color:  rgba(255, 153, 0, 1)
@@ -83,7 +73,7 @@ $search-field-height: 54px
 .not-found
   margin-top: 30px
   font-size: 20px
-  color: rgba(74,74,74,0.98)
+  color: rgba(74, 74, 74, 0.616)
   text-align: center
 
 tr.pointer
@@ -91,7 +81,7 @@ tr.pointer
   // transition: all .3s ease-in-out
 
 .table-responsive
-  height: 60vh
+  max-height: 60vh
   overflow: auto
   padding: 10px 10px
   top: -10px
@@ -113,3 +103,30 @@ tr.pointer
 .table__col
   padding: 0
 
+.delete-icon
+  cursor: pointer
+  color: #ea6561
+  font-size: 13px
+  // margin: 0 3px
+
+.edit-icon
+  cursor: pointer
+  color: #9a9a9a
+  font-size: 13px
+  // margin: 0 3px
+
+.mdc-data-table__header-cell
+  font-size: 13px
+  font-weight: normal
+  text-align: left
+  font-weight: bold
+  vertical-align: baseline
+  padding: 0 3px
+
+.operations.mdc-data-table__cell
+  // display: flex
+  height: 100%
+  button
+    display: inline-block
+.btn__container
+  display: flex

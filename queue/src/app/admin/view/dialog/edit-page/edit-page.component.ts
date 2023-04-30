@@ -93,7 +93,8 @@ export class EditPageComponent implements OnInit {
         dialogTitle: 'Изменение данных пользователя',
         message: `Вы действительно хотите изменить данные о пациенте ${this.patient.lastname} ${this.patient.name} ${this.patient.fathername}?`
       },
-      autoFocus: false
+      autoFocus: false,
+      width: '300px'
     })
     dialogRef.afterClosed().subscribe((result: boolean) => {
       if (result) this.dialogRef.close({
@@ -101,11 +102,6 @@ export class EditPageComponent implements OnInit {
         patient: this.patient
       })
     })
-
-  }
-
-  onCancel() {
-    this.dialogRef.close(null)
   }
 
   onDelete() {
@@ -114,7 +110,8 @@ export class EditPageComponent implements OnInit {
         dialogTitle: 'Удалить пользователя',
         message: `Вы действительно хотите удалить данные о пациенте ${this.patient.lastname} ${this.patient.name} ${this.patient.fathername}?`
       },
-      autoFocus: false
+      autoFocus: false,
+      width: "300px"
     })
     dialogRef.afterClosed().subscribe((result: boolean) => {
       if (result) {
@@ -125,6 +122,11 @@ export class EditPageComponent implements OnInit {
       }
     })
   }
+
+  onCancel() {
+    this.dialogRef.close(null)
+  }
+
   checkbox(e: Event) {
     this.patient_isOperated = (e.target as HTMLInputElement).checked ? true : false
   }

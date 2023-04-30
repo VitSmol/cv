@@ -289,9 +289,25 @@
                 <th *matHeaderCellDef mat-header-cell class="text-warning">
                   {{ ColumnsNames.org }}
                 </th>
-                <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'"
+                <td
+                  *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'"
                   (click)="openEditPatientDialog(patient)">
                   {{ patient.org }}
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="operations">
+                <th *matHeaderCellDef mat-header-cell></th>
+                <td class="operations"  *matCellDef="let patient" mat-cell>
+                  <div class="btn__container">
+                    <button mat-icon-button class="delete-icon" (click)="onDeleteConfirm(patient)">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                    <button mat-icon-button class="edit-icon" (click)="openEditPatientDialog(patient)">
+                      <mat-icon>edit</mat-icon>
+                    </button>
+                  </div>
+
                 </td>
               </ng-container>
 

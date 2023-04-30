@@ -7,6 +7,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { EditPageComponent } from '../../dialog/edit-page/edit-page.component';
+import { ConfirmComponent } from '../../dialog/confirm/confirm.component';
 
 @Component({
   selector: 'app-content',
@@ -17,7 +18,7 @@ export class ContentComponent implements OnInit {
 
   ColumnsNames = ColumnsNames
 
-  public displayedColumns = ['listnumber', 'lastname', 'address', 'sex', 'birthday', 'date', 'diag', 'side', 'isOperated', 'operdate', 'info', 'type', 'org']
+  public displayedColumns = ['listnumber', 'lastname', 'address', 'sex', 'birthday', 'date', 'diag', 'side', 'isOperated', 'operdate', 'info', 'type', 'org', 'operations']
   public dataSource!: MatTableDataSource<Patient>
 
   @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator
@@ -70,6 +71,8 @@ export class ContentComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result: any) => {
       //* обработка результата Передаем измененного пациента через Output в dashboard
+      if (!result) return
+
       if (result.message === 'update') {
         this.updatePatient.emit(result.patient);
         return
@@ -80,4 +83,23 @@ export class ContentComponent implements OnInit {
       }
     });
   }
+
+  onDeleteConfirm(patient: Patient) {
+    const dialogRef = this.dialog.open(ConfirmComponent, {
+      data: {
+        dialogTitle: 'Изменение данных пользователя',
+        message: `Вы действительно хотите удалить пациента ${patient.lastname} ${patient.name} ${patient.fathername}?`
+      },
+      autoFocus: false,
+      width: '300px'
+    })
+    dialogRef.afterClosed().subscribe((result: boolean) => {
+      if (!result) return
+      if (result) {
+        console.log(patient);
+
+        // this.deletePatient.emit(patient)
+      }
+    })
+}
 }

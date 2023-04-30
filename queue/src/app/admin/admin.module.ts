@@ -27,6 +27,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { ConfirmComponent } from './view/dialog/confirm/confirm.component';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { ConfirmComponent } from './view/dialog/confirm/confirm.component';
     MatPaginatorModule,
     MatDialogModule,
     MatDatepickerModule,
+    MatNativeDateModule,
     MatRadioModule,
     MatCheckboxModule,
     MatSelectModule,

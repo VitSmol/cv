@@ -19,6 +19,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material/core';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { registerLocaleData } from "@angular/common";
+import localeRu from "@angular/common/locales/ru";
+
+registerLocaleData(localeRu);
 
 @NgModule({
   declarations: [
@@ -33,6 +37,9 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    LayoutModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
     MatFormFieldModule,
     MatButtonModule,
     MatDatepickerModule,
@@ -40,18 +47,13 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     MatStepperModule,
     MatNativeDateModule,
     MatInputModule,
-    LayoutModule,
-    ReactiveFormsModule,
-    BrowserAnimationsModule,
   ],
   providers: [
     {
       provide: STEPPER_GLOBAL_OPTIONS,
       useValue: { showError: true }
     },
-    {
-      provide: LocationStrategy, useClass: HashLocationStrategy
-    },
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
     { provide: MAT_DATE_LOCALE, useValue: 'ru-RU' }
   ],
   bootstrap: [AppComponent]
