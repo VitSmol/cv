@@ -6,6 +6,7 @@ import { Oz, Patient, Types } from 'src/app/admin/shared/interfaces/phpInterface
 import { OzDAOArray } from 'src/app/dao/implements/OzDAOArray';
 import { PatientDAOArray } from 'src/app/dao/implements/PatientsDAOArray';
 import { TypesDAOArray } from 'src/app/dao/implements/TypesDAOArray';
+import { environment } from 'src/environments/environments';
 
 @Injectable({
   providedIn: 'root'
@@ -61,6 +62,13 @@ export class PatientService {
   //? Методы для редактирования данных о пациенте
   getPatient(id: number) {
     return this.http.get<Patient>(this.baseUrl + 'view.php?id=' + id);
+  }
+
+  getSQL(org: string) {
+    // const sql = "SELECT * FROM `patients` WHERE org='Речицкая центральная районная больница'";
+    // const id = 5
+    // const org = "Речицкая центральная районная больница"
+    return this.http.get<Patient[]>(environment.baseUrl + 'getPatientsByOrg.php?org=' + org)
   }
 
 

@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { ColumnsNames } from '../../../shared/interfaces/interfaces';
-import { PatientService } from '../../../shared/services/patient.service';
 import { Patient, Types } from '../../../shared/interfaces/phpInterface';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
@@ -29,8 +28,10 @@ export class ContentComponent implements OnInit {
   @Output() updatePatient = new EventEmitter<Patient>();
   @Output() deletePatient = new EventEmitter<Patient>();
 
+  //! Загружает всех пациентов
   @Input('patientsArr')
   public set setPatients(patients: Patient[]) {
+    // this.fillTable() //? без задержки не работает
     this.patientsArr = patients;
     setTimeout(() => {
       this.fillTable() //? без задержки не работает

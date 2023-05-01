@@ -6,8 +6,8 @@
   </div>
   <div class="sidebar-wrapper">
       <ul class="nav">
-          <li class="nav-item">
-              <a class="nav-link">
+          <li class="nav-item" [class.active]="!selectedOrg">
+              <a class="nav-link" (click)="showPatientsByOrg(null)" >
                   <p>Все</p>
               </a>
           </li>
