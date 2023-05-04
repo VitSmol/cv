@@ -119,7 +119,13 @@
 
       <mat-form-field>
         <mat-label>Год рождения</mat-label>
-        <input matInput type="number" name="birthday" formControlName="birthday">
+        <input
+        matInput
+        type="number"
+        name="birthday"
+        formControlName="birthday"
+        required>
+        <mat-error *ngIf="addForm.get('birthday')?.errors?.['required']">Поле обязательно для заполнения</mat-error>
       </mat-form-field>
 
       <mat-radio-group formControlName="sex">

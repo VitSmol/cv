@@ -65,6 +65,7 @@ export class EditPageComponent implements OnInit {
       this.service.getPatient(+this.patient.id).subscribe(response => {
         this.patient = response as Patient;
         this.addForm.patchValue(this.patient);
+        this.patient_isOperated = !!+(this.patient.isOperated as string) //? "1" : "0"
       })
     }
     this.service.getOz().subscribe((data: Oz[]) => this.orgs = data);
@@ -83,6 +84,8 @@ export class EditPageComponent implements OnInit {
   onEdit() {
     this.patient = this.addForm.value;
     this.patient.isOperated = this.patient_isOperated ? '1' : '0';
+    console.log(this.patient);
+
     //! Цикл убирает лишние пробелы в полях
     for (let [key, value] of Object.entries(this.patient)) {
       typeof value === 'string' ? this.patient[key as keyof Patient] = value.trim() : null

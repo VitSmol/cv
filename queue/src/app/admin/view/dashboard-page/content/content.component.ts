@@ -98,9 +98,11 @@ export class ContentComponent implements OnInit {
       if (!result) return
       if (result) {
         console.log(patient);
-
-        // this.deletePatient.emit(patient)
+        this.deletePatient.emit(patient)
       }
     })
-}
+  }
+  filter() {
+
+  }
 }

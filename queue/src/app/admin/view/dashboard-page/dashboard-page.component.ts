@@ -12,7 +12,7 @@ export class DashboardPageComponent implements OnInit {
 
   patientsArr!: Patient[];
   Oz!: Oz[]
-  selectedOz!: string
+  currentOrg!: string
 
   constructor(
     public auth: AuthService,
@@ -20,12 +20,14 @@ export class DashboardPageComponent implements OnInit {
   ){}
 
   ngOnInit(): void {
-    this.service.getPatients().subscribe((data: Patient[]) => this.patientsArr = data);
-    this.service.getOz().subscribe((data: Oz[]) => this.Oz = data);
+    this.service.getPatients()
+      .subscribe((data: Patient[]) => this.patientsArr = data);
+    this.service.getOz()
+      .subscribe((data: Oz[]) => this.Oz = data);
   }
 
   filterByOz (patients: Patient[], oz:string): Patient[] {
-    if (this.selectedOz) {
+    if (this.currentOrg) {
       return patients.filter((p: Patient) => {
         return p.org === oz;
       })
@@ -35,23 +37,24 @@ export class DashboardPageComponent implements OnInit {
   }
 
   onSelectOz(e: string) {
-    this.selectedOz = e
+    this.currentOrg = e
     this.service.getPatients().subscribe((data: Patient[]) => {
-      this.patientsArr = this.filterByOz(data, this.selectedOz)
+      this.patientsArr = this.filterByOz(data, this.currentOrg)
     })
   }
 
   updPatient(patient: Patient) {
     this.service.updatePatient(patient).subscribe(() => {
       this.service.getPatients().subscribe((data: Patient[]) => {
-        this.patientsArr = this.filterByOz(data, this.selectedOz)
+        this.patientsArr = this.filterByOz(data, this.currentOrg)
       })
     })
   }
+
   delPatient(patient: Patient) {
     this.service.deletePatient(patient.id).subscribe(()=> {
       this.service.getPatients().subscribe((data: Patient[]) => {
-        this.patientsArr = this.filterByOz(data, this.selectedOz)
+        this.patientsArr = this.filterByOz(data, this.currentOrg)
       })
     })
     console.log(patient);

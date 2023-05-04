@@ -30,6 +30,16 @@ export class PatientService {
   getPatients(): Observable<Patient[]> {
     return this.patientsDAO.getAll();
   }
+  //* Обновление данных пациента в БД DAO
+  updatePatient(patient: Patient) {
+    return this.patientsDAO.update(patient); //! метод из класса PatientDAOArray
+  }
+
+  //* Удаление пациента из БД DAO
+  deletePatient(id: string) {
+    return this.patientsDAO.delete(id);
+  }
+
 
   //* Поиск списка организаций в БД DAO
   getOz(): Observable<Oz[]> {
@@ -41,19 +51,7 @@ export class PatientService {
     return this.typesDAO.getAll()
   }
 
-  //* Обновление данных пациента в БД DAO
-  updatePatient(patient: Patient) {
-    return this.patientsDAO.update(patient); //! метод из класса PatientDAOArray
-  }
-
-
-  //* Удаление пациента из БД DAO
-  deletePatient(id: string) {
-    return this.patientsDAO.delete(id);
-    // return this.http.delete(this.baseUrl + 'delete.php?id=' + id)
-  }
-
-//* Добавление пациента в БД DAO
+  //* Добавление пациента в БД DAO
   createPatient(patient: Patient) {
     return this.patientsDAO.add(patient)
     // return this.http.post(this.baseUrl + 'insert.php', patient);
@@ -65,9 +63,6 @@ export class PatientService {
   }
 
   getSQL(org: string) {
-    // const sql = "SELECT * FROM `patients` WHERE org='Речицкая центральная районная больница'";
-    // const id = 5
-    // const org = "Речицкая центральная районная больница"
     return this.http.get<Patient[]>(environment.baseUrl + 'getPatientsByOrg.php?org=' + org)
   }
 
@@ -77,7 +72,7 @@ export class PatientService {
 
 
 
-//! Старые не используемые методы
+  //! Старые не используемые методы
   // getPatientsByTypeRX(type: string) {
   //   this.http.get<Patient[]>(this.baseUrl + 'view.php').subscribe(data => {
   //     let arr = data.filter(patient => patient.type === type);
@@ -101,7 +96,7 @@ export class PatientService {
   //   this.patientsDAO.getAll().pipe(shareReplay(1))
   //     .subscribe((response: Patient[]) => this.patientsSubject.next(response));
   // }
-//* Рабочий метод DAO
+  //* Рабочий метод DAO
   // getPatientsByOrg(org: string | undefined) {
   //   return this.patientsDAO.getAll()
   //   // .subscribe(data => {
