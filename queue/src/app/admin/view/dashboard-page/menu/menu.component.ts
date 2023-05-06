@@ -21,7 +21,7 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  showPatientsByOrg(oz: Oz | null) {
+  public showPatientsByOrg(oz: Oz | null) {
     if (this.selectedOrg === oz?.orgname) return;
       this.selectedOrg = oz?.orgname
       this.selectOz.emit(this.selectedOrg);

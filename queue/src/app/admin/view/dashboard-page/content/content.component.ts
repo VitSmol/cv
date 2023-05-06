@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { ColumnsNames } from '../../../shared/interfaces/interfaces';
-import { Patient, Types } from '../../../shared/interfaces/phpInterface';
+import { Patient } from '../../../shared/interfaces/phpInterface';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -29,11 +29,11 @@ export class ContentComponent implements OnInit {
   @Output() deletePatient = new EventEmitter<Patient>();
 
   //! Загружает всех пациентов
-  @Input('patientsArr')
+  @Input('patients')
   public set setPatients(patients: Patient[]) {
-    // this.fillTable() //? без задержки не работает
     this.patientsArr = patients;
     setTimeout(() => {
+      console.log(this.patientsArr);
       this.fillTable() //? без задержки не работает
     }, 1);
   }
@@ -45,23 +45,24 @@ export class ContentComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.patientsArr);
     this.dataSource = new MatTableDataSource();
-    this.fillTable();
+    // this.fillTable();
   }
 
-  fillTable(): void {
+  private fillTable(): void {
     if (!this.dataSource) return
     this.dataSource.data = this.patientsArr;
     this.addTableObjects()
   }
 
-  public addTableObjects(): void {
+  private addTableObjects(): void {
     this.dataSource.sort = this.sort; // компонент для сортировки данных (если необходимо)
     this.dataSource.paginator = this.paginator; // обновить компонент постраничности (кол-во записей, страниц)
   }
 
-  // открытие диалогового окна
-  openEditPatientDialog(patient: Patient): void {
+  // открытие диалогового окна редактирования
+  protected openEditPatientDialog(patient: Patient): void {
     this.updatePatient.emit(patient);
     const dialogRef = this.dialog.open(EditPageComponent, {
       data: [patient, "Редактирование пациента"],
@@ -70,7 +71,7 @@ export class ContentComponent implements OnInit {
       height: '85vh'
     });
 
-    dialogRef.afterClosed().subscribe((result: any) => {
+    dialogRef.afterClosed().subscribe((result: {message: string, patient: Patient}) => {
       //* обработка результата Передаем измененного пациента через Output в dashboard
       if (!result) return
 
@@ -78,6 +79,7 @@ export class ContentComponent implements OnInit {
         this.updatePatient.emit(result.patient);
         return
       }
+
       if (result.message === 'delete') {
         this.deletePatient.emit(result.patient)
         return
@@ -85,7 +87,7 @@ export class ContentComponent implements OnInit {
     });
   }
 
-  onDeleteConfirm(patient: Patient) {
+  protected onDeleteConfirm(patient: Patient) {
     const dialogRef = this.dialog.open(ConfirmComponent, {
       data: {
         dialogTitle: 'Изменение данных пользователя',

@@ -15,8 +15,8 @@ export class DashboardPageComponent implements OnInit {
   currentOrg!: string
 
   constructor(
-    public auth: AuthService,
-    public service: PatientService
+    private auth: AuthService,
+    private service: PatientService
   ){}
 
   ngOnInit(): void {
@@ -26,7 +26,7 @@ export class DashboardPageComponent implements OnInit {
       .subscribe((data: Oz[]) => this.Oz = data);
   }
 
-  filterByOz (patients: Patient[], oz:string): Patient[] {
+  private filterByOz (patients: Patient[], oz:string): Patient[] {
     if (this.currentOrg) {
       return patients.filter((p: Patient) => {
         return p.org === oz;
@@ -36,14 +36,14 @@ export class DashboardPageComponent implements OnInit {
     }
   }
 
-  onSelectOz(e: string) {
+  protected onSelectOz(e: string) {
     this.currentOrg = e
     this.service.getPatients().subscribe((data: Patient[]) => {
       this.patientsArr = this.filterByOz(data, this.currentOrg)
     })
   }
 
-  updPatient(patient: Patient) {
+  protected updPatient(patient: Patient) {
     this.service.updatePatient(patient).subscribe(() => {
       this.service.getPatients().subscribe((data: Patient[]) => {
         this.patientsArr = this.filterByOz(data, this.currentOrg)
@@ -51,12 +51,11 @@ export class DashboardPageComponent implements OnInit {
     })
   }
 
-  delPatient(patient: Patient) {
+  protected delPatient(patient: Patient) {
     this.service.deletePatient(patient.id).subscribe(()=> {
       this.service.getPatients().subscribe((data: Patient[]) => {
         this.patientsArr = this.filterByOz(data, this.currentOrg)
       })
     })
-    console.log(patient);
   }
 }
