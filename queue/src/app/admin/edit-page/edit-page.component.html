@@ -1,0 +1,134 @@
+<div class="container">
+  <div>
+    <h1>Редактировать данные</h1>
+  </div>
+
+  <form [formGroup]="addForm" class="form">
+    <div class="row">
+      <div class="input-container">
+        <div class="col-md-6">ID</div>
+        <div class="col-md-6">
+          <input class="form-control" type="text"  formControlName="id">
+        </div>
+      </div>
+      <div class="input-container">
+        <div class="col-md-6">{{ ColumnsNames.number }}</div>
+        <div class="col-md-6">
+          <input class="form-control"  type="text" name="listnumber" formControlName="listnumber">
+        </div>
+      </div>
+      <div class="input-container">
+        <div class="col-md-6">{{ ColumnsNames.date }}</div>
+        <div class="col-md-6">
+          <input class="form-control"  [max]="this.getMaxDate(this.date)"  type="date" name="date" formControlName="date">
+        </div>
+      </div>
+      <div class="input-container">
+        <div class="col-md-6">Фамилия</div>
+        <div class="col-md-6">
+          <input class="form-control"  type="text" name="lastname" formControlName="lastname">
+        </div>
+      </div>
+      <div class="input-container">
+        <div class="col-md-6">Имя</div>
+        <div class="col-md-6">
+          <input class="form-control"  type="text" name="name" formControlName="name">
+        </div>
+      </div>
+      <div class="input-container">
+        <div class="col-md-6">Отчество</div>
+        <div class="col-md-6">
+          <input class="form-control"  type="text" name="fathername" formControlName="fathername">
+        </div>
+      </div>
+      <div class="input-container">
+        <div class="col-md-6">{{ ColumnsNames.address }}</div>
+        <div class="col-md-6">
+          <input class="form-control"  type="text" name="address" formControlName="address">
+        </div>
+      </div>
+      <div class="input-container">
+        <div class="col-md-6">{{ ColumnsNames.sex }}</div>
+        <div class="col-md-6">
+          Мужской <input type="radio" name="sex" formControlName="sex" value="м">
+          Женский <input type="radio" name="sex" formControlName="sex" value="ж">
+        </div>
+      </div>
+      <div class="input-container">
+        <div class="col-md-6">{{ ColumnsNames.birthday }}</div>
+        <div class="col-md-6">
+          <input class="form-control"  type="date" name="birthday" formControlName="birthday">
+        </div>
+      </div>
+
+      <div class="input-container">
+        <div class="col-md-6">Прооперирован</div>
+        <div class="col-md-6">
+          <input type="checkbox" name="isOperated" [checked]="this.patient_isOperated"  (change)="checkbox($event)">
+        </div>
+      </div>
+
+      <div class="input-container">
+        <div class="col-md-6">{{ ColumnsNames.operDate }}</div>
+        <div class="col-md-6">
+          <input class="form-control"  type="date" name="operDate" formControlName="operdate">
+        </div>
+      </div>
+
+      <div class="input-container">
+        <div class="col-md-6">{{ ColumnsNames.diag }}</div>
+        <div class="col-md-6">
+          <input class="form-control"  type="text" name="diag" formControlName="diag">
+        </div>
+      </div>
+      <div class="input-container">
+        <div class="col-md-6">{{ ColumnsNames.side }}</div>
+        <div class="col-md-6">
+          <input class="form-control"  type="text" name="side" formControlName="side">
+        </div>
+      </div>
+      <div class="input-container">
+        <div class="col-md-6">{{ ColumnsNames.group }}</div>
+        <div class="col-md-6">
+          <input class="form-control"  type="text" name="invalidgroup" formControlName="invalidgroup">
+        </div>
+      </div>
+      <div class="input-container">
+        <div class="col-md-6">{{ ColumnsNames.note }}</div>
+        <div class="col-md-6">
+          <input class="form-control"  type="text" name="info" formControlName="info">
+        </div>
+      </div>
+      <div class="input-container">
+        <div class="col-md-6">{{ ColumnsNames.type }}</div>
+        <div class="col-md-6">
+          <select class="form-select" name="type" formControlName="type">
+            Выберите тип протезирования:
+            <option *ngFor="let item of types" [value]="item">{{item}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="input-container">
+        <div class="col-md-6">{{ ColumnsNames.org }}</div>
+        <div class="col-md-6">
+          <select class="form-select select" name="org" formControlName="org">
+            Выберите тип протезирования:
+            <option *ngFor="let item of orgs" [value]="item">{{item}}</option>
+          </select>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <button type="submit" class="btn btn-success"
+          (click)="onEdit()"
+          [disabled]="!this.addForm.valid"
+
+          >Изменить данные</button>
+      </div>
+    </div>
+  </form>
+</div>

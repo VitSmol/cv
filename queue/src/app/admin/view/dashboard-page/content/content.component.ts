@@ -1,12 +1,14 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { ColumnsNames } from '../../../shared/interfaces/interfaces';
-import { Patient } from '../../../shared/interfaces/phpInterface';
+import { Patient, Types } from '../../../shared/interfaces/phpInterface';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { EditPageComponent } from '../../dialog/edit-page/edit-page.component';
 import { ConfirmComponent } from '../../dialog/confirm/confirm.component';
+import { Type } from '@angular/compiler';
+import { PatientService } from 'src/app/admin/shared/services/patient.service';
 
 @Component({
   selector: 'app-content',
@@ -15,7 +17,7 @@ import { ConfirmComponent } from '../../dialog/confirm/confirm.component';
 })
 export class ContentComponent implements OnInit {
 
-  ColumnsNames = ColumnsNames
+  public ColumnsNames = ColumnsNames
 
   public displayedColumns = ['listnumber', 'lastname', 'address', 'sex', 'birthday', 'date', 'diag', 'side', 'isOperated', 'operdate', 'info', 'type', 'org', 'operations']
   public dataSource!: MatTableDataSource<Patient>
@@ -24,9 +26,14 @@ export class ContentComponent implements OnInit {
   @ViewChild(MatSort, { static: false }) sort!: MatSort
 
   public patientsArr!: Patient[]
+  public types: Types[] = [];
 
   @Output() updatePatient = new EventEmitter<Patient>();
   @Output() deletePatient = new EventEmitter<Patient>();
+
+  searchListnumber: string = '';
+  searchFIO: string = '';
+  selectedType: string | null= 'all';
 
   //! Загружает всех пациентов
   @Input('patients')
@@ -38,14 +45,24 @@ export class ContentComponent implements OnInit {
     }, 1);
   }
 
+  @Input('types')
+    public set setTypes(types: Types[]) {
+      this.types = types
+    }
+
   constructor(
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private service: PatientService
   ) {
 
   }
 
   ngOnInit(): void {
     console.log(this.patientsArr);
+    this.service.getTypes().subscribe(types => {
+      this.types = types;
+      console.log(this.types)
+    })
     this.dataSource = new MatTableDataSource();
     // this.fillTable();
   }
@@ -104,7 +121,15 @@ export class ContentComponent implements OnInit {
       }
     })
   }
-  filter() {
+  filterByNumber() {
+
+  }
+  filterByFIO() {
+
+  }
+
+  filterByType(e: any) {
+    console.log(e);
 
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/admin/shared/services/auth.service';
 import { PatientService } from '../../shared/services/patient.service';
-import { Oz, Patient } from '../../shared/interfaces/phpInterface';
+import { Oz, Patient, Types } from '../../shared/interfaces/phpInterface';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -11,6 +11,7 @@ import { Oz, Patient } from '../../shared/interfaces/phpInterface';
 export class DashboardPageComponent implements OnInit {
 
   patientsArr!: Patient[];
+  typesArr: Types[] =[]
   Oz!: Oz[]
   currentOrg!: string
 
@@ -24,6 +25,8 @@ export class DashboardPageComponent implements OnInit {
       .subscribe((data: Patient[]) => this.patientsArr = data);
     this.service.getOz()
       .subscribe((data: Oz[]) => this.Oz = data);
+    this.service.getTypes()
+      .subscribe((data: Types[]) => this.typesArr = data);
   }
 
   private filterByOz (patients: Patient[], oz:string): Patient[] {

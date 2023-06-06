@@ -23,6 +23,8 @@ $search-field-height: 54px
   align-items: baseline
 
 ::ng-deep
+  mat-form-field
+    width: 100%
   .mat-mdc-form-field-infix
     max-height: 40px !important
     min-height: 0
@@ -121,7 +123,7 @@ tr.pointer
     background-color: transparent
   &::-webkit-scrollbar-thumb
     background-color: transparent
-    background-color: $bg-color
+    // background-color: $bg-color
     border-radius: 3px
 
 .mat-mdc-paginator
@@ -164,5 +166,5 @@ tr.pointer
 
 .listnumber-filter
   // width: 250px
-tr:hover
+tr:hover td
   background-color: #7574742f !important
