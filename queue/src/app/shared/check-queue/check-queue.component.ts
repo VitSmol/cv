@@ -73,6 +73,8 @@ export class CheckQueueComponent implements OnInit {
   getResult() {
     this.arr = this.resultArr.filter(el => !el.isOperated)
 
+    // console.log(this.arr);
+
     let queryArr = Object.entries(Object.fromEntries(this.query.entries()))
     for (let [key, value] of queryArr) {
       if (key !== 'date' && key !== 'number') {
@@ -82,6 +84,8 @@ export class CheckQueueComponent implements OnInit {
         this.number = this.arr.indexOf(this.patient);
       }
     }
+    console.log(this.arr);
+
     if (this.patient) {
       const patientDate = new Date(this.patient.date);
       const queryDate = new Date(this.query.get('date'));

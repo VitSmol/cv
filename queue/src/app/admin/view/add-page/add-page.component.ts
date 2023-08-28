@@ -46,6 +46,7 @@ export class AddPageComponent {
     ColumnsNames.group,
     ColumnsNames.operDate,
     ColumnsNames.note,
+    ColumnsNames.currentStatus
   ]
 
 
@@ -133,7 +134,7 @@ export class AddPageComponent {
         const ws: XLSX.WorkSheet = workBook.Sheets[sheet]; //! лист Excel
         for (let key in ws) {
           let dateArray  = ws[key].w;
-          console.log(dateArray);
+          // console.log(dateArray);
 
           try {
             if(dateArray.match(/\d{1,2}\.\d{1,2}\.\d{1,4}/g) && !key.includes('J') && !key.includes('K') && !key.includes('C')) {
@@ -174,10 +175,19 @@ export class AddPageComponent {
           if (file.name.split('.')[0].toLowerCase() === 'тэтс') {
             patient.type = ProstheticsType.tets.toLowerCase()
           }
+
           if (!!patient[ColumnsNames.operDate]) {
             patient.isOperated = true
           } else {
             patient.isOperated = false
+          }
+
+          // let currentStatus;
+          if (!!patient[ColumnsNames.currentStatus]) {
+            console.log(patient);
+
+            patient.currentStatus = patient[ColumnsNames.currentStatus];
+            patient.isOperated = true;
           }
           patient[ColumnsNames.operDate] = patient[ColumnsNames.operDate]
 
@@ -186,6 +196,7 @@ export class AddPageComponent {
         this.resultArray = this.compareArray(this.resultArray.flat())
           .sort((a: { [x: string]: any; }, b: { [x: string]: any; }) => a[ColumnsNames.date] - b[ColumnsNames.date])
       })
+      this.showResultArray()
     }
   }
 
@@ -237,6 +248,7 @@ export class AddPageComponent {
         sex = el[ColumnsNames.sex][0]
       }
 
+
       let address; //.split(' ').flat(Infinity).join(' ')
       if (!el[ColumnsNames.address]) {
         address = ''
@@ -255,6 +267,11 @@ export class AddPageComponent {
       } else {
         isOperated = 0
       }
+      // let currentStatus;
+      // if (!el[ColumnsNames.currentStatus]) {
+      //   currentStatus = el[ColumnsNames.currentStatus]
+      //   isOperated = 1
+      // }
       acc.push({
         listnumber: el[ColumnsNames.number],
         address: address,
@@ -271,7 +288,8 @@ export class AddPageComponent {
         lastname: fio[0],
         name: fio[1],
         fathername: fio[2],
-        org: currentOZ?.orgname
+        org: currentOZ?.orgname,
+        // currentStatus: currentStatus
       })
       return acc;
     }, [])
