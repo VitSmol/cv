@@ -9,20 +9,12 @@ import { usersInfo } from 'src/app/admin/shared/data';
 import { DataHandlerService } from '../data-handler.service';
 import { ColumnsNames, Org, ProstheticsType } from '../../admin/shared/interfaces/interfaces';
 
-
-interface Query {
-  date?: Date,
-  number?: number,
-  type?: string,
-  org?: string,
-}
-
 @Component({
   selector: 'app-check-queue',
   templateUrl: './check-queue.component.html',
   styleUrls: ['./check-queue.component.sass'],
   providers: [
-    {provide: MAT_DATE_LOCALE, useValue: 'ru-RU'},
+    { provide: MAT_DATE_LOCALE, useValue: 'ru-RU' },
   ]
 })
 export class CheckQueueComponent implements OnInit {
@@ -37,7 +29,7 @@ export class CheckQueueComponent implements OnInit {
   number: any
   org: any
   ColumnsNames = ColumnsNames
-  selected:string = ''
+  selected: string = ''
 
   //! for stepper
   stepperOrientation: Observable<StepperOrientation>;
@@ -73,8 +65,6 @@ export class CheckQueueComponent implements OnInit {
   getResult() {
     this.arr = this.resultArr.filter(el => !el.isOperated)
 
-    // console.log(this.arr);
-
     let queryArr = Object.entries(Object.fromEntries(this.query.entries()))
     for (let [key, value] of queryArr) {
       if (key !== 'date' && key !== 'number') {
@@ -84,7 +74,6 @@ export class CheckQueueComponent implements OnInit {
         this.number = this.arr.indexOf(this.patient);
       }
     }
-    console.log(this.arr);
 
     if (this.patient) {
       const patientDate = new Date(this.patient.date);
