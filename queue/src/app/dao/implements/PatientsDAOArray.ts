@@ -26,7 +26,6 @@ export class PatientDAOArray implements PatientsDAO {
     return this.http.post<Patient>(environment.baseUrl + 'insert.php', patient);
   }
 
-
   get(id: string): Observable<Patient> {
     throw new Error("Method not implemented.");
   }
