@@ -59,7 +59,7 @@ export class PatientService {
 
   //? Методы для редактирования данных о пациенте
   getPatient(id: number) {
-    return this.http.get<Patient>(this.baseUrl + 'view.php?id=' + id);
+    return this.http.get<Patient>(environment.baseUrl + 'view.php?id=' + id);
   }
 
   getSQL(org: string) {
