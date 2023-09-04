@@ -4,7 +4,8 @@ export const allowedIPs = [
   "194.158.192.78",
 ]
 
-export const usersInfo: Org[] = [
+
+export const users: Org[] = [
   {
     fullName: FullName.gokb,
     shortName: ShortName.gokb,

@@ -1,11 +1,10 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, Inject, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
+import { FormBuilder,  Validators } from '@angular/forms';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { StepperOrientation } from '@angular/material/stepper';
-import { Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
-import { usersInfo } from 'src/app/admin/shared/data';
+import { users } from 'src/app/admin/shared/data';
 import { DataHandlerService } from '../data-handler.service';
 import { ColumnsNames, Org, ProstheticsType } from '../../admin/shared/interfaces/interfaces';
 
@@ -21,7 +20,7 @@ export class CheckQueueComponent implements OnInit {
   arr: any[] = [];
   resultArr: any[] = [];
   query = new Map();
-  usersInfo: Org[] = usersInfo
+  users: Org[] = users
   isEditable = true;
   ProstheticsType = ProstheticsType;
   disabled: boolean = true

@@ -4,7 +4,7 @@ import { AuthService } from 'src/app/admin/shared/services/auth.service';
 import { DataHandlerService } from 'src/app/shared/data-handler.service';
 import { ColumnsNames, FullName, ProstheticsType } from 'src/app/admin/shared/interfaces/interfaces';
 import * as XLSX from 'xlsx';
-import { usersInfo } from '../../shared/data';
+import { users } from '../../shared/data';
 import { Oz, Patient } from '../../shared/interfaces/phpInterface';
 import { PatientService } from '../../shared/services/patient.service';
 
@@ -98,7 +98,7 @@ export class AddPageComponent {
         fio: name,
         type: el.type,
         org: el.org,
-        orgFullInfo: usersInfo.find(user => user.shortName.toLowerCase() === el.org),
+        orgFullInfo: users.find(user => user.shortName.toLowerCase() === el.org),
         org2: el.org2,
         isOperated: el.isOperated,
         date: new Date(el[ColumnsNames.date]) //.setDate(el[ColumnsNames.date].getDate() + 1),

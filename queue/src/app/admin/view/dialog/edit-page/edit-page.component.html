@@ -54,7 +54,7 @@
           >
         <button *ngIf="addForm.value.lastname" matSuffix mat-icon-button aria-label="Clear"
           (click)="addForm.value.lastname=''">
-          <mat-icon>close</mat-icon>
+          <mat-icon>clear</mat-icon>
         </button>
         <mat-error *ngIf="addForm.get('lastname')?.errors?.['required']">Поле обязательно для заполнения</mat-error>
         <mat-hint *ngIf="_lastname.value.trim().length === 0">Поле не должно быть пустым</mat-hint>

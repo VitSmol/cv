@@ -5,7 +5,7 @@
       <form [formGroup]="orgFormGroup">
         <mat-form-field appearance="fill" class="form-field">
           <mat-select placeholder="Выберите организацию*" required formControlName="org">
-            <mat-option [value]="user.shortName" *ngFor="let user of usersInfo"> {{ user.fullName }} </mat-option>
+            <mat-option [value]="user.shortName" *ngFor="let user of users"> {{ user.fullName }} </mat-option>
           </mat-select>
           <mat-error *ngIf="orgFormGroup.controls.org.invalid">Пожалуйста, выберите организацию</mat-error>
         </mat-form-field>

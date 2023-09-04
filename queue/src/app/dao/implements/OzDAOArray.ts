@@ -14,10 +14,6 @@ export class OzDAOArray implements OzDAO {
     return this.http.get<Oz[]>(environment.baseUrl + 'getOZ/view.php')
   }
 
-  edit(id: string, ...args: string[]): void {
-    // throw new Error("Method not implemented.");
-  }
-
   add(arg0: Oz): Observable<Oz> {
     throw new Error("Method not implemented.");
   }
