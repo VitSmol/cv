@@ -19,7 +19,21 @@ export class ContentComponent implements OnInit {
 
   public ColumnsNames = ColumnsNames
 
-  public displayedColumns = ['listnumber', 'lastname', 'address', 'sex', 'birthday', 'date', 'diag', 'side', 'isOperated', 'operdate', 'info', 'type', 'org', 'operations']
+  public displayedColumns = [
+    'listnumber',
+    'lastname',
+    // 'address',
+    'sex',
+    'birthday',
+    'date',
+    // 'diag',
+    // 'side',
+    'isOperated',
+    'operdate',
+    'info',
+    'type',
+    'org',
+    'operations']
   public dataSource!: MatTableDataSource<Patient>
 
   @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator
