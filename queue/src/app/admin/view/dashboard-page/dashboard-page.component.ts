@@ -32,6 +32,7 @@ export class DashboardPageComponent implements OnInit {
       .subscribe((data: Types[]) => this.typesArr = data);
   }
 
+  //! Фильтр отображаемых пациентов по категории
   private filterByOz(patients: Patient[], oz: string): Patient[] {
     if (this.currentOrg) {
       return patients.filter((p: Patient) => {
@@ -44,13 +45,15 @@ export class DashboardPageComponent implements OnInit {
 
   protected onSelectOz(e: string) {
     this.currentOrg = e
+    console.log(this.currentOrg);
+    //! Новый способ. При переключении организации фильтрует по временному массиву
+    this.tempArr = this.filterByOz(this.patientsArr, this.currentOrg)
+
     //! Старый способ.
     //! При переключении организации каждый раз подгружал данные с сервера
     // this.service.getPatients().subscribe((data: Patient[]) => {
     //   this.patientsArr = this.filterByOz(data, this.currentOrg)
     // })
-    //! Новый способ. При переключении организации фильтрует по временному массиву
-    this.tempArr = this.filterByOz(this.patientsArr, this.currentOrg)
   }
 
   private redraw(patient: Patient, tempArr: Patient[], arr: Patient[], operation: "update" | "delete"){
@@ -77,6 +80,11 @@ export class DashboardPageComponent implements OnInit {
       //   this.tempArr = this.filterByOz(data, this.currentOrg)
       // })
       this.redraw(patient, this.tempArr, this.patientsArr, 'update')
+      if (!this.currentOrg) {
+        console.log(this.tempArr);
+        console.log(this.patientsArr);
+
+      }
     })
   }
 
@@ -89,6 +97,10 @@ export class DashboardPageComponent implements OnInit {
       //   this.tempArr = this.filterByOz(data, this.currentOrg)
       // })
       this.redraw(patient, this.tempArr, this.patientsArr, 'delete')
+      if (!this.currentOrg) {
+        this.tempArr = this.tempArr
+      }
     })
+
   }
 }

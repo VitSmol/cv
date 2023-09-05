@@ -55,7 +55,7 @@ export class ContentComponent implements OnInit {
     this.patientsArr = patients;
     // this.fillTable();
     setTimeout(() => {
-      console.log(this.patientsArr);
+      // console.log(this.patientsArr);
       this.fillTable() //? без задержки не работает
     }, 1);
   }

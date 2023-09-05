@@ -16,7 +16,7 @@ export class EditPageComponent implements OnInit {
   ColumnsNames = ColumnsNames;
   addForm: FormGroup
   date: Date = new Date();
-  maxDate: string = '';
+  // maxDate: string = '';
   patient_id: string = '';
   patient!: Patient;
   patient_isOperated: boolean = false;
@@ -65,6 +65,7 @@ export class EditPageComponent implements OnInit {
       this.service.getPatient(+this.patient.id).subscribe(response => {
         this.patient = response as Patient;
         this.addForm.patchValue(this.patient);
+
         this.patient_isOperated = !!+(this.patient.isOperated as string) //? "1" : "0"
       })
     }
@@ -83,8 +84,8 @@ export class EditPageComponent implements OnInit {
 
   onEdit() {
     this.patient = this.addForm.value;
+    this.patient.date = this.getMaxDate(new Date(this.patient.date))
     this.patient.isOperated = this.patient_isOperated ? '1' : '0';
-    console.log(this.patient);
 
     //! Цикл убирает лишние пробелы в полях
     for (let [key, value] of Object.entries(this.patient)) {
