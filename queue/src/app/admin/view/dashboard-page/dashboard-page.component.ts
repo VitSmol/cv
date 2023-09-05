@@ -11,6 +11,7 @@ import { Oz, Patient, Types } from '../../shared/interfaces/phpInterface';
 export class DashboardPageComponent implements OnInit {
 
   patientsArr!: Patient[];
+  tempArr!: Patient[];
   typesArr: Types[] =[]
   Oz!: Oz[]
   currentOrg!: string
@@ -22,7 +23,10 @@ export class DashboardPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.getPatients()
-      .subscribe((data: Patient[]) => this.patientsArr = data);
+      .subscribe((data: Patient[]) => {
+        this.patientsArr = data
+        this.tempArr = [...this.patientsArr]
+      });
     this.service.getOz()
       .subscribe((data: Oz[]) => this.Oz = data);
     this.service.getTypes()
@@ -41,15 +45,16 @@ export class DashboardPageComponent implements OnInit {
 
   protected onSelectOz(e: string) {
     this.currentOrg = e
-    this.service.getPatients().subscribe((data: Patient[]) => {
-      this.patientsArr = this.filterByOz(data, this.currentOrg)
-    })
+    // this.service.getPatients().subscribe((data: Patient[]) => {
+    //   this.patientsArr = this.filterByOz(data, this.currentOrg)
+    // })
+    this.tempArr = this.filterByOz(this.patientsArr, this.currentOrg)
   }
 
   protected updPatient(patient: Patient) {
     this.service.updatePatient(patient).subscribe(() => {
       this.service.getPatients().subscribe((data: Patient[]) => {
-        this.patientsArr = this.filterByOz(data, this.currentOrg)
+        this.tempArr = this.filterByOz(data, this.currentOrg)
       })
     })
   }
@@ -57,7 +62,7 @@ export class DashboardPageComponent implements OnInit {
   protected delPatient(patient: Patient) {
     this.service.deletePatient(patient.id).subscribe(()=> {
       this.service.getPatients().subscribe((data: Patient[]) => {
-        this.patientsArr = this.filterByOz(data, this.currentOrg)
+        this.tempArr = this.filterByOz(data, this.currentOrg)
       })
     })
   }
