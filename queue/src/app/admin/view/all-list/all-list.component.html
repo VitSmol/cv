@@ -24,12 +24,12 @@
     <tr *ngFor="let patient of patients; let i = index">
       <td>{{ i + 1 }}</td>
       <td>{{ patient.listnumber }}</td>
-      <td>{{ patient.date | date }}</td>
+      <td>{{ patient.date }}</td>
       <td>{{ patient.lastname }}</td>
       <td>{{ patient.name }}</td>
       <td>{{ patient.fathername }}</td>
       <td>{{ patient.sex }}</td>
-      <td>{{ patient.birthday | date }}</td>
+      <td>{{ patient.birthday}}</td>
       <td>{{ patient.address }}</td>
       <td>{{ patient.diag }}</td>
       <td>{{ patient.side }}</td>

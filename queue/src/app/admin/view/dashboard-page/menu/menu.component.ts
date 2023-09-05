@@ -15,9 +15,6 @@ export class MenuComponent implements OnInit {
   selectedOrg: string | undefined = undefined;
   typesArr: Types[] = [];
 
-  constructor(
-  ) { }
-
   ngOnInit(): void {
   }
 

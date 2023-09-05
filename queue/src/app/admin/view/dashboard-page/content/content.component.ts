@@ -53,6 +53,7 @@ export class ContentComponent implements OnInit {
   @Input('patients')
   public set setPatients(patients: Patient[]) {
     this.patientsArr = patients;
+    // this.fillTable();
     setTimeout(() => {
       console.log(this.patientsArr);
       this.fillTable() //? без задержки не работает
@@ -62,6 +63,7 @@ export class ContentComponent implements OnInit {
   @Input('types')
     public set setTypes(types: Types[]) {
       this.types = types
+      console.log(this.types);
     }
 
   constructor(
@@ -73,10 +75,10 @@ export class ContentComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.patientsArr);
-    this.service.getTypes().subscribe(types => {
-      this.types = types;
-      console.log(this.types)
-    })
+    // this.service.getTypes().subscribe(types => {
+    //   this.types = types;
+    //   console.log(this.types)
+    // })
     this.dataSource = new MatTableDataSource();
     // this.fillTable();
   }

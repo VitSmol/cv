@@ -32,7 +32,7 @@ export class PatientService {
   }
   //* Обновление данных пациента в БД DAO
   updatePatient(patient: Patient) {
-    return this.patientsDAO.update(patient); //! метод из класса PatientDAOArray
+    return this.patientsDAO.update(patient);
   }
 
   //* Удаление пациента из БД DAO
