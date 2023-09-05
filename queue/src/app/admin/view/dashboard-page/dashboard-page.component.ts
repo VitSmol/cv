@@ -11,20 +11,20 @@ export class DashboardPageComponent implements OnInit {
 
   patientsArr!: Patient[];
   tempArr!: Patient[];
-  typesArr: Types[] =[]
+  typesArr: Types[] = []
   Oz!: Oz[]
   currentOrg!: string
 
   constructor(
     private service: PatientService
-  ){}
+  ) { }
 
   ngOnInit(): void {
     this.service.getPatients()
       .subscribe((data: Patient[]) => {
-        this.patientsArr = data
+        this.patientsArr = data;
         //! создаем временный массив
-        this.tempArr = [...this.patientsArr]
+        this.tempArr = [...this.patientsArr];
       });
     this.service.getOz()
       .subscribe((data: Oz[]) => this.Oz = data);
@@ -32,7 +32,7 @@ export class DashboardPageComponent implements OnInit {
       .subscribe((data: Types[]) => this.typesArr = data);
   }
 
-  private filterByOz (patients: Patient[], oz:string): Patient[] {
+  private filterByOz(patients: Patient[], oz: string): Patient[] {
     if (this.currentOrg) {
       return patients.filter((p: Patient) => {
         return p.org === oz;
@@ -53,35 +53,42 @@ export class DashboardPageComponent implements OnInit {
     this.tempArr = this.filterByOz(this.patientsArr, this.currentOrg)
   }
 
-  protected updPatient(patient: Patient ) {
-    //* Отправляем изменения о пациенте на сервер
+  private redraw(patient: Patient, tempArr: Patient[], arr: Patient[], operation: "update" | "delete"){
+    const tempArrInd = tempArr.findIndex((el: Patient) => el.id === patient.id);
+    const ind = arr.findIndex((el: Patient) => el.id === patient.id);
+    if (operation === "update") {
+      tempArr[tempArrInd] = patient;
+      arr[ind] = patient
+    } else if (operation = "delete") {
+      tempArr.splice(tempArrInd, 1)
+      arr.splice(ind, 1)
+    }
+    this.tempArr = this.filterByOz(this.tempArr, this.currentOrg)
+  }
+
+  //! Новый способ.отправляет изменения на сервер, но  после операции
+  //! обновления/удаления перерисовывает таблицу на основе локального массива
+  //* Изменяем пациента
+  protected updPatient(patient: Patient) {
     this.service.updatePatient(patient).subscribe(() => {
       //! Старый способ. При редактировании отправлял изменения и загружал
       //! из БД измененный массив, работало с задержкой.
       // this.service.getPatients().subscribe((data: Patient[]) => {
       //   this.tempArr = this.filterByOz(data, this.currentOrg)
       // })
-      //! Новый способ. отправляет изменения на сервер, но перерисовывает
-      //! на основе локального массива
-      const currentIndex = this.tempArr.findIndex(el => el.id === patient.id)
-      this.tempArr[currentIndex] = patient
-        this.tempArr = this.filterByOz(this.patientsArr, this.currentOrg)
+      this.redraw(patient, this.tempArr, this.patientsArr, 'update')
     })
   }
 
+  //* Удаляем пациента
   protected delPatient(patient: Patient) {
-    //* Удаляем пациента
-    this.service.deletePatient(patient.id).subscribe(()=> {
+    this.service.deletePatient(patient.id).subscribe(() => {
       //! Старый способ. При удалении отправлял изменения и загружал
       //! из БД измененный массив, работало с задержкой.
       // this.service.getPatients().subscribe((data: Patient[]) => {
       //   this.tempArr = this.filterByOz(data, this.currentOrg)
       // })
-      //! Новый способ. отправляет изменения на сервер, но перерисовывает
-      //! на основе локального массива
-      const currentIndex = this.tempArr.findIndex(el => el.id === patient.id)
-      this.tempArr.splice(currentIndex, 1)
-      this.tempArr = this.filterByOz(this.tempArr, this.currentOrg)
+      this.redraw(patient, this.tempArr, this.patientsArr, 'delete')
     })
   }
 }
