@@ -96,7 +96,7 @@ export class ContentComponent implements OnInit {
 
   // открытие диалогового окна редактирования
   protected openEditPatientDialog(patient: Patient): void {
-    this.updatePatient.emit(patient);
+    // this.updatePatient.emit(patient);
     const dialogRef = this.dialog.open(EditPageComponent, {
       data: [patient, "Редактирование пациента"],
       autoFocus: false,
@@ -120,6 +120,7 @@ export class ContentComponent implements OnInit {
     });
   }
 
+  //! Окно подтверждения при удалении пациента из общего списка (иконка в таблице)
   protected onDeleteConfirm(patient: Patient) {
     const dialogRef = this.dialog.open(ConfirmComponent, {
       data: {

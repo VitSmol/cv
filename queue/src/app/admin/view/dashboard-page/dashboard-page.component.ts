@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/admin/shared/services/auth.service';
 import { PatientService } from '../../shared/services/patient.service';
 import { Oz, Patient, Types } from '../../shared/interfaces/phpInterface';
 
@@ -17,7 +16,6 @@ export class DashboardPageComponent implements OnInit {
   currentOrg!: string
 
   constructor(
-    private auth: AuthService,
     private service: PatientService
   ){}
 
@@ -25,6 +23,7 @@ export class DashboardPageComponent implements OnInit {
     this.service.getPatients()
       .subscribe((data: Patient[]) => {
         this.patientsArr = data
+        //! создаем временный массив
         this.tempArr = [...this.patientsArr]
       });
     this.service.getOz()
@@ -45,25 +44,44 @@ export class DashboardPageComponent implements OnInit {
 
   protected onSelectOz(e: string) {
     this.currentOrg = e
+    //! Старый способ.
+    //! При переключении организации каждый раз подгружал данные с сервера
     // this.service.getPatients().subscribe((data: Patient[]) => {
     //   this.patientsArr = this.filterByOz(data, this.currentOrg)
     // })
+    //! Новый способ. При переключении организации фильтрует по временному массиву
     this.tempArr = this.filterByOz(this.patientsArr, this.currentOrg)
   }
 
-  protected updPatient(patient: Patient) {
+  protected updPatient(patient: Patient ) {
+    //* Отправляем изменения о пациенте на сервер
     this.service.updatePatient(patient).subscribe(() => {
-      this.service.getPatients().subscribe((data: Patient[]) => {
-        this.tempArr = this.filterByOz(data, this.currentOrg)
-      })
+      //! Старый способ. При редактировании отправлял изменения и загружал
+      //! из БД измененный массив, работало с задержкой.
+      // this.service.getPatients().subscribe((data: Patient[]) => {
+      //   this.tempArr = this.filterByOz(data, this.currentOrg)
+      // })
+      //! Новый способ. отправляет изменения на сервер, но перерисовывает
+      //! на основе локального массива
+      const currentIndex = this.tempArr.findIndex(el => el.id === patient.id)
+      this.tempArr[currentIndex] = patient
+        this.tempArr = this.filterByOz(this.patientsArr, this.currentOrg)
     })
   }
 
   protected delPatient(patient: Patient) {
+    //* Удаляем пациента
     this.service.deletePatient(patient.id).subscribe(()=> {
-      this.service.getPatients().subscribe((data: Patient[]) => {
-        this.tempArr = this.filterByOz(data, this.currentOrg)
-      })
+      //! Старый способ. При удалении отправлял изменения и загружал
+      //! из БД измененный массив, работало с задержкой.
+      // this.service.getPatients().subscribe((data: Patient[]) => {
+      //   this.tempArr = this.filterByOz(data, this.currentOrg)
+      // })
+      //! Новый способ. отправляет изменения на сервер, но перерисовывает
+      //! на основе локального массива
+      const currentIndex = this.tempArr.findIndex(el => el.id === patient.id)
+      this.tempArr.splice(currentIndex, 1)
+      this.tempArr = this.filterByOz(this.tempArr, this.currentOrg)
     })
   }
 }
