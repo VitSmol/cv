@@ -1,13 +1,15 @@
 <div class="wrapper dashboard__wrapper">
   <app-menu
-    [ozArray] = "Oz"
     (selectOz)="onSelectOz($event)"
+    [ozArray] = "Oz"
+    [selectedOrg]="currentOrg"
     ></app-menu>
   <app-content
     [types]="typesArr"
     [patients]="tempArr"
     (updatePatient)="updPatient($event)"
     (deletePatient)="delPatient($event)"
+    (selectOz)="onSelectOz($event)"
   >
 <!-- TODO updatePatient - переменная из компонента content -->
 <!-- TODO updPatient - метод из класса dashboard -->

@@ -359,7 +359,7 @@
                   {{ ColumnsNames.org }}
                 </th>
                 <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'"
-                  (click)="openEditPatientDialog(patient)">
+                  (click)="onSelectOz(patient.org)">
                   {{ patient.org }}
                 </td>
               </ng-container>

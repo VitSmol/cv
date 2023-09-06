@@ -9,8 +9,8 @@ import { Oz, Patient, Types } from '../../shared/interfaces/phpInterface';
 })
 export class DashboardPageComponent implements OnInit {
 
-  patientsArr!: Patient[];
-  tempArr!: Patient[];
+  public patientsArr!: Patient[];
+  public tempArr!: Patient[];
   typesArr: Types[] = []
   Oz!: Oz[]
   currentOrg!: string
@@ -56,6 +56,8 @@ export class DashboardPageComponent implements OnInit {
     // })
   }
 
+  //! Новый способ.отправляет изменения на сервер, но  после операции
+  //! обновления/удаления перерисовывает таблицу на основе локального массива
   private redraw(patient: Patient, tempArr: Patient[], arr: Patient[], operation: "update" | "delete"){
     const tempArrInd = tempArr.findIndex((el: Patient) => el.id === patient.id);
     const ind = arr.findIndex((el: Patient) => el.id === patient.id);
@@ -66,11 +68,12 @@ export class DashboardPageComponent implements OnInit {
       tempArr.splice(tempArrInd, 1)
       arr.splice(ind, 1)
     }
-    this.tempArr = this.filterByOz(this.tempArr, this.currentOrg)
+    // if (!this.currentOrg) {
+    //   this.tempArr = this.filterByOz(this.patientsArr, this.currentOrg)
+
+    // }
   }
 
-  //! Новый способ.отправляет изменения на сервер, но  после операции
-  //! обновления/удаления перерисовывает таблицу на основе локального массива
   //* Изменяем пациента
   protected updPatient(patient: Patient) {
     this.service.updatePatient(patient).subscribe(() => {
@@ -80,11 +83,7 @@ export class DashboardPageComponent implements OnInit {
       //   this.tempArr = this.filterByOz(data, this.currentOrg)
       // })
       this.redraw(patient, this.tempArr, this.patientsArr, 'update')
-      if (!this.currentOrg) {
-        console.log(this.tempArr);
-        console.log(this.patientsArr);
-
-      }
+      this.tempArr = this.filterByOz(this.patientsArr, this.currentOrg)
     })
   }
 
@@ -97,9 +96,7 @@ export class DashboardPageComponent implements OnInit {
       //   this.tempArr = this.filterByOz(data, this.currentOrg)
       // })
       this.redraw(patient, this.tempArr, this.patientsArr, 'delete')
-      if (!this.currentOrg) {
-        this.tempArr = this.tempArr
-      }
+      this.tempArr = this.filterByOz(this.patientsArr, this.currentOrg)
     })
 
   }

@@ -23,8 +23,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import {MatRadioModule} from '@angular/material/radio';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { ConfirmComponent } from './view/dialog/confirm/confirm.component';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -70,7 +70,7 @@ import { MatNativeDateModule } from '@angular/material/core';
           { path: 'add', component: AddPageComponent, canActivate: [AuthGuard] },
           { path: 'once-add', component: OnceAddComponent, canActivate: [AuthGuard] },
           { path: 'list', component: AllListComponent, canActivate: [AuthGuard] },
-          { path: 'edit/:id', component: EditPageComponent, canActivate: [AuthGuard]}
+          { path: 'edit/:id', component: EditPageComponent, canActivate: [AuthGuard] }
         ]
       }
     ]),

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { ColumnsNames } from '../../../shared/interfaces/interfaces';
-import { Patient, Types } from '../../../shared/interfaces/phpInterface';
+import { Oz, Patient, Types } from '../../../shared/interfaces/phpInterface';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -44,14 +44,14 @@ export class ContentComponent implements OnInit {
 
   @Output() updatePatient = new EventEmitter<Patient>();
   @Output() deletePatient = new EventEmitter<Patient>();
+  @Output() selectOz = new EventEmitter<string>();
 
   searchListnumber: string = '';
   searchFIO: string = '';
   selectedType: string | null= 'all';
 
   //! Загружает всех пациентов
-  @Input('patients')
-  public set setPatients(patients: Patient[]) {
+  @Input('patients') public set setPatients(patients: Patient[]) {
     this.patientsArr = patients;
     // this.fillTable();
     setTimeout(() => {
@@ -60,15 +60,13 @@ export class ContentComponent implements OnInit {
     }, 1);
   }
 
-  @Input('types')
-    public set setTypes(types: Types[]) {
+  @Input('types') public set setTypes(types: Types[]) {
       this.types = types
       console.log(this.types);
     }
 
   constructor(
     private dialog: MatDialog,
-    private service: PatientService
   ) {
 
   }
@@ -148,5 +146,9 @@ export class ContentComponent implements OnInit {
   filterByType(e: any) {
     console.log(e);
 
+  }
+
+  onSelectOz(oz: string) {
+    this.selectOz.emit(oz)
   }
 }

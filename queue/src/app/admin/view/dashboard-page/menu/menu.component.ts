@@ -7,18 +7,14 @@ import { Oz, Types } from '../../../shared/interfaces/phpInterface';
   styleUrls: ['./menu.component.sass']
 })
 
-export class MenuComponent implements OnInit {
+export class MenuComponent {
 
-  @Input() ozArray: Oz[] = [];
   @Output() selectOz = new EventEmitter<string>();
 
-  selectedOrg: string | undefined = undefined;
-  typesArr: Types[] = [];
+  @Input() ozArray: Oz[] = [];
+  @Input() selectedOrg: string | undefined = undefined;
 
-  ngOnInit(): void {
-  }
-
-  public showPatientsByOrg(oz: Oz | null) {
+public showPatientsByOrg(oz: Oz | null) {
     if (this.selectedOrg === oz?.orgname) return;
       this.selectedOrg = oz?.orgname
       this.selectOz.emit(this.selectedOrg);
