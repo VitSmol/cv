@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Oz, Types } from '../../../shared/interfaces/phpInterface';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Oz } from '../../../shared/interfaces/phpInterface';
 
 @Component({
   selector: 'app-menu',

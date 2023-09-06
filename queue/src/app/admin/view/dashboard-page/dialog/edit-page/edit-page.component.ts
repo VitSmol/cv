@@ -1,9 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { CheckboxControlValueAccessor, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ColumnsNames, FullName, ProstheticsType } from '../../../shared/interfaces/interfaces';
-import { PatientService } from '../../../shared/services/patient.service';
-import { Oz, Patient, Types } from '../../../shared/interfaces/phpInterface';
+import { ColumnsNames} from '../../../../shared/interfaces/interfaces';
+import { PatientService } from '../../../../shared/services/patient.service';
+import { Oz, Patient, Types } from '../../../../shared/interfaces/phpInterface';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmComponent } from '../confirm/confirm.component';
 

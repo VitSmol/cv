@@ -1,14 +1,12 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { ColumnsNames } from '../../../shared/interfaces/interfaces';
-import { Oz, Patient, Types } from '../../../shared/interfaces/phpInterface';
+import { Patient, Types } from '../../../shared/interfaces/phpInterface';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
-import { EditPageComponent } from '../../dialog/edit-page/edit-page.component';
-import { ConfirmComponent } from '../../dialog/confirm/confirm.component';
-import { Type } from '@angular/compiler';
-import { PatientService } from 'src/app/admin/shared/services/patient.service';
+import { ConfirmComponent } from '../dialog/confirm/confirm.component';
+import { EditPageComponent } from '../dialog/edit-page/edit-page.component';
 
 @Component({
   selector: 'app-content',

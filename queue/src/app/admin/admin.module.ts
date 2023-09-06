@@ -18,7 +18,6 @@ import { ContentComponent } from './view/dashboard-page/content/content.componen
 import { OnceAddComponent } from './view/once-add/once-add.component';
 import { AllListComponent } from './view/all-list/all-list.component';
 import { CustomDatePipe } from './shared/custom-date.pipe';
-import { EditPageComponent } from './view/dialog/edit-page/edit-page.component';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -26,8 +25,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
-import { ConfirmComponent } from './view/dialog/confirm/confirm.component';
 import { MatNativeDateModule } from '@angular/material/core';
+import { ConfirmComponent } from './view/dashboard-page/dialog/confirm/confirm.component';
+import { EditPageComponent } from './view/dashboard-page/dialog/edit-page/edit-page.component';
 
 @NgModule({
   declarations: [
