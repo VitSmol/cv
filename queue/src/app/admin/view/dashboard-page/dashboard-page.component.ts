@@ -15,6 +15,9 @@ export class DashboardPageComponent implements OnInit {
   Oz!: Oz[]
   currentOrg!: string
 
+  private findableListnumber: string | null = null;
+  private findableType: string | null = null
+
   constructor(
     private service: PatientService
   ) { }
@@ -48,6 +51,7 @@ export class DashboardPageComponent implements OnInit {
     console.log(this.currentOrg);
     //! Новый способ. При переключении организации фильтрует по временному массиву
     this.tempArr = this.filterByOz(this.patientsArr, this.currentOrg)
+    this.updatePatientsList()
 
     //! Старый способ.
     //! При переключении организации каждый раз подгружал данные с сервера
@@ -68,10 +72,6 @@ export class DashboardPageComponent implements OnInit {
       tempArr.splice(tempArrInd, 1)
       arr.splice(ind, 1)
     }
-    // if (!this.currentOrg) {
-    //   this.tempArr = this.filterByOz(this.patientsArr, this.currentOrg)
-
-    // }
   }
 
   //* Изменяем пациента
@@ -84,6 +84,7 @@ export class DashboardPageComponent implements OnInit {
       // })
       this.redraw(patient, this.tempArr, this.patientsArr, 'update')
       this.tempArr = this.filterByOz(this.patientsArr, this.currentOrg)
+      this.updatePatientsList()
     })
   }
 
@@ -97,7 +98,34 @@ export class DashboardPageComponent implements OnInit {
       // })
       this.redraw(patient, this.tempArr, this.patientsArr, 'delete')
       this.tempArr = this.filterByOz(this.patientsArr, this.currentOrg)
+      this.updatePatientsList()
     })
+
+  }
+
+  onFilterPatientsByListNumber(e: string | null) {
+    this.findableListnumber = e;
+    this.updatePatientsList()
+  }
+
+  onFilterPatientsByType(e: string | null) {
+    this.findableType = e;
+    this.updatePatientsList()
+  }
+
+  private updatePatientsList() {
+    // this.tempArr = [...this.patientsArr]
+    let searchArr = this.filterByOz(this.patientsArr, this.currentOrg)
+
+    if (this.findableListnumber) {
+      searchArr = searchArr.filter(patient => patient.listnumber?.toLowerCase().includes(this.findableListnumber?.toLowerCase() as string))
+    }
+    if (this.findableType !== null) {
+      searchArr = searchArr.filter(patient => patient.type === this.findableType)
+    }
+
+    this.tempArr = [...searchArr]
+    console.log(this.tempArr);
 
   }
 }

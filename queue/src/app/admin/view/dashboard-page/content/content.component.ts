@@ -44,9 +44,12 @@ export class ContentComponent implements OnInit {
   @Output() deletePatient = new EventEmitter<Patient>();
   @Output() selectOz = new EventEmitter<string>();
 
-  searchListnumber: string = '';
+  @Output() outListnumberFilterValue = new EventEmitter<string | null>();
+  @Output() outTypeFilterValue = new EventEmitter<string | null>();
+
   searchFIO: string = '';
-  selectedType: string | null= 'all';
+  listnumberFilter: string | null = '';
+  selectedTypeFilter: string | null = '';
 
   //! Загружает всех пациентов
   @Input('patients') public set setPatients(patients: Patient[]) {
@@ -70,13 +73,7 @@ export class ContentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.patientsArr);
-    // this.service.getTypes().subscribe(types => {
-    //   this.types = types;
-    //   console.log(this.types)
-    // })
     this.dataSource = new MatTableDataSource();
-    // this.fillTable();
   }
 
   private fillTable(): void {
@@ -92,7 +89,6 @@ export class ContentComponent implements OnInit {
 
   // открытие диалогового окна редактирования
   protected openEditPatientDialog(patient: Patient): void {
-    // this.updatePatient.emit(patient);
     const dialogRef = this.dialog.open(EditPageComponent, {
       data: [patient, "Редактирование пациента"],
       autoFocus: false,
@@ -134,19 +130,26 @@ export class ContentComponent implements OnInit {
       }
     })
   }
-  filterByNumber() {
 
+
+
+  onFilterByNumber() {
+    this.outListnumberFilterValue.emit(this.listnumberFilter)
   }
-  filterByFIO() {
 
-  }
 
-  filterByType(e: any) {
-    console.log(e);
+  onFilterByType(e: any) {
+    this.selectedTypeFilter = e
+    this.outTypeFilterValue.emit(this.selectedTypeFilter)
 
   }
 
   onSelectOz(oz: string) {
     this.selectOz.emit(oz)
   }
+
+
+    filterByFIO() {
+
+    }
 }
