@@ -25,9 +25,12 @@ export class DashboardPageComponent implements OnInit {
   ngOnInit(): void {
     this.service.getPatients()
       .subscribe((data: Patient[]) => {
-        this.patientsArr = data;
-        //! создаем временный массив
-        this.tempArr = [...this.patientsArr];
+        // this.patientsArr = data;
+        // //! создаем временный массив
+        // this.tempArr = [...this.patientsArr];
+        // TODO проверить:
+        this.tempArr = [...this.patientsArr] = data;
+
       });
     this.service.getOz()
       .subscribe((data: Oz[]) => this.Oz = data);
@@ -37,13 +40,15 @@ export class DashboardPageComponent implements OnInit {
 
   //! Фильтр отображаемых пациентов по категории
   private filterByOz(patients: Patient[], oz: string): Patient[] {
-    if (this.currentOrg) {
-      return patients.filter((p: Patient) => {
-        return p.org === oz;
-      })
-    } else {
-      return patients
-    }
+    // TODO проверить
+    return this.currentOrg ? patients.filter((p: Patient) => p.org === oz) : patients;
+    // if (this.currentOrg) {
+    //   return patients.filter((p: Patient) => {
+    //     return p.org === oz;
+    //   })
+    // } else {
+    //   return patients
+    // }
   }
 
   protected onSelectOz(e: string) {
