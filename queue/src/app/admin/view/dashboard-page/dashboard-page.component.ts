@@ -17,6 +17,7 @@ export class DashboardPageComponent implements OnInit {
 
   private findableListnumber: string | null = null;
   private findableType: string | null = null
+  private findableFIO: string | null = null
 
   constructor(
     private service: PatientService
@@ -35,7 +36,6 @@ export class DashboardPageComponent implements OnInit {
 
   //! Фильтр отображаемых пациентов по категории
   private filterByOz(patients: Patient[], oz: string): Patient[] {
-    // TODO проверить
     return this.currentOrg ? patients.filter((p: Patient) => p.org === oz) : patients;
   }
 
@@ -89,10 +89,22 @@ export class DashboardPageComponent implements OnInit {
     this.updatePatientsList()
   }
 
+  onFilterPatientsByFio(e: string | null) {
+    this.findableFIO = e;
+    this.updatePatientsList()
+  }
+
   private updatePatientsList() {
     let searchArr = this.filterByOz(this.patientsArr, this.currentOrg)
     if (this.findableListnumber) {
       searchArr = searchArr.filter(patient => patient.listnumber?.toLowerCase().includes(this.findableListnumber?.toLowerCase() as string))
+    }
+    if (this.findableFIO) {
+      searchArr = searchArr.filter(patient => {
+        return patient.name?.toLowerCase().includes(this.findableFIO?.toLowerCase() as string) ||
+                patient.lastname?.toLowerCase().includes(this.findableFIO?.toLowerCase() as string) ||
+                patient.fathername?.toLowerCase().includes(this.findableFIO?.toLowerCase() as string)
+      })
     }
     if (this.findableType !== null) {
       searchArr = searchArr.filter(patient => patient.type === this.findableType)

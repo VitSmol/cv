@@ -9,6 +9,7 @@
     "больница",
     "Бровки",
     "быть",
+    "важный",
     "Вашего",
     "введен",
     "Введите",
@@ -176,6 +177,7 @@
     "Островского",
     "открытие",
     "отчество",
+    "Очень",
     "очереди",
     "очередь",
     "паиента",
@@ -338,5 +340,7 @@
     "zlobin"
   ],
   "editor.fontSize": 15,
-  "workbench.settings.editor": "ui"
+  "workbench.settings.editor": "ui",
+  "better-comments.highlightPlainText": true,
+  "better-comments.multilineComments": true
 }

@@ -141,91 +141,73 @@
         </div>
       </div>
     -->
-      <!-- * Секция с фильтрами -->
+
+      <!-- / Секция с фильтрами -->
       <div class="row filters">
-          <div class="col-md-3 col-sm-12">
+        <div class="col-md-3 col-sm-12">
 
-            <mat-form-field class="listnumber-filter">
-              <mat-label>Фильтр по номеру</mat-label>
-              <input
-                #numberFilter
-                matInput
-                (keydown.escape)="listnumberFilter =''; onFilterByNumber()"
-                (keyup)="onFilterByNumber()"
-                [(ngModel)]="listnumberFilter">
+          <mat-form-field class="listnumber-filter">
+            <mat-label>Фильтр по номеру</mat-label>
+            <input #numberFilter matInput (keydown.escape)="listnumberFilter =''; onFilterByNumber()"
+              (keyup)="onFilterByNumber()" [(ngModel)]="listnumberFilter">
 
-              <button
-                *ngIf="numberFilter.value.trim().length > 0"
-                matSuffix
-                mat-icon-button
-                aria-label="Clear"
-                (click)="numberFilter.value =''; listnumberFilter=''; onFilterByNumber()"
-                class="clear-icon size25 gray"
-                >
-                <mat-icon>close</mat-icon>
+            <button *ngIf="numberFilter.value.trim().length > 0" matSuffix mat-icon-button aria-label="Clear"
+              (click)="numberFilter.value =''; listnumberFilter=''; onFilterByNumber()" class="clear-icon size25 gray">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-3 col-sm-12">
+          <mat-form-field class="fio-filter">
+            <mat-label>Фильтр по ФИО</mat-label>
+            <input #filterByFio matInput (keydown.escape)="fioFilter =''; onFilterByFIO()" (keyup)="onFilterByFIO()"
+              [(ngModel)]="fioFilter">
+
+            <button *ngIf="filterByFio.value.trim().length > 0" matSuffix mat-icon-button aria-label="Clear"
+              (click)="filterByFio.value =''; fioFilter=''; onFilterByFIO()" class="clear-icon size25 gray">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-3 col-sm-12">
+          <mat-form-field>
+            <mat-label>{{ ColumnsNames.type }}</mat-label>
+            <mat-select #typeFilter (valueChange)="onFilterByType($event)" [(value)]="selectedTypeFilter">
+              <mat-option [value]="null">Все</mat-option>
+              <mat-option *ngFor="let item of types" [value]="item.type">{{ item.type }}</mat-option>
+            </mat-select>
+            <button (click)="$event.stopPropagation(); onFilterByType(null)" *ngIf="selectedTypeFilter !=null"
+              aria-label="Clear" class="clear-icon size25 gray" matSuffix mat-icon-button>
+              <mat-icon>clear</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-3">
+          <div class="row">
+            <div class="col-md-6 col-sm-12">
+              <button mat-raised-button color="accent" (click)="$event.stopPropagation();
+              onFilterByType(null);
+              listnumberFilter = null;
+              fioFilter='';
+              onFilterByNumber();
+              onFilterByFIO()">Сбросить фильтры
               </button>
+            </div>
 
-            </mat-form-field>
-          </div>
-
-          <!-- <div class="col-md-3 col-sm-12">
-            <mat-form-field class="fio-filter">
-              <mat-label>Фильтр по ФИО</mat-label>
-              <input
-                matInput
-                #fioFilter
-                type="text"
-                (keydown.escape)="searchFIO =''; filterByFIO()"
-                (keyup)="filterByFIO()"
-                [(ngModel)]="searchFIO">
-              <button *ngIf="fioFilter.value.trim().length > 0" matSuffix mat-icon-button aria-label="Clear"
-                (click)="fioFilter.value =''" class="clear-icon size25 gray">
-                <mat-icon>close</mat-icon>
+            <div class="col-md-3 col-sm-12">
+              <button mat-raised-button color="primary" (click)="$event.stopPropagation();
+            ">Добавить
               </button>
-            </mat-form-field>
-          </div> -->
-
-          <div class="col-md-3 col-sm-12">
-            <mat-form-field>
-              <mat-label>{{ ColumnsNames.type }}</mat-label>
-              <mat-select
-                #typeFilter
-                (valueChange)="onFilterByType($event)"
-                [(value)]="selectedTypeFilter"
-                >
-                  <mat-option [value]="null">Все</mat-option>
-                  <mat-option *ngFor="let item of types" [value]="item.type">{{ item.type  }}</mat-option>
-              </mat-select>
-              <button
-                (click)="$event.stopPropagation(); onFilterByType(null)"
-
-                *ngIf="selectedTypeFilter !=null"
-                aria-label="Clear"
-                class="clear-icon size25 gray"
-                matSuffix
-                mat-icon-button
-              >
-                <mat-icon>clear</mat-icon>
-              </button>
-            </mat-form-field>
-          </div>
-
-          <div class="col-md-3 col-sm-12">
-            <div class="row">
-              <div class="text-left col-6">
-                <button
-                  mat-raised-button
-                  color="accent"
-                  (click)="$event.stopPropagation(); onFilterByType(null); listnumberFilter = null; searchFIO=''; onFilterByNumber();"
-                >Сбросить фильтры</button>
-              </div>
-              <div class="text-right col-6">
-
-              </div>
             </div>
           </div>
+        </div>
         <!-- </div> -->
       </div>
+
+
       <div class="col table__col">
         <div class="card">
           <div class="card-header card-header-warning">
@@ -237,21 +219,21 @@
             <!--TODO matSortActive - колонка для сортировки по умолчанию, matSortDirection - по возрастанию -->
             <table [dataSource]="dataSource" mat-table cellpadding="13" matSort matSortActive="date"
               matSortDirection="asc" matSortDisableClear>
-              <!-- <colgroup>
+              <colgroup>
                 <col class="col-listnumber">
                 <col class="col-name">
-                <col class="col-address">
+                <!-- <col class="col-address"> -->
                 <col class="col-sex">
                 <col class="col-birthday">
                 <col class="col-date">
-                <col class="col-diag">
-                <col class="col-side">
+                <!-- <col class="col-diag"> -->
+                <!-- <col class="col-side"> -->
                 <col class="col-isOperated">
                 <col class="col-operdate">
                 <col class="col-info">
                 <col class="col-type">
                 <col class="col-org">
-              </colgroup> -->
+              </colgroup>
 
               <ng-container matColumnDef="listnumber">
                 <th class="col-listnumber" *matHeaderCellDef mat-header-cell class="text-warning">
@@ -402,7 +384,8 @@
               <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="pointer"></tr>
             </table>
 
-            <mat-paginator [pageSize]="15" [pageSizeOptions]="[5,10,15,20,50,100]" showFirstLastButtons=""></mat-paginator>
+            <mat-paginator [pageSize]="15" [pageSizeOptions]="[5,10,15,20,50,100]"
+              showFirstLastButtons=""></mat-paginator>
 
           </div>
           <div *ngIf="patientsArr && patientsArr.length === 0">

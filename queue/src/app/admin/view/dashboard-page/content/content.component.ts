@@ -33,44 +33,39 @@ export class ContentComponent implements OnInit {
     'org',
     'operations']
   public dataSource!: MatTableDataSource<Patient>
+  public patientsArr!: Patient[]
+  public types: Types[] = [];
+
+  public listnumberFilter: string | null = '';
+  public fioFilter: string = '';
+  public selectedTypeFilter: string | null = null;
 
   @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator
   @ViewChild(MatSort, { static: false }) sort!: MatSort
 
-  public patientsArr!: Patient[]
-  public types: Types[] = [];
-
   @Output() updatePatient = new EventEmitter<Patient>();
   @Output() deletePatient = new EventEmitter<Patient>();
   @Output() selectOz = new EventEmitter<string>();
-
   @Output() outListnumberFilterValue = new EventEmitter<string | null>();
+  @Output() outFioFilterValue = new EventEmitter<string | null>();
   @Output() outTypeFilterValue = new EventEmitter<string | null>();
-
-  searchFIO: string = '';
-  listnumberFilter: string | null = '';
-  selectedTypeFilter: string | null = '';
 
   //! Загружает всех пациентов
   @Input('patients') public set setPatients(patients: Patient[]) {
     this.patientsArr = patients;
-    // this.fillTable();
     setTimeout(() => {
-      // console.log(this.patientsArr);
       this.fillTable() //? без задержки не работает
     }, 1);
   }
 
   @Input('types') public set setTypes(types: Types[]) {
-      this.types = types
-      console.log(this.types);
-    }
+    this.types = types
+    console.log(this.types);
+  }
 
   constructor(
     private dialog: MatDialog,
-  ) {
-
-  }
+  ) { }
 
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource();
@@ -95,8 +90,7 @@ export class ContentComponent implements OnInit {
       width: '70vw',
       height: '85vh'
     });
-
-    dialogRef.afterClosed().subscribe((result: {message: string, patient: Patient}) => {
+    dialogRef.afterClosed().subscribe((result: { message: string, patient: Patient }) => {
       //* обработка результата Передаем измененного пациента через Output в dashboard
       if (!result) return
 
@@ -104,14 +98,12 @@ export class ContentComponent implements OnInit {
         this.updatePatient.emit(result.patient);
         return
       }
-
       if (result.message === 'delete') {
         this.deletePatient.emit(result.patient)
         return
       }
     });
   }
-
   //! Окно подтверждения при удалении пациента из общего списка (иконка в таблице)
   protected onDeleteConfirm(patient: Patient) {
     const dialogRef = this.dialog.open(ConfirmComponent, {
@@ -131,25 +123,21 @@ export class ContentComponent implements OnInit {
     })
   }
 
-
-
   onFilterByNumber() {
     this.outListnumberFilterValue.emit(this.listnumberFilter)
   }
 
-
   onFilterByType(e: any) {
     this.selectedTypeFilter = e
     this.outTypeFilterValue.emit(this.selectedTypeFilter)
+  }
 
+  onFilterByFIO() {
+    this.outFioFilterValue.emit(this.fioFilter)
   }
 
   onSelectOz(oz: string) {
     this.selectOz.emit(oz)
   }
 
-
-    filterByFIO() {
-
-    }
 }
