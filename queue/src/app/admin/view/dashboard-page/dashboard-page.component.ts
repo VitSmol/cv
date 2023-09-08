@@ -53,8 +53,7 @@ export class DashboardPageComponent implements OnInit {
     const tempArrInd = tempArr.findIndex((el: Patient) => el.id === patient.id);
     const ind = arr.findIndex((el: Patient) => el.id === patient.id);
     if (operation === "update") {
-      tempArr[tempArrInd] = patient;
-      arr[ind] = patient
+      tempArr[tempArrInd] = arr[ind] = patient;
     } else if (operation = "delete") {
       tempArr.splice(tempArrInd, 1)
       arr.splice(ind, 1)

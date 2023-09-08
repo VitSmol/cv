@@ -74,15 +74,11 @@ export class ContentComponent implements OnInit {
   private fillTable(): void {
     if (!this.dataSource) return
     this.dataSource.data = this.patientsArr;
-    this.addTableObjects()
-  }
-
-  private addTableObjects(): void {
     this.dataSource.sort = this.sort; // компонент для сортировки данных (если необходимо)
     this.dataSource.paginator = this.paginator; // обновить компонент постраничности (кол-во записей, страниц)
   }
 
-  // открытие диалогового окна редактирования
+  //` открытие диалогового окна редактирования
   protected openEditPatientDialog(patient: Patient): void {
     const dialogRef = this.dialog.open(EditPageComponent, {
       data: [patient, "Редактирование пациента"],
@@ -104,7 +100,7 @@ export class ContentComponent implements OnInit {
       }
     });
   }
-  //! Окно подтверждения при удалении пациента из общего списка (иконка в таблице)
+  //` Окно подтверждения при удалении пациента из общего списка (иконка в таблице)
   protected onDeleteConfirm(patient: Patient) {
     const dialogRef = this.dialog.open(ConfirmComponent, {
       data: {
@@ -126,12 +122,10 @@ export class ContentComponent implements OnInit {
   onFilterByNumber() {
     this.outListnumberFilterValue.emit(this.listnumberFilter)
   }
-
   onFilterByType(e: any) {
     this.selectedTypeFilter = e
     this.outTypeFilterValue.emit(this.selectedTypeFilter)
   }
-
   onFilterByFIO() {
     this.outFioFilterValue.emit(this.fioFilter)
   }
