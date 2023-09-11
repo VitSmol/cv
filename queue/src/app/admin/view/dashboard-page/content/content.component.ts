@@ -49,6 +49,9 @@ export class ContentComponent implements OnInit {
   @Output() outListnumberFilterValue = new EventEmitter<string | null>();
   @Output() outFioFilterValue = new EventEmitter<string | null>();
   @Output() outTypeFilterValue = new EventEmitter<string | null>();
+  @Output() addNewPatient = new EventEmitter<Patient>();
+
+  @Input() selectedOrg: string | null = null;
 
   //! Загружает всех пациентов
   @Input('patients') public set setPatients(patients: Patient[]) {
@@ -74,14 +77,44 @@ export class ContentComponent implements OnInit {
   private fillTable(): void {
     if (!this.dataSource) return
     this.dataSource.data = this.patientsArr;
-    this.dataSource.sort = this.sort; // компонент для сортировки данных (если необходимо)
-    this.dataSource.paginator = this.paginator; // обновить компонент постраничности (кол-во записей, страниц)
+    this.dataSource.sort = this.sort; //* компонент для сортировки данных (если необходимо)
+    this.dataSource.paginator = this.paginator; //* обновить компонент постраничности (кол-во записей, страниц)
   }
 
   //` открытие диалогового окна редактирования
-  protected openEditPatientDialog(patient: Patient): void {
+  /// TODO необходимо реализовать следующую логику:
+  /// оставить только этот метод. Метод openAddPatientDialog - удалить.
+  /// в методе openEditPatientDialog реализовать передачу параметров patient || null, если пеедается null
+  /// тогда в поле data передаем [patient, 'Добавление нового пациента', 'add'], где patient
+  /// пустой объект. затем в afterClosed проверяем если result.message === 'add', тогда передаем result.patient
+  /// в метод addNewPatient и т.д.
+  /// Переименовать openEditPatientDialog в openPatientDialog
+  protected openPatientDialog(patient: Patient | null): void {
     const dialogRef = this.dialog.open(EditPageComponent, {
-      data: [patient, "Редактирование пациента"],
+      data: patient ? [patient, "Редактирование данных о пациентe", "edit"] :
+      [
+        {
+          // id: '',
+          name: '',
+          lastname: '',
+          listnumber: '',
+          fathername: '',
+          date: new Date(),
+          birthday: '',
+          address: '',
+          diag: '',
+          operdate: '',
+          info: '',
+          type: this.selectedTypeFilter ? this.selectedTypeFilter : '',
+          org: this.selectedOrg ? this.selectedOrg : '',
+          sex: '',
+          isOperated: '0',
+          side: '',
+          invalidgroup: '',
+        },
+        'Добавление нового пациента',
+        'add'
+      ],
       autoFocus: false,
       width: '70vw',
       height: '85vh'
@@ -96,6 +129,12 @@ export class ContentComponent implements OnInit {
       }
       if (result.message === 'delete') {
         this.deletePatient.emit(result.patient)
+        return
+      }
+      if (result.message === 'add') {
+        console.log(result.patient);
+
+        this.addNewPatient.emit(result.patient)
         return
       }
     });
@@ -129,9 +168,7 @@ export class ContentComponent implements OnInit {
   onFilterByFIO() {
     this.outFioFilterValue.emit(this.fioFilter)
   }
-
   onSelectOz(oz: string) {
     this.selectOz.emit(oz)
   }
-
 }

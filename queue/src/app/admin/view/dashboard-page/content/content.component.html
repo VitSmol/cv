@@ -204,9 +204,9 @@
               </button>
             </div>
 
-            <div class="col-md-3 col-sm-12">
-              <button mat-raised-button color="primary" (click)="$event.stopPropagation();
-            ">Добавить
+            <div class="col-md-6 col-sm-12">
+              <button mat-raised-button color="primary" (click)="$event.stopPropagation(); openPatientDialog(null)">
+                Добавить
               </button>
             </div>
           </div>
@@ -245,7 +245,7 @@
               <ng-container matColumnDef="listnumber">
                 <th class="col-listnumber" *matHeaderCellDef mat-header-cell class="text-warning">
                   {{ColumnsNames.number}}</th>
-                <td class="col-listnumber" *matCellDef="let patient" mat-cell (click)="openEditPatientDialog(patient)">
+                <td class="col-listnumber" *matCellDef="let patient" mat-cell (click)="openPatientDialog(patient)">
                   {{ patient.listnumber }}
                 </td>
               </ng-container>
@@ -255,7 +255,7 @@
                   ФИО
                 </th>
                 <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'"
-                  (click)="openEditPatientDialog(patient)">
+                  (click)="openPatientDialog(patient)">
                   {{ patient.lastname + ' ' + patient.name + ' ' + patient.fathername }}
                 </td>
               </ng-container>
@@ -265,7 +265,7 @@
                   {{ ColumnsNames.address }}
                 </th>
                 <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'"
-                  (click)="openEditPatientDialog(patient)">
+                  (click)="openPatientDialog(patient)">
                   {{ patient.address }}
                 </td>
               </ng-container>
@@ -275,7 +275,7 @@
                   Пол
                 </th>
                 <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'"
-                  (click)="openEditPatientDialog(patient)">
+                  (click)="openPatientDialog(patient)">
                   {{ patient.sex }}
                 </td>
               </ng-container>
@@ -285,7 +285,7 @@
                   {{ ColumnsNames.birthday }}
                 </th>
                 <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'"
-                  (click)="openEditPatientDialog(patient)">
+                  (click)="openPatientDialog(patient)">
                   {{ patient.birthday }}
                 </td>
               </ng-container>
@@ -295,7 +295,7 @@
                   Дата постановки на учет
                 </th>
                 <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'"
-                  (click)="openEditPatientDialog(patient)">
+                  (click)="openPatientDialog(patient)">
                   {{ patient.date | date: "dd.MM.YYYY"}}
                 </td>
               </ng-container>
@@ -305,7 +305,7 @@
                   {{ ColumnsNames.diag }}
                 </th>
                 <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'"
-                  (click)="openEditPatientDialog(patient)">
+                  (click)="openPatientDialog(patient)">
                   {{ patient.diag }}
                 </td>
               </ng-container>
@@ -315,7 +315,7 @@
                   {{ ColumnsNames.side }}
                 </th>
                 <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'"
-                  (click)="openEditPatientDialog(patient)">
+                  (click)="openPatientDialog(patient)">
                   {{ patient.side }}
                 </td>
               </ng-container>
@@ -324,7 +324,7 @@
                 <th *matHeaderCellDef mat-header-cell class="text-warning" mat-sort-header>
                   Исключен из очереди
                 </th>
-                <td *matCellDef="let patient" mat-cell (click)="openEditPatientDialog(patient)">
+                <td *matCellDef="let patient" mat-cell (click)="openPatientDialog(patient)">
                   <div class="form-check">
                     <label class="checked">
                       <input type="checkbox" name="isOperated" disabled [checked]="patient.isOperated == 1">
@@ -338,7 +338,7 @@
                   Информация об операции
                 </th>
                 <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'"
-                  (click)="openEditPatientDialog(patient)">
+                  (click)="openPatientDialog(patient)">
                   {{ patient.operdate}}
                 </td>
               </ng-container>
@@ -348,7 +348,7 @@
                   {{ ColumnsNames.note }}
                 </th>
                 <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'"
-                  (click)="openEditPatientDialog(patient)">
+                  (click)="openPatientDialog(patient)">
                   {{ patient.info }}
                 </td>
               </ng-container>
@@ -358,7 +358,7 @@
                   {{ ColumnsNames.type }}
                 </th>
                 <td *matCellDef="let patient" mat-cell [class.operated]="patient.isOperated === '1'"
-                  (click)="openEditPatientDialog(patient)">
+                  (click)="openPatientDialog(patient)">
                   {{ patient.type }}
                 </td>
               </ng-container>
@@ -380,7 +380,7 @@
                     <button mat-icon-button class="delete-icon" (click)="onDeleteConfirm(patient)">
                       <mat-icon>delete</mat-icon>
                     </button>
-                    <button mat-icon-button class="edit-icon" (click)="openEditPatientDialog(patient)">
+                    <button mat-icon-button class="edit-icon" (click)="openPatientDialog(patient)">
                       <mat-icon>edit</mat-icon>
                     </button>
                   </div>

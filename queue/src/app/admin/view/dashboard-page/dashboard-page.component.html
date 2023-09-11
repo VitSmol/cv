@@ -6,9 +6,11 @@
     ></app-menu>
   <app-content
     [types]="typesArr"
+    [selectedOrg] = "currentOrg"
     [patients]="tempArr"
     (updatePatient)="updPatient($event)"
     (deletePatient)="delPatient($event)"
+    (addNewPatient)="addPatient($event)"
     (selectOz)="onSelectOz($event)"
     (outListnumberFilterValue)="onFilterPatientsByListNumber($event)"
     (outFioFilterValue)="onFilterPatientsByFio($event)"

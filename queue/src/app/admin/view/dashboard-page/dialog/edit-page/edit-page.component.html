@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Редактировать данные</h1>
+<h1 mat-dialog-title>{{ dialogTitle }}</h1>
 <mat-dialog-content class="dialog__content">
   <form [formGroup]="addForm" class="add__form">
     <fieldset>
@@ -253,6 +253,7 @@
   <div class="row">
     <div class="col-md-12">
       <button
+        *ngIf="windowType === 'edit'"
         type="submit"
         class="btn"
         mat-raised-button
@@ -267,7 +268,24 @@
           || (this.addForm.value.diag).trim().length === 0
           ">
           Изменить данные</button>
-        <button mat-raised-button color="warn" (click)="onDelete()">Удалить пациента</button>
+        <button *ngIf="windowType === 'edit'" mat-raised-button color="warn" (click)="onDelete()">Удалить пациента</button>
+
+        <button
+        *ngIf="windowType === 'add'"
+        type="submit"
+        class="btn"
+        mat-raised-button
+        color="primary"
+        (click)="onAdd()"
+        [disabled]="!this.addForm.valid
+          || (this.addForm.value.listnumber).trim().length === 0
+          || (this.addForm.value.lastname).trim().length === 0
+          || (this.addForm.value.name).trim().length === 0
+          || (this.addForm.value.address).trim().length === 0
+          || (this.addForm.value.birthday).toString().trim().length === 0
+          || (this.addForm.value.diag).trim().length === 0
+          ">
+          Добавить пациента</button>
         <button mat-raised-button (click)="onCancel()">Отмена</button>
     </div>
   </div>

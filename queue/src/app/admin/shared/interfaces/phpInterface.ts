@@ -4,7 +4,7 @@ export interface Patient {
   lastname?: string;
   listnumber?: string;
   fathername?: string;
-  date: string;
+  date: string | Date;
   birthday?: string;
   address?: string;
   diag?: string;

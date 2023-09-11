@@ -24,21 +24,14 @@ export class DashboardPageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.service.getPatients()
-      .subscribe((data: Patient[]) => {
+    this.service.getPatients().subscribe((data: Patient[]) => {
         this.tempArr = [...this.patientsArr] = data;
       });
-    this.service.getOz()
-      .subscribe((data: Oz[]) => this.Oz = data);
-    this.service.getTypes()
-      .subscribe((data: Types[]) => this.typesArr = data);
+    this.service.getOz().subscribe((data: Oz[]) => this.Oz = data);
+    this.service.getTypes().subscribe((data: Types[]) => this.typesArr = data);
   }
 
   //! Фильтр отображаемых пациентов по категории
-  private filterByOz(patients: Patient[], oz: string): Patient[] {
-    return this.currentOrg ? patients.filter((p: Patient) => p.org === oz) : patients;
-  }
-
   protected onSelectOz(e: string) {
     this.currentOrg = e
     console.log(this.currentOrg);
@@ -47,50 +40,85 @@ export class DashboardPageComponent implements OnInit {
     this.updatePatientsList()
   }
 
-  //! Новый способ.отправляет изменения на сервер, но  после операции
-  //! обновления/удаления перерисовывает таблицу на основе локального массива
-  private redraw(patient: Patient, tempArr: Patient[], arr: Patient[], operation: "update" | "delete") {
-    const tempArrInd = tempArr.findIndex((el: Patient) => el.id === patient.id);
-    const ind = arr.findIndex((el: Patient) => el.id === patient.id);
-    if (operation === "update") {
-      tempArr[tempArrInd] = arr[ind] = patient;
-    } else if (operation = "delete") {
-      tempArr.splice(tempArrInd, 1)
-      arr.splice(ind, 1)
-    }
-  }
-
   //* Изменяем пациента
   protected updPatient(patient: Patient) {
     this.service.updatePatient(patient).subscribe(() => {
-      this.redraw(patient, this.tempArr, this.patientsArr, 'update')
-      this.tempArr = this.filterByOz(this.patientsArr, this.currentOrg)
-      this.updatePatientsList()
+      this.repaint(patient, "update")
+      // this.redraw(patient, this.tempArr, this.patientsArr, 'update')
+      // this.tempArr = this.filterByOz(this.patientsArr, this.currentOrg)
+      // this.updatePatientsList()
     })
   }
 
   //* Удаляем пациента
   protected delPatient(patient: Patient) {
     this.service.deletePatient(patient.id).subscribe(() => {
-      this.redraw(patient, this.tempArr, this.patientsArr, 'delete')
-      this.tempArr = this.filterByOz(this.patientsArr, this.currentOrg)
-      this.updatePatientsList()
+      this.repaint(patient, "delete")
+      // this.redraw(patient, this.tempArr, this.patientsArr, 'delete')
+      // this.tempArr = this.filterByOz(this.patientsArr, this.currentOrg)
+      // this.updatePatientsList()
     })
   }
 
-  onFilterPatientsByListNumber(e: string | null) {
+  protected addPatient(patient: Patient) {
+    this.service.createPatient(patient).subscribe(() => {
+      this.repaint(patient, "add")
+      // this.redraw(patient, this.tempArr, this.patientsArr, 'add')
+      // this.tempArr = this.filterByOz(this.patientsArr, this.currentOrg)
+      // this.updatePatientsList()
+      this.service.getPatients().subscribe(data => {
+        patient.id = data[data.length - 1].id.toString()
+        console.log(patient);
+      })
+    })
+  }
+
+  protected onFilterPatientsByListNumber(e: string | null) {
     this.findableListnumber = e;
     this.updatePatientsList()
   }
 
-  onFilterPatientsByType(e: string | null) {
+  protected onFilterPatientsByType(e: string | null) {
     this.findableType = e;
     this.updatePatientsList()
   }
 
-  onFilterPatientsByFio(e: string | null) {
+  protected onFilterPatientsByFio(e: string | null) {
     this.findableFIO = e;
     this.updatePatientsList()
+  }
+
+
+//` Методы для отображения и перерисовки контента на странице
+
+  private repaint(patient: Patient, operation: "update" | "delete" | "add"): void {
+    this.redraw(patient, this.tempArr, this.patientsArr, operation)
+    this.tempArr = this.filterByOz(this.patientsArr, this.currentOrg)
+    this.updatePatientsList()
+  }
+
+  private filterByOz(patients: Patient[], oz: string): Patient[] {
+    return this.currentOrg ? patients.filter((p: Patient) => p.org === oz) : patients;
+  }
+
+  //! Новый способ.отправляет изменения на сервер, но  после операции
+  //! обновления/удаления перерисовывает таблицу на основе локального массива
+  private redraw(patient: Patient, tempArr: Patient[], arr: Patient[], operation: "update" | "delete" | "add") {
+    let tempArrInd = 0;
+    let ind = 0;
+    if (operation !== "add") {
+      tempArrInd = tempArr.findIndex((el: Patient) => el.id === patient.id);
+      ind = arr.findIndex((el: Patient) => el.id === patient.id);
+    }
+    if (operation === "update") {
+      tempArr[tempArrInd] = arr[ind] = patient;
+    } else if (operation === "delete") {
+      tempArr.splice(tempArrInd, 1)
+      arr.splice(ind, 1)
+    } else if (operation === "add") {
+      tempArr.push(patient);
+      arr.push(patient)
+    }
   }
 
   private updatePatientsList() {
@@ -101,8 +129,8 @@ export class DashboardPageComponent implements OnInit {
     if (this.findableFIO) {
       searchArr = searchArr.filter(patient => {
         return patient.name?.toLowerCase().includes(this.findableFIO?.toLowerCase() as string) ||
-                patient.lastname?.toLowerCase().includes(this.findableFIO?.toLowerCase() as string) ||
-                patient.fathername?.toLowerCase().includes(this.findableFIO?.toLowerCase() as string)
+          patient.lastname?.toLowerCase().includes(this.findableFIO?.toLowerCase() as string) ||
+          patient.fathername?.toLowerCase().includes(this.findableFIO?.toLowerCase() as string)
       })
     }
     if (this.findableType !== null) {
