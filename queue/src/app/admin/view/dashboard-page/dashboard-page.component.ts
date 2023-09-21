@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PatientService } from '../../shared/services/patient.service';
 import { Oz, Patient, Types } from '../../shared/interfaces/phpInterface';
-import { concat, filter, from, fromEvent, map, merge, of, reduce, switchMap, tap, zip, zipAll, zipWith } from 'rxjs';
+import { concat, filter, from, fromEvent, map, merge, of, reduce, switchMap, tap, toArray, zip, zipAll, zipWith } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -25,8 +25,19 @@ export class DashboardPageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.service.getPatients().subscribe((data: Patient[]) => {
+    this.service.getPatients().pipe(
+      switchMap((data: Patient[]) => from(data)),
+      map((patient: Patient) => {
+        return {
+          ...patient,
+          fullname: `${patient.lastname} ${patient.name} ${patient.fathername}`
+        }
+      }),
+      toArray()
+      ).subscribe((data: Patient[]) => {
         this.tempArr = [...this.patientsArr] = data;
+        console.log(this.tempArr);
+
     });
     this.service.getOz().subscribe((data: Oz[]) => this.Oz = data);
     this.service.getTypes().subscribe((data: Types[]) => this.typesArr = data);
@@ -37,7 +48,7 @@ export class DashboardPageComponent implements OnInit {
     this.currentOrg = e
     console.log(this.currentOrg);
     //! Новый способ. При переключении организации фильтрует по временному массиву
-    this.tempArr = this.filterByOz(this.patientsArr, this.currentOrg)
+    this.tempArr = this.filterByOz(this.patientsArr)
     this.updatePatientsList()
   }
 
@@ -45,9 +56,6 @@ export class DashboardPageComponent implements OnInit {
   protected updPatient(patient: Patient) {
     this.service.updatePatient(patient).subscribe(() => {
       this.repaint(patient, "update")
-      // this.redraw(patient, this.tempArr, this.patientsArr, 'update')
-      // this.tempArr = this.filterByOz(this.patientsArr, this.currentOrg)
-      // this.updatePatientsList()
     })
   }
 
@@ -55,18 +63,12 @@ export class DashboardPageComponent implements OnInit {
   protected delPatient(patient: Patient) {
     this.service.deletePatient(patient.id).subscribe(() => {
       this.repaint(patient, "delete")
-      // this.redraw(patient, this.tempArr, this.patientsArr, 'delete')
-      // this.tempArr = this.filterByOz(this.patientsArr, this.currentOrg)
-      // this.updatePatientsList()
     })
   }
   //* Добавление пациента
   protected addPatient(patient: Patient) {
     this.service.createPatient(patient).subscribe(() => {
       this.repaint(patient, "add")
-      // this.redraw(patient, this.tempArr, this.patientsArr, 'add')
-      // this.tempArr = this.filterByOz(this.patientsArr, this.currentOrg)
-      // this.updatePatientsList()
       this.service.getPatients().subscribe(data => {
         patient.id = data[data.length - 1].id.toString()
         console.log(patient);
@@ -93,12 +95,12 @@ export class DashboardPageComponent implements OnInit {
 
   private repaint(patient: Patient, operation: "update" | "delete" | "add"): void {
     this.redraw(patient, this.tempArr, this.patientsArr, operation)
-    this.tempArr = this.filterByOz(this.patientsArr, this.currentOrg)
+    this.tempArr = this.filterByOz(this.patientsArr)
     this.updatePatientsList()
   }
 
-  private filterByOz(patients: Patient[], oz: string | null): Patient[] {
-    return this.currentOrg ? patients.filter((p: Patient) => p.org === oz) : patients;
+  private filterByOz(patients: Patient[]): Patient[] {
+    return this.currentOrg ? patients.filter((p: Patient) => p.org === this.currentOrg) : patients;
   }
 
   //! Новый способ.отправляет изменения на сервер, но  после операции
@@ -122,15 +124,13 @@ export class DashboardPageComponent implements OnInit {
   }
 
   private updatePatientsList() {
-    let searchArr = this.filterByOz(this.patientsArr, this.currentOrg)
+    let searchArr = this.filterByOz(this.patientsArr)
     if (this.findableListnumber) {
       searchArr = searchArr.filter(patient => patient.listnumber?.toLowerCase().includes(this.findableListnumber?.toLowerCase() as string))
     }
     if (this.findableFIO) {
       searchArr = searchArr.filter(patient => {
-        return patient.name?.toLowerCase().includes(this.findableFIO?.toLowerCase() as string) ||
-          patient.lastname?.toLowerCase().includes(this.findableFIO?.toLowerCase() as string) ||
-          patient.fathername?.toLowerCase().includes(this.findableFIO?.toLowerCase() as string)
+        return patient.fullname?.toLowerCase().includes(this.findableFIO?.toLowerCase() as string)
       })
     }
     if (this.findableType !== null) {

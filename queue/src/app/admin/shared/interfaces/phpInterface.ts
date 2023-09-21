@@ -16,6 +16,7 @@ export interface Patient {
   isOperated?: string;
   side?: string;
   invalidgroup?: string;
+  fullname?: string;
 }
 
 export interface Oz {
