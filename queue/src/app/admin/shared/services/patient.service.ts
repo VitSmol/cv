@@ -40,10 +40,13 @@ export class PatientService {
     return this.patientsDAO.delete(id);
   }
 
-
   //* Поиск списка организаций в БД DAO
   getOz(): Observable<Oz[]> {
     return this.ozDAO.getAll()
+  }
+/// Чисто тестовый метод
+  testGetOz() {
+    return this.ozDAO.getAllTest();
   }
 
   //* Поиск типа протезирования в БД DAO
@@ -65,12 +68,6 @@ export class PatientService {
   getSQL(org: string) {
     return this.http.get<Patient[]>(environment.baseUrl + 'getPatientsByOrg.php?org=' + org)
   }
-
-
-
-
-
-
 
   //! Старые не используемые методы
   // getPatientsByTypeRX(type: string) {

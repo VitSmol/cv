@@ -12,7 +12,7 @@ export class MenuComponent {
   @Output() selectOz = new EventEmitter<string>();
 
   @Input() ozArray: Oz[] = [];
-  @Input() selectedOrg: string | undefined = undefined;
+  @Input() selectedOrg?: string | null;
 
 public showPatientsByOrg(oz: Oz | null) {
     if (this.selectedOrg === oz?.orgname) return;

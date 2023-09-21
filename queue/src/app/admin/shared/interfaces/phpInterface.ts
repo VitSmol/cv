@@ -19,6 +19,7 @@ export interface Patient {
 }
 
 export interface Oz {
+  note: string;
   id?: number;
   orgname: string;
   orgshortname: string;

@@ -1,4 +1,4 @@
-import { Observable } from "rxjs";
+import { filter, map, Observable } from "rxjs";
 import { Oz } from "src/app/admin/shared/interfaces/phpInterface";
 import { OzDAO } from "../interfaces/OzDAO";
 import { environment } from "src/environments/environments";
@@ -14,21 +14,39 @@ export class OzDAOArray implements OzDAO {
     return this.http.get<Oz[]>(environment.baseUrl + 'getOZ/view.php')
   }
 
-  add(arg0: Oz): Observable<Oz> {
+  /// Чисто тестовый метод. Для изучения pipe, map и т.д.
+  getAllTest() {
+    return this.http.get<Oz[]>(environment.baseUrl + 'getOZ/view.php')
+    // .pipe(map(data=>{
+    //   return data.map(el => {
+    //     return {
+    //       ...el,
+    //       orgname: el.orgname.toLowerCase(),
+    //       index: 'after pipe'
+    //     }
+    //   })
+    // }))
+  }
+
+  add(_arg0: Oz): Observable<Oz> {
     throw new Error("Method not implemented.");
   }
 
 
-  get(id: string): Observable<Oz> {
+  get(_id: string): Observable<Oz> {
     throw new Error("Method not implemented.");
   }
 
-  delete(id: string): Observable<Oz> {
+  delete(_id: string): Observable<Oz> {
     throw new Error("Method not implemented.");
   }
 
-  update(oz: Oz): Observable<Oz> {
+  update(_oz: Oz): Observable<Oz> {
     throw new Error("Method not implemented.");
   }
 
 }
+function data(_value: Oz[], _index: number): unknown {
+  throw new Error("Function not implemented.");
+}
+

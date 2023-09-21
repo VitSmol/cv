@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PatientService } from '../../shared/services/patient.service';
 import { Oz, Patient, Types } from '../../shared/interfaces/phpInterface';
+import { concat, filter, from, fromEvent, map, merge, of, reduce, switchMap, tap, zip, zipAll, zipWith } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -9,11 +10,11 @@ import { Oz, Patient, Types } from '../../shared/interfaces/phpInterface';
 })
 export class DashboardPageComponent implements OnInit {
 
-  public patientsArr!: Patient[];
-  public tempArr!: Patient[];
+  public patientsArr: Patient[] = [];
+  public tempArr: Patient[] = [];
   public typesArr: Types[] = []
-  public Oz!: Oz[]
-  public currentOrg!: string
+  public Oz: Oz[] = []
+  public currentOrg!: string | null
 
   private findableListnumber: string | null = null;
   private findableType: string | null = null
@@ -26,13 +27,13 @@ export class DashboardPageComponent implements OnInit {
   ngOnInit(): void {
     this.service.getPatients().subscribe((data: Patient[]) => {
         this.tempArr = [...this.patientsArr] = data;
-      });
+    });
     this.service.getOz().subscribe((data: Oz[]) => this.Oz = data);
     this.service.getTypes().subscribe((data: Types[]) => this.typesArr = data);
   }
 
   //! Фильтр отображаемых пациентов по категории
-  protected onSelectOz(e: string) {
+  protected onSelectOz(e: string | null) {
     this.currentOrg = e
     console.log(this.currentOrg);
     //! Новый способ. При переключении организации фильтрует по временному массиву
@@ -59,7 +60,7 @@ export class DashboardPageComponent implements OnInit {
       // this.updatePatientsList()
     })
   }
-
+  //* Добавление пациента
   protected addPatient(patient: Patient) {
     this.service.createPatient(patient).subscribe(() => {
       this.repaint(patient, "add")
@@ -88,8 +89,7 @@ export class DashboardPageComponent implements OnInit {
     this.updatePatientsList()
   }
 
-
-//` Методы для отображения и перерисовки контента на странице
+  //` Методы для отображения и перерисовки контента на странице
 
   private repaint(patient: Patient, operation: "update" | "delete" | "add"): void {
     this.redraw(patient, this.tempArr, this.patientsArr, operation)
@@ -97,7 +97,7 @@ export class DashboardPageComponent implements OnInit {
     this.updatePatientsList()
   }
 
-  private filterByOz(patients: Patient[], oz: string): Patient[] {
+  private filterByOz(patients: Patient[], oz: string | null): Patient[] {
     return this.currentOrg ? patients.filter((p: Patient) => p.org === oz) : patients;
   }
 

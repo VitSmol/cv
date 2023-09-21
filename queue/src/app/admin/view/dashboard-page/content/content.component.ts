@@ -7,6 +7,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmComponent } from '../dialog/confirm/confirm.component';
 import { EditPageComponent } from '../dialog/edit-page/edit-page.component';
+import { fromEvent } from 'rxjs';
 
 @Component({
   selector: 'app-content',
@@ -45,7 +46,7 @@ export class ContentComponent implements OnInit {
 
   @Output() updatePatient = new EventEmitter<Patient>();
   @Output() deletePatient = new EventEmitter<Patient>();
-  @Output() selectOz = new EventEmitter<string>();
+  @Output() selectOz = new EventEmitter<string | null>();
   @Output() outListnumberFilterValue = new EventEmitter<string | null>();
   @Output() outFioFilterValue = new EventEmitter<string | null>();
   @Output() outTypeFilterValue = new EventEmitter<string | null>();
@@ -63,7 +64,6 @@ export class ContentComponent implements OnInit {
 
   @Input('types') public set setTypes(types: Types[]) {
     this.types = types
-    console.log(this.types);
   }
 
   constructor(
@@ -72,6 +72,10 @@ export class ContentComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource();
+    // fromEvent(this, 'mousemove').subscribe(ev => {
+    //   console.log(ev);
+
+    // })
   }
 
   private fillTable(): void {
@@ -82,13 +86,6 @@ export class ContentComponent implements OnInit {
   }
 
   //` открытие диалогового окна редактирования
-  /// TODO необходимо реализовать следующую логику:
-  /// оставить только этот метод. Метод openAddPatientDialog - удалить.
-  /// в методе openEditPatientDialog реализовать передачу параметров patient || null, если пеедается null
-  /// тогда в поле data передаем [patient, 'Добавление нового пациента', 'add'], где patient
-  /// пустой объект. затем в afterClosed проверяем если result.message === 'add', тогда передаем result.patient
-  /// в метод addNewPatient и т.д.
-  /// Переименовать openEditPatientDialog в openPatientDialog
   protected openPatientDialog(patient: Patient | null): void {
     const dialogRef = this.dialog.open(EditPageComponent, {
       data: patient ? [patient, "Редактирование данных о пациентe", "edit"] :
@@ -168,7 +165,7 @@ export class ContentComponent implements OnInit {
   onFilterByFIO() {
     this.outFioFilterValue.emit(this.fioFilter)
   }
-  onSelectOz(oz: string) {
+  onSelectOz(oz: string | null) {
     this.selectOz.emit(oz)
   }
 }
