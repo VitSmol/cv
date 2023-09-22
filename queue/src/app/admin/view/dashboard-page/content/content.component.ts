@@ -7,7 +7,6 @@ import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmComponent } from '../dialog/confirm/confirm.component';
 import { EditPageComponent } from '../dialog/edit-page/edit-page.component';
-import { fromEvent } from 'rxjs';
 
 @Component({
   selector: 'app-content',
@@ -72,10 +71,6 @@ export class ContentComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource();
-    // fromEvent(this, 'mousemove').subscribe(ev => {
-    //   console.log(ev);
-
-    // })
   }
 
   private fillTable(): void {

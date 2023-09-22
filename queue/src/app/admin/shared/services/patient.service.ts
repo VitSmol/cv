@@ -28,7 +28,7 @@ export class PatientService {
 
   //* Рабочий метод DAO
   getPatients(): Observable<Patient[]> {
-    return this.patientsDAO.getAll();
+    return this.patientsDAO.getAll()
   }
   //* Обновление данных пациента в БД DAO
   updatePatient(patient: Patient) {

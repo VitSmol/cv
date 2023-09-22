@@ -78,7 +78,7 @@ table > thead > th
   font-size: 13px
   padding: 0 5px
   text-align: left
-  vertical-align: top
+  // vertical-align: top
 
 .mat-mdc-table .mdc-data-table__row
     height: auto
@@ -114,10 +114,10 @@ tr.pointer
   // transition: all .3s ease-in-out
 
 .table-responsive
-  max-height: 50vh
+  height: 95%
   overflow: auto
-  padding: 10px 20px
-  top: -10px
+  padding: 0px 20px
+  // top: -10px
   &::-webkit-scrollbar
     width: 3px
     background-color: transparent
@@ -126,16 +126,26 @@ tr.pointer
     // background-color: $bg-color
     border-radius: 3px
 
-.mat-mdc-paginator
-    position: sticky
-    bottom: -10px
+
 .main-panel
   width: calc(100% - 210px)
-.main-panel > .content
-    margin-top: 0
-    padding: 5px 0
+  height: 100%
+  .container-fluid
+    height: 100%
+// .main-panel >
+.content.content-container
+  margin-top: 0
+  // padding: 5px 0
+  height: 100%
+  display: grid
+  grid-template-rows: 70px 1fr
+  .card
+    height: 100%
+    display: grid
+    grid-template-rows: 37px 1fr
 .table__col
   padding: 0
+
 
 .delete-icon
   cursor: pointer
@@ -165,13 +175,39 @@ tr.pointer
 .btn__container
   display: flex
 
-.listnumber-filter
-  // width: 250px
 tr:hover td
   background-color: #7574742f !important
 
-.mat-mdc-paginator-outer-container
-  height: 48px
 
-.row.filters
-  padding-top: 10px
+
+.filters
+  margin-top: px
+  border-radius: 6px
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14)
+  background: white
+  margin-right: 0
+  margin-left: 0
+  align-items: center
+  ::ng-deep .mat-mdc-form-field-subscript-wrapper
+    display: none
+
+.buttons-container
+  display: flex
+  padding: 0 15px
+  justify-content: center
+  gap: 16px
+  button
+    width: auto
+
+::ng-deep .mat-mdc-paginator-container
+    min-height: auto
+::ng-deep .mat-mdc-paginator-outer-container
+    height: auto
+    padding: 5px 0
+.mat-mdc-paginator
+    position: sticky
+    bottom: 1px
+
+.underline
+  text-decoration: underline
+  color: #0000ff8f

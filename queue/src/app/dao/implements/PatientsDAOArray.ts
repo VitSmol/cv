@@ -1,4 +1,4 @@
-import { Observable } from "rxjs";
+import { from, map, Observable, switchMap, toArray } from "rxjs";
 import { Patient } from "src/app/admin/shared/interfaces/phpInterface";
 import { PatientsDAO } from "../interfaces/PatientsDAO";
 import { HttpClient } from "@angular/common/http";
@@ -8,14 +8,24 @@ export class PatientDAOArray implements PatientsDAO {
 
   constructor(
     private http: HttpClient
-    ) {}
+  ) { }
 
   getAll(): Observable<Patient[]> {
-    return this.http.get<Patient[]>(environment.baseUrl + 'view.php');
+    return this.http.get<Patient[]>(environment.baseUrl + 'view.php').pipe(
+
+      switchMap((data: Patient[]) => from(data)),
+      map((patient: Patient) => {
+        return {
+          ...patient,
+          fullname: `${patient.lastname} ${patient.name} ${patient.fathername}`
+        }
+      }),
+      toArray(),
+    );
   }
 
   update(patient: Patient): Observable<Patient> {
-     return this.http.put<Patient>(environment.baseUrl + 'update.php', patient)
+    return this.http.put<Patient>(environment.baseUrl + 'update.php', patient)
   }
 
   delete(id: string): Observable<Patient> {

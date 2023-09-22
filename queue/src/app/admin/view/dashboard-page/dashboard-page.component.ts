@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PatientService } from '../../shared/services/patient.service';
 import { Oz, Patient, Types } from '../../shared/interfaces/phpInterface';
-import { concat, filter, from, fromEvent, map, merge, of, reduce, switchMap, tap, toArray, zip, zipAll, zipWith } from 'rxjs';
+import { merge } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -25,19 +25,8 @@ export class DashboardPageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.service.getPatients().pipe(
-      switchMap((data: Patient[]) => from(data)),
-      map((patient: Patient) => {
-        return {
-          ...patient,
-          fullname: `${patient.lastname} ${patient.name} ${patient.fathername}`
-        }
-      }),
-      toArray()
-      ).subscribe((data: Patient[]) => {
-        this.tempArr = [...this.patientsArr] = data;
-        console.log(this.tempArr);
-
+    this.service.getPatients().subscribe((data: Patient[]) => {
+      this.tempArr = [...this.patientsArr] = data;
     });
     this.service.getOz().subscribe((data: Oz[]) => this.Oz = data);
     this.service.getTypes().subscribe((data: Types[]) => this.typesArr = data);
@@ -46,9 +35,8 @@ export class DashboardPageComponent implements OnInit {
   //! Фильтр отображаемых пациентов по категории
   protected onSelectOz(e: string | null) {
     this.currentOrg = e
-    console.log(this.currentOrg);
     //! Новый способ. При переключении организации фильтрует по временному массиву
-    this.tempArr = this.filterByOz(this.patientsArr)
+    // this.tempArr = this.filterByOz(this.patientsArr)
     this.updatePatientsList()
   }
 
@@ -92,6 +80,7 @@ export class DashboardPageComponent implements OnInit {
   }
 
   //` Методы для отображения и перерисовки контента на странице
+
 
   private repaint(patient: Patient, operation: "update" | "delete" | "add"): void {
     this.redraw(patient, this.tempArr, this.patientsArr, operation)
