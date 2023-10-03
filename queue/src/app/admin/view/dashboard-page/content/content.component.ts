@@ -124,8 +124,6 @@ export class ContentComponent implements OnInit {
         return
       }
       if (result.message === 'add') {
-        console.log(result.patient);
-
         this.addNewPatient.emit(result.patient)
         return
       }
