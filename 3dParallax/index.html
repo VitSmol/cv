@@ -6,49 +6,60 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>3D parallax</title>
   <link rel="stylesheet" href="css/main.css">
-  <script src="js/app.js" defer></script>
+  
+  <script src="libs/gsap.min.js" defer></script>
+  <script src="libs/ScrollTrigger.min.js" defer></script>
+  <script src="libs/ScrollSmoother.min.js" defer></script>
   <script src="libs/rain.js" defer></script>
+  <script src="js/app.js" defer></script>
 </head>
 <body>
-  <div class="logo" style="background-image: url(img/logo.svg);"></div>
-  <section class="layers">
-    <div class="layers__container">
-      <div class="layers__item layer-1" style="background-image: url(./img/layer-1.jpg);"></div>
-      <div class="layers__item layer-2" style="background-image: url(./img/layer-2.png);"></div>
-      <div class="layers__item layer-3">
-        <div class="hero-content">
-          <h1>natural forest <span>html / css</span> </h1>
-          <div class="hero-content__p">Creating a beautiful 3D website with a lens effect</div>
-          <button class="button-start">Start learning</button>
-        </div>
-      </div>
-      <div class="layers__item layer-4">
-        <canvas class="rain"></canvas>
-      </div>
-      <div class="layers__item layer-5" style="background-image: url(./img/layer-5.png);"></div>
-      <div class="layers__item layer-6" style="background-image: url(./img/layer-6.png);"></div>
-    </div>
-  </section>
 
-  <section class="second">
-    <div class="main-header">
-      <div class="forest__layers">
-        <div class="layers__head">
-          <div class="payers__caption">Welcome to Parallax</div>
-          <div class="layers__title">Fairy Forest</div>
+<div class="wrapper">
+  <div class="content">
+    <div class="logo" style="background-image: url(img/logo.svg);"></div>
+    <section class="layers">
+      <div class="layers__container">
+        <div class="layers__item layer-1" style="background-image: url(./img/layer-1.jpg);"></div>
+        <div class="layers__item layer-2" style="background-image: url(./img/layer-2.png);"></div>
+        <div class="layers__item layer-3">
+          <div class="hero-content">
+            <h1>natural forest <span>html / css</span> </h1>
+            <div class="hero-content__p">Creating a beautiful 3D website with a lens effect</div>
+            <button class="button-start">Start learning</button>
+          </div>
         </div>
-        <div class="layer layers__base" style="background-image: url(./img/scroll/layer-base.png);"></div>
-        <div class="layer layers__title" style="background-image: url(./img/scroll/layer-middle.png);"></div>
-        <div class="layer layers__front" style="background-image: url(./img/scroll/layer-front.png);"></div>
+        <div class="layers__item layer-4">
+          <canvas class="rain"></canvas>
+        </div>
+        <div class="layers__item layer-5" style="background-image: url(./img/layer-5.png);"></div>
+        <div class="layers__item layer-6" style="background-image: url(./img/layer-6.png);"></div>
       </div>
-    </div>
-    <article class="main-article" style="background-image: url(./img/scroll/dungeon.jpg);"></article>
-    <div class="main-article__content">
-      <h2 class="main-article-header">
-        To be continued
-      </h2>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, perspiciatis excepturi laboriosam id adipisci vero. Unde, veritatis, nulla, nobis fugiat ratione necessitatibus iusto voluptas dolore ut blanditiis asperiores tempore placeat nesciunt voluptates!</p>
-    </div>
-  </section>
+    </section>
+  
+    <section class="second">
+      <div class="main-header">
+        <div class="forest__layers">
+          <div class="layers__head">
+            <div class="payers__caption">Welcome to Parallax</div>
+            <div class="layers__title">Fairy Forest</div>
+          </div>
+          <div class="layer layers__base" style="background-image: url(./img/scroll/layer-base.png);"></div>
+          <div class="layer layers__middle" style="background-image: url(./img/scroll/layer-middle.png);"></div>
+          <div class="layer layers__front" style="background-image: url(./img/scroll/layer-front.png);"></div>
+        </div>
+      </div>
+      <article class="main-article" style="background-image: url(./img/scroll/dungeon.jpg);">
+        <div class="main-article__content">
+          <h2 class="main-article-header">
+            To be continued
+          </h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, perspiciatis excepturi laboriosam id adipisci vero. Unde, veritatis, nulla, nobis fugiat ratione necessitatibus iusto voluptas dolore ut blanditiis asperiores tempore placeat nesciunt voluptates!</p>
+        </div>
+      </article>
+    </section>
+  </div>
+</div>
+
 </body>
 </html>
