@@ -1,0 +1,30 @@
+<div class="wrapp">
+  <div class="container">
+    <nav class="menu">
+      <h3>
+        <a (click)="logout($event)" routerLink="/">
+          Главное управление по здравоохранению Гомельского облисполкома
+        </a>
+      </h3>
+      <ul *ngIf="auth.isAuth()">
+        <li routerLinkActive="active">
+          <a [routerLink]="['/admin', 'dashboard']">Панель управления</a>
+        </li>
+        <li routerLinkActive="active">
+          <a [routerLink]="['/admin', 'add']">Добавить списки</a>
+        </li>
+        <li routerLinkActive="active">
+          <a [routerLink]="['/admin', 'once-add']">Добавить запись</a>
+        </li>
+        <li routerLinkActive="active">
+          <a [routerLink]="['/admin', 'list']">Все записи</a>
+        </li>
+        <li>
+          <a [routerLink]="['', '']" (click)="logout($event)">Выйти</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+<router-outlet></router-outlet>
+

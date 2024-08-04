@@ -1,0 +1,20 @@
+<div class="wrapper dashboard__wrapper">
+  <app-menu
+    (selectOz)="onSelectOz($event)"
+    [ozArray] = "Oz"
+    [selectedOrg]="currentOrg"
+    ></app-menu>
+  <app-content
+    [types]="typesArr"
+    [selectedOrg] = "currentOrg"
+    [patients]="tempArr"
+    (updatePatient)="updPatient($event)"
+    (deletePatient)="delPatient($event)"
+    (addNewPatient)="addPatient($event)"
+    (selectOz)="onSelectOz($event)"
+    (outListnumberFilterValue)="onFilterPatientsByListNumber($event)"
+    (outFioFilterValue)="onFilterPatientsByFio($event)"
+    (outTypeFilterValue)="onFilterPatientsByType($event)"
+  >
+</app-content>
+</div>

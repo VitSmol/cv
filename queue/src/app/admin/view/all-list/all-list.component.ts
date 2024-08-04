@@ -1,0 +1,39 @@
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { PatientService } from '../../shared/services/patient.service';
+import { Patient } from '../../shared/interfaces/phpInterface';
+
+@Component({
+  selector: 'app-all-list',
+  templateUrl: './all-list.component.html',
+  styleUrls: ['./all-list.component.sass']
+})
+export class AllListComponent implements OnInit {
+  constructor(
+    private patientService: PatientService,
+    private router: Router
+  ) { }
+
+  patients: any
+
+  ngOnInit(): void {
+    this.load()
+  }
+
+  load() {
+    this.patientService.getPatients().subscribe((response: any) => {
+      this.patients = response;
+    })
+  }
+
+  deletePatient(patient: Patient): void {
+    console.log(patient);
+    this.patientService.deletePatient(patient.id).subscribe(response => {
+      this.load()
+    })
+  }
+
+  navigate(id: number | undefined) {
+    this.router.navigate(['/admin', 'edit',id]);
+  }
+}
